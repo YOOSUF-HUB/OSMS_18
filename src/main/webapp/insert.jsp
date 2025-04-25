@@ -44,16 +44,7 @@
 			<td>description: </td>
 			<td><input type = "text" name="description" readonly></td>
 		</tr>
-		
-		<tr>
-			<td>New: </td>
-			<td><input type = "text" name="description" readonly></td>
-		</tr>
-		
-		<tr>
-			<td>New: </td>
-			<td><input type = "text" name="description" readonly></td>
-		</tr>			
+				
 
 		<tr>
 		<td colspan="2"> <input type="submit"  value="Submit"></td>
