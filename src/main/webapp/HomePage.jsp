@@ -126,8 +126,8 @@
                                 <i class="fas fa-box-open"></i> Stock Management
                             </button>
                             <div class="dropdown-container">
-                                <a href="/StockManagement/create_stock.html"><i class="fas fa-plus"></i> Add New Stock</a>
-                                <a href="/StockManagement/view_stock.html"><i class="fas fa-list"></i> View Stock</a>
+                                <a href="StockManagement/create_stock.jsp"><i class="fas fa-plus"></i> Add New Stock</a>
+                                <a href="StockManagement/view_stock.jsp"><i class="fas fa-list"></i> View Stock</a>
                                 <a href="update_stock.jsp"><i class="fas fa-edit"></i> Update Stock</a>
                                 <a href="delete_stock.jsp"><i class="fas fa-trash"></i> Delete Stock</a>
                             </div>
