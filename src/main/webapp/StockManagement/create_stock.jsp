@@ -11,12 +11,11 @@
     
     <style>
         .btn-primary {
-            padding:  20px , 10px;
-            
+            padding: 20px, 10px;
         }
 
         .btn-secondary {
-            padding:  20px , 10px; 
+            padding: 20px, 10px; 
             margin-left: 10px; 
         }
     </style>
@@ -63,10 +62,8 @@
             </div>
             <button type="submit" class="btn btn-primary mr-2">Add Stock</button>
             <a href="../HomePage.jsp" class="btn btn-secondary">Cancel</a>
-        </div>
-    </form>
-    <div class="mb-3"></div> </div>
         </form>
+        <div class="mb-3"></div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
