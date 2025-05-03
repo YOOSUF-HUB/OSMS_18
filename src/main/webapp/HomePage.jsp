@@ -118,7 +118,7 @@
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link active" href="#">
-                                <i class="fas fa-tachometer-alt"></i> Dashboard <span class="sr-only">(current)</span>
+                                <i class="fas fa-tachometer-alt"></i> TechNest <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
