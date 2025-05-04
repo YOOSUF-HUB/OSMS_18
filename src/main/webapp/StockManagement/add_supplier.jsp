@@ -1,12 +1,77 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Supplier</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        .btn-primary {
+            padding: 10px 20px;
+        }
+
+        .btn-secondary {
+            padding: 10px 20px;
+            margin-left: 10px;
+        }
+    </style>
 </head>
 <body>
+    <div class="container mt-5">
+        <h2>Add New Supplier</h2>
+        <form action="process_add_supplier.jsp" method="post">
 
+            <div class="form-group">
+                <label for="supplier_name">Supplier Name:</label>
+                <input type="text" class="form-control" id="supplier_name" name="supplier_name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contact_name">Contact Name:</label>
+                <input type="text" class="form-control" id="contact_name" name="contact_name">
+            </div>
+
+            <div class="form-group">
+                <label for="phone_number">Phone Number:</label>
+                <input type="text" class="form-control" id="phone_number" name="phone_number">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email">
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" class="form-control" id="address" name="address">
+            </div>
+
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input type="text" class="form-control" id="city" name="city">
+            </div>
+
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <input type="text" class="form-control" id="country" name="country">
+            </div>
+
+            <div class="form-group">
+                <label for="website">Website:</label>
+                <input type="url" class="form-control" id="website" name="website">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Supplier</button>
+            <a href="../StockManagerDashboard.jsp" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

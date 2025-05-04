@@ -17,7 +17,7 @@
 <body>
     <div class="container mt-5">
 
-        <a href="../HomePage.jsp" class="btn btn-secondary">Back to Dashboard</a>
+        <a href="../StockManagerDashboard.jsp" class="btn btn-secondary">Back to Dashboard</a>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
