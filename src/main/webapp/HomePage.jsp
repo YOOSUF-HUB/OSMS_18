@@ -16,7 +16,7 @@
 
         .sidebar {
             height: 100vh;
-            width: 220px;
+            width: 240px;
             position: fixed;
             top: 0;
             left: 0;
@@ -128,8 +128,9 @@
                             <div class="dropdown-container">
                                 <a href="StockManagement/create_stock.jsp"><i class="fas fa-plus"></i> Add New Stock</a>
                                 <a href="StockManagement/view_stock.jsp"><i class="fas fa-list"></i> View Stock</a>
-                                <a href="update_stock.jsp"><i class="fas fa-edit"></i> Update Stock</a>
-                                <a href="delete_stock.jsp"><i class="fas fa-trash"></i> Delete Stock</a>
+                                <a href="StockManagement/update_stock.jsp"><i class="fas fa-edit"></i> Update Stock</a>
+                                <a href="StockManagement/delete_stock.jsp"><i class="fas fa-trash"></i> Delete Stock</a>
+                                <a href="StockManagement/add_supplier.jsp"><i class = "fas fa-plus"></i> Add New Supplier</a>
                             </div>
                         </li>
                         <li class="nav-item">
