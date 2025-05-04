@@ -12,6 +12,10 @@
         .actions-column {
             text-align: right; /* Align text (and inline elements like buttons) to the right */
         }
+        
+        
+
+
     </style>
 </head>
 <body>
@@ -22,26 +26,26 @@
                 <tr>
                     <th>ID</th>
                     <th>Product Name</th>
-                    <th>Brand</th>
-                    <th>Model</th>
-                    <th>Size</th>
-                    <th>Color</th>
-                    <th>SKU</th>
+                    <th>Product Manufacturer</th>
+                    <th>Supplier ID</th>
+                    <th>Purchase Price</th>
+                    <th>Selling Price</th>
                     <th>Quantity</th>
+                    <th>Comments/Preferences</th>
                     <th class="actions-column">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                 <c:forEach var="stockItem" items="${stockList}">
+                <c:forEach var="stockItem" items="${stockList}">
                     <tr>
                         <td>${stockItem.id}</td>
                         <td>${stockItem.productName}</td>
-                        <td>${stockItem.brand}</td>
-                        <td>${stockItem.model}</td>
-                        <td>${stockItem.size}</td>
-                        <td>${stockItem.color}</td>
-                        <td>${stockItem.sku}</td>
+                        <td>${stockItem.brand}</td> <!-- Product Manufacturer -->
+                        <td>${stockItem.model}</td> <!-- Supplier ID (from model) -->
+                        <td>${stockItem.purchasePrice}</td>
+                        <td>${stockItem.sellingPrice}</td>
                         <td>${stockItem.quantity}</td>
+                        <td>${stockItem.preferences}</td> <!-- Comments or Preferences -->
                         <td class="actions-column">
                             <div class="d-inline-flex">
                                 <a href="update_stock.jsp?id=${stockItem.id}" class="btn btn-sm btn-primary mr-1">Update</a>

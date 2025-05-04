@@ -18,6 +18,16 @@
             padding: 10px 20px;
             margin-left: 10px;
         }
+        
+		.btn:hover {
+		    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+		}
+		
+		#clear-btn{
+			padding: 10px 20px;
+			margin-top: 10px
+		}
+        
     </style>
 </head>
 <body>
@@ -37,7 +47,7 @@
 
             <div class="form-group">
                 <label for="phone_number">Phone Number:</label>
-                <input type="text" class="form-control" id="phone_number" name="phone_number">
+                <input type="tel" class="form-control" id="phone_number" name="phone_number">
             </div>
 
             <div class="form-group">
@@ -57,7 +67,26 @@
 
             <div class="form-group">
                 <label for="country">Country:</label>
-                <input type="text" class="form-control" id="country" name="country">
+				<select class="form-control" id="country" name="country" required>
+				<option value="" disabled selected>Select a country</option>
+				</select>
+				<button type="button" class="btn btn-warning" id="clear-btn" onclick="document.getElementById('country').value = ''">Clear</button>
+				
+				<script>
+				    fetch("https://restcountries.com/v3.1/all")
+				        .then(res => res.json())
+				        .then(data => {
+				            const select = document.getElementById("country");
+				            const countries = data.map(c => c.name.common).sort();
+				
+				            countries.forEach(name => {
+				                const option = document.createElement("option");
+				                option.value = name;
+				                option.textContent = name;
+				                select.appendChild(option);
+				            });
+				        });
+				</script>
             </div>
 
             <div class="form-group">

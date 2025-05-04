@@ -166,40 +166,73 @@ body {
 					<h1 class="h2">Stock Manager Dashboard</h1>
 				</div>
 
-				<div class="dashboard-widgets">
-					<div class="widget">
-						<h2 class="widget-title">Stock Overview</h2>
-						<p>
-							Total Items: <strong>150</strong>
-						</p>
-						<p>
-							Low Stock: <strong class="text-warning">15</strong>
-						</p>
-						<p>
-							Out of Stock: <strong class="text-danger">5</strong>
-						</p>
-					</div>
-
-					<div class="widget">
-						<h2 class="widget-title">Recent Orders</h2>
-						<ul>
-							<li>Order #1234 - 5 items</li>
-							<li>Order #1235 - 10 items</li>
-							<li>Order #1236 - 2 items</li>
-						</ul>
-					</div>
-
-					<div class="widget">
-						<h2 class="widget-title">Sales Statistics</h2>
-						<p>
-							Today's Sales: <strong>$500</strong>
-						</p>
-						<p>
-							This Week's Sales: <strong>$2500</strong>
-						</p>
-					</div>
+				<div class="card text">
+				
+				  <div class="card-header">
+				    <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+				      <li class="nav-item" role="presentation">
+				        <a class="nav-link" id="active-tab" data-toggle="tab" href="#stock-overview-content" role="tab" aria-controls="active-content" aria-selected="true">Stock Overview</a>
+				      </li>
+				      <li class="nav-item" role="presentation">
+				        <a class="nav-link" id="link-tab" data-toggle="tab" href="#recent-orders-content" role="tab" aria-controls="link-content" aria-selected="false">Recent Orders</a>
+				      </li>
+				      <li class="nav-item" role="presentation">
+				        <a class="nav-link" id="disabled-tab" data-toggle="tab" href="#sales-stat-content" role="tab" aria-controls="disabled-content" aria-selected="false">Sales Statistics</a>
+				      </li>
+				    </ul>
+				  </div>
+				
+				  <div class="card-body">
+				    <div class="tab-content" id="myTabContent">
+				      <div class="tab-pane fade show active" id="stock-overview-content" role="tabpanel" aria-labelledby="active-tab">
+						<div class="widget">
+							<h2 class="widget-title">Stock Overview</h2>
+							<p>
+								Total Items: <strong>150</strong>
+							</p>
+							<p>
+								Low Stock: <strong class="text-warning">15</strong>
+							</p>
+							<p>
+								Out of Stock: <strong class="text-danger">5</strong>
+							</p>
+						</div>
+				      </div>
+				      <div class="tab-pane fade" id="recent-orders-content" role="tabpanel" aria-labelledby="link-tab">
+						<div class="widget">
+							<h2 class="widget-title">Recent Orders</h2>
+							<ul>
+								<li>Order #1234 - 5 items</li>
+								<li>Order #1235 - 10 items</li>
+								<li>Order #1236 - 2 items</li>
+							</ul>
+						</div>
+				      </div>
+				      <div class="tab-pane fade" id="sales-stat-content" role="tabpanel" aria-labelledby="disabled-tab">
+						<div class="widget">
+								<h2 class="widget-title">Sales Statistics</h2>
+								<p>
+									Today's Sales: <strong>$500</strong>
+								</p>
+								<p>
+									This Week's Sales: <strong>$2500</strong>
+								</p>
+							</div>
+				      </div>
+				    </div>
+				  </div>
+				
 				</div>
-
+				
+				<script>
+				  $(function () {
+				    $('#myTab a').on('click', function (e) {
+				      e.preventDefault()
+				      $(this).tab('show')
+				    })
+				  })
+				</script>
+				
 
 
 			</main>
