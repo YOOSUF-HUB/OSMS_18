@@ -18,26 +18,35 @@
             padding: 20px, 10px; 
             margin-left: 10px; 
         }
+        
+        .form-add-stock{
+        	margin-top:40px;
+        }
     </style>
 </head>
 <body>
     <div class="container mt-5">
         <h2>Add New Stock Item</h2>
-        <form action="process_add_stock.jsp" method="post">
+        <form action="process_add_stock.jsp" method="post" class="form-add-stock">
         
             <div class="form-group">
                 <label for="productName">Product Name:</label>
                 <input type="text" class="form-control" id="productName" name="productName" required>
             </div>
             
+			<div class="form-group">
+                <label for="brand">Product Model:</label>
+                <input type="text" class="form-control" id="model" name="model">
+            </div>
+            
             <div class="form-group">
                 <label for="brand">Product Manufacturer:</label>
-                <input type="text" class="form-control" id="brand" name="brand">
+                <input type="text" class="form-control" id="manufacturer" name="manufacturer">
             </div>
             
             <div class="form-group">
                 <label for="model">Supplier ID:</label>
-                <input type="text" class="form-control" id="model" name="model">
+                <input type="text" class="form-control" id="ID" name="ID">
             </div>
             
             <div class="form-group">
