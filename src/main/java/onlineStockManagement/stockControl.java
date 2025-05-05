@@ -12,7 +12,7 @@ public class stockControl {
 	private static ResultSet rs = null;
 	
 	//insert Data function
-	public static boolean insertData(String item_name, String item_model, String item_manufacturer ,int supplier_id, int quantity, int unit_cost, int selling_price, String date_added, String comments) {
+	public static boolean insertData(String item_name, String item_model, String item_manufacturer ,int quantity, float unit_cost, float selling_price, String date_added, String comments) {
 		
 		 boolean isSuccess = false;
 		 try {
@@ -21,7 +21,7 @@ public class stockControl {
 			 stmt = con.createStatement();
 			 
 			 //SQL Query
-			 String sql = "INSERT INTO Stock_Items VALUES(0,'"+item_name+"','"+item_model+"', '"+item_manufacturer+"' , '"+supplier_id+"', '"+quantity+"', '"+unit_cost+"', '"+selling_price+"', '"+date_added+"', '"+comments+"')";
+			 String sql = "INSERT INTO Stock_Items VALUES(0,'"+item_name+"','"+item_model+"', '"+item_manufacturer+"' ,'"+quantity+"', '"+unit_cost+"', '"+selling_price+"', '"+date_added+"', '"+comments+"')";
 			 int rs = stmt.executeUpdate(sql);
 			 if(rs>0) {
 				 isSuccess = true;

@@ -27,7 +27,7 @@
 <body>
     <div class="container mt-5">
         <h2>Add New Stock Item</h2>
-        <form action="stockInsertServlet" method="post" class="form-add-stock">
+        <form action="../stockInsertServlet" method="post" class="form-add-stock">
         
             <div class="form-group">
                 <label for="productName">Product Name:</label>
@@ -36,17 +36,12 @@
             
 			<div class="form-group">
                 <label for="brand">Product Model:</label>
-                <input type="text" class="form-control" id="item_model" name="model">
+                <input type="text" class="form-control" id="item_model" name="item_model">
             </div>
             
             <div class="form-group">
                 <label for="brand">Product Manufacturer:</label>
-                <input type="text" class="form-control" id="manufacturer" name="item_manufacturer">
-            </div>
-            
-            <div class="form-group">
-                <label for="model">Supplier ID:</label>
-                <input type="text" class="form-control" id="ID" name="supplier_id">
+                <input type="text" class="form-control" id="item_manufacturer" name="item_manufacturer">
             </div>
             
             <div class="form-group">

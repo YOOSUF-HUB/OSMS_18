@@ -6,23 +6,21 @@ public class stockModel {
 	private String item_name;
 	private String item_model;
 	private String item_manufacturer;
-	private int supplier_id;
 	private int quantity;
-	private int unit_cost;
-	private int selling_price;
+	private float unit_cost;
+	private float selling_price;
 	private String date_added;
 	private String comments;
 
 	
 	
-	public stockModel(int item_id, String item_name, String item_model, String item_manufacturer,int supplier_id, int quantity, int unit_cost,
-			int selling_price, String date_added, String comments) {
+	public stockModel(int item_id, String item_name, String item_model, String item_manufacturer,int quantity, float unit_cost,
+			float selling_price, String date_added, String comments) {
 		super();
 		this.item_id = item_id;
 		this.item_name = item_name;
 		this.item_model = item_model;
 		this.item_manufacturer = item_manufacturer;
-		this.supplier_id = supplier_id;
 		this.quantity = quantity;
 		this.unit_cost = unit_cost;
 		this.selling_price = selling_price;
@@ -103,19 +101,6 @@ public class stockModel {
 	}
 
 
-
-	public int getSupplier_id() {
-		return supplier_id;
-	}
-
-
-
-	public void setSupplier_id(int supplier_id) {
-		this.supplier_id = supplier_id;
-	}
-
-
-
 	public int getQuantity() {
 		return quantity;
 	}
@@ -128,7 +113,7 @@ public class stockModel {
 
 
 
-	public int getUnit_cost() {
+	public float getUnit_cost() {
 		return unit_cost;
 	}
 
@@ -140,7 +125,7 @@ public class stockModel {
 
 
 
-	public int getSelling_price() {
+	public float getSelling_price() {
 		return selling_price;
 	}
 

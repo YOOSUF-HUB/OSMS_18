@@ -27,7 +27,6 @@
                     <th>ID</th>
                     <th>Product Name</th>
                     <th>Product Manufacturer</th>
-                    <th>Supplier ID</th>
                     <th>Purchase Price</th>
                     <th>Selling Price</th>
                     <th>Quantity</th>
