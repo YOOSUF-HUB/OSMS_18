@@ -27,36 +27,36 @@
 <body>
     <div class="container mt-5">
         <h2>Add New Stock Item</h2>
-        <form action="process_add_stock.jsp" method="post" class="form-add-stock">
+        <form action="stockInsertServlet" method="post" class="form-add-stock">
         
             <div class="form-group">
                 <label for="productName">Product Name:</label>
-                <input type="text" class="form-control" id="productName" name="productName" required>
+                <input type="text" class="form-control" id="productName" name="item_name" required>
             </div>
             
 			<div class="form-group">
                 <label for="brand">Product Model:</label>
-                <input type="text" class="form-control" id="model" name="model">
+                <input type="text" class="form-control" id="item_model" name="model">
             </div>
             
             <div class="form-group">
                 <label for="brand">Product Manufacturer:</label>
-                <input type="text" class="form-control" id="manufacturer" name="manufacturer">
+                <input type="text" class="form-control" id="manufacturer" name="item_manufacturer">
             </div>
             
             <div class="form-group">
                 <label for="model">Supplier ID:</label>
-                <input type="text" class="form-control" id="ID" name="ID">
+                <input type="text" class="form-control" id="ID" name="supplier_id">
             </div>
             
             <div class="form-group">
                 <label for="purchasePrice">Purchase Price:</label>
-                <input type="number" class="form-control" id="purchasePrice" name="purchasePrice" step="0.01">
+                <input type="number" class="form-control" id="purchasePrice" name="unit_cost" step="0.01">
             </div>
             
             <div class="form-group">
                 <label for="sellingPrice">Selling Price:</label>
-                <input type="number" class="form-control" id="sellingPrice" name="sellingPrice" step="0.01" required>
+                <input type="number" class="form-control" id="sellingPrice" name="selling_price" step="0.01" required>
             </div>
             
             <div class="form-group">
@@ -65,8 +65,13 @@
             </div>
             
 			<div class="form-group">
+                <label for="quantity">Date:</label>
+                <input type="date" class="form-control" id="date" name="date_added" value="0" required>
+            </div>
+            
+			<div class="form-group">
 			    <label for="preferences">Comments or Preferences:</label>
-			    <textarea class="form-control" id="preferences" name="preferences" rows="4"></textarea>
+			    <textarea class="form-control" id="preferences" name="comments" rows="4"></textarea>
 			</div>
             
             <button type="submit" class="btn btn-primary mr-2">Add Stock</button>
