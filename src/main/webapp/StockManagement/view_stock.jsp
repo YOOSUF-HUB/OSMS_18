@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,38 +24,32 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>Stock ID</th>
                     <th>Product Name</th>
+                    <th>Product Model</th>
                     <th>Product Manufacturer</th>
                     <th>Purchase Price</th>
                     <th>Selling Price</th>
                     <th>Quantity</th>
+                    <th>Date</th>
                     <th>Comments/Preferences</th>
-                    <th class="actions-column">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="stockItem" items="${stockList}">
+                <c:forEach var="stock" items="${allStocks}">
                     <tr>
-                        <td>${stockItem.id}</td>
-                        <td>${stockItem.productName}</td>
-                        <td>${stockItem.brand}</td> <!-- Product Manufacturer -->
-                        <td>${stockItem.model}</td> <!-- Supplier ID (from model) -->
-                        <td>${stockItem.purchasePrice}</td>
-                        <td>${stockItem.sellingPrice}</td>
-                        <td>${stockItem.quantity}</td>
-                        <td>${stockItem.preferences}</td> <!-- Comments or Preferences -->
-                        <td class="actions-column">
-                            <div class="d-inline-flex">
-                                <a href="update_stock.jsp?id=${stockItem.id}" class="btn btn-sm btn-primary mr-1">Update</a>
-                                <a href="delete_stock.jsp?id=${stockItem.id}" class="btn btn-sm btn-danger">Delete</a>
-                            </div>
-                        </td>
+                    	<td>${stock.item_id}</td>
+                        <td>${stock.item_name}</td>
+                        <td>${stock.item_model}</td>
+                        <td>${stock.item_manufacturer}</td> <!-- Product Manufacturer -->
+                        <td>${stock.unit_cost}</td> <!-- Supplier ID (from model) -->
+                        <td>${stock.selling_price}</td>
+                        <td>${stock.quantity}</td>
+                        <td>${stock.date_added}</td> <!-- Comments or Preferences -->
+                        <td>${stock.comments}</td>
                     </tr>
                 </c:forEach>
-                <c:if test="${empty stockList}"> 
-                    <tr><td colspan="9" class="text-center">No stock items found.</td></tr>
-                </c:if>
+
             </tbody>
         </table>
         <a href="../StockManagerDashboard.jsp" class="btn btn-secondary">Back to Dashboard</a>

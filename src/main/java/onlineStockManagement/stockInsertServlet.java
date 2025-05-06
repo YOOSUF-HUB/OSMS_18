@@ -1,4 +1,4 @@
-package onlineStockManagement;
+ package onlineStockManagement;
 
 import java.io.IOException;
 
@@ -34,7 +34,7 @@ public class stockInsertServlet extends HttpServlet {
 		
 		if(isTrue == true) {
 			String alertMessage = "Data Insert Successfull";
-			response.getWriter().println("<script> alert('"+alertMessage+"')</script>");
+			response.getWriter().println("<script> alert('"+alertMessage+"')window.location.href='/Online-stock-management-system/src/main/java/onlineStockManagement/GetAllStockServlet'</script>");
 			
 		}
 		else {

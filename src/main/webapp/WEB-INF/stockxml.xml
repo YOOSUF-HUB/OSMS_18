@@ -18,4 +18,14 @@
      </servlet-mapping>
 
 
+     <servlet>
+     	<servlet-name>GetAllStockServlet</servlet-name>
+     	<servlet-class>onlineStockManagement.GetAllStockServlet</servlet-class>
+     </servlet>
+     
+     <servlet-mapping>
+     	<servlet-name>GetAllStockServlet</servlet-name>
+     	<url-pattern>/GetAllStockServlet</url-pattern>
+     </servlet-mapping>
+
 </web-app>
