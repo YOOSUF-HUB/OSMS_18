@@ -26,8 +26,12 @@
 	    background-color: white;
 	    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 	    border-radius: 8px;
-	    overflow: hidden;
+	    /* overflow: hidden; */
+	    
+	    overflow: visible !important; /* Allow popups to overflow */
+  		position: relative; /* Needed to correctly layer popups */
 	}
+	
 	
 	.table thead {
 	    background-color: #343a40;
@@ -72,7 +76,11 @@
 	    max-width: 1600px; /* Bootstrap default is 960px */
 	    margin: auto;
 	    padding: 20px;
+	    
+	    overflow: visible !important; /* Let things inside pop out */
+  		position: relative; /* Helps with z-index layering */
 	}
+	
 	
 	#view-stock-btn-other{
 		padding: 10px 20px;
@@ -92,6 +100,54 @@
 	        font-size: 1.4rem;
 	    }
 	}
+	
+	
+	/* Description Popup CSS*/
+	
+	.description-container {
+	  position: relative; /* Sets the context for absolutely positioned children (like .description-hover) */
+	  display: inline-block; /* Keeps the container as small as its contents (prevents stretching across the cell) */
+	}
+	
+	.description-scroll {
+	  max-height: 50px; /* Limits the visible height of the description */
+	  overflow-y: auto; /* Adds vertical scrollbar when content exceeds max-height */
+	  text-align: left; /* Aligns text to the left */
+	  padding: 5px; /* Adds inner space around the text */
+	  white-space: pre-wrap; /* Preserves line breaks and wraps long lines */
+	  word-break: break-word; /* Breaks long words to fit within box */
+	  border: 1px solid #ddd; /* Light gray border around the box */
+	  border-radius: 4px; /* Slightly rounded corners */
+	  background-color: #fefefe; /* Very light background color */
+	  width: 200px; /* Fixed width of the small box */
+	  cursor: pointer; /* Shows a pointer cursor to indicate interactivity */
+	}
+	
+	/* Hidden full view by default */
+	.description-hover {
+	  display: none; /* Initially hidden */
+	  position: absolute; /* Positioned relative to .description-container */
+	  top: 100%; /* Places it just below the small box */
+	  left: 0; /* Aligns it with the left edge of the container */
+	  z-index: 999; /* Ensures it appears above other elements */
+	  width: 300px; /* Wider box for full description */
+	  max-height: 300px; /* Limits height, with scroll if content is longer */
+	  overflow-y: auto; /* Enables scrolling if content overflows */
+	  background-color: #fff; /* White background */
+	  border: 1px solid #ccc; /* Slightly darker border for contrast */
+	  border-radius: 6px; /* More rounded corners for popup */
+	  padding: 10px; /* Inner spacing for readability */
+	  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft drop shadow for floating effect */
+	  white-space: pre-wrap; /* Preserves line breaks */
+	  word-break: break-word; /* Prevents overflow by breaking long words */
+	}
+	
+	/* Show the full description on hover */
+	.description-container:hover .description-hover {
+	  display: block; /* Makes the hidden full description appear when hovering over the container */
+	}
+
+
 
 
     </style>
@@ -132,7 +188,12 @@
 			                    <td>${stock.unit_cost}</td> 
 			                    <td>${stock.selling_price}</td>
 			                    <td>${stock.date_added}</td>
-			                    <td>${stock.description}</td>
+								<td>
+								  <div class="description-container">
+								    <div class="description-scroll">${stock.description}</div>
+								    <div class="description-hover">${stock.description}</div>
+								  </div>
+								</td>
 			                    <td>
 			                        <a href="StockManagement/update_stock.jsp?item_id=${stock.item_id}&item_name=${stock.item_name}&item_model=${stock.item_model}&item_manufacturer=${stock.item_manufacturer}&quantity=${stock.quantity}&unit_cost=${stock.unit_cost}&selling_price=${stock.selling_price}&date_added=${stock.date_added}&description=${stock.description}" class="btn btn-secondary">Update</a>
 			                        <a href="#" class="btn btn-danger disabled" aria-disabled="true" tabindex="-1">Delete</a>
@@ -146,7 +207,7 @@
 
             </tbody>
         </table>
-        <a href="create_stock.jsp" class="btn btn-primary" id="view-stock-btn-other">Add Stock</a>
+        <a href="StockManagement/create_stock.jsp" class="btn btn-primary" id="view-stock-btn-other">Add Stock</a>
         <a href="StockManagerDashboard.jsp" class="btn btn-secondary" id="view-stock-btn-other">Back to Dashboard</a>
         
     </div>
