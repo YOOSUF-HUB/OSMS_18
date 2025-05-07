@@ -31,7 +31,7 @@
         
             <div class="form-group">
                 <label for="productName">Product Name:</label>
-                <input type="text" class="form-control" id="productName" name="item_name" required>
+                <input type="text" class="form-control" id="item_name" name="item_name" required>
             </div>
             
 			<div class="form-group">
@@ -46,12 +46,12 @@
             
             <div class="form-group">
                 <label for="purchasePrice">Purchase Price:</label>
-                <input type="number" class="form-control" id="purchasePrice" name="unit_cost" step="0.01">
+                <input type="number" class="form-control" id="unit_cost" name="unit_cost" step="0.01">
             </div>
             
             <div class="form-group">
                 <label for="sellingPrice">Selling Price:</label>
-                <input type="number" class="form-control" id="sellingPrice" name="selling_price" step="0.01" required>
+                <input type="number" class="form-control" id="selling_price" name="selling_price" step="0.01" required>
             </div>
             
             <div class="form-group">
@@ -61,12 +61,12 @@
             
 			<div class="form-group">
                 <label for="quantity">Date:</label>
-                <input type="date" class="form-control" id="date" name="date_added" value="0" required>
+                <input type="date" class="form-control" id="date_added" name="date_added" value="0" required>
             </div>
             
 			<div class="form-group">
 			    <label for="preferences">Comments or Preferences:</label>
-			    <textarea class="form-control" id="preferences" name="comments" rows="4"></textarea>
+			    <textarea class="form-control" id="comments" name="comments" rows="4"></textarea>
 			</div>
             
             <button type="submit" class="btn btn-primary mr-2">Add Stock</button>

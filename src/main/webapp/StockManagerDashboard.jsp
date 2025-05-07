@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-	
+
     <style>
         body {
             background-color: #f4f6f9; /* Light background for the main content */
@@ -180,8 +180,8 @@
 
                 <div class="card-header">
                     <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="active-tab" data-toggle="tab" href="#stock-overview-content"
+                        <li class="nav-item-active" role="presentation">
+                            <a class="nav-link active" id="active-tab" data-toggle="tab" href="#stock-overview-content"
                                role="tab" aria-controls="active-content" aria-selected="true">Stock Overview</a>
                         </li>
                         <li class="nav-item" role="presentation">
@@ -248,9 +248,6 @@
                     });
                 });
             </script>
-            
-            
-
 
         </main>
     </div>
