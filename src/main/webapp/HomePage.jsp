@@ -11,103 +11,108 @@
    
     <style>
         body {
-            background-color: #f4f6f9; /* Light background for the main content */
-        }
+background-color: #f4f6f9; 
+}
 
-        .sidebar {
-            height: 100vh;
-            width: 240px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: #343a40; /* Dark sidebar background */
-            padding-top: 20px;
-            color: white;
-            z-index: 1; /* Ensure it's on top */
-            overflow-y: auto; /* Add vertical scrollbar when content overflows */
-        }
 
-        .sidebar .nav-link {
-            padding: 12px 20px;
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
+.sidebar {
+height: 100vh; 
+width: 240px; 
+position: fixed; 
+top: 0; 
+left: 0; 
+background-color: #343a40; 
+padding-top: 20px; 
+color: white; 
+z-index: 1; 
+overflow-y: auto; 
+}
 
-        .sidebar .nav-link i {
-            margin-right: 10px;
-            font-size: 1.2em;
-        }
 
-        .sidebar .nav-link:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
+.sidebar .nav-link {
+padding: 12px 20px; 
+color: white; 
+text-decoration: none; 
+display: flex; 
+align-items: center; 
+}
 
-        .sidebar .dropdown-btn {
-            padding: 12px 20px;
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            background: none;
-            border: none;
-            width: 100%;
-            text-align: left;
-            cursor: pointer;
-        }
 
-        .sidebar .dropdown-btn i {
-            margin-right: 10px;
-            font-size: 1.2em;
-        }
+.sidebar .nav-link i {
+margin-right: 10px; 
+font-size: 1.2em; 
+}
 
-        .sidebar .dropdown-btn:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
 
-        .sidebar .dropdown-container {
-            display: none;
-            background-color: rgba(0, 0, 0, 0.1);
-            padding-left: 30px;
-        }
+.sidebar .nav-link:hover {
+background-color: rgba(255, 255, 255, 0.1); 
+}
 
-        .sidebar .dropdown-container a {
-            padding: 10px 15px;
-            text-decoration: none;
-            display: block;
-            color: #ccc;
-            font-size: 0.9em;
-        }
 
-        .sidebar .dropdown-container a:hover {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
+.sidebar .dropdown-btn {
+padding: 12px 20px; 
+color: white;
+background: none; 
+border: none; 
+width: 100%; 
+text-align: left; 
+cursor: pointer; 
+}
 
-        .content {
-            margin-left: 220px; /* Adjust based on sidebar width */
-            padding: 20px;
-        }
 
-        .dashboard-widgets {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            grid-gap: 20px;
-            margin-bottom: 20px;
-        }
+.sidebar .dropdown-btn:hover {
+background-color: rgba(255, 255, 255, 0.1); 
+}
 
-        .widget {
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
 
-        .widget-title {
-            font-size: 1.1em;
-            color: #555;
-            margin-bottom: 10px;
-        }
+.sidebar .dropdown-container {
+display: none; 
+background-color: rgba(0, 0, 0, 0.1); 
+padding-left: 30px; 
+}
+
+
+.sidebar .dropdown-container a {
+padding: 10px 15px; 
+text-decoration: none; 
+display: block; 
+color: #ccc; 
+font-size: 0.9em; 
+}
+
+
+.sidebar .dropdown-container a:hover {
+background-color: rgba(255, 255, 255, 0.05); 
+}
+
+
+.content {
+margin-left: 240px; 
+padding: 20px; 
+}
+
+
+.dashboard-widgets {
+display: grid; 
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+grid-gap: 20px; 
+margin-bottom: 20px; 
+}
+
+
+.widget {
+background-color: white; 
+padding: 20px; 
+border-radius: 5px; 
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+
+.widget-title {
+font-size: 1.1em; 
+color: #555; 
+margin-bottom: 10px; 
+}
     </style>
 </head>
 <body>

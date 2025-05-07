@@ -1,0 +1,9 @@
+table name : financialreport;
+
+create table financialreport(
+
+	rID int (primary key) not null auto increment,
+	rName varchar(45) not null,
+	rDate Date not null,
+	rContent TEXT
+)
