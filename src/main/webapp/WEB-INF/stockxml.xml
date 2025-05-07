@@ -6,7 +6,8 @@
          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-
+	
+	<!-- Insert Stock -->
      <servlet>
      	<servlet-name>stockInsertServlet</servlet-name>
      	<servlet-class>onlineStockManagement.stockInsertServlet</servlet-class>
@@ -17,7 +18,7 @@
      	<url-pattern>/stockInsertServlet</url-pattern>
      </servlet-mapping>
 
-
+	<!-- View Stock -->
      <servlet>
      	<servlet-name>GetAllStockServlet</servlet-name>
      	<servlet-class>onlineStockManagement.GetAllStockServlet</servlet-class>
@@ -26,6 +27,18 @@
      <servlet-mapping>
      	<servlet-name>GetAllStockServlet</servlet-name>
      	<url-pattern>/GetAllStockServlet</url-pattern>
+     </servlet-mapping>
+     
+     
+     <!-- Update Stock -->
+      <servlet>
+     	<servlet-name>updateStockServlet</servlet-name>
+     	<servlet-class>onlineStockManagement.updateStockServlet</servlet-class>
+     </servlet>
+     
+     <servlet-mapping>
+     	<servlet-name>updateStockServlet</servlet-name>
+     	<url-pattern>/updateStockServlet</url-pattern>
      </servlet-mapping>
 
 </web-app>
