@@ -6,6 +6,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.naming.CompositeName;
+
 public class stockControl {
 	//connect DC
 	private static boolean isSuccess;
@@ -152,5 +154,42 @@ public class stockControl {
 		
 		return isSuccess;
 	}
+	
+	
+	
+	//Delete Stock Data
+	public static boolean DeleteStock(int item_id) {
+		
+		int convID = item_id;
+		
+		try {
+			//DBconnection
+			con=DBconnection.getConnection();
+			stmt = con.createStatement();
+			String sql = "DELETE FROM Stock_Items WHERE item_id = '"+convID+"' ";
+			
+			int rs = stmt.executeUpdate(sql);
+			
+			 if(rs>0) {
+				 isSuccess = true;
+				 
+			 }else { 
+				 isSuccess = false;
+			 }
+			
+					
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return isSuccess;
+		
+		
+	}
+	
+	
+	
+	
 	
 }
