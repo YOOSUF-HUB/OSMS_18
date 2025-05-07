@@ -195,6 +195,7 @@
                     }
                 %>
                  <button class="btn btn-secondary" onclick="window.location.href='ReportManagement/create_report.jsp'">Generate New Report</button>
+                  <button class="btn btn-secondary" onclick="window.location.href='HomePage.jsp'">Back To HomePage</button>
             </div>
         </div>
     </div>
