@@ -16,4 +16,10 @@ CREATE TABLE `Stock_Items` (
 
 
 
-
+CREATE TABLE financialreport (
+    rID INT NOT NULL AUTO_INCREMENT,      -- Unique report ID
+    rName VARCHAR(45) NOT NULL,           -- Report name
+    rDate DATE NOT NULL,                  -- Report date
+    rContent TEXT,                        -- Report content
+    PRIMARY KEY (rID)                     -- Primary key declaration
+);

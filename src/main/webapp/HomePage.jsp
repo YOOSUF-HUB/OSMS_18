@@ -164,10 +164,10 @@ margin-bottom: 10px;
                                 <i class="fas fa-chart-bar"></i> Report Management
                             </button>
                             <div class="dropdown-container">
-                                <a href="create_report.jsp"><i class="fas fa-file-alt"></i> Generate New Report</a>
-                                <a href="view_reports.jsp"><i class="fas fa-list"></i> View Reports</a>
-                                <a href="update_report.jsp"><i class="fas fa-edit"></i> Update Report</a>
-                                <a href="delete_report.jsp"><i class="fas fa-trash-alt"></i> Delete Report</a>
+                                <a href="ReportManagement/create_report.jsp"><i class="fas fa-file-alt"></i> Generate New Report</a>
+                                <a href="ReportManagement/view_reports.jsp"><i class="fas fa-list"></i> View Reports</a>
+                                <a href="ReportManagement/update_report.jsp"><i class="fas fa-edit"></i> Update Report</a>
+                                <a href="ReportManagement/delete_report.jsp"><i class="fas fa-trash-alt"></i> Delete Report</a>
                             </div>
                         </li>
                         <li class="nav-item">
