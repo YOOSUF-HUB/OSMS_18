@@ -23,7 +23,7 @@
 	float unit_cost = Float.parseFloat(request.getParameter("unit_cost"));
 	float selling_price = Float.parseFloat(request.getParameter("selling_price"));
 	String date_added  = request.getParameter("date_added");
-	String comments = request.getParameter("comments");
+	String description = request.getParameter("description");
     
     %>
     
@@ -72,8 +72,8 @@
             </div>
             
 			<div class="form-group">
-			    <label for="preferences">Comments or Preferences:</label>
-			    <textarea class="form-control" id="comments" name="comments" rows="4"><%= comments %></textarea>
+			    <label for="preferences">Description:</label>
+			    <textarea class="form-control" id="description" name="description" rows="4"><%= description %></textarea>
 			</div>
             
             <button type="submit" class="btn btn-primary mr-2">Update</button>

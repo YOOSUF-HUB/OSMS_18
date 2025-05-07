@@ -14,7 +14,7 @@ public class stockControl {
 	private static ResultSet rs = null;
 	
 	//insert Data function
-	public static boolean insertData(String item_id, String item_model, String item_manufacturer ,int quantity, float unit_cost, float selling_price, String date_added, String comments) {
+	public static boolean insertData(String item_id, String item_model, String item_manufacturer ,int quantity, float unit_cost, float selling_price, String date_added, String description) {
 		
 		 boolean isSuccess = false;
 		 try {
@@ -23,7 +23,7 @@ public class stockControl {
 			 stmt = con.createStatement();
 			 
 			 //SQL Query
-			 String sql = "INSERT INTO Stock_Items VALUES(0,'"+item_id+"','"+item_model+"', '"+item_manufacturer+"' ,'"+quantity+"', '"+unit_cost+"', '"+selling_price+"', '"+date_added+"', '"+comments+"')";
+			 String sql = "INSERT INTO Stock_Items VALUES(0,'"+item_id+"','"+item_model+"', '"+item_manufacturer+"' ,'"+quantity+"', '"+unit_cost+"', '"+selling_price+"', '"+date_added+"', '"+description+"')";
 			 int rs = stmt.executeUpdate(sql);
 			 if(rs>0) {
 				 isSuccess = true;
@@ -64,9 +64,9 @@ public class stockControl {
 				float unit_cost = rs.getFloat(6);
 				float selling_price = rs.getFloat(7);
 				String date_added = rs.getString(8);
-				String comments = rs.getString(9);
+				String description = rs.getString(9);
 				
-				stockModel stck = new stockModel(item_id, item_name, item_model, item_manufacturer,quantity,unit_cost, selling_price,date_added, comments );
+				stockModel stck = new stockModel(item_id, item_name, item_model, item_manufacturer,quantity,unit_cost, selling_price,date_added, description );
 				stock.add(stck);
 				
 			}
@@ -105,9 +105,9 @@ public class stockControl {
 				float unit_cost = rs.getFloat(6);
 				float selling_price = rs.getFloat(7);
 				String date_added = rs.getString(8);
-				String comments = rs.getString(9);
+				String description = rs.getString(9);
 				
-				stockModel stck = new stockModel(item_id, item_name, item_model, item_manufacturer, quantity, unit_cost, selling_price, date_added, comments);
+				stockModel stck = new stockModel(item_id, item_name, item_model, item_manufacturer, quantity, unit_cost, selling_price, date_added, description);
 				stock.add(stck);
 				
 			}
@@ -126,7 +126,7 @@ public class stockControl {
 	
 	
 	//Update DATA Function
-	public static boolean UpdateStock(int item_id, String item_name, String item_model, String item_manufacturer,int quantity, float unit_cost, float selling_price, String date_added, String comments ) {
+	public static boolean UpdateStock(int item_id, String item_name, String item_model, String item_manufacturer,int quantity, float unit_cost, float selling_price, String date_added, String description ) {
 		
 		try {
 			//DB connection
@@ -134,7 +134,7 @@ public class stockControl {
 			stmt = con.createStatement();
 			 
 			//SQL Query
-			String sql = "UPDATE Stock_Items SET item_name = '"+item_name+"', item_model = '"+item_model+"', item_manufacturer = '"+item_manufacturer+"', quantity = '"+quantity+"', unit_cost = '"+unit_cost+"' , selling_price = '"+selling_price+"' , date_added = '"+date_added+"'  , comments = '"+comments+"' " + "WHERE item_id = '"+item_id+"' ";
+			String sql = "UPDATE Stock_Items SET item_name = '"+item_name+"', item_model = '"+item_model+"', item_manufacturer = '"+item_manufacturer+"', quantity = '"+quantity+"', unit_cost = '"+unit_cost+"' , selling_price = '"+selling_price+"' , date_added = '"+date_added+"'  , description = '"+description+"' " + "WHERE item_id = '"+item_id+"' ";
 			
 			int rs = stmt.executeUpdate(sql);
 			

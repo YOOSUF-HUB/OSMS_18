@@ -10,12 +10,12 @@ public class stockModel {
 	private float unit_cost;
 	private float selling_price;
 	private String date_added;
-	private String comments;
+	private String description;
 
 	
 	
 	public stockModel(int item_id, String item_name, String item_model, String item_manufacturer,int quantity, float unit_cost,
-			float selling_price, String date_added, String comments) {
+			float selling_price, String date_added, String description) {
 		super();
 		this.item_id = item_id;
 		this.item_name = item_name;
@@ -25,7 +25,7 @@ public class stockModel {
 		this.unit_cost = unit_cost;
 		this.selling_price = selling_price;
 		this.date_added = date_added;
-		this.comments = comments;
+		this.description = description;
 	}
 
 
@@ -42,15 +42,7 @@ public class stockModel {
 
 
 
-	public String getComments() {
-		return comments;
-	}
 
-
-
-	public void setComments(String comments) {
-		this.comments = comments;
-	}
 
 
 
@@ -119,7 +111,7 @@ public class stockModel {
 
 
 
-	public void setUnit_cost(int unit_cost) {
+	public void setUnit_cost(float unit_cost) {
 		this.unit_cost = unit_cost;
 	}
 
@@ -131,9 +123,25 @@ public class stockModel {
 
 
 
-	public void setSelling_price(int selling_price) {
+	public void setSelling_price(float selling_price) {
 		this.selling_price = selling_price;
 	}
+
+
+
+	public String getDescription() {
+		return description;
+	}
+
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
+
+
 	
 	
 	

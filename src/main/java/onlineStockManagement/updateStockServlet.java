@@ -32,11 +32,11 @@ public class updateStockServlet extends HttpServlet {
 		float unit_cost = Float.parseFloat(request.getParameter("unit_cost"));
 		float selling_price = Float.parseFloat(request.getParameter("selling_price"));
 		String date_added  = request.getParameter("date_added");
-		String comments = request.getParameter("comments");
+		String description = request.getParameter("description");
 		
 		 
 		boolean isTrue;
-		isTrue = stockControl.UpdateStock(item_id, item_name, item_model, item_manufacturer, quantity, unit_cost, selling_price, date_added, comments);
+		isTrue = stockControl.UpdateStock(item_id, item_name, item_model, item_manufacturer, quantity, unit_cost, selling_price, date_added, description);
 		
 		
 		if(isTrue == true) {

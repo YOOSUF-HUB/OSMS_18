@@ -67,10 +67,20 @@
 	    background-color: #c82333;
 	}
 	
+	
 	.container {
 	    max-width: 1600px; /* Bootstrap default is 960px */
 	    margin: auto;
 	    padding: 20px;
+	}
+	
+	#view-stock-btn-other{
+		padding: 10px 20px;
+		margin-top: 20px;
+		margin-left: 20px;
+		margin-bottom: 20px;
+		font-size: 1rem ;
+	
 	}
 	
 	@media (max-width: 768px) {
@@ -122,10 +132,11 @@
 			                    <td>${stock.unit_cost}</td> 
 			                    <td>${stock.selling_price}</td>
 			                    <td>${stock.date_added}</td>
-			                    <td>${stock.comments}</td>
+			                    <td>${stock.description}</td>
 			                    <td>
-			                        <a href="StockManagement/update_stock.jsp?item_id=${stock.item_id}&item_name=${stock.item_name}&item_model=${stock.item_model}&item_manufacturer=${stock.item_manufacturer}&quantity=${stock.quantity}&unit_cost=${stock.unit_cost}&selling_price=${stock.selling_price}&date_added=${stock.date_added}&comments=${stock.comments}" class="btn btn-secondary">Update</a>
+			                        <a href="StockManagement/update_stock.jsp?item_id=${stock.item_id}&item_name=${stock.item_name}&item_model=${stock.item_model}&item_manufacturer=${stock.item_manufacturer}&quantity=${stock.quantity}&unit_cost=${stock.unit_cost}&selling_price=${stock.selling_price}&date_added=${stock.date_added}&description=${stock.description}" class="btn btn-secondary">Update</a>
 			                        <a href="#" class="btn btn-danger disabled" aria-disabled="true" tabindex="-1">Delete</a>
+			                        <!-- <a href="#" class="btn btn-danger">Delete</a> -->
 
 			                    </td>
 			                </tr>
@@ -135,8 +146,9 @@
 
             </tbody>
         </table>
-        <a href="StockManagerDashboard.jsp" class="btn btn-secondary">Back to Dashboard</a>
-        <a href="create_stock.jsp" class="btn btn-primary">Add Stock</a>
+        <a href="create_stock.jsp" class="btn btn-primary" id="view-stock-btn-other">Add Stock</a>
+        <a href="StockManagerDashboard.jsp" class="btn btn-secondary" id="view-stock-btn-other">Back to Dashboard</a>
+        
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

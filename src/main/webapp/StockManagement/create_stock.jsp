@@ -65,8 +65,8 @@
             </div>
             
 			<div class="form-group">
-			    <label for="preferences">Comments or Preferences:</label>
-			    <textarea class="form-control" id="comments" name="comments" rows="4"></textarea>
+			    <label for="preferences">Description:</label>
+			    <textarea class="form-control" id="description" name="description" rows="4"></textarea>
 			</div>
             
             <button type="submit" class="btn btn-primary mr-2">Add Stock</button>

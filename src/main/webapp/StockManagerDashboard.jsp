@@ -136,8 +136,8 @@
                         <div class="dropdown-container">
                             <a href="StockManagement/create_stock.jsp"><i class="fas fa-plus"></i> Add New Stock</a>
                             <a href="GetAllStockServlet"><i class="fas fa-list"></i> View Stock</a>
-                            <a href="StockManagement/update_stock.jsp"><i class="fas fa-edit"></i> Update Stock</a>
-                            <a href="StockManagement/delete_stock.jsp"><i class="fas fa-trash"></i> Delete Stock</a>
+                            <!-- <a href="StockManagement/update_stock.jsp"><i class="fas fa-edit"></i> Update Stock</a> -->
+                            <!-- <a href="StockManagement/delete_stock.jsp"><i class="fas fa-trash"></i> Delete Stock</a> -->
                         </div>
                     </li>
 
