@@ -195,7 +195,7 @@
 								  </div>
 								</td>
 			                    <td>
-			                        <a href="StockManagement/update_stock.jsp?item_id=${stock.item_id}&item_name=${stock.item_name}&item_model=${stock.item_model}&item_manufacturer=${stock.item_manufacturer}&quantity=${stock.quantity}&unit_cost=${stock.unit_cost}&selling_price=${stock.selling_price}&date_added=${stock.date_added}&description=${stock.description}" class="btn btn-secondary">Update</a>
+			                        <a href="StockManagement/update_stock.jsp?item_id=${stock.item_id}&item_name=${stock.item_name}&item_model=${stock.item_model}&item_manufacturer=${stock.item_manufacturer}&quantity=${stock.quantity}&unit_cost=${stock.unit_cost}&selling_price=${stock.selling_price}&date_added=${stock.date_added}&description=${stock.description}" class="btn btn-primary">Update</a>
 			                        <a href="#" class="btn btn-danger disabled" aria-disabled="true" tabindex="-1">Delete</a>
 			                        <!-- <a href="#" class="btn btn-danger">Delete</a> -->
 
