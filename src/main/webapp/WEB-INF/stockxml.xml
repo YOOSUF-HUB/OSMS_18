@@ -40,5 +40,16 @@
      	<servlet-name>updateStockServlet</servlet-name>
      	<url-pattern>/updateStockServlet</url-pattern>
      </servlet-mapping>
+     
+          <!-- Delete Stock -->
+      <servlet>
+     	<servlet-name>DeleteStockServlet</servlet-name>
+     	<servlet-class>onlineStockManagement.DeleteStockServlet</servlet-class>
+     </servlet>
+     
+     <servlet-mapping>
+     	<servlet-name>DeleteStockServlet</servlet-name>
+     	<url-pattern>/DeleteStockServlet</url-pattern>
+     </servlet-mapping>
 
 </web-app>

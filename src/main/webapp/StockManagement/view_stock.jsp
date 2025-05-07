@@ -47,7 +47,7 @@
 	.table tbody td {
     vertical-align: middle;
     text-align: center;
-    font-size: 0.75rem; /* or use 12px if you prefer px */
+    font-size: 0.95rem; /* or use 12px if you prefer px */
 	}
 
 	
@@ -146,6 +146,18 @@
 	.description-container:hover .description-hover {
 	  display: block; /* Makes the hidden full description appear when hovering over the container */
 	}
+	
+	#add-stock-action-btn{
+	
+		margin-top: 5px;
+	
+	}
+	
+	#stock-table-row-num{
+		
+		font-size:1rem;
+	
+	}
 
 
 
@@ -158,6 +170,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                	<th>#</th> <!-- Row number header -->
                     <th>Stock ID</th>
                     <th>Product Name</th>
                     <th>Product Model</th>
@@ -178,8 +191,9 @@
 			            </tr>
 			        </c:when>
 			        <c:otherwise>
-			            <c:forEach var="stock" items="${allStocks}">
+			            <c:forEach var="stock" items="${allStocks}" varStatus="loop">
 			                <tr id="stock-table-db">
+			                	<td id="stock-table-row-num" >(${loop.index + 1})</td> <!-- Row number -->
 			                    <td>${stock.item_id}</td>
 			                    <td>${stock.item_name}</td>
 			                    <td>${stock.item_model}</td>
@@ -194,10 +208,14 @@
 								    <div class="description-hover">${stock.description}</div>
 								  </div>
 								</td>
-			                    <td>
-			                        <a href="StockManagement/update_stock.jsp?item_id=${stock.item_id}&item_name=${stock.item_name}&item_model=${stock.item_model}&item_manufacturer=${stock.item_manufacturer}&quantity=${stock.quantity}&unit_cost=${stock.unit_cost}&selling_price=${stock.selling_price}&date_added=${stock.date_added}&description=${stock.description}" class="btn btn-primary">Update</a>
-			                        <a href="#" class="btn btn-danger disabled" aria-disabled="true" tabindex="-1">Delete</a>
-			                        <!-- <a href="#" class="btn btn-danger">Delete</a> -->
+			                    <td class="add-stock-action-btn">
+			                        <a href="StockManagement/update_stock.jsp?item_id=${stock.item_id}&item_name=${stock.item_name}&item_model=${stock.item_model}&item_manufacturer=${stock.item_manufacturer}&quantity=${stock.quantity}&unit_cost=${stock.unit_cost}&selling_price=${stock.selling_price}&date_added=${stock.date_added}&description=${stock.description}" class="btn btn-primary" id="add-stock-action-btn">Update</a>
+									
+									<form action="DeleteStockServlet" method="post"">
+									    <input type="hidden" name="item_id" value="${stock.item_id}" />
+									    <button type="submit" class="btn btn-danger btn-sm" id="add-stock-action-btn">Delete</button>
+									</form>
+
 
 			                    </td>
 			                </tr>
