@@ -196,7 +196,8 @@
                 %>
                  <!-- <button class="btn btn-secondary" onclick="window.location.href='create_report.jsp'">Generate New Report</button> -->
                  <a href="ReportManagement/create_report.jsp" class="btn btn-primary" id="view-stock-btn-other">Add Stock</a>
-                  <button class="btn btn-secondary" onclick="window.location.href='../HomePage.jsp'">Back To HomePage</button>
+                 <a href="HomePage.jsp" class="btn btn-primary" id="view-stock-btn-other">Back to HomePage</a>
+                  <!-- <button class="btn btn-secondary" onclick="window.location.href='../HomePage.jsp'">Back To HomePage</button> -->
             </div>
         </div>
     </div>
