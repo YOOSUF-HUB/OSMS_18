@@ -165,9 +165,17 @@ margin-bottom: 10px;
                             </button>
                             <div class="dropdown-container">
                                 <a href="ReportManagement/create_report.jsp"><i class="fas fa-file-alt"></i> Generate New Report</a>
+<<<<<<< Updated upstream
                                 <a href="ViewReportsServlet"><i class="fas fa-list"></i> View Reports</a>
                                 <a href="ReportManagement/ViewReports.jsp"><i class="fas fa-edit"></i> Update Report</a>
                                 <a href="ReportManagement/ViewReports.jsp"><i class="fas fa-trash-alt"></i> Delete Report</a>
+=======
+
+                                <a href="ViewReportsServlet"><i class="fas fa-list"></i> View Reports</a>
+                                <a href="ViewReportsServlet"><i class="fas fa-edit"></i> Update Report</a>
+                                <a href="ViewReportsServlet"><i class="fas fa-trash-alt"></i> Delete Report</a>
+
+>>>>>>> Stashed changes
 
                             </div>
                         </li>
