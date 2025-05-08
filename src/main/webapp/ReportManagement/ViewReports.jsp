@@ -194,7 +194,8 @@
                 <%
                     }
                 %>
-                 <button class="btn btn-secondary" onclick="window.location.href='create_report.jsp'">Generate New Report</button>
+                 <!-- <button class="btn btn-secondary" onclick="window.location.href='create_report.jsp'">Generate New Report</button> -->
+                 <a href="ReportManagement/create_report.jsp" class="btn btn-primary" id="view-stock-btn-other">Add Stock</a>
                   <button class="btn btn-secondary" onclick="window.location.href='../HomePage.jsp'">Back To HomePage</button>
             </div>
         </div>
