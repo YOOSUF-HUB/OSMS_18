@@ -20,7 +20,8 @@ public class DeleteReportServlet extends HttpServlet {
         boolean isDeleted = reportController.deleteReport(rId);
 
         if (isDeleted) {
-            response.sendRedirect("ViewReportsServlet");
+        	String alertmsg = "Report Deleted Successfully";
+			response.getWriter().println("<script> alert('"+alertmsg+"'); window.location.href = 'ViewReportsServlet' </script>");
         } else {
             response.sendRedirect("error.jsp?message=Failed to delete report");
         }

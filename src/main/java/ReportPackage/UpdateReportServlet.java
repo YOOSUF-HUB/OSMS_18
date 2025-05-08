@@ -40,7 +40,8 @@ public class UpdateReportServlet extends HttpServlet {
         boolean isUpdated = reportController.updateReport(rId, rName, rDate, rContent);
 
         if (isUpdated) {
-            response.sendRedirect("ViewReportsServlet");
+        	String alertmsg = "Report Updated Successfully";
+			response.getWriter().println("<script> alert('"+alertmsg+"'); window.location.href = 'ViewReportsServlet' </script>");
         } else {
             response.sendRedirect("error.jsp?message=Failed to update report");
         }
