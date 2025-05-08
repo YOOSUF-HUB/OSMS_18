@@ -9,7 +9,7 @@ import java.util.List;
 import javax.naming.CompositeName;
 
 public class stockControl {
-	//connect DC
+	//connect DB
 	private static boolean isSuccess;
 	private static Connection con = null;
 	private static Statement stmt = null;

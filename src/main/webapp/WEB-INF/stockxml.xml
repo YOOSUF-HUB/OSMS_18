@@ -51,5 +51,19 @@
      	<servlet-name>DeleteStockServlet</servlet-name>
      	<url-pattern>/DeleteStockServlet</url-pattern>
      </servlet-mapping>
+     
+     
+     
+     
+     	<!-- Insert Supplier -->
+     <servlet>
+     	<servlet-name>supplierInsertServlet</servlet-name>
+     	<servlet-class>SupplierPackage.supplierInsertServlet</servlet-class>
+     </servlet>
+     
+     <servlet-mapping>
+     	<servlet-name>supplierInsertServlet</servlet-name>
+     	<url-pattern>/supplierInsertServlet</url-pattern>
+     </servlet-mapping>
 
 </web-app>

@@ -23,3 +23,18 @@ CREATE TABLE financialreport (
     rContent TEXT,                        -- Report content
     PRIMARY KEY (rID)                     -- Primary key declaration
 );
+
+
+CREATE TABLE OnlineStockManagementSystem.supplier (
+    supplier_id INT NOT NULL AUTO_INCREMENT,
+    supplier_name VARCHAR(100) NOT NULL,
+    contact_name VARCHAR(100),
+    phone_number VARCHAR(20),
+    email VARCHAR(100),
+    address VARCHAR(255),
+    city VARCHAR(100),
+    country VARCHAR(100),
+    website VARCHAR(255),
+    date_added date DEFAULT NULL,
+    PRIMARY KEY (supplier_id)
+);

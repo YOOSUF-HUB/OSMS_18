@@ -146,10 +146,10 @@
                             <i class="fa-solid fa-boxes-packing"></i> Supplier Management
                         </button>
                         <div class="dropdown-container">
-                            <a href="StockManagement/add_supplier.jsp"><i class="fas fa-plus"></i> Add New Supplier</a>
-                            <a href="StockManagement/view_stock.jsp"><i class="fas fa-list"></i> View Supplier</a>
-                            <a href="StockManagement/update_stock.jsp"><i class="fas fa-edit"></i> Update Supplier</a>
-                            <a href="StockManagement/delete_stock.jsp"><i class="fas fa-trash"></i> Delete Supplier</a>
+                            <a href="SupplierManagement/create_supplier.jsp"><i class="fas fa-plus"></i> Add New Supplier</a>
+                            <a href="SupplierManagement/view_stock.jsp"><i class="fas fa-list"></i> View Supplier</a>
+                            <a href="SupplierManagement/update_stock.jsp"><i class="fas fa-edit"></i> Update Supplier</a>
+                            <a href="SupplierManagement/delete_stock.jsp"><i class="fas fa-trash"></i> Delete Supplier</a>
                         </div>
                     </li>
 
