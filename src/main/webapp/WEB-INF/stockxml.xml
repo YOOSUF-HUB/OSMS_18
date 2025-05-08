@@ -65,5 +65,18 @@
      	<servlet-name>supplierInsertServlet</servlet-name>
      	<url-pattern>/supplierInsertServlet</url-pattern>
      </servlet-mapping>
+     
+     
+     
+     	<!-- View Supplier -->
+     <servlet>
+     	<servlet-name>GetAllSupplierServlet</servlet-name>
+     	<servlet-class>SupplierPackage.GetAllSupplierServlet</servlet-class>
+     </servlet>
+     
+     <servlet-mapping>
+     	<servlet-name>GetAllSupplierServlet</servlet-name>
+     	<url-pattern>/GetAllSupplierServlet</url-pattern>
+     </servlet-mapping>
 
 </web-app>

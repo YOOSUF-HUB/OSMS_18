@@ -8,7 +8,7 @@ public class SupplierModel {
 	private String phone_number;
 	private String email;
 	private String supplier_address;
-	private String suppier_city;
+	private String supplier_city;
 	private String supplier_country;
 	private String supplier_website;
 	private String s_date_added;
@@ -18,7 +18,7 @@ public class SupplierModel {
 	
 	
 	public SupplierModel(int supplier_id, String supplier_name, String phone_number, String email,
-			String supplier_address, String suppier_city, String supplier_country, String supplier_website,
+			String supplier_address, String supplier_city, String supplier_country, String supplier_website,
 			String s_date_added) {
 		super();
 		this.supplier_id = supplier_id;
@@ -26,7 +26,7 @@ public class SupplierModel {
 		this.phone_number = phone_number;
 		this.email = email;
 		this.supplier_address = supplier_address;
-		this.suppier_city = suppier_city;
+		this.supplier_city = supplier_city;
 		this.supplier_country = supplier_country;
 		this.supplier_website = supplier_website;
 		this.s_date_added = s_date_added;
@@ -116,16 +116,16 @@ public class SupplierModel {
 
 
 
-	public String getSuppier_city() {
-		return suppier_city;
+	public String getSupplier_city() {
+		return supplier_city;
 	}
 
 
 
 
 
-	public void setSuppier_city(String suppier_city) {
-		this.suppier_city = suppier_city;
+	public void setSupplier_city(String supplier_city) {
+		this.supplier_city = supplier_city;
 	}
 
 

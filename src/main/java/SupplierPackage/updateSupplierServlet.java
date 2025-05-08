@@ -1,6 +1,7 @@
 package SupplierPackage;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,15 +10,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import onlineStockManagement.stockControl;
+import onlineStockManagement.stockModel;
 
 
-@WebServlet("/supplierInsertServlet")
-public class supplierInsertServlet extends HttpServlet {
+@WebServlet("/updateSupplierServlet")
+public class updateSupplierServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		
+		
+		
+	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		
+		int supplier_id = Integer.parseInt(request.getParameter("supplier_id"));
 		String supplier_name = request.getParameter("supplier_name");
 		String phone_number = request.getParameter("phone_number");
 		String email = request.getParameter("email");
@@ -27,14 +41,18 @@ public class supplierInsertServlet extends HttpServlet {
 		String supplier_website = request.getParameter("supplier_website");
 		String s_date_added = request.getParameter("s_date_added");
 		
-		boolean isTrue;
 		
-		isTrue = SupplierControl.insertSupplierData(0, supplier_name, phone_number, email , supplier_address, supplier_city, supplier_country, supplier_website, s_date_added);
+		 
+		boolean isTrue;
+		isTrue = SupplierControl.UpdateSupplier(supplier_id, supplier_name, phone_number, email, supplier_address, supplier_city, supplier_country, supplier_website, s_date_added);
+		
 		
 		if(isTrue == true) {
-			String alertMessage = "Data Insert Successfull";
-			//response.getWriter().println("<script> alert('"+alertMessage+"')window.location.href='/Online-stock-management-system/src/main/java/onlineStockManagement/GetAllStockServlet'</script>");
+			List<SupplierModel> supplierDetails = SupplierControl.getById(supplier_id);
+			request.setAttribute("supplierDetails", supplierDetails);
 			
+			
+			String alertMessage = "Data Update Successfull";
 			//response.getWriter().println("<script> alert('"+alertMessage+"')window.location.href='/Online-stock-management-system/src/main/java/onlineStockManagement/GetAllStockServlet'</script>");
 			//response.getWriter().println("<script> alert('"+alertMessage+"');window.location.href='/Online-stock-management-system/src/main/java/onlineStockManagement/GetAllStockServlet'</script>");
 			response.setContentType("text/html");
@@ -42,16 +60,15 @@ public class supplierInsertServlet extends HttpServlet {
 			//response.getWriter().println("alert('" + alertMessage + "');");
 			response.getWriter().println("window.location.href='GetAllSupplierServlet';");
 			response.getWriter().println("</script>");
+
+
 		}
 		else {
 			RequestDispatcher dis2 = request.getRequestDispatcher("wrong.jsp");
 			dis2.forward(request, response);
 		}
- 
 		
-
+		
 	}
 
 }
-
-

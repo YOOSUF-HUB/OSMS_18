@@ -147,7 +147,7 @@
                         </button>
                         <div class="dropdown-container">
                             <a href="SupplierManagement/create_supplier.jsp"><i class="fas fa-plus"></i> Add New Supplier</a>
-                            <a href="SupplierManagement/view_stock.jsp"><i class="fas fa-list"></i> View Supplier</a>
+                            <a href="GetAllSupplierServlet"><i class="fas fa-list"></i> View Supplier</a>
                             <a href="SupplierManagement/update_stock.jsp"><i class="fas fa-edit"></i> Update Supplier</a>
                             <a href="SupplierManagement/delete_stock.jsp"><i class="fas fa-trash"></i> Delete Supplier</a>
                         </div>

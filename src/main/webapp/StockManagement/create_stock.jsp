@@ -27,7 +27,7 @@
 <body>
     <div class="container mt-5">
         <h2>Add New Stock Item</h2>
-        <form action="stockInsertServlet" method="post" class="form-add-stock">
+        <form action="../stockInsertServlet" method="post" class="form-add-stock">
         
             <div class="form-group">
                 <label for="productName">Product Name:</label>
