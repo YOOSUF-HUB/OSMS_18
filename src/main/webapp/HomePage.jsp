@@ -159,19 +159,10 @@ margin-bottom: 10px;
                                 <a href="delete_order.jsp"><i class="fas fa-ban"></i> Cancel Order</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <button class="dropdown-btn">
+                         <li class="nav-item">
+                            <a class="nav-link" href="ViewReportsServlet">
                                 <i class="fas fa-chart-bar"></i> Report Management
-                            </button>
-                            <div class="dropdown-container">
-                                <a href="ReportManagement/create_report.jsp"><i class="fas fa-file-alt"></i> Generate New Report</a>
-
-                                <a href="ViewReportsServlet"><i class="fas fa-list"></i> View Reports</a>
-                                <a href="ReportManagement/ViewReports.jsp"><i class="fas fa-edit"></i> Update Report</a>
-                                <a href="ReportManagement/ViewReports.jsp"><i class="fas fa-trash-alt"></i> Delete Report</a>
-
-
-                            </div>
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#customer-portal">

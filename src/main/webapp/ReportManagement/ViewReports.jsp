@@ -4,139 +4,168 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>View Reports</title>
+    <title>Report Management Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-    body {
-        background-color: #f8f9fa;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    .container {
-        margin-top: 40px;
-        max-width: 960px;
-    }
-
-    .card {
-        border-radius: 10px;
-        border: none;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    }
-
-    .card-header {
-        background-color: #ffedd5;
-        border-bottom: none;
-        border-radius: 10px 10px 0 0;
-        text-align: center;
-    }
-
-    .card-title {
-        font-size: 24px;
-        color: #d35400;
-        margin-bottom: 0;
-    }
-
-    .card-body {
-        background-color: #ffffff;
-        border-radius: 0 0 10px 10px;
-    }
-
-    .table th, .table td {
-        vertical-align: middle;
-    }
-
-    .btn-primary {
-        background-color: #d35400;
-        border-color: #d35400;
-    }
-
-    .btn-primary:hover {
-        background-color: #a84300;
-        border-color: #a84300;
-    }
-
-    .btn-update {
-        background-color: #28a745;
-        border-color: #28a745;
-        color: #fff;
-    }
-
-    .btn-update:hover {
-        background-color: #218838;
-        border-color: #218838;
-    }
-
-    .btn-delete {
-        background-color: #dc3545;
-        border-color: #dc3545;
-        color: #fff;
-    }
-
-    .btn-delete:hover {
-        background-color: #c82333;
-        border-color: #c82333;
-    }
-
-    .btn-secondary {
-        background-color: #6c757d;
-        border-color: #6c757d;
-        color: #fff;
-        margin-top: 20px;
-    }
-
-    .btn-secondary:hover {
-        background-color: #5a6268;
-        border-color: #545b62;
-    }
-
-    .alert {
-        margin-top: 20px;
-    }
-
-    .actions-container {
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-    }
-
-    @media (max-width: 576px) {
-        .actions-container {
-            flex-direction: column;
+        .dashboard-header {
+            background-color: #343a40;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
         }
-    }
-</style>
-
+        .summary-card {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .summary-card-header {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+        .summary-card-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        .summary-card-body {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .summary-icon {
+            font-size: 40px;
+            color: #007BFF;
+        }
+        .summary-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        .report-list-card {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .report-list-card-header {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+        .report-list-card-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+        .report-list-card-body {
+            padding: 20px;
+        }
+        .table-responsive {
+            margin-top: 20px;
+        }
+        .btn-primary {
+            background-color: #007BFF;
+            border-color: #007BFF;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .btn-update {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: white;
+        }
+        .btn-update:hover {
+            background-color: #218838;
+            border-color: #218838;
+        }
+        .btn-delete {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: white;
+        }
+        .btn-delete:hover {
+            background-color: #c82333;
+            border-color: #c82333;
+        }
+        .actions-container {
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+        }
+        .create-report-button {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .alert {
+            margin-top: 20px;
+        }
+    </style>
     <script>
         function printReport(reportId) {
-            // Use JavaScript to open a new window/tab with the report content
             var printWindow = window.open('', '_blank');
             printWindow.document.write('<html><head><title>Print Report</title>');
-            printWindow.document.write('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">'); // Include Bootstrap for styling
+            printWindow.document.write('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">');
             printWindow.document.write('<style>body{padding: 20px;}</style>');
             printWindow.document.write('</head><body>');
-
-            // Fetch the report content
             var reportContent = document.getElementById('reportContent_' + reportId).innerHTML;
             printWindow.document.write(reportContent);
-
             printWindow.document.write('</body></html>');
             printWindow.document.close();
             printWindow.focus();
             printWindow.print();
             printWindow.close();
         }
+        
+        
     </script>
 </head>
 <body>
-    <div class="container">
-        <div class="card">
-            <div class="card-header">
-                <h2 class="card-title">Report List</h2>
+    <div class="container-fluid">
+        <div class="dashboard-header">
+            <h1>Report Management Dashboard</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="summary-card">
+                    <div class="summary-card-header">
+                        <h3 class="summary-card-title">Total Reports</h3>
+                    </div>
+                    <div class="summary-card-body">
+                        <i class="fas fa-file-alt summary-icon"></i>
+                        <span class="summary-value">
+                            <%
+                                List<ReportModel> reportList = (List<ReportModel>) request.getAttribute("reportList");
+                                if (reportList != null) {
+                                    out.print(reportList.size());
+                                } else {
+                                	out.print("0");
+                                }
+                            %>
+                        </span>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
+            
+            
+        </div>
+        <div class="report-list-card">
+            <div class="report-list-card-header">
+                <h2 class="report-list-card-title">Report List</h2>
+            </div>
+            <div class="report-list-card-body">
                 <%
-                    List<ReportModel> reportList = (List<ReportModel>) request.getAttribute("reportList");
                     if (reportList != null && !reportList.isEmpty()) {
                 %>
                 <div class="table-responsive">
@@ -164,7 +193,7 @@
                                         View Report
                                     </button>
                                 </td>
-                                 <td>
+                                <td>
                                     <div class="actions-container">
                                         <button class="btn btn-update" onclick="window.location.href='UpdateReportServlet?rId=<%= report.getrId() %>'">Update</button>
                                         <button class="btn btn-delete" onclick="window.location.href='DeleteReportServlet?rId=<%= report.getrId() %>'">Delete</button>
@@ -194,11 +223,11 @@
                 <%
                     }
                 %>
-                 <!-- <button class="btn btn-secondary" onclick="window.location.href='create_report.jsp'">Generate New Report</button> -->
-                 <a href="ReportManagement/create_report.jsp" class="btn btn-primary" id="view-stock-btn-other">Add Stock</a>
-                 <a href="HomePage.jsp" class="btn btn-primary" id="view-stock-btn-other">Back to HomePage</a>
-                  <!-- <button class="btn btn-secondary" onclick="window.location.href='../HomePage.jsp'">Back To HomePage</button> -->
             </div>
+        </div>
+        <div class="create-report-button">
+           <a href="ReportManagement/create_report.jsp" class="btn btn-primary" id="view-stock-btn-other">Generate New Report</a>
+           <a href="HomePage.jsp" class="btn btn-primary" id="view-stock-btn-other">Back to HomePage</a>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
