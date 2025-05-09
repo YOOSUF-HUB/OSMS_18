@@ -1,0 +1,47 @@
+package customerPackage;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/AddCustomerServlet")
+public class AddCustomerServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+    
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		String cname = request.getParameter("cname");
+		String bname = request.getParameter("bname");
+		String email = request.getParameter("email");
+		String number = request.getParameter("pnumber");
+		String address = request.getParameter("address");
+		String city = request.getParameter("city");
+		String province = request.getParameter("province");
+		String zip = request.getParameter("zip");
+		
+
+		boolean isTrue;
+		
+		isTrue = CustomerController.insertdata(cname, bname, email, number, address, city, province, zip);
+	
+		if (isTrue == true) {
+			
+			String alertMessage = "Data inserted successful";
+			response.getWriter().println("<script> alert('"+alertMessage+"'); window.location.href='done.jsp' </script>");
+		}
+		else {
+			RequestDispatcher dis2 = request.getRequestDispatcher("error.jsp");
+			dis2.forward(request,response);
+		}
+		
+		
+		
+	}
+
+}

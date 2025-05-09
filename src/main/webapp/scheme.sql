@@ -38,3 +38,18 @@ CREATE TABLE OnlineStockManagementSystem.supplier (
     date_added date DEFAULT NULL,
     PRIMARY KEY (supplier_id)
 );
+
+
+
+
+CREATE TABLE Customer (
+    customer_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_name VARCHAR(255) NOT NULL,
+    business_name VARCHAR(255),
+    email VARCHAR(255) UNIQUE,
+    phone_number VARCHAR(20),
+    address VARCHAR(255),
+    city VARCHAR(100),
+    province VARCHAR(100),
+    zip_code VARCHAR(20)
+);
