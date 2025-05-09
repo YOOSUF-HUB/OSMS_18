@@ -22,6 +22,16 @@ public class updateSupplierServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		 int supplier_id = Integer.parseInt(request.getParameter("supplier_id"));
+		 SupplierControl supplierConller = new SupplierControl();
+		 List<SupplierModel> supplier = supplierConller.getById(supplier_id);
+
+	        if (supplier != null) {
+	            request.setAttribute("stock", supplier);
+	            request.getRequestDispatcher("StockManagement/update_stock.jsp").forward(request, response);
+	        } else {
+	            response.sendRedirect("error.jsp?message=Report not found");
+	        }
 		
 		
 		

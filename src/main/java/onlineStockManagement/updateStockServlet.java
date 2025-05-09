@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ReportPackage.IReportController;
+import ReportPackage.ReportModel;
+import ReportPackage.ReportServices;
+
 @WebServlet("/updateStockServlet")
 public class updateStockServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -17,6 +21,17 @@ public class updateStockServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		 int item_id = Integer.parseInt(request.getParameter("item_id"));
+		 stockControl stockController = new stockControl();
+		 List<stockModel> stock = stockController.getById(item_id);
+
+	        if (stock != null) {
+	            request.setAttribute("stock", stock);
+	            request.getRequestDispatcher("StockManagement/update_stock.jsp").forward(request, response);
+	        } else {
+	            response.sendRedirect("error.jsp?message=Report not found");
+	        }
 
 		
 	}
@@ -34,9 +49,9 @@ public class updateStockServlet extends HttpServlet {
 		String date_added  = request.getParameter("date_added");
 		String description = request.getParameter("description");
 		
-		 
-		boolean isTrue;
-		isTrue = stockControl.UpdateStock(item_id, item_name, item_model, item_manufacturer, quantity, unit_cost, selling_price, date_added, description);
+		stockControl stockController = new stockControl();
+		
+		boolean isTrue = stockControl.UpdateStock(item_id, item_name, item_model, item_manufacturer, quantity, unit_cost, selling_price, date_added, description);
 		
 		
 		if(isTrue == true) {
@@ -44,20 +59,14 @@ public class updateStockServlet extends HttpServlet {
 			request.setAttribute("stockDetails", stockDetails);
 			
 			
-			String alertMessage = "Data Update Successfull";
-			//response.getWriter().println("<script> alert('"+alertMessage+"')window.location.href='/Online-stock-management-system/src/main/java/onlineStockManagement/GetAllStockServlet'</script>");
-			//response.getWriter().println("<script> alert('"+alertMessage+"');window.location.href='/Online-stock-management-system/src/main/java/onlineStockManagement/GetAllStockServlet'</script>");
-			response.setContentType("text/html");
-			response.getWriter().println("<script type='text/javascript'>");
-			//response.getWriter().println("alert('" + alertMessage + "');");
-			response.getWriter().println("window.location.href='GetAllStockServlet';");
-			response.getWriter().println("</script>");
+
+			String AlertMessage = "Report Updated Successfully";
+			response.getWriter().println("<script> alert('"+AlertMessage+"'); window.location.href = 'GetAllStockServlet' </script>");
 
 
 		}
 		else {
-			RequestDispatcher dis2 = request.getRequestDispatcher("wrong.jsp");
-			dis2.forward(request, response);
+			response.sendRedirect("error.jsp?message=Failed to update report");
 		}
 		
 	}

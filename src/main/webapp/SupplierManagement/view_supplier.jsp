@@ -159,12 +159,12 @@
 			                    <td>${supplier.supplier_website}</td>
 			                    <td>${supplier.s_date_added}</td>
 	 			                <td class="add-stock-action-btn">
-			                        <a href="StockManagement/update_stock.jsp?item_id=${stock.item_id}&item_name=${stock.item_name}&item_model=${stock.item_model}&item_manufacturer=${stock.item_manufacturer}&quantity=${stock.quantity}&unit_cost=${stock.unit_cost}&selling_price=${stock.selling_price}&date_added=${stock.date_added}&description=${stock.description}" class="btn btn-primary" id="add-stock-action-btn">Update</a>
+			                        <a href="SupplierManagement/update_supplier.jsp?supplier_id=${supplier.supplier_id}&supplier_name=${supplier.supplier_name}&phone_number=${supplier.phone_number}&email=${supplier.email}&supplier_address=${supplier.supplier_address}&supplier_city=${supplier.supplier_city}&supplier_country=${supplier.supplier_country}&supplier_website=${supplier.supplier_website}&s_date_added=${supplier.s_date_added}" class="btn btn-primary" id="add-stock-action-btn">Update</a>
 									
-									<form action="DeleteStockServlet" method="post"">
-									    <input type="hidden" name="item_id" value="${stock.item_id}" />
+<%-- 									<form action="DeleteStockServlet" method="post"">
+									    <input type="hidden" name="item_id" value="${supplier.supplier_id}" />
 									    <button type="submit" class="btn btn-danger btn-sm" id="add-stock-action-btn">Delete</button>
-									</form>
+									</form> --%>
 
 
 			                    </td>
