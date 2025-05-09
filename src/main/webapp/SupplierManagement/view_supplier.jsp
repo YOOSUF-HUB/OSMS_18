@@ -122,7 +122,7 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h2>Current Stock Inventory</h2>
+        <h2>Supplier Directory</h2>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -136,13 +136,14 @@
                     <th>Country</th>
                     <th >Website</th>
                     <th>Date</th> 
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
 			    <c:choose>
 			        <c:when test="${empty allSupplier}">
 			            <tr>
-			                <td colspan="10" class="text-center text-muted">Table is Empty</td>
+			                <td colspan="10" class="text-center text-muted">No supplier records are currently available.</td>
 			            </tr>
 			        </c:when>
 			        <c:otherwise>

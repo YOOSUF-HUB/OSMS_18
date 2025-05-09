@@ -187,7 +187,7 @@
 			    <c:choose>
 			        <c:when test="${empty allStocks}">
 			            <tr>
-			                <td colspan="10" class="text-center text-muted">Stock is Empty</td>
+			                <td colspan="10" class="text-center text-muted">Stock table contains no entries at this time.</td>
 			            </tr>
 			        </c:when>
 			        <c:otherwise>
