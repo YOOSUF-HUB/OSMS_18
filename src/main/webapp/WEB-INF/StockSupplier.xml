@@ -55,6 +55,10 @@
      
      
      
+     
+     
+     <!-- Supplier Management -->
+     
      	<!-- Insert Supplier -->
      <servlet>
      	<servlet-name>supplierInsertServlet</servlet-name>
@@ -77,6 +81,29 @@
      <servlet-mapping>
      	<servlet-name>GetAllSupplierServlet</servlet-name>
      	<url-pattern>/GetAllSupplierServlet</url-pattern>
+     </servlet-mapping>
+     
+     
+          <!-- Update Supplier -->
+      <servlet>
+     	<servlet-name>updateSupplierServlet</servlet-name>
+     	<servlet-class>SupplierPackage.updateSupplierServlet</servlet-class>
+     </servlet>
+     
+     <servlet-mapping>
+     	<servlet-name>updateSupplierServlet</servlet-name>
+     	<url-pattern>/updateSupplierServlet</url-pattern>
+     </servlet-mapping>
+     
+          	<!-- Delete Supplier -->
+     <servlet>
+     	<servlet-name>DeleteSupplierServlet</servlet-name>
+     	<servlet-class>SupplierPackage.DeleteSupplierServlet</servlet-class>
+     </servlet>
+     
+     <servlet-mapping>
+     	<servlet-name>DeleteSupplierServlet</servlet-name>
+     	<url-pattern>/DeleteSupplierServlet</url-pattern>
      </servlet-mapping>
 
 </web-app>

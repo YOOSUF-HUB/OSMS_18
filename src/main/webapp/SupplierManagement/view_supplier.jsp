@@ -114,6 +114,24 @@
 		font-size:1rem;
 	
 	}
+	
+	.search-bar-container {
+	  max-width: 400px;
+	  margin: 0 auto 30px auto;
+	}
+	
+	#searchInput {
+	  border-radius: 0.25rem 0 0 0.25rem;
+	  padding: 10px 12px;
+	  font-size: 1rem;
+	  border: 1px solid #ced4da;
+	}
+	
+	#searchBtn {
+	  border-radius: 0 0.25rem 0.25rem 0;
+	  padding: 6px 16px;
+	  font-size: 1rem;
+	}
 
 
 
@@ -123,6 +141,12 @@
 <body>
     <div class="container mt-5">
         <h2>Supplier Directory</h2>
+        <div class="input-group mb-4 search-bar-container">
+		  <input type="text" id="searchInput" class="form-control" placeholder="Search...">
+		  <div class="input-group-append">
+		    <button class="btn btn-outline-primary" type="button" id="searchBtn">Search</button>
+		  </div>
+		</div>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -162,10 +186,10 @@
 	 			                <td class="add-stock-action-btn">
 			                        <a href="SupplierManagement/update_supplier.jsp?supplier_id=${supplier.supplier_id}&supplier_name=${supplier.supplier_name}&phone_number=${supplier.phone_number}&email=${supplier.email}&supplier_address=${supplier.supplier_address}&supplier_city=${supplier.supplier_city}&supplier_country=${supplier.supplier_country}&supplier_website=${supplier.supplier_website}&s_date_added=${supplier.s_date_added}" class="btn btn-primary" id="add-stock-action-btn">Update</a>
 									
-<%-- 									<form action="DeleteStockServlet" method="post"">
-									    <input type="hidden" name="item_id" value="${supplier.supplier_id}" />
+									<form action="DeleteSupplierServlet" method="post"">
+									    <input type="hidden" name="supplier_id" value="${supplier.supplier_id}" />
 									    <button type="submit" class="btn btn-danger btn-sm" id="add-stock-action-btn">Delete</button>
-									</form> --%>
+									</form>
 
 
 			                    </td>
@@ -184,5 +208,33 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <script>
+	function filterTable() {
+	    var input, filter, table, tr, td, i, j, txtValue;
+	    input = document.getElementById("searchInput");
+	    filter = input.value.toUpperCase();
+	    table = document.querySelector("table");
+	    tr = table.getElementsByTagName("tr");
+	
+	    for (i = 1; i < tr.length; i++) { // start from 1 if row 0 is the header
+	        td = tr[i].getElementsByTagName("td");
+	        tr[i].style.display = "none"; // default to hide
+	        for (j = 0; j < td.length; j++) {
+	            if (td[j]) {
+	                txtValue = td[j].textContent || td[j].innerText;
+	                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+	                    tr[i].style.display = "";
+	                    break;
+	                }
+	            }
+	        }
+	    }
+	}
+	
+	/* document.getElementById("searchInput").addEventListener("input", filterTable); */
+	document.getElementById("searchBtn").addEventListener("click", filterTable);
+
+	</script>
 </body>
 </html>

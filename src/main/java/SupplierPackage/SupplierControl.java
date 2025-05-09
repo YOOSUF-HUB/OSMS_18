@@ -173,4 +173,32 @@ public class SupplierControl {
 
         return isSuccess;
     }
+    
+    
+    
+	// DeleteStock
+	public static boolean DeleteSupplier(int supplier_id) {
+		boolean isSuccess = false;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			con = DBconnection.getConnection();
+			String sql = "DELETE FROM supplier WHERE supplier_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, supplier_id);
+
+			isSuccess = pstmt.executeUpdate() > 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if (con != null) con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return isSuccess;
+	}
 }

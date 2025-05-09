@@ -8,6 +8,19 @@
     <meta charset="UTF-8">
     <title>Update Stock</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    
+    <style>
+    
+    #view-stock-btn-other{
+		padding: 10px 20px;
+		margin-top: 20px;
+		margin-left: 20px;
+		margin-bottom: 20px;
+		font-size: 1rem ;
+	
+	}
+    </style>
 </head>
 <body>
 
@@ -74,8 +87,8 @@
             <textarea class="form-control" id="description" name="description" rows="4"><%= description %></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary">Update</button>
-        <a href="../GetAllStockServlet" class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn btn-primary" id="view-stock-btn-other">Update</button>
+        <a href="../GetAllStockServlet" class="btn btn-secondary" id="view-stock-btn-other">Cancel</a>
     </form>
 </div>
 

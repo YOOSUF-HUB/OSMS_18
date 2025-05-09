@@ -158,6 +158,25 @@
 		font-size:1rem;
 	
 	}
+	
+	.search-bar-container {
+	  max-width: 400px;
+	  margin: 0 auto 30px auto;
+	}
+	
+	#searchInput {
+	  border-radius: 0.25rem 0 0 0.25rem;
+	  padding: 10px 12px;
+	  font-size: 1rem;
+	  border: 1px solid #ced4da;
+	}
+	
+	#searchBtn {
+	  border-radius: 0 0.25rem 0.25rem 0;
+	  padding: 6px 16px;
+	  font-size: 1rem;
+	}
+	
 
 
 
@@ -165,8 +184,16 @@
     </style>
 </head>
 <body>
+
+
     <div class="container mt-5">
         <h2>Current Stock Inventory</h2>
+		<div class="input-group mb-4 search-bar-container">
+		  <input type="text" id="searchInput" class="form-control" placeholder="Search...">
+		  <div class="input-group-append">
+		    <button class="btn btn-outline-primary" type="button" id="searchBtn">Search</button>
+		  </div>
+		</div>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -233,5 +260,35 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+function filterTable() {
+    var input, filter, table, tr, td, i, j, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toUpperCase();
+    table = document.querySelector("table");
+    tr = table.getElementsByTagName("tr");
+
+    for (i = 1; i < tr.length; i++) { // start from 1 if row 0 is the header
+        td = tr[i].getElementsByTagName("td");
+        tr[i].style.display = "none"; // default to hide
+        for (j = 0; j < td.length; j++) {
+            if (td[j]) {
+                txtValue = td[j].textContent || td[j].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                    break;
+                }
+            }
+        }
+    }
+}
+
+/* document.getElementById("searchInput").addEventListener("input", filterTable); */
+document.getElementById("searchBtn").addEventListener("click", filterTable);
+
+</script>
+
+
 </body>
 </html>

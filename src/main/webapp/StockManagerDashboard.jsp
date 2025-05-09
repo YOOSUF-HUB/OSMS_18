@@ -114,6 +114,10 @@
         	margin-bottom: 50px;
         }
         
+        a:hover {
+		    text-decoration: none;
+		}
+        
     </style>
 </head>
 <body>
@@ -124,45 +128,45 @@
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link active" href="#">
-                            <i class="fas fa-tachometer-alt"></i> TechNest
+                            <i class=""></i> TechNest
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <button class="dropdown-btn">
+                    <a href="GetAllStockServlet" >
+						<button class="dropdown-btn">
                             <i class="fas fa-box-open"></i> Stock Management
                         </button>
+                    </a>
+
                         <div class="dropdown-container">
                             <a href="StockManagement/create_stock.jsp"><i class="fas fa-plus"></i> Add New Stock</a>
                             <a href="GetAllStockServlet"><i class="fas fa-list"></i> View Stock</a>
-                            <!-- <a href="StockManagement/update_stock.jsp"><i class="fas fa-edit"></i> Update Stock</a> -->
-                            <!-- <a href="StockManagement/delete_stock.jsp"><i class="fas fa-trash"></i> Delete Stock</a> -->
                         </div>
                     </li>
 
                     <li class="nav-item">
-                        <button class="dropdown-btn">
+                    <a href="GetAllSupplierServlet">
+                         <button class="dropdown-btn">
                             <i class="fa-solid fa-boxes-packing"></i> Supplier Management
                         </button>
+                    </a>
+
                         <div class="dropdown-container">
                             <a href="SupplierManagement/create_supplier.jsp"><i class="fas fa-plus"></i> Add New Supplier</a>
                             <a href="GetAllSupplierServlet"><i class="fas fa-list"></i> View Supplier</a>
-                            <a href="SupplierManagement/update_stock.jsp"><i class="fas fa-edit"></i> Update Supplier</a>
-                            <a href="SupplierManagement/delete_stock.jsp"><i class="fas fa-trash"></i> Delete Supplier</a>
                         </div>
                     </li>
 
                     <li class="nav-item">
                         <button class="dropdown-btn">
-                            <i class="fas fa-shopping-cart"></i> Order Management
+                            <i class="fas fa-shopping-cart"></i> Stock Order Management
 
                         </button>
                         <div class="dropdown-container">
                             <a href="create_order.jsp"><i class="fas fa-plus"></i> Create New Order</a>
                             <a href="view_orders.jsp"><i class="fas fa-list"></i> View Orders</a>
-                            <a href="update_order.jsp"><i class="fas fa-edit"></i> Update Order</a>
-                            <a href="delete_order.jsp"><i class="fas fa-ban"></i> Cancel Order</a>
                         </div>
                     </li>
 
