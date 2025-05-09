@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +8,7 @@
 	<!-- include the meta name="viewport" tag as well for proper responsive behavior in mobile devices. -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-	<title>Sales Rep-TechNest</title>
+	<title>Customer Page</title>
 	
 	
 	<!-- Include Bootstrap’s CSS -->
@@ -34,7 +35,7 @@
                 <a class="nav-link" href="#">Order</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="GetAllCustomersServlet">Customer</a>
+                <a class="nav-link" href="#">Customer</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="#">Product</a>
@@ -81,54 +82,34 @@
     </nav>
     
     
-    <div class="container-fluid">
-        <div class="d-flex justify-content-between align-items-center my-3">
-            <h3 class="mb-0">Dashboard</h3>
-            <button type="button" class="btn btn-primary">Place Order</button>
-        </div>
-        <div class="container-fluid row align-content-center">
-            <div class="col-5 border offset-1">
-                <div class="widget">
-		        <h5 class="widget-title">Stock Overview</h5>
-		        <p>Total Items: <strong>150</strong></p>
-		        <p>Low Stock: <strong class="text-warning">15</strong></p>
-		        <p>Out of Stock: <strong class="text-danger">5</strong></p>
-		    </div>
-            </div>
-            <div class="col-5 border offset-1">
-                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
-                    <li>15</li>
-                    <li>Customers</li>
-                    <li><img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top"></li>
-                </ul>
-            </div>
-        </div>
-        <hr class="divider">
-        <div>
-
-        </div>
-    </div>
+    
 
     <div class="container-fluid">
-        <h4 class="mb-0">Today Orders</h4>
+        <h4 class="mb-0">Customer</h4>
         <div class="table-responsive">
             <table class="table border">
                 <thead>
                     <tr>
-                        <th>Order ID</th>
+                        <th>Customer ID</th>               
+                        <th>Customer Name</th>            
                         <th>Business Name</th>
-                        <th>Product</th>
-                        <th>Business Location</th>
+                        <th>Phone Number</th>
+                        <th>Address</th>
+                        <th>City</th>
                     </tr>
                 </thead>
 
                 <tbody>
+                	<c:forEach var="customer" items="${allCustomers}">
                     <tr>
-                        <td>s</td>
-                        <td>as</td>
-                        <td>lap</td>
-                        <td>Colombo</td>
-                    </tr>                   
+                        <td>${customer.id}</td>
+                        <td>${customer.cname}</td>
+                        <td>${customer.bname}</td>
+                        <td>${customer.number}</td>
+                        <td>${customer.address}</td>
+                        <td>${customer.city}</td>
+                    </tr>          
+                    </c:forEach>         
                 </tbody>
                 
             </table>
@@ -137,21 +118,6 @@
 
     </div>
 
-    <div class="container-fluid">
-        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true"> Motherboard </button>
-            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</button>
-            <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</button>
-            <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button" role="tab" aria-controls="nav-disabled" aria-selected="false" disabled>Disabled</button>
-         </div>
-        
-        <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">...</div>
-            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">assac</div>
-            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">...</div>
-            <div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">...</div>
-        </div>
-    </div>
 
 
 	<!-- Include Bootstrap’s CSS -->

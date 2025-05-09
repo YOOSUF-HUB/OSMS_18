@@ -17,6 +17,17 @@
      </servlet-mapping>
      
      
+          <!-- display -->
+     <servlet>
+     	<servlet-name>GetAllCustomersServlet</servlet-name>
+     	<servlet-class>customerPackage.GetAllCustomersServlet</servlet-class>
+     </servlet>
+     
+     <servlet-mapping>
+     	<servlet-name>GetAllCustomersServlet</servlet-name>
+     	<url-pattern>/GetAllCustomersServlet</url-pattern>
+     </servlet-mapping>
+     
      
 
 </web-app>
