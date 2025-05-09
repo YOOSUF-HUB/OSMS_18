@@ -28,10 +28,10 @@
         <div class="collapse navbar-collapse " id="navbarScroll">
             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                 <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="SalesRepDashboard.jsp">Home</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Order</a>
+                <a class="nav-link" href="GetAllOrdersServlet">Order</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="GetAllCustomersServlet">Customer</a>
@@ -84,7 +84,10 @@
     <div class="container-fluid">
         <div class="d-flex justify-content-between align-items-center my-3">
             <h3 class="mb-0">Dashboard</h3>
+            <div>    
+            <button type="button" class="btn btn-secondary" onclick="document.location='SalesRep/addCustomer.jsp'">Add Customer</button>
             <button type="button" class="btn btn-primary">Place Order</button>
+            </div>
         </div>
         <div class="container-fluid row align-content-center">
             <div class="col-5 border offset-1">
