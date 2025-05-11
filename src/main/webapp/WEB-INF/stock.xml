@@ -83,6 +83,17 @@
      	<url-pattern>/GetAllSupplierServlet</url-pattern>
      </servlet-mapping>
      
+     	<!-- View Supplier Dropdown -->
+     <servlet>
+     	<servlet-name>GetSuppliersForFormServlet</servlet-name>
+     	<servlet-class>SupplierPackage.GetSuppliersForFormServlet</servlet-class>
+     </servlet>
+     
+     <servlet-mapping>
+     	<servlet-name>GetSuppliersForFormServlet</servlet-name>
+     	<url-pattern>/GetSuppliersForFormServlet</url-pattern>
+     </servlet-mapping>
+     
      
           <!-- Update Supplier -->
       <servlet>

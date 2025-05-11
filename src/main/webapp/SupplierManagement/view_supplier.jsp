@@ -147,6 +147,18 @@
 		    <button class="btn btn-outline-primary" type="button" id="searchBtn">Search</button>
 		  </div>
 		</div>
+		
+		<div class="mb-3">
+        <label for="supplier_id" class="form-label">Supplier</label>
+        <select class="form-select" id="supplier_id" name="supplier_id">
+          <option value="" selected disabled>Select Supplier</option>
+          <!-- Dynamically populated supplier list -->
+          <c:forEach var="supplier" items="${allSupplier}">
+            <option value="${supplier.supplier_id}">${supplier.supplier_name}</option>
+          </c:forEach>
+        </select>
+      </div>
+      
         <table class="table table-striped">
             <thead>
                 <tr>

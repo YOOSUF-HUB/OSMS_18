@@ -21,7 +21,9 @@ public class GetAllSupplierServlet extends HttpServlet {
 		request.setAttribute("allSupplier", allSupplier);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/SupplierManagement/view_supplier.jsp");
+		
 		dispatcher.forward(request, response);
+		
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

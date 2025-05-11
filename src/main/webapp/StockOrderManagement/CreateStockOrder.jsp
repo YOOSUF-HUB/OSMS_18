@@ -111,22 +111,22 @@
       <div class="row mb-3">
         <div class="col-md-6">
           <label for="order_date" class="form-label">Order Date</label>
-          <input type="date" class="form-control" id="order_date" name="order_date">
+          <input type="date" class="form-control" id="order_date" name="order_date" required>
         </div>
         <div class="col-md-6">
           <label for="expected_delivery_date" class="form-label">Expected Delivery Date</label>
-          <input type="date" class="form-control" id="expected_delivery_date" name="expected_delivery_date">
+          <input type="date" class="form-control" id="expected_delivery_date" name="expected_delivery_date" required>
         </div>
       </div>
 
       <div class="row mb-3">
         <div class="col-md-4">
           <label for="quantity_ordered" class="form-label">Quantity Ordered</label>
-          <input type="number" class="form-control" id="quantity_ordered" name="quantity_ordered" oninput="calculateTotal()">
+          <input type="number" class="form-control" id="quantity_ordered" name="quantity_ordered" oninput="calculateTotal()" required>
         </div>
         <div class="col-md-4">
           <label for="unit_price" class="form-label">Unit Price</label>
-          <input type="number" step="0.01" class="form-control" id="unit_price" name="unit_price" oninput="calculateTotal()">
+          <input type="number" step="0.01" class="form-control" id="unit_price" name="unit_price" oninput="calculateTotal()" required>
         </div>
         <div class="col-md-4">
           <label for="total_price" class="form-label">Total Price</label>
@@ -137,11 +137,11 @@
       <div class="row mb-3">
         <div class="col-md-6">
           <label for="order_status" class="form-label">Order Status</label>
-          <input type="text" class="form-control" id="order_status" name="order_status">
+          <input type="text" class="form-control" id="order_status" name="order_status" required>
         </div>
         <div class="col-md-6">
           <label for="payment_status" class="form-label">Payment Status</label>
-          <input type="text" class="form-control" id="payment_status" name="payment_status">
+          <input type="text" class="form-control" id="payment_status" name="payment_status" required>
         </div>
       </div>
 
@@ -153,21 +153,33 @@
       <div class="row mb-3">
         <div class="col-md-6">
           <label for="received_date" class="form-label">Received Date</label>
-          <input type="date" class="form-control" id="received_date" name="received_date">
+          <input type="date" class="form-control" id="received_date" name="received_date" required>
         </div>
         <div class="col-md-6">
           <label for="invoice_number" class="form-label">Invoice Number</label>
-          <input type="text" class="form-control" id="invoice_number" name="invoice_number">
+          <input type="text" class="form-control" id="invoice_number" name="invoice_number" required>
         </div>
       </div>
 
       <div class="mb-3">
         <label for="supplier_id" class="form-label">Supplier</label>
+        <select class="form-select" id="supplier_id" name="supplier_id" required>
+          <option value="" selected disabled>Select Supplier</option>
+          <c:forEach var="supplier" items="${SupplierID}">
+            <option value="${supplierList.supplier_id}">${supplierList.supplier_name}</option>
+          </c:forEach>
+        </select>
+      </div>
+      
+      
+      <div class="mb-3">
+        <label for="supplier_id" class="form-label">SupplierControl</label>
         <select class="form-select" id="supplier_id" name="supplier_id">
           <option value="" selected disabled>Select Supplier</option>
-          <option value="3">Eastern Electronics</option>
-          <option value="5">MacroHardware Co</option>
-          <!-- Add more suppliers as needed -->
+          <!-- Dynamically populated supplier list -->
+          <c:forEach var="supplier" items="${allSupplier}">
+            <option value="${supplier.supplier_id}">${supplier.supplier_name}</option>
+          </c:forEach>
         </select>
       </div>
 

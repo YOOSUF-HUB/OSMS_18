@@ -132,6 +132,42 @@ public class SupplierControl {
         }
         return supplierList;
     }
+    
+    
+    // Get All Suppliers
+    public static List<SupplierFormModel> getSupplierForm() {
+        List<SupplierFormModel> supplierList = new ArrayList<>();
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            con = DBconnection.getConnection();
+            String sql = "SELECT * FROM supplier";
+            pstmt = con.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                SupplierFormModel supplier = new SupplierFormModel(
+                        rs.getInt("supplier_id"),
+                        rs.getString("supplier_name")
+                );
+                supplierList.add(supplier);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (con != null) con.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return supplierList;
+    }
 
     // Update Supplier
     public static boolean UpdateSupplier(int supplier_id, String supplier_name, String phone_number, String email,
