@@ -40,5 +40,9 @@ public class DBconnection {
 //		}
 //		return con;
 //	}
+<<<<<<< Updated upstream
 //	
+=======
+	
+>>>>>>> Stashed changes
 }

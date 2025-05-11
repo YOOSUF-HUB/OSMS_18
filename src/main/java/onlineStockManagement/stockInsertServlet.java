@@ -34,13 +34,9 @@ public class stockInsertServlet extends HttpServlet {
 		
 		if(isTrue == true) {
 			String alertMessage = "Data Insert Successfull";
-			//response.getWriter().println("<script> alert('"+alertMessage+"')window.location.href='/Online-stock-management-system/src/main/java/onlineStockManagement/GetAllStockServlet'</script>");
-			
-			//response.getWriter().println("<script> alert('"+alertMessage+"')window.location.href='/Online-stock-management-system/src/main/java/onlineStockManagement/GetAllStockServlet'</script>");
-			//response.getWriter().println("<script> alert('"+alertMessage+"');window.location.href='/Online-stock-management-system/src/main/java/onlineStockManagement/GetAllStockServlet'</script>");
+
 			response.setContentType("text/html");
 			response.getWriter().println("<script type='text/javascript'>");
-			//response.getWriter().println("alert('" + alertMessage + "');");
 			response.getWriter().println("window.location.href='GetAllStockServlet';");
 			response.getWriter().println("</script>");
 		}

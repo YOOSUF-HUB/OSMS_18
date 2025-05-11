@@ -105,5 +105,29 @@
      	<servlet-name>DeleteSupplierServlet</servlet-name>
      	<url-pattern>/DeleteSupplierServlet</url-pattern>
      </servlet-mapping>
+     
+     
+               	<!-- User Insert Register -->
+     <servlet>
+     	<servlet-name>UserInsertServlet</servlet-name>
+     	<servlet-class>UserPackage.UserInsertServlet</servlet-class>
+     </servlet>
+     
+     <servlet-mapping>
+     	<servlet-name>UserInsertServlet</servlet-name>
+     	<url-pattern>/UserInsertServlet</url-pattern>
+     </servlet-mapping>
+     
+     
+                    	<!-- User Insert Login -->
+     <servlet>
+     	<servlet-name>LoginServlet</servlet-name>
+     	<servlet-class>UserPackage.LoginServlet</servlet-class>
+     </servlet>
+     
+     <servlet-mapping>
+     	<servlet-name>LoginServlet</servlet-name>
+     	<url-pattern>/LoginServlet</url-pattern>
+     </servlet-mapping>
 
 </web-app>
