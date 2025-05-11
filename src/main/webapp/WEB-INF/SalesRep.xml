@@ -6,8 +6,8 @@
          version="3.1">
 
 
-
-     <servlet>
+  <!-- 	add customer -->     
+	<servlet>
      	<servlet-name>AddCustomerServlet</servlet-name>
      	<servlet-class>customerPackage.AddCustomerServlet</servlet-class>
      </servlet>
@@ -17,7 +17,7 @@
      </servlet-mapping>
      
      
-          <!-- display -->
+          <!-- customer display -->
      <servlet>
      	<servlet-name>GetAllCustomersServlet</servlet-name>
      	<servlet-class>customerPackage.GetAllCustomersServlet</servlet-class>
@@ -26,6 +26,28 @@
      <servlet-mapping>
      	<servlet-name>GetAllCustomersServlet</servlet-name>
      	<url-pattern>/GetAllCustomersServlet</url-pattern>
+     </servlet-mapping>
+     
+     
+     <!-- add order -->
+     <servlet>
+     	<servlet-name>AddOrderServlet</servlet-name>
+     	<servlet-class>customerPackage.AddOrderServlet</servlet-class>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>AddOrderServlet</servlet-name>
+     	<url-pattern>/AddOrderServlet</url-pattern>
+     </servlet-mapping>
+     
+          <!-- order display -->
+     <servlet>
+     	<servlet-name>GetAllOrdersServlet</servlet-name>
+     	<servlet-class>customerPackage.GetAllOrdersServlet</servlet-class>
+     </servlet>
+     
+     <servlet-mapping>
+     	<servlet-name>GetAllOrdersServlet</servlet-name>
+     	<url-pattern>/GetAllOrdersServlet</url-pattern>
      </servlet-mapping>
      
      

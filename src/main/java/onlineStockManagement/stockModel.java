@@ -28,6 +28,16 @@ public class stockModel {
 		this.description = description;
 	}
 
+	
+//	public stockModel(int item_id, String item_name,int quantity, float unit_cost,
+//			float selling_price) {
+//		super();
+//		this.item_id = item_id;
+//		this.item_name = item_name;
+//		this.quantity = quantity;
+//		this.unit_cost = unit_cost;
+//		this.selling_price = selling_price;
+//	}
 
 
 	public String getItem_manufacturer() {

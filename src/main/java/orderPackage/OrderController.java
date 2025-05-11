@@ -30,7 +30,7 @@ public class OrderController {
 			stmt = con.createStatement();
 			
 			//SQL 
-			String sql = "INSERT INTO Orders (item_id, quantity, orderDate, CustomerID) VALUE('"+item_id+"','"+quantity+"','"+orderDate+"','"+cusId+"')";
+			String sql = "INSERT INTO Orders (item_id, quantity, orderDate, customer_id) VALUE('"+item_id+"','"+quantity+"','"+orderDate+"','"+cusId+"')";
 			
 			int rs = stmt.executeUpdate(sql);
 			if(rs>0) {
@@ -62,9 +62,9 @@ public class OrderController {
             stmt = con.createStatement();
             
             // Corrected SQL Query with proper JOIN syntax
-            String sql = "SELECT O.order_id AS orderid, S.item_name AS itemname, O.quantity AS qty, O.orderDate AS odate, C.BusinessName AS bname, C.City AS city "
+            String sql = "SELECT O.order_id AS orderid, S.item_name AS itemname, O.quantity AS qty, O.orderDate AS odate, C.business_name AS bname, C.city AS city "
                     + "FROM Orders O "
-                    + "JOIN Customers C ON O.CustomerID = C.CustomerID "
+                    + "JOIN Customer C ON O.customer_id = C.customer_id "
                     + "JOIN Stock_Items S ON O.item_id = S.item_id "
                     + "ORDER BY orderid";
 

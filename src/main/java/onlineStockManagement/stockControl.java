@@ -112,6 +112,16 @@ public class stockControl {
 				);
 				stock.add(stck);
 			}
+//			while (rs.next()) {
+//				stockModel stck = new stockModel(
+//						rs.getInt("item_id"),
+//						rs.getString("item_name"),
+//						rs.getInt("quantity"),
+//						rs.getFloat("unit_cost"),
+//						rs.getFloat("selling_price")
+//				);
+//				stock.add(stck);
+//			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
