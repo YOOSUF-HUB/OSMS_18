@@ -1,11 +1,10 @@
-package onlineStockManagement;
+package StockOrderManagement;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DBconnection {
 
-	
 	private static String url="jdbc:mysql://localhost:3306/OnlineStockManagementSystem";
 	private static String user="root";
 	private static String pass="yoosuf123@";
@@ -24,6 +23,3 @@ public class DBconnection {
 	}
 	
 }
-	
-	
-

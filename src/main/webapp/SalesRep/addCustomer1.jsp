@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,8 +8,7 @@
 	<!-- include the meta name="viewport" tag as well for proper responsive behavior in mobile devices. -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-	<title>Customer Page</title>
-	
+	<title>New Customer</title>
 	
 	<!-- Include Bootstrap’s CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
@@ -21,7 +20,7 @@
       <div class="container-fluid ">
         <a class="navbar-brand " href="#"> <!-- navbar-brand class is used to highlight your brand name or logo -->
 	      <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-	      <i>TechNest</i>
+	      <i>Company Name</i>
 	    </a>
         <button class="navbar-toggler order-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -32,13 +31,7 @@
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Order</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#">Customer</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#">Product</a>
+                <a class="nav-link" href="#">Link</a>
                 </li>
                 <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -50,6 +43,9 @@
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">Link</a>
                 </li>
 
                 <!-- Show username here in mobile -->
@@ -74,48 +70,63 @@
             
         </div>
 
-        <!-- <div class="order-sm-1">
-            <button  type="button"     >Place Order</button>
-        </div> -->
         
       </div>
     </nav>
-    
-    
-    
 
     <div class="container-fluid">
-        <h4 class="mb-0">Customer</h4>
-        <div class="table-responsive">
-            <table class="table border">
-                <thead>
-                    <tr>
-                        <th>Customer ID</th>               
-                        <th>Customer Name</th>            
-                        <th>Business Name</th>
-                        <th>Phone Number</th>
-                        <th>Address</th>
-                        <th>City</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                	<c:forEach var="customer" items="${allCustomers}">
-                    <tr>
-                        <td>${customer.id}</td>
-                        <td>${customer.cname}</td>
-                        <td>${customer.bname}</td>
-                        <td>${customer.number}</td>
-                        <td>${customer.address}</td>
-                        <td>${customer.city}</td>
-                    </tr>          
-                    </c:forEach>         
-                </tbody>
-                
-            </table>
-
+        <div class="d-flex justify-content-between align-items-center my-3">
+            <h4 class="mb-3">Add New Customer</h4>
         </div>
 
+        <div class="container-fluid">
+            <form action="../AddCustomerServlet" class="row g-3" method="post">
+                
+                <div class="col-sm-6">
+                  <label for="cname" class="form-label" >Customer Name</label>
+                  <input type="text" class="form-control" id="cname" name="cname">
+                </div>
+                <div class="col-sm-6">
+                  <label for="bname" class="form-label">Business Name</label>
+                  <input type="text" class="form-control" id="bname" name="bname">
+                </div>
+                
+                <div class="col-md-6">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="email" name="email">
+                </div>
+                <div class="col-md-6">
+                  <label for="pnumber" class="form-label">Phone Number</label>
+                  <input type="text" class="form-control" id="pnumber" name="pnumber">
+                </div>
+
+                <div class="col-12">
+                  <label for="address" class="form-label">Business Address</label>
+                  <input type="text" class="form-control" id="address" name="address">
+                </div>
+                <div class="col-md-6">
+                  <label for="city" class="form-label">City</label>
+                  <input type="text" class="form-control" id="city" name="city">
+                </div>
+                <div class="col-md-4">
+                  <label for="province" class="form-label">Province</label>
+                  <select id="province" class="form-select" name="province">
+                    <option selected>Choose...</option>
+                    <option>CP</option>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <label for="zip" class="form-label">Zip</label>
+                  <input type="text" class="form-control" id="zip" name="zip">
+                </div>
+                
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="" class="btn btn-secondary">Cancel</button>
+                </div>
+              </form>
+        </div>
+        
     </div>
 
 

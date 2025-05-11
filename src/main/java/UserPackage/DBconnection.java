@@ -1,10 +1,9 @@
-package onlineStockManagement;
+package UserPackage;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DBconnection {
-
 	
 	private static String url="jdbc:mysql://localhost:3306/OnlineStockManagementSystem";
 	private static String user="root";
@@ -21,9 +20,7 @@ public class DBconnection {
 			System.out.println("Database not connected");
 		}
 		return con;
-	}
-	
+
 }
 	
-	
-
+}
