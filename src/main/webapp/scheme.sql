@@ -54,17 +54,6 @@ CREATE TABLE `supplier` (
 
 
 
-CREATE TABLE Customer (
-    customer_id INT AUTO_INCREMENT PRIMARY KEY,
-    customer_name VARCHAR(255) NOT NULL,
-    business_name VARCHAR(255),
-    email VARCHAR(255) UNIQUE,
-    phone_number VARCHAR(20),
-    address VARCHAR(255),
-    city VARCHAR(100),
-    province VARCHAR(100),
-    zip_code VARCHAR(20)
-);
 
 CREATE TABLE `stock_orders` (
   `order_id` int NOT NULL AUTO_INCREMENT,
@@ -96,3 +85,42 @@ CREATE TABLE `Users` (
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_email` (`user_email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+
+
+
+////////////////////////////////////
+
+CREATE TABLE Customer (
+    customer_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_name VARCHAR(255) NOT NULL,
+    business_name VARCHAR(255),
+    email VARCHAR(255) UNIQUE,
+    phone_number VARCHAR(20),
+    address VARCHAR(255),
+    city VARCHAR(100),
+    province VARCHAR(100),
+    zip_code VARCHAR(20)
+);
+
+CREATE TABLE `Stock_Items` (
+  `item_id` int NOT NULL AUTO_INCREMENT,
+  `item_name` varchar(100) NOT NULL,
+  `quantity` int DEFAULT '0',
+  `unit_cost` decimal(10,2) DEFAULT NULL,
+  `selling_price` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`item_id`)
+);
+
+CREATE TABLE Orders (
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
+    item_id INT,
+    quantity INT NOT NULL,
+    orderDate DATE NOT NULL,
+    customer_id INT,
+    
+    FOREIGN KEY (item_id) REFERENCES Stock_Items(item_id),
+    FOREIGN KEY (customer_id) REFERENCES Customer(customer_id)
+);
+
+
