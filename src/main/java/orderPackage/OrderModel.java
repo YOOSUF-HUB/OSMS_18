@@ -9,6 +9,7 @@ public class OrderModel {
 	String odate;
 	String bname;
 	String city;
+	float total_price;
 	
 	
 	public OrderModel(int orderid, String itemname, String qty, String odate, String bname, String city) {
@@ -19,6 +20,17 @@ public class OrderModel {
 		this.odate = odate;
 		this.bname = bname;
 		this.city = city;
+		
+	}
+
+
+	public float getTotal_price() {
+		return total_price;
+	}
+
+
+	public void setTotal_price(float total_price) {
+		this.total_price = total_price;
 	}
 
 

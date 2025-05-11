@@ -20,7 +20,7 @@ public class OrderController {
 		
 		
 	//insert data function
-	public static boolean insertdata (int item_id, int quantity, Date orderDate, int cusId) {
+	public static boolean insertdata (int item_id, int quantity, Date orderDate, int cusId, float total_price) {
 		
 		isSuccess = false;
 		
@@ -30,7 +30,7 @@ public class OrderController {
 			stmt = con.createStatement();
 			
 			//SQL 
-			String sql = "INSERT INTO Orders (item_id, quantity, orderDate, customer_id) VALUE('"+item_id+"','"+quantity+"','"+orderDate+"','"+cusId+"')";
+			String sql = "INSERT INTO Orders (item_id, quantity, orderDate, customer_id, total_price) VALUE('"+item_id+"','"+quantity+"','"+orderDate+"','"+cusId+"', '"+total_price+"')";
 			
 			int rs = stmt.executeUpdate(sql);
 			if(rs>0) {

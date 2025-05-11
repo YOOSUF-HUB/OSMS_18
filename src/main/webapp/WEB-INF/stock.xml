@@ -95,6 +95,8 @@
      </servlet-mapping>
      
      
+     
+     
           <!-- Update Supplier -->
       <servlet>
      	<servlet-name>updateSupplierServlet</servlet-name>
@@ -147,7 +149,7 @@
                          	<!-- StockOrder Insert -->
      <servlet>
      	<servlet-name>StockOrderInsertServlet</servlet-name>
-     	<servlet-class>StockOrderManagement.StockOrderInsertServlet</servlet-class>
+     	<servlet-class>SupplierPackage.StockOrderInsertServlet</servlet-class>
      </servlet>
      
      <servlet-mapping>
@@ -160,7 +162,7 @@
 
     <servlet>
         <servlet-name>StockOrdersServlet</servlet-name>
-        <servlet-class>StockOrderManagement.StockOrdersServlet</servlet-class>
+        <servlet-class>SupplierPackage.StockOrdersServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

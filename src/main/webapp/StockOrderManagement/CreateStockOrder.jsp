@@ -1,6 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+
+<%@ page import = "SupplierPackage.SupplierModel" %>
+<%@ page import="java.util.List" %>
+
+
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Insert Stock Order</title>
@@ -107,7 +113,7 @@
 <body>
   <div class="container mt-5">
     <h2 class="mb-4">Insert Stock Order</h2>
-    <form action="../StockOrderInsertServlet" method="post">
+    <form action="StockOrderInsertServlet" method="post">
       <div class="row mb-3">
         <div class="col-md-6">
           <label for="order_date" class="form-label">Order Date</label>
@@ -161,31 +167,24 @@
         </div>
       </div>
 
+
       <div class="mb-3">
         <label for="supplier_id" class="form-label">Supplier</label>
         <select class="form-select" id="supplier_id" name="supplier_id" required>
           <option value="" selected disabled>Select Supplier</option>
-          <c:forEach var="supplier" items="${SupplierID}">
-            <option value="${supplierList.supplier_id}">${supplierList.supplier_name}</option>
-          </c:forEach>
-        </select>
-      </div>
-      
-      
-      <div class="mb-3">
-        <label for="supplier_id" class="form-label">SupplierControl</label>
-        <select class="form-select" id="supplier_id" name="supplier_id">
-          <option value="" selected disabled>Select Supplier</option>
-          <!-- Dynamically populated supplier list -->
           <c:forEach var="supplier" items="${allSupplier}">
+          
             <option value="${supplier.supplier_id}">${supplier.supplier_name}</option>
+            
           </c:forEach>
         </select>
       </div>
+      
+
 
       <div class="d-flex justify-content-between">
         <button type="submit" class="btn btn-primary">Submit</button>
-        <a href="../StockManagerDashboard.jsp" class="btn btn-danger">Back to Dashboard</a>
+        <a href="/StockManagerDashboard.jsp" class="btn btn-danger">Back to Dashboard</a>
       </div>
     </form>
   </div>

@@ -123,4 +123,18 @@ CREATE TABLE Orders (
     FOREIGN KEY (customer_id) REFERENCES Customer(customer_id)
 );
 
+CREATE TABLE `Orders` (
+  `order_id` int NOT NULL AUTO_INCREMENT,
+  `item_id` int DEFAULT NULL,
+  `quantity` int NOT NULL,
+  `orderDate` date NOT NULL,
+  `customer_id` int DEFAULT NULL,
+  `total_price` int DEFAULT NULL,
+  PRIMARY KEY (`order_id`),
+  KEY `item_id` (`item_id`),
+  KEY `customer_id` (`customer_id`),
+  CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `Stock_Items` (`item_id`),
+  CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `Customer` (`customer_id`)
+) 
+
 

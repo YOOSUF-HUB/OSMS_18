@@ -165,7 +165,7 @@
 
                         </button>
                         <div class="dropdown-container">
-                            <a href="StockOrderManagement/CreateStockOrder.jsp"><i class="fas fa-plus"></i> Create New Order</a>
+                            <a href="StockOrderInsertServlet"><i class="fas fa-plus"></i> Create New Order</a>
                             <a href="StockOrdersServlet"><i class="fas fa-list"></i> View Orders</a>
                         </div>
                     </li>

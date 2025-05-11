@@ -47,6 +47,7 @@ public class AddOrderServlet extends HttpServlet {
 		String cusIDstr = request.getParameter("cusID");
 		String itemIDstr = request.getParameter("itemID");
 		String qtystr = request.getParameter("qty");
+		float total_price = Float.parseFloat(request.getParameter("total_price"));
 		
 		//changing string to int 
 		int cusId = Integer.parseInt(cusIDstr);
@@ -56,7 +57,7 @@ public class AddOrderServlet extends HttpServlet {
 
 		
 		// Insert the order into the database
-        boolean isTrue = OrderController.insertdata(itemId, quantity, orderDate, cusId);
+        boolean isTrue = OrderController.insertdata(itemId, quantity, orderDate, cusId, total_price);
         
         
 		if (isTrue == true) {
