@@ -253,7 +253,7 @@
             </tbody>
         </table>
         <a href="StockManagement/create_stock.jsp" class="btn btn-primary" id="view-stock-btn-other">Add Stock</a>
-        <a href="StockManagerDashboard.jsp" class="btn btn-secondary" id="view-stock-btn-other">Back to Dashboard</a>
+        <a href="StockManagerDashboard.jsp" class="btn btn-danger" id="view-stock-btn-other">Back to Dashboard</a>
         
     </div>
 

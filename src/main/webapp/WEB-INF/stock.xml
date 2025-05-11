@@ -129,5 +129,33 @@
      	<servlet-name>LoginServlet</servlet-name>
      	<url-pattern>/LoginServlet</url-pattern>
      </servlet-mapping>
+     
+     
+     
+     
+                         	<!-- StockOrder Insert -->
+     <servlet>
+     	<servlet-name>StockOrderInsertServlet</servlet-name>
+     	<servlet-class>StockOrderManagement.StockOrderInsertServlet</servlet-class>
+     </servlet>
+     
+     <servlet-mapping>
+     	<servlet-name>StockOrderInsertServlet</servlet-name>
+     	<url-pattern>/StockOrderInsertServlet</url-pattern>
+     </servlet-mapping>
+
+
+						<!-- View Stock Orders -->
+
+    <servlet>
+        <servlet-name>StockOrdersServlet</servlet-name>
+        <servlet-class>StockOrderManagement.StockOrdersServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>StockOrdersServlet</servlet-name>
+        <url-pattern>/StockOrdersServlet</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>
