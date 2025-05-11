@@ -1,51 +1,89 @@
 package orderPackage;
 
+
 public class OrderModel {
 	
+	int orderid;
+	String itemname;
+	String qty;
+	String odate;
+	String bname;
+	String city;
 	
-	private int orderId;
-	private int item_id;
-	private int quantity;
-	private int id;
 	
-	
-	public OrderModel(int orderId, int item_id, int quantity, int id) {
-		super();
-		this.orderId = orderId;
-		this.item_id = item_id;
-		this.quantity = quantity;
-		this.id = id;
+	public OrderModel(int orderid, String itemname, String qty, String odate, String bname, String city) {
+		
+		this.orderid = orderid;
+		this.itemname = itemname;
+		this.qty = qty;
+		this.odate = odate;
+		this.bname = bname;
+		this.city = city;
 	}
-	
-	
-	
-	public int getOrderId() {
-		return orderId;
-	}
-	public int getItem_id() {
-		return item_id;
-	}
-	public int getQuantity() {
-		return quantity;
-	}
-	public int getId() {
-		return id;
-	}
-	public void setOrderId(int orderId) {
-		this.orderId = orderId;
-	}
-	public void setItem_id(int item_id) {
-		this.item_id = item_id;
-	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	
-	
-	
-	
 
+
+	public int getOrderid() {
+		return orderid;
+	}
+
+
+	public String getItemname() {
+		return itemname;
+	}
+
+
+	public String getQty() {
+		return qty;
+	}
+
+
+	public String getOdate() {
+		return odate;
+	}
+
+
+	public String getBname() {
+		return bname;
+	}
+
+
+	public String getCity() {
+		return city;
+	}
+
+
+	public void setOrderid(int orderid) {
+		this.orderid = orderid;
+	}
+
+
+	public void setItemname(String itemname) {
+		this.itemname = itemname;
+	}
+
+
+	public void setQty(String qty) {
+		this.qty = qty;
+	}
+
+
+	public void setOdate(String odate) {
+		this.odate = odate;
+	}
+
+
+	public void setBname(String bname) {
+		this.bname = bname;
+	}
+
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+	
+	
+	
+	
+	
+	
 }

@@ -1,15 +1,17 @@
 package orderPackage;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import onlineStockManagement.DBconnection;
 
 public class OrderController {
 	
 	
-	//connect DB
 	private static boolean isSuccess;
 	private static Connection con = null;
 	private static Statement stmt = null;
@@ -18,7 +20,7 @@ public class OrderController {
 		
 		
 	//insert data function
-	public static boolean insertdata (int item_id, int quantity, int id) {
+	public static boolean insertdata (int item_id, int quantity, Date orderDate, int cusId) {
 		
 		isSuccess = false;
 		
@@ -28,7 +30,7 @@ public class OrderController {
 			stmt = con.createStatement();
 			
 			//SQL 
-			String sql = "INSERT INTO Orders VALUES(0,'"+item_id+"','"+quantity+"','"+id+"')";
+			String sql = "INSERT INTO Orders (item_id, quantity, orderDate, CustomerID) VALUE('"+item_id+"','"+quantity+"','"+orderDate+"','"+cusId+"')";
 			
 			int rs = stmt.executeUpdate(sql);
 			if(rs>0) {
@@ -47,6 +49,43 @@ public class OrderController {
 		
 		return isSuccess;
 		
+	}
+	
+	
+	// getting all order details
+	public static List<OrderModel> getAllOrders(){
+		
+		ArrayList<OrderModel> orders = new ArrayList<> ();
+		
+		try {
+            con = DBconnection.getConnection();
+            stmt = con.createStatement();
+            
+            // Corrected SQL Query with proper JOIN syntax
+            String sql = "SELECT O.order_id AS orderid, S.item_name AS itemname, O.quantity AS qty, O.orderDate AS odate, C.BusinessName AS bname, C.City AS city "
+                    + "FROM Orders O "
+                    + "JOIN Customers C ON O.CustomerID = C.CustomerID "
+                    + "JOIN Stock_Items S ON O.item_id = S.item_id "
+                    + "ORDER BY orderid";
+
+            rs = stmt.executeQuery(sql); // Execute the correct SQL query
+
+            while (rs.next()) {
+                int orderid = rs.getInt("orderid");  
+                String itemname = rs.getString("itemname");
+                String qty = rs.getString("qty");
+                String odate = rs.getString("odate");
+                String bname = rs.getString("bname");
+                String city = rs.getString("city");
+
+                OrderModel order = new OrderModel(orderid, itemname, qty, odate, bname, city);
+                orders.add(order);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		
+		return orders;
 	}
 
 }

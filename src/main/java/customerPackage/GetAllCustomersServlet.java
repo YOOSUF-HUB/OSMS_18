@@ -21,7 +21,7 @@ public class GetAllCustomersServlet extends HttpServlet {
 		List<CustomerModel> allCustomers = CustomerController.getAllCustomers();
 		request.setAttribute("allCustomers", allCustomers);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/SalesRep/viewCustomer.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/CustomerManagement/viewCustomer.jsp");
 		dispatcher.forward(request, response);
 	}
 	
