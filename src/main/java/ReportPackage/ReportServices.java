@@ -24,12 +24,12 @@ public class ReportServices implements IReportController {
             e.printStackTrace();
         }
     }
-
+    
     @Override
     public boolean createReport(String rName, String rDate, String rCategory, String rAuthor, String rStatus, String rFilePath, String rContentType, String rContentSummary, String rContent, int userId) {
         isSuccess = false;
         try {
-            con = DataBaseReport.getConnection();
+            con = DBconnection.getConnection();
             String sql = "INSERT INTO financialreport (rName, rDate, rCategory, rAuthor, rStatus, rFilePath, rContentType, rContentSummary, rContent, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, rName);
@@ -58,7 +58,7 @@ public class ReportServices implements IReportController {
     public List<ReportModel> viewReports() {
         List<ReportModel> reports = new ArrayList<>();
         try {
-            con = DataBaseReport.getConnection();
+            con = DBconnection.getConnection();
             String sql = "SELECT r.*, u.name AS author_name FROM financialreport r JOIN user u ON r.user_id = u.id";
             pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
@@ -89,7 +89,7 @@ public class ReportServices implements IReportController {
     public ReportModel getReportById(int rId) {
         ReportModel report = null;
         try {
-            con = DataBaseReport.getConnection();
+            con = DBconnection.getConnection();
             String sql = "SELECT r.*, u.name AS author_name FROM financialreport r JOIN user u ON r.user_id = u.id WHERE r.rId = ?";
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, rId);
@@ -120,7 +120,7 @@ public class ReportServices implements IReportController {
     public boolean updateReport(int rId, String rName, String rDate, String rCategory, String rAuthor, String rStatus, String rFilePath, String rContentType, String rContentSummary, String rContent, int userId) {
         isSuccess = false;
         try {
-            con = DataBaseReport.getConnection();
+            con = DBconnection.getConnection();
             String sql = "UPDATE financialreport SET rName = ?, rDate = ?, rCategory = ?, rAuthor = ?, rStatus = ?, rFilePath = ?, rContentType = ?, rContentSummary = ?, rContent = ?, user_id = ? WHERE rId = ?";
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, rName);
@@ -152,7 +152,7 @@ public class ReportServices implements IReportController {
         Statement sta = null;
         ResultSet countRs = null;
         try {
-            con = DataBaseReport.getConnection();
+            con = DBconnection.getConnection();
             String sql = "DELETE FROM financialreport WHERE rId = ?";
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, rId);
