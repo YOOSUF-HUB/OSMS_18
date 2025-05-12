@@ -42,8 +42,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarScroll">
             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                <li class="nav-item"><a class="nav-link" href="SalesRepDashboard.jsp">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="GetAllOrdersServlet">Link</a></li>
+                <li class="nav-item"><a class="nav-link" href="GetAllCustomersServlet">Customer</a></li>
+                <li class="nav-item"><a class="nav-link" href="GetAllStockServlet">Product</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Link</a>
                     <ul class="dropdown-menu">
@@ -53,7 +55,6 @@
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link disabled">Link</a></li>
                 <li class="nav-item d-lg-none"><a class="nav-link" href="#"><strong>John Doe</strong></a></li>
                 <li class="nav-item d-lg-none"><a class="nav-link" href="#">Profile</a></li>
                 <li class="nav-item d-lg-none"><a class="nav-link" href="#">Logout</a></li>
@@ -110,7 +111,7 @@
 
             <div class="col-12 d-flex gap-2 mt-4">
                 <button type="submit" class="btn btn-primary">Submit</button>
-                <a href="#" class="btn btn-secondary">Cancel</a>
+                <a href="#" class="btn btn-secondary" onclick="window.history.back()">Cancel</a>
             </div>
         </form>
     </div>

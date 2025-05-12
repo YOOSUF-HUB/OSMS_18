@@ -29,6 +29,18 @@
      </servlet-mapping>
      
      
+               <!-- customer update -->
+     <servlet>
+     	<servlet-name>UpdateCustomerServlet</servlet-name>
+     	<servlet-class>customerPackage.UpdateCustomerServlet</servlet-class>
+     </servlet>
+     
+     <servlet-mapping>
+     	<servlet-name>UpdateCustomerServlet</servlet-name>
+     	<url-pattern>/UpdateCustomerServlet</url-pattern>
+     </servlet-mapping>
+     
+     
      <!-- add order -->
      <servlet>
      	<servlet-name>AddOrderServlet</servlet-name>

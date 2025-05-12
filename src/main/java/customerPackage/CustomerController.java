@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import onlineStockManagement.DBconnection;
+import onlineStockManagement.stockModel;
 
 public class CustomerController {
 
@@ -36,7 +37,12 @@ public class CustomerController {
 	       
 	        int rs = stmt.executeUpdate(sql);
 
-	        isSuccess = rs > 0;
+	        if(rs>0) {
+				isSuccess = true;
+			}
+			else {
+				isSuccess = false;
+			}
 	    } catch (Exception e) {
 	        System.out.println("ERROR INSERTING CUSTOMER: " + e.getMessage());
 	        e.printStackTrace();
@@ -47,32 +53,34 @@ public class CustomerController {
 
 	
 	
-//	public static customerModel getCustomerById(int customerId) {
-//	    CustomerModel customer = null;
-//	    try {
-//	        con = DBconnection.getConnection();
-//	        stmt = con.createStatement();
-//	        String sql = "SELECT * FROM Customers WHERE CustomerID = " + customerId;
-//	        rs = stmt.executeQuery(sql);
-//
-//	        if (rs.next()) {
-//	            int id = rs.getInt("CustomerID");
-//	            String cname = rs.getString("CustomerName");
-//	            String bname = rs.getString("BusinessName");
-//	            String email = rs.getString("Email");
-//	            String number = rs.getString("PhoneNumber");
-//	            String address = rs.getString("Address");
-//	            String city = rs.getString("City");
-//	            String province = rs.getString("Province");
-//	            String zip = rs.getString("ZipCode");
-//
-//	            Customer = new CustomerModel(id, cname, bname, email, number, address, city, province, zip);
-//	        }
-//	    } catch (Exception e) {
-//	        e.printStackTrace();
-//	    } 
-//	    return customer;
-//	}
+	public static List<CustomerModel> getCustomerById(int customerId) {
+
+		ArrayList<CustomerModel> customers = new ArrayList<>();
+	    try {
+	        con = DBconnection.getConnection();
+	        stmt = con.createStatement();
+	        String sql = "SELECT * FROM Customer WHERE customer_id = " + customerId;
+	        rs = stmt.executeQuery(sql);
+
+	        if (rs.next()) {
+	            int id = rs.getInt("customer_id");
+	            String cname = rs.getString("customer_name");
+	            String bname = rs.getString("business_name");
+	            String email = rs.getString("email");
+	            String number = rs.getString("phone_number");
+	            String address = rs.getString("address");
+	            String city = rs.getString("city");
+	            String province = rs.getString("province");
+	            String zip = rs.getString("zip_code");
+
+	            CustomerModel customer = new CustomerModel(id, cname, bname, email, number, address, city, province, zip);
+	            customers.add(customer);
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } 
+	    return customers;
+	}
 	
 	//getting all customer details
 	public static List<CustomerModel> getAllCustomers() {
@@ -104,6 +112,50 @@ public class CustomerController {
 
 	    return customers;
 	}
+	
+	
+	
+	//update  function
+		public static boolean updateCustomer(int id, String cname, String bname, String email, String number, String address, String city,
+		        String province, String zip) {
+
+
+		    try {
+		        con = DBconnection.getConnection();
+		        stmt = con.createStatement();
+
+		        String sql = "UPDATE Customer SET "
+		                + "customer_name = '" + cname + "', "
+		                + "business_name = '" + bname + "', "
+		                + "email = '" + email + "', "
+		                + "phone_number = '" + number + "', "
+		                + "address = '" + address + "', "
+		                + "city = '" + city + "', "
+		                + "province = '" + province + "', "
+		                + "zip_code = '" + zip + "' "
+		                + "WHERE customer_id = " + id;
+		        
+		        System.out.println("Executing SQL: " + sql);
+
+		                     
+
+		       
+		        int rs = stmt.executeUpdate(sql);
+		        
+		        if(rs>0) {
+					isSuccess = true;
+				}
+				else {
+					isSuccess = false;
+				}
+		    } catch (Exception e) {
+		        System.out.println("ERROR UPDATING CUSTOMER: " + e.getMessage());
+		        e.printStackTrace();
+		         
+		    }
+
+		    return isSuccess;
+		}
 
 
 }
