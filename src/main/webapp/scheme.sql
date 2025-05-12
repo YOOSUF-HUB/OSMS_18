@@ -16,13 +16,33 @@ CREATE TABLE `Stock_Items` (
 
 
 
-CREATE TABLE financialreport (
-    rID INT NOT NULL AUTO_INCREMENT,      -- Unique report ID
-    rName VARCHAR(45) NOT NULL,           -- Report name
-    rDate DATE NOT NULL,                  -- Report date
-    rContent TEXT,                        -- Report content
-    PRIMARY KEY (rID)                     -- Primary key declaration
+CREATE TABLE `financialreport` (
+  `rId` int NOT NULL AUTO_INCREMENT,
+  `rName` varchar(45) NOT NULL,
+  `rDate` date NOT NULL,
+  `rCategory` varchar(100) NOT NULL,
+  `rAuthor` varchar(100) DEFAULT NULL,
+  `user_id` int DEFAULT NULL,
+  `rStatus` varchar(45) DEFAULT NULL,
+  `rFilePath` varchar(455) DEFAULT NULL,
+  `rContentType` varchar(545) DEFAULT NULL,
+  `rContent` text,
+  `rContentSummary` varchar(5000) DEFAULT NULL,
+  PRIMARY KEY (`rId`),
+  KEY `fk_user_report_idx` (`user_id`)
 );
+
+
+CREATE TABLE `user` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `phone` varchar(45) NOT NULL,
+  `role` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ;
+
 
 
 CREATE TABLE OnlineStockManagementSystem.supplier (
