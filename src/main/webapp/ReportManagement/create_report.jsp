@@ -1,105 +1,119 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Generate New Report</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CDN -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Google Font -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
         }
         .card {
-            background: #ffffff;
             border: none;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
-        }
-        .card:hover {
-            transform: translateY(-5px);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            border-radius: 0.5rem;
         }
         .card-header {
-            background: linear-gradient(45deg, #FF6B6B, #FF8E53);
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
+            background-color: #007bff;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+            border-radius: 0.5rem 0.5rem 0 0;
         }
         .card-title {
-            font-size: 26px;
-            margin: 0;
-            font-weight: 600;
+            font-size: 1.5rem;
+            margin-bottom: 0;
         }
         .card-body {
-            padding: 30px;
+            padding: 1.5rem;
         }
         .form-group label {
-            font-weight: 600;
-            color: #333;
+            font-weight: bold;
+            color: #343a40;
+            margin-bottom: 0.5rem;
         }
         .form-control {
-            border-radius: 8px;
-            padding: 10px 15px;
+            border-radius: 0.25rem;
         }
-        .form-control:focus {
-            border-color: #FF6B6B;
-            box-shadow: 0 0 0 0.2rem rgba(255, 107, 107, 0.25);
+        .form-control-file {
+            padding-top: 0.375rem;
+            padding-bottom: 0.375rem;
         }
         .btn-primary {
-            background: linear-gradient(45deg, #FF6B6B, #FF8E53);
-            border: none;
-            padding: 10px 25px;
+            border-radius: 0.25rem;
+            padding: 0.75rem 1.5rem;
             font-weight: 600;
-            border-radius: 30px;
-            transition: background 0.3s, transform 0.2s;
         }
         .btn-primary:hover {
-            background: linear-gradient(45deg, #FF8E53, #FF6B6B);
-            transform: scale(1.05);
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .text-center {
+            margin-top: 1.5rem;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="col-md-8 offset-md-2">
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="card-title">Generate New Report</h2>
-                </div>
-                <div class="card-body">
-                    <form action="../CreateReportServlet" method="post">
-                        <div class="form-group">
-                            <label for="rName">Report Name</label>
-                            <input type="text" class="form-control" id="rName" name="rName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="rDate">Report Date</label>
-                            <input type="date" class="form-control" id="rDate" name="rDate" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="rContent">Report Content</label>
-                            <textarea class="form-control" id="rContent" name="rContent" rows="5" required></textarea>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Generate Report</button>
-                        </div>
-                    </form>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title text-center">Generate New Report</h2>
+                    </div>
+                    <div class="card-body">
+                        <form action="../CreateReportServlet" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="rName">Report Name</label>
+                                <input type="text" class="form-control" id="rName" name="rName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="rDate">Report Date</label>
+                                <input type="date" class="form-control" id="rDate" name="rDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="rCategory">Category</label>
+                                <select class="form-control" id="rCategory" name="rCategory">
+                                    <option value="Financial">Financial</option>
+                                    <option value="Sales">Sales</option>
+                                    <option value="Performance">Performance</option>
+                                    <option value="Bug Report">Bug Report</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="rStatus">Status</label>
+                                <select class="form-control" id="rStatus" name="rStatus">
+                                    <option value="Draft">Draft</option>
+                                    <option value="Published">Published</option>
+                                    <option value="Archived">Archived</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="reportFile">Upload Report File</label>
+                                <input type="file" class="form-control-file" id="reportFile" name="reportFile" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="rContentSummary">Report Summary</label>
+                                <textarea class="form-control" id="rContentSummary" name="rContentSummary" rows="3"></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Generate Report</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

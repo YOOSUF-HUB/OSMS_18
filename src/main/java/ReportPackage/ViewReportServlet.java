@@ -12,16 +12,25 @@ public class ViewReportServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-    	int rId = Integer.parseInt(request.getParameter("rId"));
-        IReportController reportController = new ReportServices();
-        ReportModel report = reportController.getReportById(rId);
 
-        if (report != null) {
-            request.setAttribute("report", report);
-            request.getRequestDispatcher("ReportManagement/reportDetails.jsp").forward(request, response);
+        String rIdParam = request.getParameter("rId");
+        if (rIdParam != null && !rIdParam.isEmpty()) {
+            try {
+                int rId = Integer.parseInt(rIdParam);
+                IReportController reportController = new ReportServices();
+                ReportModel report = reportController.getReportById(rId);
+
+                if (report != null) {
+                    request.setAttribute("report", report);
+                    request.getRequestDispatcher("ReportManagement/reportDetails.jsp").forward(request, response);
+                } else {
+                    response.sendRedirect("error.jsp?message=Report not found with ID: " + rId);
+                }
+            } catch (NumberFormatException e) {
+                response.sendRedirect("error.jsp?message=Invalid Report ID format");
+            }
         } else {
-            response.sendRedirect("error.jsp?message=Report not found");
+            response.sendRedirect("error.jsp?message=Report ID not provided");
         }
     }
 }

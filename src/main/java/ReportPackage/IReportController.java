@@ -1,12 +1,12 @@
 package ReportPackage;
 
+
 import java.util.List;
 
 public interface IReportController {
-
-	public boolean createReport(String rName , String rDate , String rContent);
-	 public List<ReportModel> viewReports();
-	 public ReportModel getReportById(int rId);
-	 public boolean updateReport(int rId, String rName, String rDate, String rContent);
-	 public boolean deleteReport(int rId);
+    boolean createReport(String rName, String rDate, String rCategory, String rAuthor, String rStatus, String rFilePath, String rContentType, String rContentSummary, String rContent, int userId);
+    List<ReportModel> viewReports();
+    ReportModel getReportById(int rId);
+    boolean updateReport(int rId, String rName, String rDate, String rCategory, String rAuthor, String rStatus, String rFilePath, String rContentType, String rContentSummary, String rContent, int userId);
+    boolean deleteReport(int rId);
 }

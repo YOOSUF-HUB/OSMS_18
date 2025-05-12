@@ -1,9 +1,9 @@
-package ReportPackage;
+package UserPackage;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class DataBaseReport {
+public class DBConnection {
 
 	private static String url="jdbc:mysql://localhost:3306/reportmanagement";
 	private static String user="root";
@@ -21,5 +21,4 @@ public class DataBaseReport {
 		
 		return con;
 	}
-	
 }
