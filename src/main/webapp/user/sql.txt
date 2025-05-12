@@ -1,9 +1,0 @@
-create table user(
-
-	id int (primary key) auto increment not null,
-	name varchar(100) not null,
-	email varchar(200) not null unique,
-	password varchar(200) not null,
-	phone varchar(200) not null unique,
-	role varchar(200) not null,
-)
