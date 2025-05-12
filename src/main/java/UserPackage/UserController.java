@@ -15,7 +15,7 @@ public class UserController implements IUser {
     public boolean registerUser(String name, String email, String password, String phone, String role) {
         boolean isSuccess = false;
         try {
-            con = DBConnection.getConnection();
+            con = DBconnection.getConnection();
             String sql = "INSERT INTO user (name, email, password, phone, role) VALUES (?, ?, ?, ?, ?)";
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, name);
@@ -39,7 +39,7 @@ public class UserController implements IUser {
     public UserModel authenticateUser(String email, String password) {
         UserModel user = null;
         try {
-            con = DBConnection.getConnection();
+            con = DBconnection.getConnection();
             String sql = "SELECT id, name, email, password, role FROM user WHERE email = ?";
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, email);
@@ -68,7 +68,7 @@ public class UserController implements IUser {
     public List<UserModel> getAllUsers() {
         List<UserModel> users = new ArrayList<>();
         try {
-            con = DBConnection.getConnection();
+            con = DBconnection.getConnection();
             String sql = "SELECT id, name, email, phone, role FROM user";
             pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
@@ -93,7 +93,7 @@ public class UserController implements IUser {
     public UserModel getUserById(int id) { 
         UserModel user = null;
         try {
-            con = DBConnection.getConnection();
+            con = DBconnection.getConnection();
             String sql = "SELECT id, name, email, password, phone, role FROM user WHERE id = ?";
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, id);
@@ -120,7 +120,7 @@ public class UserController implements IUser {
     public boolean deleteUser(int id) {
         boolean isSuccess = false;
         try {
-            con = DBConnection.getConnection();
+            con = DBconnection.getConnection();
             String sql = "DELETE FROM user WHERE id = ?";
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, id);
@@ -151,7 +151,7 @@ public class UserController implements IUser {
     public int getTotalUserCount() {
         int count = 0;
         try {
-            con = DBConnection.getConnection();
+            con = DBconnection.getConnection();
             String sql = "SELECT COUNT(*) FROM user";
             pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
@@ -170,7 +170,7 @@ public class UserController implements IUser {
     public boolean updateUser(int id, String name, String email, String password, String phone, String role) {
         boolean isSuccess = false;
         try {
-            con = DBConnection.getConnection();
+            con = DBconnection.getConnection();
             String sql;
 
             if (password != null && !password.isEmpty()) {
