@@ -91,25 +91,8 @@ CREATE TABLE `stock_orders` (
   PRIMARY KEY (`order_id`),
   KEY `fk_supplier_id` (`supplier_id`),
   CONSTRAINT `fk_supplier_id` FOREIGN KEY (`supplier_id`) REFERENCES `supplier` (`supplier_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) 
 
-
-
-CREATE TABLE `Users` (
-  `user_id` int NOT NULL AUTO_INCREMENT,
-  `user_name` varchar(100) NOT NULL,
-  `user_email` varchar(100) NOT NULL,
-  `user_password` varchar(255) NOT NULL,
-  `user_phone` varchar(20) DEFAULT NULL,
-  `user_address` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`user_id`),
-  UNIQUE KEY `user_email` (`user_email`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-=======
-
-
-
-////////////////////////////////////
 
 CREATE TABLE Customer (
     customer_id INT AUTO_INCREMENT PRIMARY KEY,
