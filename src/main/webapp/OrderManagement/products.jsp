@@ -67,7 +67,6 @@
                         <th>Quantity</th>
                         <th>Selling Price</th>
                         <th>Description</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -91,26 +90,13 @@
                                             ${stock.description}
                                         </div>
                                     </td>
-                                    <td>
-                                        <div class="d-flex gap-2">
-                                            <!-- Update -->
-                                            <a href="StockManagement/update_stock.jsp?item_id=${stock.item_id}&item_name=${stock.item_name}&item_model=${stock.item_model}&item_manufacturer=${stock.item_manufacturer}&quantity=${stock.quantity}&selling_price=${stock.selling_price}&description=${stock.description}" class="btn btn-sm btn-outline-primary">Update</a>
-                                            <!-- Delete -->
-                                            <form action="DeleteStockServlet" method="post" onsubmit="return confirm('Are you sure you want to delete this product?');">
-                                                <input type="hidden" name="item_id" value="${stock.item_id}">
-                                                <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
-                                            </form>
-                                        </div>
-                                    </td>
+                                  
                                 </tr>
                             </c:forEach>
                         </c:otherwise>
                     </c:choose>
                 </tbody>
             </table>
-        </div>
-        <div class="mt-3 d-flex justify-content-between">
-            <a href="StockManagement/create_stock.jsp" class="btn btn-primary">Add Product</a>
         </div>
     </div>
 </div>
