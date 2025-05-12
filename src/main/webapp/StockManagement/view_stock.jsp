@@ -1,4 +1,4 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -210,7 +210,7 @@
                     <th>Actions</th> 
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="stock-table">
 			    <c:choose>
 			        <c:when test="${empty allStocks}">
 			            <tr>
@@ -252,8 +252,14 @@
 
             </tbody>
         </table>
+        
+        <div id="noReportsMessage" class="alert alert-info" style="display:none;" role="alert">
+                    No reports found matching your search criteria.
+		</div>
+		
         <a href="StockManagement/create_stock.jsp" class="btn btn-primary" id="view-stock-btn-other">Add Stock</a>
         <a href="StockManagerDashboard.jsp" class="btn btn-danger" id="view-stock-btn-other">Back to Dashboard</a>
+        
         
     </div>
 
@@ -262,30 +268,38 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script>
-function filterTable() {
-    var input, filter, table, tr, td, i, j, txtValue;
+
+
+
+
+function searchReports() {
+    var input, filter, table, tr, td, i, txtValue, found;
     input = document.getElementById("searchInput");
     filter = input.value.toUpperCase();
-    table = document.querySelector("table");
+    table = document.getElementById("stock-table");
     tr = table.getElementsByTagName("tr");
-
-    for (i = 1; i < tr.length; i++) { // start from 1 if row 0 is the header
-        td = tr[i].getElementsByTagName("td");
-        tr[i].style.display = "none"; // default to hide
-        for (j = 0; j < td.length; j++) {
-            if (td[j]) {
-                txtValue = td[j].textContent || td[j].innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                    break;
-                }
+    found = false;
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[2]; 
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+                found = true;
+            } else {
+                tr[i].style.display = "none";
             }
         }
     }
+    
+    if (!found) {
+        document.getElementById("noReportsMessage").style.display = "block";
+    } else {
+        document.getElementById("noReportsMessage").style.display = "none";
+    }
 }
 
-/* document.getElementById("searchInput").addEventListener("input", filterTable); */
-document.getElementById("searchBtn").addEventListener("click", filterTable);
+document.getElementById("searchBtn").addEventListener("click", searchReports);
 
 </script>
 
