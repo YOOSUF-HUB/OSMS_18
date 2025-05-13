@@ -29,18 +29,18 @@ public class LoginServlet extends HttpServlet {
             String userRole = user.getRole();
 
             switch (userRole) {
-//                case "stock manager":
-//                    response.sendRedirect(request.getContextPath() + "/StockManagerReportsServlet");
-//                    break;
+                case "stock manager":
+                    response.sendRedirect(request.getContextPath() + "/StockManagerDashboard.jsp");
+                    break;
                 case "system admin":
                     response.sendRedirect(request.getContextPath() + "/ViewUsersServlet");
                     break;
                 case "system auditor":
                     response.sendRedirect(request.getContextPath() + "/ViewReportsServlet");
                     break;
-//                case "sales representative":
-//                    response.sendRedirect(request.getContextPath() + "/SalesRepReportsServlet");
-//                    break;
+                case "salesrepresentative":
+                    response.sendRedirect(request.getContextPath() + "/SalesRepDashboard.jsp");
+                    break;
                 default:
                     
                     response.sendRedirect(request.getContextPath() + "/ViewReportsServlet"); 

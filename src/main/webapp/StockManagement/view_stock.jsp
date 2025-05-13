@@ -189,7 +189,7 @@
     <div class="container mt-5">
         <h2>Current Stock Inventory</h2>
 		<div class="input-group mb-4 search-bar-container">
-		  <input type="text" id="searchInput" class="form-control" placeholder="Search...">
+		  <input type="text" id="searchInput" class="form-control" placeholder="Search By Product Name...">
 		  <div class="input-group-append">
 		    <button class="btn btn-outline-primary" type="button" id="searchBtn">Search</button>
 		  </div>

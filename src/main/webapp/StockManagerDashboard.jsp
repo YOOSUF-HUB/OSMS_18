@@ -179,6 +179,23 @@
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">Stock Manager Dashboard</h1>
             </div>
+<%@ page session="true" %>
+
+<%
+    String username = (String) session.getAttribute("loggedInUsername");
+    String role = (String) session.getAttribute("loggedInUserRole");
+
+    if (username == null) {
+        // User not logged in, redirect to login
+        response.sendRedirect("login.jsp");
+    }
+%>
+
+        <div class="form-group">
+            <label for="item_id">Stock ID:</label>
+            <input type="text" class="form-control" id="username" name="username" value="<%= username %>" readonly>
+            
+        </div>
 
             <div class="card text">
 

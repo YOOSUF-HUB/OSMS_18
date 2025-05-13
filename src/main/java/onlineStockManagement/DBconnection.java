@@ -8,7 +8,7 @@ public class DBconnection {
 	
 	private static String url="jdbc:mysql://localhost:3306/OnlineStockManagementSystem";
 	private static String user="root";
-	private static String pass="pass";
+	private static String pass="yoosuf123@";
 	private static Connection con;
 	
 	public static Connection getConnection () {

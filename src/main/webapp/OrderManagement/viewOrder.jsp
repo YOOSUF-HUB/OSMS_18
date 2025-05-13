@@ -43,7 +43,7 @@
                 <li class="nav-item"><a class="nav-link" href="SalesRepDashboard.jsp">Home</a></li>
                 <li class="nav-item"><a class="nav-link active fw-bold" href="GetAllOrdersServlet">Order</a></li>
                 <li class="nav-item"><a class="nav-link" href="GetAllCustomersServlet">Customer</a></li>
-                <li class="nav-item"><a class="nav-link" href="GetAllStockServlet">Product</a></li>
+                <li class="nav-item"><a class="nav-link" href="GetAllStockServlet?view=sales">Product</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Link</a>
                     <ul class="dropdown-menu">

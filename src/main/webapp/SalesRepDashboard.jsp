@@ -1,5 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%
+    String username = (String) session.getAttribute("loggedInUsername");
+    String role = (String) session.getAttribute("loggedInUserRole");
+
+    if (username == null || !role.equals("salesrepresentative")) {
+        response.sendRedirect("login.jsp");
+        return; // Always add return after redirect in JSP
+    }
+%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -100,6 +112,11 @@
 <div class="container-fluid px-4">
     <div class="d-flex justify-content-between align-items-center my-4">
         <h3 class="mb-0">Dashboard</h3>
+        <div class="form-group">
+            <label for="item_id">Stock ID:</label>
+            <input type="text" class="form-control" id="username" name="username" value="<%= username %>" readonly>
+            
+        </div>
         <div>
             <button type="button" class="btn btn-secondary me-2" onclick="window.location.href ='CustomerManagement/addCustomer.jsp'">
                 <i class="bi bi-person-plus"></i> Add Customer
