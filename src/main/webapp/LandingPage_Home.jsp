@@ -59,24 +59,23 @@
       color: var(--accent);
     }
 
-    .hero {
-      background: linear-gradient(to right, rgb(0 255 255 / 38%), rgb(0 0 0 / 60%)), 
-					url(https://images.unsplash.com/photo-1568209865332-a15790aed756?q=80&w=3540&auto=format&fit=crop) center / cover no-repeat;
+	.hero {
+	  background: linear-gradient(to right, rgb(0 255 255 / 38%), rgb(0 0 0 / 60%)),
+	              url(https://images.unsplash.com/photo-1568209865332-a15790aed756?q=80&w=3540&auto=format&fit=crop) center / cover no-repeat;
+	  text-align: center;
+	  padding: 6rem 2rem;
+	  color: var(--white);
+	  transition: transform 0.6s ease-in, background 0.6s ease-in;
+	  will-change: transform, background;
+	}
+	
+	.hero:hover {
+	  background: linear-gradient(to right, rgb(0 255 255 / 38%), rgb(0 0 0 / 80%)),
+	              url(https://images.unsplash.com/photo-1568209865332-a15790aed756?q=80&w=3540&auto=format&fit=crop) center / cover no-repeat;
+	  transform: scale(1.05);
+	  color: var(--white);
+	}
 
-      text-align: center;
-      padding: 20rem 4rem;
-      color: var(--white);
-      transition: background 0.6s ease-in, padding 0.6s ease-in;
-    }
-    
-    .hero:hover {
-      background: linear-gradient(to right, rgb(0 255 255 / 38%), rgb(0 0 0)),
-      			url(https://images.unsplash.com/photo-1568209865332-a15790aed756?q=80&w=3540&auto=format&fit=crop) center / cover no-repeat;
-
-      text-align: center;
-      padding: 20rem 4rem;
-      color: var(--white);
-    }
 
     .hero h2 {
       font-size: 3rem;

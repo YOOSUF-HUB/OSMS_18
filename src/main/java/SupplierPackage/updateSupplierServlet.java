@@ -27,8 +27,8 @@ public class updateSupplierServlet extends HttpServlet {
 		 List<SupplierModel> supplier = supplierConller.getById(supplier_id);
 
 	        if (supplier != null) {
-	            request.setAttribute("stock", supplier);
-	            request.getRequestDispatcher("StockManagement/update_stock.jsp").forward(request, response);
+	            request.setAttribute("supplier", supplier);
+	            request.getRequestDispatcher("SupplierManagement/update_supplier.jsp").forward(request, response);
 	        } else {
 	            response.sendRedirect("error.jsp?message=Report not found");
 	        }
@@ -63,11 +63,8 @@ public class updateSupplierServlet extends HttpServlet {
 			
 			
 			String alertMessage = "Data Update Successfull";
-			//response.getWriter().println("<script> alert('"+alertMessage+"')window.location.href='/Online-stock-management-system/src/main/java/onlineStockManagement/GetAllStockServlet'</script>");
-			//response.getWriter().println("<script> alert('"+alertMessage+"');window.location.href='/Online-stock-management-system/src/main/java/onlineStockManagement/GetAllStockServlet'</script>");
 			response.setContentType("text/html");
 			response.getWriter().println("<script type='text/javascript'>");
-			//response.getWriter().println("alert('" + alertMessage + "');");
 			response.getWriter().println("window.location.href='GetAllSupplierServlet';");
 			response.getWriter().println("</script>");
 

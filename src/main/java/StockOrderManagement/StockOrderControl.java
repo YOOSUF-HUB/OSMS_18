@@ -9,8 +9,6 @@ import java.util.List;
 
 import onlineStockManagement.DBconnection;
 
-//hi
-//hi huzaifa
 public class StockOrderControl {
 
     // insertStockOrder
@@ -152,4 +150,57 @@ public class StockOrderControl {
         }
         return orders;
     }
+    
+    
+    
+    
+    
+ // Update stock order
+    public static boolean UpdateStockOrder(int order_id, String order_date, int quantity_ordered, float unit_price, float total_price,
+                                           String order_status, String expected_delivery_date, String payment_status, String notes,
+                                           String received_date, String invoice_number, int supplier_id) {
+        
+        boolean isSuccess = false;
+        Connection con = null;
+        PreparedStatement pstmt = null;
+
+        try {
+            con = DBconnection.getConnection();
+            String sql = "UPDATE stock_orders SET order_date=?, quantity_ordered=?, unit_price=?, total_price=?, " +
+                         "order_status=?, expected_delivery_date=?, payment_status=?, notes=?, received_date=?, " +
+                         "invoice_number=?, supplier_id=? WHERE order_id=?";
+            
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, order_date);
+            pstmt.setInt(2, quantity_ordered);
+            pstmt.setFloat(3, unit_price);
+            pstmt.setFloat(4, total_price);
+            pstmt.setString(5, order_status);
+            pstmt.setString(6, expected_delivery_date);
+            pstmt.setString(7, payment_status);
+            pstmt.setString(8, notes);
+            pstmt.setString(9, received_date);
+            pstmt.setString(10, invoice_number);
+            pstmt.setInt(11, supplier_id);
+            pstmt.setInt(12, order_id); // WHERE condition
+
+            isSuccess = pstmt.executeUpdate() > 0;
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (pstmt != null) pstmt.close();
+                if (con != null) con.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return isSuccess;
+    }
+
+    	
+    	
 }
+

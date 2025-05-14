@@ -101,6 +101,11 @@
         margin-top: 10px;
       }
     }
+    
+    #stockorder-create-btn{
+    margin-top:20px;
+    
+    }
   </style>
   <script>
     function calculateTotal() {
@@ -128,7 +133,7 @@
       <div class="row mb-3">
         <div class="col-md-4">
           <label for="quantity_ordered" class="form-label">Quantity Ordered</label>
-          <input type="number" class="form-control" id="quantity_ordered" name="quantity_ordered" oninput="calculateTotal()" required>
+          <input type="number" class="form-control" id="quantity_ordered" min="0" name="quantity_ordered" oninput="calculateTotal()" required>
         </div>
         <div class="col-md-4">
           <label for="unit_price" class="form-label">Unit Price</label>
@@ -140,16 +145,28 @@
         </div>
       </div>
 
-      <div class="row mb-3">
-        <div class="col-md-6">
-          <label for="order_status" class="form-label">Order Status</label>
-          <input type="text" class="form-control" id="order_status" name="order_status" required>
-        </div>
-        <div class="col-md-6">
-          <label for="payment_status" class="form-label">Payment Status</label>
-          <input type="text" class="form-control" id="payment_status" name="payment_status" required>
-        </div>
-      </div>
+	<div class="row mb-3">
+	  <div class="col-md-6">
+	    <label for="order_status" class="form-label">Order Status</label>
+	    <select class="form-select" id="order_status" name="order_status" required onchange="changeColor('order_status')">
+	      <option value="Pending">Pending</option>
+	      <option value="Processing">Processing</option>
+	      <option value="Shipped">Shipped</option>
+	      <option value="Delivered">Delivered</option>
+	      <option value="Cancelled">Cancelled</option>
+	    </select>
+	  </div>
+	  <div class="col-md-6">
+	    <label for="payment_status" class="form-label">Payment Status</label>
+	    <select class="form-select" id="payment_status" name="payment_status" required onchange="changeColor('payment_status')">
+	      <option value="Unpaid">Unpaid</option>
+	      <option value="Paid">Paid</option>
+	      <option value="Partially Paid">Partially Paid</option>
+	      <option value="Refunded">Refunded</option>
+	    </select>
+	  </div>
+	</div>
+
 
       <div class="mb-3">
         <label for="notes" class="form-label">Notes</label>
@@ -184,9 +201,71 @@
 
       <div class="d-flex justify-content-between">
         <button type="submit" class="btn btn-primary">Submit</button>
-        <a href="/StockManagerDashboard.jsp" class="btn btn-danger">Back to Dashboard</a>
+
+      </div>
+      
+      <div class="d-flex justify-content-between" id="stockorder-create-btn">
+        <a href="StockOrdersServlet" class="btn btn-success " id="view-stock-btn">View Stock Orders</a>
+        <a href="./StockManagerDashboard.jsp" class="btn btn-danger">Back to Dashboard</a>
       </div>
     </form>
   </div>
+  
+<script>
+  // Function to change the color of the input box based on selected value
+  function changeColor(selectId) {
+    var selectElement = document.getElementById(selectId);
+    var selectedValue = selectElement.value;
+
+    // Set background colors for the order_status dropdown
+    if (selectId === 'order_status') {
+      switch (selectedValue) {
+        case 'Pending':
+          selectElement.style.backgroundColor = '#f8d7a3'; // Light Orange for Pending
+          break;
+        case 'Processing':
+          selectElement.style.backgroundColor = '#a7d8ff'; // Light Blue for Processing
+          break;
+        case 'Shipped':
+          selectElement.style.backgroundColor = '#99c2ff'; // Light Blue for Shipped
+          break;
+        case 'Delivered':
+          selectElement.style.backgroundColor = '#c3e6cb'; // Light Green for Delivered
+          break;
+        case 'Cancelled':
+          selectElement.style.backgroundColor = '#f8d7da'; // Light Red for Cancelled
+          break;
+        default:
+          selectElement.style.backgroundColor = ''; // Default
+      }
+    }
+
+    // Set background colors for the payment_status dropdown
+    if (selectId === 'payment_status') {
+      switch (selectedValue) {
+        case 'Unpaid':
+          selectElement.style.backgroundColor = '#f8d7a3'; // Light Orange for Unpaid
+          break;
+        case 'Paid':
+          selectElement.style.backgroundColor = '#c3e6cb'; // Light Green for Paid
+          break;
+        case 'Partially Paid':
+          selectElement.style.backgroundColor = '#fff3cd'; // Light Yellow for Partially Paid
+          break;
+        case 'Refunded':
+          selectElement.style.backgroundColor = '#f8d7da'; // Light Red for Refunded
+          break;
+        default:
+          selectElement.style.backgroundColor = ''; // Default
+      }
+    }
+  }
+
+  // Initial color change on page load based on the default selected values
+  window.onload = function() {
+    changeColor('order_status');
+    changeColor('payment_status');
+  }
+</script>
 </body>
 </html>

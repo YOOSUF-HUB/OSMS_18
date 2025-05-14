@@ -6,6 +6,8 @@
          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+
+     <!-- Stock Management -->
 	
 	<!-- Insert Stock -->
      <servlet>
@@ -83,17 +85,6 @@
      	<url-pattern>/GetAllSupplierServlet</url-pattern>
      </servlet-mapping>
      
-     	<!-- View Supplier Dropdown -->
-     <servlet>
-     	<servlet-name>GetSuppliersForFormServlet</servlet-name>
-     	<servlet-class>SupplierPackage.GetSuppliersForFormServlet</servlet-class>
-     </servlet>
-     
-     <servlet-mapping>
-     	<servlet-name>GetSuppliersForFormServlet</servlet-name>
-     	<url-pattern>/GetSuppliersForFormServlet</url-pattern>
-     </servlet-mapping>
-     
      
      
      
@@ -119,6 +110,14 @@
      	<url-pattern>/DeleteSupplierServlet</url-pattern>
      </servlet-mapping>
      
+     
+     
+     
+     
+     
+     
+     
+          <!-- User(STAFF) Management -->
      
                	<!-- User Insert Register -->
      <servlet>
@@ -146,10 +145,14 @@
      
      
      
+     
+     
+          <!-- Stock Order Management -->
+     
                          	<!-- StockOrder Insert -->
      <servlet>
      	<servlet-name>StockOrderInsertServlet</servlet-name>
-     	<servlet-class>SupplierPackage.StockOrderInsertServlet</servlet-class>
+     	<servlet-class>StockOrderManagement.StockOrderInsertServlet</servlet-class>
      </servlet>
      
      <servlet-mapping>
@@ -162,12 +165,24 @@
 
     <servlet>
         <servlet-name>StockOrdersServlet</servlet-name>
-        <servlet-class>SupplierPackage.StockOrdersServlet</servlet-class>
+        <servlet-class>StockOrderManagement.StockOrdersServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>StockOrdersServlet</servlet-name>
         <url-pattern>/StockOrdersServlet</url-pattern>
+    </servlet-mapping>
+    
+						<!-- Update Stock Orders -->
+
+    <servlet>
+        <servlet-name>StockOrderUpdateServlet</servlet-name>
+        <servlet-class>StockOrderManagement.StockOrderUpdateServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>StockOrderUpdateServlet</servlet-name>
+        <url-pattern>/StockOrderUpdateServlet</url-pattern>
     </servlet-mapping>
 
 

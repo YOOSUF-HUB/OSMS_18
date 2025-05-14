@@ -2,7 +2,7 @@ package StockOrderManagement;
 
 public class StockOrderModel {
 
-	private int order_id;
+	private int	order_id;
 	private String order_date;
 	private int quantity_ordered;
 	private float unit_price;
