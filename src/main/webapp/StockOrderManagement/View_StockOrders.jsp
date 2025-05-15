@@ -221,8 +221,8 @@
                         <div class="d-flex justify-content-between">
                             <a href="StockOrderUpdateServlet?order_id=${order.order_id}&order_date=${order.order_date}&quantity_ordered=${order.quantity_ordered}&unit_price=${order.unit_price}&total_price=${order.total_price}&order_status=${order.order_status}&expected_delivery_date=${order.expected_delivery_date}&payment_status=${order.payment_status}&notes=${order.notes}&received_date=${order.received_date}&invoice_number=${order.invoice_number}&supplier_id=${order.supplier_id}" class="btn btn-sm btn-primary">Update</a>
 
-                            <form action="DeleteStockServlet" method="post" onsubmit="return confirm('Are you sure you want to delete this order?');">
-                                <input type="hidden" name="item_id" value="${order.order_id}" />
+                            <form action="DeleteStockOrderServlet" method="post" onsubmit="return confirm('Are you sure you want to delete this order?');">
+                                <input type="hidden" name="order_id" value="${order.order_id}" />
                                 <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                             </form>
                         </div>

@@ -184,6 +184,18 @@
         <servlet-name>StockOrderUpdateServlet</servlet-name>
         <url-pattern>/StockOrderUpdateServlet</url-pattern>
     </servlet-mapping>
+    
+    						<!-- Delete Stock Orders -->
+
+    <servlet>
+        <servlet-name>DeleteStockOrderServlet</servlet-name>
+        <servlet-class>StockOrderManagement.DeleteStockOrderServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DeleteStockOrderServlet</servlet-name>
+        <url-pattern>/DeleteStockOrderServlet</url-pattern>
+    </servlet-mapping>
 
 
 </web-app>

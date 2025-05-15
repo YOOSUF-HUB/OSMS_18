@@ -199,6 +199,44 @@ public class StockOrderControl {
 
         return isSuccess;
     }
+    
+    
+    //Delete Stock Order
+    public static boolean DeleteStockOrder(int order_id) {
+    	boolean isSuccess = false;
+    	Connection con = null;
+    	PreparedStatement pstmt = null;
+    	
+		try {
+			con = DBconnection.getConnection();
+			String sql = "DELETE FROM stock_orders WHERE order_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, order_id);
+
+			isSuccess = pstmt.executeUpdate() > 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if (con != null) con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return isSuccess;
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    }
 
     	
     	
