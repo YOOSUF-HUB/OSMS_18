@@ -28,6 +28,7 @@
         body {
             background-color: #f8f9fa;
         }
+        
 
         .widget {
             padding: 1rem;
@@ -45,7 +46,7 @@
         .navbar-brand i {
             font-weight: bold;
             font-size: 1.2rem;
-            color: #0d6efd;
+            color: #264093;
         }
 
         .table thead th {
@@ -68,9 +69,9 @@
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-            <i>TechNest</i>
+        <a class="navbar-brand" href="SalesRepDashboard.jsp">
+            <img src="image/Tech-Color.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+            <i class="logotext">TechNest</i>
         </a>
         <button class="navbar-toggler order-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                 aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">

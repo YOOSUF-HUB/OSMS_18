@@ -14,6 +14,11 @@
         body {
             background-color: #f8f9fa;
         }
+        .navbar-brand i {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #264093;
+        }
         .form-container {
             max-width: 700px;
             margin: 30px auto;
@@ -26,6 +31,55 @@
 </head>
 <body>
 
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm mb-5">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="SalesRepDashboard.jsp">
+            <img src="../image/Tech-Color.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+            <i class="logotext">TechNest</i>
+        </a>
+        <button class="navbar-toggler order-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                <li class="nav-item"><a class="nav-link " href="../SalesRepDashboard.jsp">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="../GetAllOrdersServlet">Order</a></li>
+                <li class="nav-item"><a class="nav-link" href="../GetAllCustomersServlet">Customer</a></li>
+                <li class="nav-item"><a class="nav-link" href="../GetAllStockServlet?view=sales">Product</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Link</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item d-lg-none"><a class="nav-link" href="#"><strong>John Doe</strong></a></li>
+                <li class="nav-item d-lg-none"><a class="nav-link" href="#">Profile</a></li>
+                <li class="nav-item d-lg-none"><a class="nav-link" href="#">Logout</a></li>
+            </ul>
+
+            <div class="dropdown d-none d-lg-block">
+                <a class="nav-link dropdown-toggle fs-5 fw-bold" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                    John Doe
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Form Container -->
+<!-- Form Container -->
+<!-- Form Container -->
 <div class="container">
     <div class="form-container">
         <h4 class="mb-4 text-primary">Update Customer</h4>
