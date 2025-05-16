@@ -37,7 +37,7 @@ public class DeleteSupplierServlet extends HttpServlet {
 			List<SupplierModel> supplierDetails = SupplierControl.getById(supplier_id);
 			request.setAttribute("supplierDetails", supplierDetails);
 			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("wrong.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("SupplierManagement/wrongsupplier.jsp");
 			dispatcher.forward(request, response);
 		}
 	}

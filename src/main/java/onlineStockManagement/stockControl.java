@@ -3,6 +3,7 @@ package onlineStockManagement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -196,4 +197,21 @@ public class stockControl {
 		}
 		return isSuccess;
 	}
+	
+
+	
+	   public int getTotalStockCount() throws SQLException {
+			isSuccess = false;
+			Connection con = null;
+	        String sql = "SELECT COUNT(*) FROM Stock_items";
+	        try (PreparedStatement pstmt = con.prepareStatement(sql);
+	             ResultSet rs = pstmt.executeQuery()) {
+	            if (rs.next()) {
+	                return rs.getInt(1);
+	            }
+	        }
+	        return 0;
+	    }
+
+
 }

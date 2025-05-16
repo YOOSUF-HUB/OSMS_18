@@ -17,23 +17,29 @@ public class GetAllStockServlet extends HttpServlet {
        
 
 
-	protected void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		
-		List<stockModel> allStocks = stockControl.getAllStock();
-		request.setAttribute("allStocks", allStocks);
-		
-		// Check optional "view" parameter to decide where to forward
-		String view = request.getParameter("view");
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    List<stockModel> allStocks = stockControl.getAllStock();
+	    request.setAttribute("allStocks", allStocks);
+	    
+	    
 
-		String page;
-		if ("sales".equalsIgnoreCase(view)) {
-			page = "/OrderManagement/products.jsp"; // JSP for Sales Rep
-		} else {
-			page = "/StockManagement/view_stock.jsp"; // Default: Stock Management view
-		}
-		
-		RequestDispatcher rd = request.getRequestDispatcher(page);
-        rd.forward(request, response);
+
+	    String view = request.getParameter("view");
+	    String page;
+
+	    if ("sales".equalsIgnoreCase(view)) {
+	        page = "/OrderManagement/products.jsp";
+	    } else if ("dashboard".equalsIgnoreCase(view)) {
+	        page = "/StockManagerDashboard.jsp";
+	    } else {
+	        page = "/StockManagement/view_stock.jsp";
+	    }
+
+	    RequestDispatcher rd = request.getRequestDispatcher(page);
+	    rd.forward(request, response);
 	}
+
 	
 }
+
+

@@ -29,34 +29,56 @@
         <h2>Add New Stock Item</h2>
         <form action="../stockInsertServlet" method="post" class="form-add-stock">
         
-            <div class="form-group">
-                <label for="productName">Product Name:</label>
-                <input type="text" class="form-control" id="item_name" name="item_name" required>
-            </div>
+			<div class="form-group">
+			    <label for="item_name">Product Category:</label>
+			    <select class="form-control" id="item_name" name="item_name" required>
+			        <option value="" disabled selected>Select a product</option>
+			        <option value="CPU">CPU</option>
+			        <option value="Motherboard">Motherboard</option>
+			        <option value="RAM">RAM</option>
+			        <option value="SSD">SSD</option>
+			        <option value="HDD">HDD</option>
+			        <option value="Power Supply">Power Supply</option>
+			        <option value="Graphics Card">Graphics Card</option>
+			        <option value="Keyboard">Keyboard</option>
+			        <option value="Mouse">Mouse</option>
+			        <option value="Monitor">Monitor</option>
+			        <option value="Casing">Casing</option>
+			        <option value="Cooling Fan">Cooling Fan</option>
+			        <option value="Network Card">Network Card</option>
+			        <option value="Laptop Charger">Laptop Charger</option>
+			        <option value="HDMI Cable">HDMI Cable</option>
+			        <option value="VGA Cable">VGA Cable</option>
+			        <option value="USB Hub">USB Hub</option>
+			        <option value="Thermal Paste">Thermal Paste</option>
+			        <option value="Extension Cord">Extension Cord</option>
+			    </select>
+			</div>
+
             
 			<div class="form-group">
                 <label for="brand">Product Model:</label>
-                <input type="text" class="form-control" id="item_model" name="item_model">
+                <input type="text" class="form-control" id="item_model" name="item_model" required>
             </div>
             
             <div class="form-group">
                 <label for="brand">Product Manufacturer:</label>
-                <input type="text" class="form-control" id="item_manufacturer" name="item_manufacturer">
+                <input type="text" class="form-control" id="item_manufacturer" name="item_manufacturer" required>
             </div>
             
             <div class="form-group">
                 <label for="purchasePrice">Purchase Price:</label>
-                <input type="number" class="form-control" id="unit_cost" name="unit_cost" step="0.01">
+                <input type="number" class="form-control" id="unit_cost" name="unit_cost" step="0.01" min="0" required>
             </div>
             
             <div class="form-group">
                 <label for="sellingPrice">Selling Price:</label>
-                <input type="number" class="form-control" id="selling_price" name="selling_price" step="0.01" required>
+                <input type="number" class="form-control" id="selling_price" name="selling_price" step="0.01" min="0" required>
             </div>
             
             <div class="form-group">
                 <label for="quantity">Quantity:</label>
-                <input type="number" class="form-control" id="quantity" name="quantity" value="0" required>
+                <input type="number" class="form-control" id="quantity" name="quantity" min="0" required>
             </div>
             
 			<div class="form-group">
@@ -66,7 +88,7 @@
             
 			<div class="form-group">
 			    <label for="preferences">Description:</label>
-			    <textarea class="form-control" id="description" name="description" rows="4"></textarea>
+			    <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
 			</div>
             
             <button type="submit" class="btn btn-primary mr-2">Add Stock</button>

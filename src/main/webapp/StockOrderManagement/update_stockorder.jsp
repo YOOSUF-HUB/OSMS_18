@@ -131,14 +131,15 @@ int supplier_id = Integer.parseInt(request.getParameter("supplier_id"));
 %>
 
   <div class="container mt-5">
-    <h2 class="mb-4">Insert Stock Order</h2>
+    <h2 class="mb-4">Update Stock Order</h2>
     <form action="./StockOrderUpdateServlet" method="post">
       <div class="row mb-3">
-        <div class="col-md-6">
-          <label for="order_id" class="form-label">Order ID</label>
-		<input type="number" class="form-control" id="order_id" value="<%= order_id %>" name="order_id" readonly>
+        
+		<div class="col-md-6">
+		  <label for="order_id" class="form-label">Order ID</label>
+		  <input type="text" class="form-control" id="order_id" value="<%= order_id %>" name="order_id" readonly>
+		</div>
 
-        </div>
         <div class="col-md-6">
           <label for="order_date" class="form-label">Order Date</label>
           <input type="date" class="form-control" id="order_date" value="<%= order_date %>" name="order_date" required>
@@ -216,7 +217,7 @@ int supplier_id = Integer.parseInt(request.getParameter("supplier_id"));
 	    <option value="" selected disabled>Please select a supplier only if you wish to change the current supplier.</option>
 	    <c:forEach var="supplier" items="${allSupplier}">
 	      <option value="${supplier.supplier_id}" ${supplier.supplier_id == supplier_id ? 'selected' : ''}>
-	        ${supplier.supplier_name} | ${supplier.supplier_id}
+	        ${supplier.supplier_name} | SUPPL_${supplier.supplier_id}
 	      </option>
 	    </c:forEach>
 	  </select>
