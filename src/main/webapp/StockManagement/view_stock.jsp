@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +11,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Stock</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    
+    
     
     <style>
 
@@ -42,6 +50,7 @@
 	.table thead th {
 	    text-align: center;
 	    vertical-align: middle;
+	    font-size: 0.9rem;
 	}
 	
 	.table tbody td {
@@ -52,7 +61,7 @@
 
 	
 	.table tbody tr:hover {
-	    background-color: #f1f1f1;
+	    background-color: #c4f1ff;
 	    transition: background-color 0.3s ease;
 	}
 	
@@ -179,78 +188,112 @@
 	
 
 
-
+	.table tbody td .badge {
+	  font-size: 1rem; /* Increase font size to 16px (default 0.8rem or less) */
+	  padding: 0.4em 0.7em; /* optional: adjust padding for better look */
+	}
+	
+	
+		.stock-count-box {
+	    font-size: 1.2rem;
+	    color: #007bff;
+	    font-weight: 600;
+	    display: flex;
+	    align-items: center;
+	    gap: 8px;
+	    padding: 8px 12px;
+	    margin-bottom: 20px;
+	}
+	
+	.stock-count-box i {
+	    font-size: 1.4rem;
+	    color: #0056b3;
+	}
+	
 
     </style>
 </head>
 <body>
 
 
-    <div class="container mt-5">
-        <h2>Current Stock Inventory</h2>
+ <div class="container mt-5">
+    <h2>Current Stock Inventory</h2>
+
+    <div class="stock-count-box">
+        <i class="fas fa-boxes"></i>
+        Available Stock Items: ${fn:length(allStocks)}
+    </div>
+    
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	  <strong>Available Stock Items: ${fn:length(allStocks)}</strong>
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	    <span aria-hidden="true">&times;</span>
+	  </button>
+	</div>
 		<div class="input-group mb-4 search-bar-container">
-		  <input type="text" id="searchInput" class="form-control" placeholder="Search By Product Name...">
+		  <input type="text" id="searchInput" class="form-control" placeholder="Search By Product Name or ID...">
 		  <div class="input-group-append">
 		    <button class="btn btn-outline-primary" type="button" id="searchBtn">Search</button>
 		  </div>
 		</div>
         <table class="table table-striped">
-            <thead>
-                <tr>
-                	<th>#</th> <!-- Row number header -->
-                    <th>Stock ID</th>
-                    <th>Product Name</th>
-                    <th>Product Model</th>
-                    <th>Product Manufacturer</th>
-                    <th>Quantity</th>
-                    <th>Purchase Price</th>
-                    <th>Selling Price</th>
-                    <th >Date</th>
-                    <th>Description</th>
-                    <th>Actions</th> 
-                </tr>
-            </thead>
-            <tbody id="stock-table">
+			<thead>
+			    <tr>
+			        <th>#</th> <!-- Row number header -->
+			        <th>Stock ID</th>
+			        <th>Product</th>
+			        <th>Product Model</th>
+			        <th>Product Manufacturer</th>
+			        <th>Quantity</th>
+			        <th>Purchase Price</th>
+			        <th>Selling Price</th>
+			        <th>Profit</th>
+			        <!-- <th>Date</th> -->
+			        <th>Description</th>
+			        <th>Actions</th> 
+			    </tr>
+			</thead>
+			<tbody id="stock-table">
 			    <c:choose>
 			        <c:when test="${empty allStocks}">
 			            <tr>
-			                <td colspan="10" class="text-center text-muted">Stock table contains no entries at this time.</td>
+			                <td colspan="11" class="text-center text-muted">Stock table contains no entries at this time.</td>
 			            </tr>
 			        </c:when>
 			        <c:otherwise>
 			            <c:forEach var="stock" items="${allStocks}" varStatus="loop">
 			                <tr id="stock-table-db">
-			                	<td id="stock-table-row-num" >(${loop.index + 1})</td> <!-- Row number -->
-			                    <td>${stock.item_id}</td>
+			                    <td id="stock-table-row-num">(${loop.index + 1})</td> <!-- Row number -->
+			                    <td><span class="badge badge-primary">STCK_${stock.item_id}</span></td>
 			                    <td>${stock.item_name}</td>
 			                    <td>${stock.item_model}</td>
 			                    <td>${stock.item_manufacturer}</td>
 			                    <td>${stock.quantity}</td>
-			                    <td>${stock.unit_cost}</td> 
-			                    <td>${stock.selling_price}</td>
-			                    <td>${stock.date_added}</td>
-								<td>
-								  <div class="description-container">
-								    <div class="description-scroll">${stock.description}</div>
-								    <div class="description-hover">${stock.description}</div>
-								  </div>
-								</td>
+			                    <td><span class="badge badge-pill badge-warning">${stock.unit_cost}</span></td>
+			                    <td><span class="badge badge-pill badge-warning">${stock.selling_price}</span></td>
+			                    <td><span class="badge badge-pill badge-success"><fmt:formatNumber value="${stock.selling_price - stock.unit_cost}" type="number" maxFractionDigits="2" minFractionDigits="2" /></span></td>
+			                    
+			                    <%-- <td>${stock.date_added}</td> --%>
+			                    <td>
+			                        <div class="description-container">
+			                            <div class="description-scroll">${stock.description}</div>
+			                            <div class="description-hover">${stock.description}</div>
+			                        </div>
+			                    </td>
 			                    <td class="add-stock-action-btn">
 			                        <a href="StockManagement/update_stock.jsp?item_id=${stock.item_id}&item_name=${stock.item_name}&item_model=${stock.item_model}&item_manufacturer=${stock.item_manufacturer}&quantity=${stock.quantity}&unit_cost=${stock.unit_cost}&selling_price=${stock.selling_price}&date_added=${stock.date_added}&description=${stock.description}" class="btn btn-primary" id="add-stock-action-btn">Update</a>
-									
-									<form action="DeleteStockServlet" method="post"">
-									    <input type="hidden" name="item_id" value="${stock.item_id}" />
-									    <button type="submit" class="btn btn-danger btn-sm" id="add-stock-action-btn">Delete</button>
-									</form>
-
-
+			                        
+			                        <form action="DeleteStockServlet" method="post">
+			                            <input type="hidden" name="item_id" value="${stock.item_id}" />
+			                            <button type="submit" class="btn btn-danger btn-sm" id="add-stock-action-btn">Delete</button>
+			                        </form>
 			                    </td>
 			                </tr>
 			            </c:forEach>
 			        </c:otherwise>
 			    </c:choose>
+			</tbody>
 
-            </tbody>
         </table>
         
         <div id="noReportsMessage" class="alert alert-info" style="display:none;" role="alert">
@@ -273,33 +316,36 @@
 
 
 function searchReports() {
-    var input, filter, table, tr, td, i, txtValue, found;
+    var input, filter, table, tr, td1, td2, td3, i, txtValue1, txtValue2, txtValue3, found;
     input = document.getElementById("searchInput");
     filter = input.value.toUpperCase();
     table = document.getElementById("stock-table");
     tr = table.getElementsByTagName("tr");
     found = false;
-    for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[2]; 
-        if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-                found = true;
-            } else {
-                tr[i].style.display = "none";
-            }
+
+    for (i = 0; i < tr.length; i++) { // Start from 1 to skip header row
+        td1 = tr[i].getElementsByTagName("td")[1]; // Stock ID
+        td2 = tr[i].getElementsByTagName("td")[2]; // Product Name
+
+        txtValue1 = td1 ? td1.textContent || td1.innerText : "";
+        txtValue2 = td2 ? td2.textContent || td2.innerText : "";
+
+        if (
+            txtValue1.toUpperCase().includes(filter) ||
+            txtValue2.toUpperCase().includes(filter)
+        ) {
+            tr[i].style.display = "";
+            found = true;
+        } else {
+            tr[i].style.display = "none";
         }
     }
-    
-    if (!found) {
-        document.getElementById("noReportsMessage").style.display = "block";
-    } else {
-        document.getElementById("noReportsMessage").style.display = "none";
-    }
+
+    document.getElementById("noReportsMessage").style.display = found ? "none" : "block";
 }
 
 document.getElementById("searchBtn").addEventListener("click", searchReports);
+
 
 </script>
 

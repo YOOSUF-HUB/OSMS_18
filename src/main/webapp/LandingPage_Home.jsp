@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
     :root {
-      --primary: #0ff;
+      --primary: #ffffff;
       --accent: #39ff14;
       --bg: #0d1117;
       --card-bg: #161b22;
@@ -63,17 +63,17 @@
 	  background: linear-gradient(to right, rgb(0 255 255 / 38%), rgb(0 0 0 / 60%)),
 	              url(https://images.unsplash.com/photo-1568209865332-a15790aed756?q=80&w=3540&auto=format&fit=crop) center / cover no-repeat;
 	  text-align: center;
-	  padding: 6rem 2rem;
-	  color: var(--white);
+	  padding: 15rem 2rem;
+
 	  transition: transform 0.6s ease-in, background 0.6s ease-in;
 	  will-change: transform, background;
 	}
 	
 	.hero:hover {
-	  background: linear-gradient(to right, rgb(0 255 255 / 38%), rgb(0 0 0 / 80%)),
+	  background: linear-gradient(to right, rgb(0 255 255 / 38%), rgb(0 0 0 / 60%)),
 	              url(https://images.unsplash.com/photo-1568209865332-a15790aed756?q=80&w=3540&auto=format&fit=crop) center / cover no-repeat;
-	  transform: scale(1.05);
-	  color: var(--white);
+	  transform: scale(1.007);
+
 	}
 
 
@@ -363,7 +363,7 @@
   </video>
 <div class="video-overlay-content">
   <h3>Unleash Ultimate Graphics Power</h3>
-  <p>Experience the future of performance with the GeForce RTX 4090 — where speed meets stunning realism. Built for gamers, creators, and power users.</p>
+  <p>Experience the future of performance with the GeForce RTX 4090 Where speed meets stunning realism. Built for gamers, creators, and power users.</p>
 </div>
 </section>
 

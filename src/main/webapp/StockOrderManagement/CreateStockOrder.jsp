@@ -191,7 +191,7 @@
           <option value="" selected disabled>Select Supplier</option>
           <c:forEach var="supplier" items="${allSupplier}">
           
-            <option value="${supplier.supplier_id}">${supplier.supplier_name}</option>
+            <option value="${supplier.supplier_id}">${supplier.supplier_name} | SUPPL_${supplier.supplier_id}</option>
             
           </c:forEach>
         </select>

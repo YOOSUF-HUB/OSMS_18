@@ -132,6 +132,11 @@
 	  padding: 6px 16px;
 	  font-size: 1rem;
 	}
+	
+	.table tbody td .badge {
+	  font-size: 1rem; /* Increase font size to 16px (default 0.8rem or less) */
+	  padding: 0.4em 0.7em; /* optional: adjust padding for better look */
+	}
 
 
 
@@ -179,13 +184,13 @@
 			            <c:forEach var="supplier" items="${allSupplier}" varStatus="loop">
 			                <tr id="stock-table-db">
 			                	<td id="stock-table-row-num" >(${loop.index + 1})</td> <!-- Row number -->
-			                    <td>${supplier.supplier_id}</td>
+			                    <td><span class="badge badge-primary">SUPPL_${supplier.supplier_id}</span></td>
 			                    <td>${supplier.supplier_name}</td>
 			                    <td>${supplier.phone_number}</td>
 			                    <td>${supplier.email}</td>
 			                    <td>${supplier.supplier_address}</td>
-			                    <td>${supplier.supplier_city}</td> 
-			                    <td>${supplier.supplier_country}</td>
+                  				<td><span class="badge badge-info">${supplier.supplier_city}</span></td>
+                  				<td><span class="badge badge-success">${supplier.supplier_country}</span></td>
 			                    <td>${supplier.supplier_website}</td>
 			                    <td>${supplier.s_date_added}</td>
 	 			                <td class="add-stock-action-btn">
