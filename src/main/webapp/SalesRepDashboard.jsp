@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%
+<%-- <%
     String username = (String) session.getAttribute("loggedInUsername");
     String role = (String) session.getAttribute("loggedInUserRole");
 
@@ -10,7 +10,7 @@
         return; // Always add return after redirect in JSP
     }
 %>
-
+ --%>
 
 <!DOCTYPE html>
 <html>
@@ -81,7 +81,7 @@
                 <li class="nav-item"><a class="nav-link active" href="SalesRepDashboard.jsp">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="GetAllOrdersServlet">Order</a></li>
                 <li class="nav-item"><a class="nav-link" href="GetAllCustomersServlet">Customer</a></li>
-                <li class="nav-item"><a class="nav-link" href="GetAllStockServlet">Product</a></li>
+                <li class="nav-item"><a class="nav-link" href="GetAllStockServlet?view=sales">Product</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Link</a>
                     <ul class="dropdown-menu">
@@ -112,11 +112,6 @@
 <div class="container-fluid px-4">
     <div class="d-flex justify-content-between align-items-center my-4">
         <h3 class="mb-0">Dashboard</h3>
-        <div class="form-group">
-            <label for="item_id">Stock ID:</label>
-            <input type="text" class="form-control" id="username" name="username" value="<%= username %>" readonly>
-            
-        </div>
         <div>
             <button type="button" class="btn btn-secondary me-2" onclick="window.location.href ='CustomerManagement/addCustomer.jsp'">
                 <i class="bi bi-person-plus"></i> Add Customer

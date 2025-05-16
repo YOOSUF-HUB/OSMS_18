@@ -153,7 +153,11 @@
         document.getElementById("total_price").value = (qty * price).toFixed(2);
     }
 
-    document.getElementById("product").addEventListener("change", calculateTotal);
+    /* document.getElementById("product").addEventListener("change", calculateTotal); */
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("product").addEventListener("change", calculateTotal);
+        calculateTotal(); // initialize on load
+    });
 
 
 </script>

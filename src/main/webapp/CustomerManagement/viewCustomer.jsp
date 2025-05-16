@@ -14,6 +14,13 @@
         body {
             background-color: #f8f9fa;
         }
+       
+        .navbar-brand i {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #0d6efd;
+        }
+        
         .card {
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
@@ -35,17 +42,18 @@
             <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
             <i>TechNest</i>
         </a>
-        <button class="navbar-toggler order-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler order-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarScroll">
-            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
+            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                 <li class="nav-item"><a class="nav-link" href="SalesRepDashboard.jsp">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="GetAllOrdersServlet">Order</a></li>
-                <li class="nav-item"><a class="nav-link active fw-bold" href="GetAllCustomersServlet">Customer</a></li>
+                <li class="nav-item"><a class="nav-link active" href="GetAllCustomersServlet">Customer</a></li>
                 <li class="nav-item"><a class="nav-link" href="GetAllStockServlet?view=sales">Product</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Link</a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Link</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Action</a></li>
                         <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -57,9 +65,12 @@
                 <li class="nav-item d-lg-none"><a class="nav-link" href="#">Profile</a></li>
                 <li class="nav-item d-lg-none"><a class="nav-link" href="#">Logout</a></li>
             </ul>
+
             <div class="dropdown d-none d-lg-block">
-                <a class="nav-link dropdown-toggle fs-5 fw-bold" href="#" id="userDropdown" data-bs-toggle="dropdown">John Doe</a>
-                <ul class="dropdown-menu dropdown-menu-end">
+                <a class="nav-link dropdown-toggle fs-5 fw-bold" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                    John Doe
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                     <li><a class="dropdown-item" href="#">Profile</a></li>
                     <li><a class="dropdown-item" href="#">Logout</a></li>
                 </ul>
@@ -71,7 +82,14 @@
 <!-- Content -->
 <div class="container">
     <div class="card p-4">
-        <h4 class="mb-3 text-primary">Customers</h4>
+		<div class="d-flex justify-content-between align-items-center mb-4">
+	        <h3 class="mb-0">Customers</h3>
+	        <div>
+	            <button type="button" class="btn btn-primary" onclick="window.location.href ='CustomerManagement/addCustomer.jsp'">
+	                <i class="bi bi-person-plus"></i> Add Customer
+	            </button>
+	        </div>
+	    </div>
         <div class="table-responsive">
             <table class="table table-bordered table-striped align-middle">
                 <thead class="table-dark">
@@ -82,7 +100,7 @@
                         <th>Phone Number</th>
                         <th>Address</th>
                         <th>City</th>
-                        <th>Actions</th> <!-- Added Actions Column -->
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -94,10 +112,11 @@
                             <td>${customer.number}</td>
                             <td>${customer.address}</td>
                             <td>${customer.city}</td>
-                            <%-- <td><a href="updateCustomer.jsp?${customer.id}"><button>Update</button></a></td> --%>
                             <td>
                                 <div class="d-flex gap-2">
                                     <!-- Update Button -->
+                                    <button onclick="window.location.href='UpdateCustomerServlet?customerId=${customer.id}'" class="btn btn-sm btn-outline-primary">Update</button>
+
                                     <form action="UpdateCustomerServlet" method="get">
                                         <input type="hidden" name="customerId" value="${customer.id}">
                                         <button type="submit" class="btn btn-sm btn-outline-primary">Update</button>

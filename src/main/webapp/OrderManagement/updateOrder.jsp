@@ -17,33 +17,37 @@
 
 <div class="container mt-5">
     <div class="card p-4">
-        <h4 class="mb-4 text-warning">Update Order</h4>
+        <h4 class="mb-4 text-primary">Update Order</h4>
         <form action="UpdateOrderServlet" method="post" class="row g-3">
 
             <!-- Hidden Order ID -->
-            <input type="hidden" name="orderID" value="${order.id}">
+            <input type="hidden" name="orderId" value="${order.orderid}">
 
             <div class="col-md-12">
                 <label class="form-label">Business Name (Customer)</label>
-                <select class="form-select" name="cusID" required>
-                    <c:forEach var="customer" items="${allCustomers}">
-                        <option value="${customer.id}" ${customer.id == order.customerId ? 'selected' : ''}>
-                            ${customer.bname}
-                        </option>
-                    </c:forEach>
-                </select>
+                <input class="form-control-plaintext" value="${order.bname}" readonly>
             </div>
 
             <div class="col-md-12">
                 <label class="form-label">Product</label>
-                <select id="product" class="form-select" name="itemID" required>
+                <input class="form-control-plaintext" value="${order.itemname}" data-price="${allstock.selling_price}" readonly>
+                
+               
+                <label class="form-label mt-3">Price per unit</label>
+				<c:forEach var="stock" items="${allStock}">
+				    <c:if test="${stock.item_name == order.itemname}">
+				        <input type="text" id="priceInput" class="form-control-plaintext" value="$ ${stock.selling_price}" readonly />
+				    </c:if>
+				</c:forEach>
+                <%-- 
+                <select id="product" class="form-select" name="itemID" >
                     <c:forEach var="stock" items="${allStock}">
                         <option value="${stock.item_id}" data-price="${stock.selling_price}" 
-                            ${stock.item_id == order.itemId ? 'selected' : ''}>
+                            ${stock.item_name == order.itemname ? 'selected' : ''}>
                             ${stock.item_name} | ${stock.item_model} | ${stock.item_manufacturer} | $ ${stock.selling_price}
                         </option>
                     </c:forEach>
-                </select>
+                </select> --%>
             </div>
 
             <div class="col-md-4">
@@ -53,12 +57,12 @@
 
             <div class="col-md-4">
                 <label class="form-label">Total Price:</label>
-                <input type="text" class="form-control" id="total_price" name="total_price" value="${order.totalPrice}" readonly>
+                <input type="text" class="form-control" id="total_price" name="total_price" value="${order.total_price}" readonly>
             </div>
 
             <div class="col-12 d-flex gap-2 mt-4">
-                <button type="submit" class="btn btn-warning">Update</button>
-                <a href="GetAllOrdersServlet" class="btn btn-secondary">Cancel</a>
+                <button type="submit" class="btn btn-primary">Update</button>
+                <a href="#" class="btn btn-secondary" onclick="window.history.back()">Cancel</a>
             </div>
 
         </form>
@@ -66,16 +70,18 @@
 </div>
 
 <script>
-    function calculateTotal() {
-        const productSelect = document.getElementById("product");
-        const qty = parseFloat(document.getElementById("qty").value) || 0;
-        const selectedOption = productSelect.options[productSelect.selectedIndex];
-        const price = parseFloat(selectedOption.getAttribute("data-price")) || 0;
-        document.getElementById("total_price").value = (qty * price).toFixed(2);
-    }
+	function calculateTotal() {
+	    const priceInput = document.getElementById("priceInput").value.replace(/[^\d.]/g, "");
+	    const price = parseFloat(priceInput) || 0;
+	    const qty = parseFloat(document.getElementById("qty").value) || 0;
+	    document.getElementById("total_price").value = (qty * price).toFixed(2);
+	}
 
-    document.getElementById("product").addEventListener("change", calculateTotal);
-    window.addEventListener("load", calculateTotal); // ensure total price is correct on load
+
+	document.addEventListener("DOMContentLoaded", function () {
+	    document.getElementById("qty").addEventListener("input", calculateTotal);
+	    calculateTotal(); // initialize on load
+	});
 </script>
 
 </body>
