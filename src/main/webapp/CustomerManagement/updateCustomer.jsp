@@ -33,7 +33,7 @@
 
 
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm mb-5">
+<nav class="navbar navbar-expand-lg bg-dark-subtle shadow-sm mb-5">
     <div class="container-fluid">
         <a class="navbar-brand" href="SalesRepDashboard.jsp">
             <img src="../image/Tech-Color.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">

@@ -9,7 +9,8 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-
+	<!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <style>
         body {
             background-color: #f8f9fa;
@@ -36,7 +37,7 @@
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm mb-4">
+<nav class="navbar navbar-expand-lg bg-dark-subtle shadow-sm mb-4">
     <div class="container-fluid">
         <a class="navbar-brand" href="SalesRepDashboard.jsp">
             <img src="image/Tech-Color.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
@@ -83,7 +84,11 @@
 <div class="container">
     <div class="card p-4">
 		<div class="d-flex justify-content-between align-items-center mb-4">
-	        <h3 class="mb-0">Customers</h3>
+			<div class="d-flex align-items-center">
+				<i class="bi bi-people-fill me-2" style="font-size: 2em;"></i>
+	        	<h3 class="mb-0"><strong>Customers</strong></h3>
+	        </div>
+	      
 	        <div>
 	            <button type="button" class="btn btn-primary" onclick="window.location.href ='CustomerManagement/addCustomer.jsp'">
 	                <i class="bi bi-person-plus"></i> Add Customer

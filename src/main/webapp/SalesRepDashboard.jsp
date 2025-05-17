@@ -49,10 +49,6 @@
             color: #264093;
         }
 
-        .table thead th {
-            background-color: #e9ecef;
-        }
-
         .tab-content {
             padding: 1rem;
             background-color: #fff;
@@ -67,7 +63,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
+<nav class="navbar navbar-expand-lg bg-dark-subtle shadow-sm">
     <div class="container-fluid">
         <a class="navbar-brand" href="SalesRepDashboard.jsp">
             <img src="image/Tech-Color.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
@@ -112,7 +108,7 @@
 
 <div class="container-fluid px-4">
     <div class="d-flex justify-content-between align-items-center my-4">
-        <h3 class="mb-0">Dashboard</h3>
+        <h2 class="mb-0"><strong>Dashboard</strong></h2>
         <div>
             <button type="button" class="btn btn-secondary me-2" onclick="window.location.href ='CustomerManagement/addCustomer.jsp'">
                 <i class="bi bi-person-plus"></i> Add Customer
@@ -166,6 +162,32 @@
             </table>
         </div>
     </div>
+    <div class="table-responsive">
+            <table class="table table-bordered table-striped align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Order ID</th>               
+                        <th>Item Name</th>
+                        <th>Total Price</th>
+                        <th>Business Name</th>
+                        <th>City</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach var="order" items="${allOrders}">
+                    <c:if test="${order.odate == 'currentDate'}">
+                        <tr>
+                            <td>${order.orderid}</td>
+                            <td>${order.itemname}</td>
+                            <td>$ ${order.total_price}</td>
+                            <td>${order.bname}</td>
+                            <td>${order.city}</td>
+                        </tr>
+                    </c:if>
+                    </c:forEach>
+                </tbody>
+            </table>
+        </div>
 
     <div>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
