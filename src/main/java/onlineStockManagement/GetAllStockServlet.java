@@ -29,8 +29,6 @@ public class GetAllStockServlet extends HttpServlet {
 
 	    if ("sales".equalsIgnoreCase(view)) {
 	        page = "/OrderManagement/products.jsp";
-	    } else if ("dashboard".equalsIgnoreCase(view)) {
-	        page = "/StockManagerDashboard.jsp";
 	    } else {
 	        page = "/StockManagement/view_stock.jsp";
 	    }
