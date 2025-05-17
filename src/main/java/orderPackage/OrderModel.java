@@ -7,21 +7,33 @@ public class OrderModel {
 	String itemname;
 	String qty;
 	String odate;
+	String ostatus;
 	String bname;
 	String city;
 	float total_price;
 	
 	
-	public OrderModel(int orderid, String itemname, String qty, String odate, String bname, String city, float total_price) {
+	public OrderModel(int orderid, String itemname, String qty, String odate, String ostatus, String bname, String city, float total_price) {
 		
 		this.orderid = orderid;
 		this.itemname = itemname;
 		this.qty = qty;
 		this.odate = odate;
+		this.ostatus = ostatus;
 		this.bname = bname;
 		this.city = city;
 		this.total_price =total_price;
 		
+	}
+
+
+	public String getOstatus() {
+		return ostatus;
+	}
+
+
+	public void setOstatus(String ostatus) {
+		this.ostatus = ostatus;
 	}
 
 

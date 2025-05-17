@@ -109,6 +109,7 @@
                         <th>Quantity</th>
                         <th>Total Price</th>
                         <th>Order Date</th>
+                        <th>Order Status</th>
                         <th>Business Name</th>
                         <th>City</th>
                         <th>Actions</th>
@@ -122,6 +123,7 @@
                             <td>${order.qty}</td>
                             <td>$ ${order.total_price}</td>
                             <td>${order.odate}</td>
+                            <td>${order.ostatus}</td>
                             <td>${order.bname}</td>
                             <td>${order.city}</td>
                             <td>

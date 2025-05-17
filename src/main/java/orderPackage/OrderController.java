@@ -60,7 +60,7 @@ public class OrderController {
 			stmt = con.createStatement();
 			
 			// Corrected SQL Query with proper JOIN syntax
-            String sql = "SELECT O.order_id AS orderid, S.item_name AS itemname, O.quantity AS qty, O.orderDate AS odate, C.business_name AS bname, C.city AS city, O.total_price as total_price "
+            String sql = "SELECT O.order_id AS orderid, S.item_name AS itemname, O.quantity AS qty, O.orderDate AS odate, O.order_status AS ostatus, C.business_name AS bname, C.city AS city, O.total_price as total_price "
                     + "FROM Orders O "
                     + "JOIN Customer C ON O.customer_id = C.customer_id "
                     + "JOIN Stock_Items S ON O.item_id = S.item_id "
@@ -73,12 +73,13 @@ public class OrderController {
                 String itemname = rs.getString("itemname");
                 String qty = rs.getString("qty");
                 String odate = rs.getString("odate");
+                String ostatus = rs.getString("ostatus");
                 String bname = rs.getString("bname");
                 String city = rs.getString("city");
                 float tprice= rs.getFloat("total_price");
       
 
-                OrderModel order = new OrderModel(orderid, itemname, qty, odate, bname, city, tprice);
+                OrderModel order = new OrderModel(orderid, itemname, qty, odate, ostatus,bname, city, tprice);
                 orders.add(order);
         
             }
@@ -98,8 +99,8 @@ public class OrderController {
             con = DBconnection.getConnection();
             stmt = con.createStatement();
             
-            // Corrected SQL Query with proper JOIN syntax
-            String sql = "SELECT O.order_id AS orderid, S.item_name AS itemname, O.quantity AS qty, O.orderDate AS odate, C.business_name AS bname, C.city AS city, O.total_price as total_price "
+           
+            String sql = "SELECT O.order_id AS orderid, S.item_name AS itemname, O.quantity AS qty, O.orderDate AS odate, O.order_status AS ostatus, C.business_name AS bname, C.city AS city, O.total_price as total_price "
                     + "FROM Orders O "
                     + "JOIN Customer C ON O.customer_id = C.customer_id "
                     + "JOIN Stock_Items S ON O.item_id = S.item_id "
@@ -112,11 +113,12 @@ public class OrderController {
                 String itemname = rs.getString("itemname");
                 String qty = rs.getString("qty");
                 String odate = rs.getString("odate");
+                String ostatus = rs.getString("ostatus");
                 String bname = rs.getString("bname");
                 String city = rs.getString("city");
                 float tprice= rs.getFloat("total_price");
 
-                OrderModel order = new OrderModel(orderid, itemname, qty, odate, bname, city, tprice);
+                OrderModel order = new OrderModel(orderid, itemname, qty, odate, ostatus, bname, city, tprice);
                 orders.add(order);
             }
         } catch (Exception e) {

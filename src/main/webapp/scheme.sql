@@ -139,5 +139,7 @@ CREATE TABLE `Orders` (
   CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `Stock_Items` (`item_id`),
   CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `Customer` (`customer_id`)
 ) 
+ALTER TABLE Orders
+ADD COLUMN order_status VARCHAR(20) NOT NULL DEFAULT 'Pending';
 
 

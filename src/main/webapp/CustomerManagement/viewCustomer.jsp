@@ -172,7 +172,7 @@
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
-<!-- <script>
+<script>
 	function searchCustomer(){
 		var input, filter, table, tr, td, i,j, txtvalue;
 		input = document.getElementById("searchInput");
@@ -196,7 +196,7 @@
 	    
 	    document.getElementById("searchInput").addEventListener("input", searchCustomer);
 	}
-</script> -->
+</script> 
 
 <script>
 function searchCustomer() {
@@ -209,7 +209,7 @@ function searchCustomer() {
         var td = tr[i].getElementsByTagName("td");
         var found = false;
 
-        for (var j = 0; j < 2; j++) { // ignore Actions column
+        for (var j = 0; j < 3; j++) { // ignore Actions column
             if (td[j]) {
                 var txtValue = td[j].textContent || td[j].innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
