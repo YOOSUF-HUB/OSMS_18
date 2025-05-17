@@ -176,4 +176,36 @@ public class OrderController {
 	}
 
 
+	public static boolean updateCusOrder(int orderId, String itemname, int qty, float totalPrice, String odate, String ostatus, String bname, String city) {
+	    boolean isSuccess = false;
+
+	    try {
+	        con = DBconnection.getConnection();
+	        stmt = con.createStatement();
+
+	        String sql = "UPDATE Orders SET " +
+	                     "itemname = '" + itemname + "', " +
+	                     "quantity = " + qty + ", " +
+	                     "total_price = " + totalPrice + ", " +
+	                     "odate = '" + odate + "', " +
+	                     "ostatus = '" + ostatus + "', " +
+	                     "bname = '" + bname + "', " +
+	                     "city = '" + city + "' " +
+	                     "WHERE order_id = " + orderId;
+
+	        int rs = stmt.executeUpdate(sql);
+
+	        if (rs > 0) {
+	            isSuccess = true;
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return isSuccess;
+	}
+
+
+
 }

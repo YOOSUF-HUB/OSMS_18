@@ -1,7 +1,6 @@
-package SupplierPackage;
+package onlineStockManagement;
 
 import java.io.IOException;
-
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -15,33 +14,27 @@ import orderPackage.OrderController;
 import orderPackage.OrderModel;
 
 
-@WebServlet("/GetAllSupplierServlet")
-public class GetAllSupplierServlet extends HttpServlet {
+@WebServlet("/StockCusOrderViewServlet")
+public class StockCusOrderViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	protected void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+
 		
-		List<SupplierModel> allSupplier = SupplierControl.getAllSupplier();
-		request.setAttribute("allSupplier", allSupplier);
+		List<OrderModel> allOrders = OrderController.getAllOrders();
+		request.setAttribute("allOrders", allOrders);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/SupplierManagement/view_supplier.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/StockManagement/CustomerOrder.jsp");
 		
 		dispatcher.forward(request, response);
 
-		
-		
 	}
-	
+
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		doGet(request, response);
 
 	}
 
 }
-
-
-
-
-

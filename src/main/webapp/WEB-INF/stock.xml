@@ -196,6 +196,37 @@
         <servlet-name>DeleteStockOrderServlet</servlet-name>
         <url-pattern>/DeleteStockOrderServlet</url-pattern>
     </servlet-mapping>
+    
+    
+          <!-- Customer Order Management -->
+     
+
+
+						<!-- View Customer Orders -->
+
+    <servlet>
+        <servlet-name>StockCusOrderViewServlet</servlet-name>
+        <servlet-class>onlineStockManagement.StockCusOrderViewServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>StockCusOrderViewServlet</servlet-name>
+        <url-pattern>/StockCusOrderViewServlet</url-pattern>
+    </servlet-mapping>
+    
+						<!-- Update Stock Orders -->
+
+    <servlet>
+        <servlet-name>UpdateCusOrderServlet</servlet-name>
+        <servlet-class>onlineStockManagement.UpdateCusOrderServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UpdateCusOrderServlet</servlet-name>
+        <url-pattern>/UpdateCusOrderServlet</url-pattern>
+    </servlet-mapping>
+    
+
 
 
 </web-app>

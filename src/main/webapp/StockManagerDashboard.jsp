@@ -147,7 +147,7 @@
                 </a>
             </div>
             <div class="col-sm-6 col-lg-4 mb-4 mx-sm-auto">
-                <a href="" class="card action-card h-100">
+                <a href="StockCusOrderViewServlet" class="card action-card h-100">
                     <div class="card-body">
                         <i class="fas fa-shipping-fast"></i>
                         <h5>Customer Orders</h5>
