@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,6 +33,25 @@
         .form-label {
             font-weight: 500;
         }
+        .search-container {
+		    position: relative;
+		}
+		
+		.search-input {
+		    height: 40px;
+		    border-radius: 30px;
+		    padding-left: 35px;
+		    border: 1px #black;
+		}
+		
+		.search-icon {
+		    position: absolute;
+		    top: 50%;
+		    left: 25px;
+		    transform: translateY(-50%);
+		    color: #888;
+		    
+		}
     </style>
 </head>
 <body>
@@ -82,13 +102,22 @@
 
 <!-- Content -->
 <div class="container">
+	<div class="stock-count-box">
+		        <i class="fas fa-boxes"></i>
+		        TOTAL CUSTOMERS: ${fn:length(allCustomers)}
+    </div>
     <div class="card p-4">
 		<div class="d-flex justify-content-between align-items-center mb-4">
 			<div class="d-flex align-items-center">
 				<i class="bi bi-people-fill me-2" style="font-size: 2em;"></i>
 	        	<h3 class="mb-0"><strong>Customers</strong></h3>
 	        </div>
-	      
+			<div class="col-md-4 row justify-content-center">
+			  	<div class="search-container">
+			  		<input type="text" id="searchInput" class="form-control search-input" placeholder="Search...">
+			  		<i class="bi bi-search search-icon"></i>
+			   	</div>
+			</div>
 	        <div>
 	            <button type="button" class="btn btn-primary" onclick="window.location.href ='CustomerManagement/addCustomer.jsp'">
 	                <i class="bi bi-person-plus"></i> Add Customer
@@ -96,7 +125,7 @@
 	        </div>
 	    </div>
         <div class="table-responsive">
-            <table class="table table-bordered table-striped align-middle">
+            <table id="table" class="table table-bordered table-striped align-middle">
                 <thead class="table-dark">
                     <tr>
                         <th>Customer ID</th>
@@ -143,6 +172,62 @@
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+<!-- <script>
+	function searchCustomer(){
+		var input, filter, table, tr, td, i,j, txtvalue;
+		input = document.getElementById("searchInput");
+		filter = input.value.toUpperCase();
+		table = document.querySelector("table");
+	    tr = table.getElementsByTagName("tr");
+	    
+	    for(i=1; i<tr.length; i++){
+	    	td = tr[i].getElementsByTagName("td")
+	    	
+	    	for(j=0; j<2; j++){
+	    		if(td[j]){
+	    			textvalue = td[j].textContent || td[j].innerText;
+	    			tr[i].style.display = "";
+	                break;
+	    		}else{
+	    			tr[i].style.display = "none";
+	    		}
+	    	}
+	    }
+	    
+	    document.getElementById("searchInput").addEventListener("input", searchCustomer);
+	}
+</script> -->
+
+<script>
+function searchCustomer() {
+    var input = document.getElementById("searchInput");
+    var filter = input.value.toUpperCase();
+    var table = document.querySelector("table");
+    var tr = table.getElementsByTagName("tr");
+
+    for (var i = 1; i < tr.length; i++) { 
+        var td = tr[i].getElementsByTagName("td");
+        var found = false;
+
+        for (var j = 0; j < 2; j++) { // ignore Actions column
+            if (td[j]) {
+                var txtValue = td[j].textContent || td[j].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    found = true;
+                    break;
+                }
+            }
+        }
+
+        tr[i].style.display = found ? "" : "none";
+    }
+}
+
+// Attach event listener once DOM is loaded
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("searchInput").addEventListener("input", searchCustomer);
+});
+</script>
 
 </body>
 </html>
