@@ -58,10 +58,13 @@ public class updateStockServlet extends HttpServlet {
 			List<stockModel> stockDetails = stockControl.getById(item_id);
 			request.setAttribute("stockDetails", stockDetails);
 			
+	        request.getSession().setAttribute("successMessage","Stock updated successfully");
+			
 			
 
-			String AlertMessage = "Report Updated Successfully";
-			response.getWriter().println("<script> alert('"+AlertMessage+"'); window.location.href = 'GetAllStockServlet' </script>");
+			
+			response.getWriter().println("<script> window.location.href = 'GetAllStockServlet' </script>");
+
 
 
 		}

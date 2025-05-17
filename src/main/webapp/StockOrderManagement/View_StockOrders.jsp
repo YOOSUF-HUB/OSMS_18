@@ -95,6 +95,24 @@
 	  font-size: 1rem; /* Increase font size to 16px (default 0.8rem or less) */
 	  padding: 0.4em 0.7em; /* optional: adjust padding for better look */
 	}
+	
+	.btn-success {
+	    color: #fff;
+	    background-color: #28a745;
+	    border-color: #28a745;
+	    padding:10px 70px;
+	    margin-left: 18px;
+	}
+	
+	.badge-info {
+	    color: #fff;
+	    background-color: #45484a;
+	}
+	.btn-secondary{
+	padding:10px 70px;
+	margin-bottom: 50px;
+		
+	}
     </style>
 </head>
 <body>
@@ -112,10 +130,11 @@
     </div>
     
 
-    <!-- Filtering Order Status -->
+
     <div class="row mb-4">
     
-    <p id="filter-text">Filter By: </p>
+    <a href="StockOrderInsertServlet" class="btn btn-success">Add New Stock Order</a>
+    
         <div class="col-md-3">
             <select id="statusFilter" class="form-control">
                 <option value="">All Delivery Statuses</option>
@@ -136,11 +155,13 @@
                 <option value="Refunded">Refunded</option>
             </select>
         </div>
+        
+        
     </div>
 
 
 
-    <!-- Cards -->
+
 <div class="row">
     <c:choose>
         <c:when test="${empty orders}">
@@ -194,7 +215,6 @@
 
 
     <div class="text-center mt-4">
-        <a href="StockOrderInsertServlet" class="btn btn-success mr-2">Add New Stock Order</a>
         <a href="./StockManagerDashboard.jsp" class="btn btn-secondary">Back to Dashboard</a>
     </div>
 </div>

@@ -52,7 +52,7 @@
 
 	
 	.table tbody tr:hover {
-	    background-color: #f1f1f1;
+	    background-color: #c4f1ff;
 	    transition: background-color 0.3s ease;
 	}
 	
@@ -169,7 +169,7 @@
                     <th>City</th>
                     <th>Country</th>
                     <th >Website</th>
-                    <th>Date</th> 
+<!--                     <th>Date</th>  -->
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -192,7 +192,7 @@
                   				<td><span class="badge badge-info">${supplier.supplier_city}</span></td>
                   				<td><span class="badge badge-success">${supplier.supplier_country}</span></td>
 			                    <td>${supplier.supplier_website}</td>
-			                    <td>${supplier.s_date_added}</td>
+<%-- 			                    <td>${supplier.s_date_added}</td> --%>
 	 			                <td class="add-stock-action-btn">
 			                        <a href="SupplierManagement/update_supplier.jsp?supplier_id=${supplier.supplier_id}&supplier_name=${supplier.supplier_name}&phone_number=${supplier.phone_number}&email=${supplier.email}&supplier_address=${supplier.supplier_address}&supplier_city=${supplier.supplier_city}&supplier_country=${supplier.supplier_country}&supplier_website=${supplier.supplier_website}&s_date_added=${supplier.s_date_added}" class="btn btn-primary" id="add-stock-action-btn">Update</a>
 									

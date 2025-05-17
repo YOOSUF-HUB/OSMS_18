@@ -2,6 +2,8 @@
 <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 
 
 <!DOCTYPE html>
@@ -52,19 +54,26 @@
 	    vertical-align: middle;
 	    font-size: 0.9rem;
 	}
-	
+
 	.table tbody td {
     vertical-align: middle;
     text-align: center;
     font-size: 0.95rem; /* or use 12px if you prefer px */
 	}
 
-	
+.table tbody tr {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+}
+
 	.table tbody tr:hover {
-	    background-color: #c4f1ff;
-	    transition: background-color 0.3s ease;
+	    background-color: #fcefc5;
+	    border-radius:5px;
+		transform: scale(1.03); /* slightly enlarge the row */
+
 	}
 	
+
 	.btn {
 	    padding: 6px 14px;
 	    font-size: 0.875rem;
@@ -92,10 +101,7 @@
 	
 	
 	#view-stock-btn-other{
-		padding: 10px 20px;
-		margin-top: 20px;
-		margin-left: 20px;
-		margin-bottom: 20px;
+		padding: 10px 100px;
 		font-size: 1rem ;
 	
 	}
@@ -194,22 +200,42 @@
 	}
 	
 	
-		.stock-count-box {
+	.stock-count-box {
+		background-color: #dedede;
 	    font-size: 1.2rem;
-	    color: #007bff;
+	    color: #45484a;
 	    font-weight: 600;
 	    display: flex;
 	    align-items: center;
 	    gap: 8px;
 	    padding: 8px 12px;
 	    margin-bottom: 20px;
+	    border-radius:10px;
 	}
 	
 	.stock-count-box i {
 	    font-size: 1.4rem;
-	    color: #0056b3;
+	    color: #45484a;
 	}
 	
+	.badge-primary {
+	    color: #fff;
+	    background-color: #45484a;
+
+	}
+	
+	.btn-primary {
+	    color: #fff;
+	    background-color: #45484a;
+	    border: none;
+	}
+	
+	.btn-primary:hover {
+	    color: #fff;
+	    border: none;
+	    background-color: #000000;
+	}
+		
 
     </style>
 </head>
@@ -223,13 +249,30 @@
         <i class="fas fa-boxes"></i>
         Available Stock Items: ${fn:length(allStocks)}
     </div>
+    <a href="StockManagement/create_stock.jsp" class="btn btn-primary" id="view-stock-btn-other">Add Stock</a>
     
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-	  <strong>Available Stock Items: ${fn:length(allStocks)}</strong>
-	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-	    <span aria-hidden="true">&times;</span>
-	  </button>
-	</div>
+		<c:if test="${not empty sessionScope.successMessage}">
+		  <div class="alert alert-success alert-dismissible fade show" role="alert">
+		    ${sessionScope.successMessage}
+		    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		      <span aria-hidden="true">&times;</span>
+		    </button>
+		  </div>
+		  <!-- ending update message session -->
+		  <c:remove var="successMessage" scope="session"/>
+		</c:if>
+		
+		<c:if test="${not empty sessionScope.deleteMessage}">
+		  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+		    ${sessionScope.deleteMessage}
+		    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		      <span aria-hidden="true">&times;</span>
+		    </button>
+		  </div>
+		  <!-- Clear the delete message after showing -->
+		  <c:remove var="deleteMessage" scope="session"/>
+		</c:if>
+		
 		<div class="input-group mb-4 search-bar-container">
 		  <input type="text" id="searchInput" class="form-control" placeholder="Search By Product Name or ID...">
 		  <div class="input-group-append">
@@ -263,7 +306,7 @@
 			        <c:otherwise>
 			            <c:forEach var="stock" items="${allStocks}" varStatus="loop">
 			                <tr id="stock-table-db">
-			                    <td id="stock-table-row-num">(${loop.index + 1})</td> <!-- Row number -->
+			                    <td id="stock-table-row-num">${loop.index + 1}.</td> <!-- Row number -->
 			                    <td><span class="badge badge-primary">STCK_${stock.item_id}</span></td>
 			                    <td>${stock.item_name}</td>
 			                    <td>${stock.item_model}</td>
@@ -300,7 +343,7 @@
                     No reports found matching your search criteria.
 		</div>
 		
-        <a href="StockManagement/create_stock.jsp" class="btn btn-primary" id="view-stock-btn-other">Add Stock</a>
+        
         <a href="StockManagerDashboard.jsp" class="btn btn-danger" id="view-stock-btn-other">Back to Dashboard</a>
         
         

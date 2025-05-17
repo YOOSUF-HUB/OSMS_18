@@ -25,8 +25,10 @@ public class DeleteStockServlet extends HttpServlet {
 		boolean isTrue;
 		isTrue = stockControl.DeleteStock(item_id);
 		if(isTrue == true) {
-			String alertMessage = "Data Deleted Successfully";
-			response.getWriter().println("<script>('"+alertMessage+"');" + " window.location.href='GetAllStockServlet'</script>");
+			
+			request.getSession().setAttribute("deleteMessage","Stock Deleted successfully");
+
+			response.getWriter().println("<script>window.location.href='GetAllStockServlet'</script>");
 		}
 		else {
 			

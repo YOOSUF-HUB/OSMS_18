@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
 
             switch (userRole) {
                 case "stock manager":
-                    response.sendRedirect(request.getContextPath() + "/StockManagerDashboard.jsp");
+                    response.sendRedirect("/StockManagerDashboard.jsp");
                     break;
                 case "system admin":
                     response.sendRedirect(request.getContextPath() + "/ViewUsersServlet");
@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
         } else {
             
             request.setAttribute("loginError", "Invalid email or password.");
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            request.getRequestDispatcher("user/login.jsp").forward(request, response);
         }
     }
 }
