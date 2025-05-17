@@ -16,6 +16,11 @@
         body {
             background-color: #f8f9fa;
         }
+        .navbar-brand i {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #264093;
+        }
         .card {
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
@@ -35,23 +40,24 @@
 <body>
 
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm mb-4">
+<nav class="navbar navbar-expand-lg bg-dark-subtle shadow-sm mb-5">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-            <i>Company Name</i>
+        <a class="navbar-brand" href="SalesRepDashboard.jsp">
+            <img src="../image/Tech-Color.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+            <i class="logotext">TechNest</i>
         </a>
-        <button class="navbar-toggler order-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler order-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarScroll">
             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                <li class="nav-item"><a class="nav-link" href="SalesRepDashboard.jsp">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="GetAllOrdersServlet">Link</a></li>
-                <li class="nav-item"><a class="nav-link" href="GetAllCustomersServlet">Customer</a></li>
-                <li class="nav-item"><a class="nav-link" href="GetAllStockServlet?view=sales">Product</a></li>
+                <li class="nav-item"><a class="nav-link " href="../SalesRepDashboard.jsp">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="../GetAllOrdersServlet">Order</a></li>
+                <li class="nav-item"><a class="nav-link" href="../GetAllCustomersServlet">Customer</a></li>
+                <li class="nav-item"><a class="nav-link" href="../GetAllStockServlet?view=sales">Product</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Link</a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Link</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Action</a></li>
                         <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -63,9 +69,12 @@
                 <li class="nav-item d-lg-none"><a class="nav-link" href="#">Profile</a></li>
                 <li class="nav-item d-lg-none"><a class="nav-link" href="#">Logout</a></li>
             </ul>
+
             <div class="dropdown d-none d-lg-block">
-                <a class="nav-link dropdown-toggle fs-5 fw-bold" href="#" id="userDropdown" data-bs-toggle="dropdown">John Doe</a>
-                <ul class="dropdown-menu dropdown-menu-end">
+                <a class="nav-link dropdown-toggle fs-5 fw-bold" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                    John Doe
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                     <li><a class="dropdown-item" href="#">Profile</a></li>
                     <li><a class="dropdown-item" href="#">Logout</a></li>
                 </ul>
@@ -153,7 +162,11 @@
         document.getElementById("total_price").value = (qty * price).toFixed(2);
     }
 
-    document.getElementById("product").addEventListener("change", calculateTotal);
+    /* document.getElementById("product").addEventListener("change", calculateTotal); */
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("product").addEventListener("change", calculateTotal);
+        calculateTotal(); // initialize on load
+    });
 
 
 </script>

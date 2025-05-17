@@ -8,42 +8,105 @@
     <title>Update Order</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body { background-color: #f8f9fa; }
-        .card { border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); }
-        .form-label { font-weight: 500; }
+        body { 
+        	background-color: #f8f9fa; 
+        }
+        .navbar-brand i {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #264093;
+        }
+        .card {
+        	border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); 
+        }
+        .form-label { 
+        font-weight: 500; 
+        }
     </style>
 </head>
 <body>
 
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg bg-dark-subtle shadow-sm mb-5">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="SalesRepDashboard.jsp">
+            <img src="../image/Tech-Color.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+            <i class="logotext">TechNest</i>
+        </a>
+        <button class="navbar-toggler order-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                <li class="nav-item"><a class="nav-link " href="../SalesRepDashboard.jsp">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="../GetAllOrdersServlet">Order</a></li>
+                <li class="nav-item"><a class="nav-link" href="../GetAllCustomersServlet">Customer</a></li>
+                <li class="nav-item"><a class="nav-link" href="../GetAllStockServlet?view=sales">Product</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Link</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item d-lg-none"><a class="nav-link" href="#"><strong>John Doe</strong></a></li>
+                <li class="nav-item d-lg-none"><a class="nav-link" href="#">Profile</a></li>
+                <li class="nav-item d-lg-none"><a class="nav-link" href="#">Logout</a></li>
+            </ul>
+
+            <div class="dropdown d-none d-lg-block">
+                <a class="nav-link dropdown-toggle fs-5 fw-bold" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                    John Doe
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Form Container -->
+<!-- Form Container -->
+<!-- Form Container -->
 <div class="container mt-5">
     <div class="card p-4">
-        <h4 class="mb-4 text-warning">Update Order</h4>
+        <h4 class="mb-4 text-primary">Update Order</h4>
         <form action="UpdateOrderServlet" method="post" class="row g-3">
 
             <!-- Hidden Order ID -->
-            <input type="hidden" name="orderID" value="${order.id}">
+            <input type="hidden" name="orderId" value="${order.orderid}">
 
             <div class="col-md-12">
                 <label class="form-label">Business Name (Customer)</label>
-                <select class="form-select" name="cusID" required>
-                    <c:forEach var="customer" items="${allCustomers}">
-                        <option value="${customer.id}" ${customer.id == order.customerId ? 'selected' : ''}>
-                            ${customer.bname}
-                        </option>
-                    </c:forEach>
-                </select>
+                <input class="form-control-plaintext" value="${order.bname}" readonly>
             </div>
 
             <div class="col-md-12">
                 <label class="form-label">Product</label>
-                <select id="product" class="form-select" name="itemID" required>
+                <input class="form-control-plaintext" value="${order.itemname}" data-price="${allstock.selling_price}" readonly>
+                
+               
+                <label class="form-label mt-3">Price per unit</label>
+				<c:forEach var="stock" items="${allStock}">
+				    <c:if test="${stock.item_name == order.itemname}">
+				        <input type="text" id="priceInput" class="form-control-plaintext" value="$ ${stock.selling_price}" readonly />
+				    </c:if>
+				</c:forEach>
+                <%-- 
+                <select id="product" class="form-select" name="itemID" >
                     <c:forEach var="stock" items="${allStock}">
                         <option value="${stock.item_id}" data-price="${stock.selling_price}" 
-                            ${stock.item_id == order.itemId ? 'selected' : ''}>
+                            ${stock.item_name == order.itemname ? 'selected' : ''}>
                             ${stock.item_name} | ${stock.item_model} | ${stock.item_manufacturer} | $ ${stock.selling_price}
                         </option>
                     </c:forEach>
-                </select>
+                </select> --%>
             </div>
 
             <div class="col-md-4">
@@ -53,12 +116,12 @@
 
             <div class="col-md-4">
                 <label class="form-label">Total Price:</label>
-                <input type="text" class="form-control" id="total_price" name="total_price" value="${order.totalPrice}" readonly>
+                <input type="text" class="form-control" id="total_price" name="total_price" value="${order.total_price}" readonly>
             </div>
 
             <div class="col-12 d-flex gap-2 mt-4">
-                <button type="submit" class="btn btn-warning">Update</button>
-                <a href="GetAllOrdersServlet" class="btn btn-secondary">Cancel</a>
+                <button type="submit" class="btn btn-primary">Update</button>
+                <a href="#" class="btn btn-secondary" onclick="window.history.back()">Cancel</a>
             </div>
 
         </form>
@@ -66,16 +129,18 @@
 </div>
 
 <script>
-    function calculateTotal() {
-        const productSelect = document.getElementById("product");
-        const qty = parseFloat(document.getElementById("qty").value) || 0;
-        const selectedOption = productSelect.options[productSelect.selectedIndex];
-        const price = parseFloat(selectedOption.getAttribute("data-price")) || 0;
-        document.getElementById("total_price").value = (qty * price).toFixed(2);
-    }
+	function calculateTotal() {
+	    const priceInput = document.getElementById("priceInput").value.replace(/[^\d.]/g, "");
+	    const price = parseFloat(priceInput) || 0;
+	    const qty = parseFloat(document.getElementById("qty").value) || 0;
+	    document.getElementById("total_price").value = (qty * price).toFixed(2);
+	}
 
-    document.getElementById("product").addEventListener("change", calculateTotal);
-    window.addEventListener("load", calculateTotal); // ensure total price is correct on load
+
+	document.addEventListener("DOMContentLoaded", function () {
+	    document.getElementById("qty").addEventListener("input", calculateTotal);
+	    calculateTotal(); // initialize on load
+	});
 </script>
 
 </body>

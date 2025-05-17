@@ -52,6 +52,43 @@ public class OrderController {
 	}
 	
 	
+	public static List<OrderModel> getOrderById(int orderId){
+		ArrayList<OrderModel> orders = new ArrayList<>();
+		
+		try {
+			con = DBconnection.getConnection();
+			stmt = con.createStatement();
+			
+			// Corrected SQL Query with proper JOIN syntax
+            String sql = "SELECT O.order_id AS orderid, S.item_name AS itemname, O.quantity AS qty, O.orderDate AS odate, C.business_name AS bname, C.city AS city, O.total_price as total_price "
+                    + "FROM Orders O "
+                    + "JOIN Customer C ON O.customer_id = C.customer_id "
+                    + "JOIN Stock_Items S ON O.item_id = S.item_id "
+                    + "WHERE order_id = " + orderId;
+
+            rs = stmt.executeQuery(sql); // Execute the correct SQL query
+
+            while (rs.next()) {
+                int orderid = rs.getInt("orderid");  
+                String itemname = rs.getString("itemname");
+                String qty = rs.getString("qty");
+                String odate = rs.getString("odate");
+                String bname = rs.getString("bname");
+                String city = rs.getString("city");
+                float tprice= rs.getFloat("total_price");
+      
+
+                OrderModel order = new OrderModel(orderid, itemname, qty, odate, bname, city, tprice);
+                orders.add(order);
+        
+            }
+		}catch (Exception e) {
+	        e.printStackTrace();
+	    } 
+	    return orders;
+	}
+	
+	
 	// getting all order details
 	public static List<OrderModel> getAllOrders(){
 		
@@ -62,7 +99,7 @@ public class OrderController {
             stmt = con.createStatement();
             
             // Corrected SQL Query with proper JOIN syntax
-            String sql = "SELECT O.order_id AS orderid, S.item_name AS itemname, O.quantity AS qty, O.orderDate AS odate, C.business_name AS bname, C.city AS city "
+            String sql = "SELECT O.order_id AS orderid, S.item_name AS itemname, O.quantity AS qty, O.orderDate AS odate, C.business_name AS bname, C.city AS city, O.total_price as total_price "
                     + "FROM Orders O "
                     + "JOIN Customer C ON O.customer_id = C.customer_id "
                     + "JOIN Stock_Items S ON O.item_id = S.item_id "
@@ -77,8 +114,9 @@ public class OrderController {
                 String odate = rs.getString("odate");
                 String bname = rs.getString("bname");
                 String city = rs.getString("city");
+                float tprice= rs.getFloat("total_price");
 
-                OrderModel order = new OrderModel(orderid, itemname, qty, odate, bname, city);
+                OrderModel order = new OrderModel(orderid, itemname, qty, odate, bname, city, tprice);
                 orders.add(order);
             }
         } catch (Exception e) {
@@ -87,5 +125,53 @@ public class OrderController {
 		
 		return orders;
 	}
+	
+	
+	
+	public static boolean updateOrder(int orderId, int qty, float totalPrice) {
+	    boolean isSuccess = false;
+	    try {
+	        con = DBconnection.getConnection();
+	        stmt = con.createStatement();
+	        String sql = "UPDATE Orders SET  quantity = " + qty +
+	                     ", total_price = " + totalPrice + 
+	                     " WHERE order_id = " + orderId;
+	        int rs = stmt.executeUpdate(sql);
+	        isSuccess = rs > 0;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return isSuccess;
+	}
+	
+	
+	//delete function
+	public static boolean deleteOrder(int id) {
+		
+		try {
+	        con = DBconnection.getConnection();
+	        stmt = con.createStatement();
+
+	        String sql = "DELETE FROM Orders WHERE order_id = " + id;
+
+	       
+	        int rs = stmt.executeUpdate(sql);
+	        
+	        if(rs>0) {
+				isSuccess = true;
+			}
+			else {
+				isSuccess = false;
+			}
+	    } catch (Exception e) {
+	        System.out.println("ERROR DELETING CUSTOMER: " + e.getMessage());
+	        e.printStackTrace();
+	         
+	    }
+
+	    return isSuccess;
+		
+	}
+
 
 }

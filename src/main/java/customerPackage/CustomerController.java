@@ -134,10 +134,7 @@ public class CustomerController {
 		                + "province = '" + province + "', "
 		                + "zip_code = '" + zip + "' "
 		                + "WHERE customer_id = " + id;
-		        
-		        System.out.println("Executing SQL: " + sql);
-
-		                     
+		                    
 
 		       
 		        int rs = stmt.executeUpdate(sql);
@@ -156,6 +153,41 @@ public class CustomerController {
 
 		    return isSuccess;
 		}
+		
+		
+		
+		
+		//delete function
+		public static boolean deleteCustomer(int id) {
+			
+			try {
+		        con = DBconnection.getConnection();
+		        stmt = con.createStatement();
+
+		        String sql = "DELETE FROM Customer WHERE customer_id = " + id;
+
+		       
+		        int rs = stmt.executeUpdate(sql);
+		        
+		        if(rs>0) {
+					isSuccess = true;
+				}
+				else {
+					isSuccess = false;
+				}
+		    } catch (Exception e) {
+		        System.out.println("ERROR DELETING CUSTOMER: " + e.getMessage());
+		        e.printStackTrace();
+		         
+		    }
+
+		    return isSuccess;
+			
+		}
 
 
 }
+
+
+
+
