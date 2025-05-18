@@ -16,9 +16,15 @@ public class LoginServlet extends HttpServlet {
 
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-       request.getRequestDispatcher("/user/login.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        String error = (String) session.getAttribute("loginError");
+        if (error != null) {
+            request.setAttribute("loginError", error);
+            session.removeAttribute("loginError"); // Clear after showing once
+        }
+        request.getRequestDispatcher("/user/login.jsp").forward(request, response);
     }
+
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("gmail");
@@ -38,8 +44,8 @@ public class LoginServlet extends HttpServlet {
             String userRole = user.getRole();
 
             switch (userRole) {
-                case "Stock manager":
-                    response.sendRedirect(request.getContextPath() + "/StockOrderManagement/StockManagerDashboard.jsp"); 
+                case "stock manager":
+                    response.sendRedirect(request.getContextPath() + "/StockManagerDashboard.jsp"); 
                     break;
                 case "system admin":
                     response.sendRedirect(request.getContextPath() + "/user/adminDashboard.jsp"); 
@@ -56,8 +62,12 @@ public class LoginServlet extends HttpServlet {
             }
 
         } else {
-            request.setAttribute("loginError", "Invalid email or password.");
-            request.getRequestDispatcher("/user/login.jsp").forward(request, response);
+//            request.setAttribute("loginError", "Invalid email or password.");
+//            request.getRequestDispatcher("/user/login.jsp").forward(request, response);
+            
+            HttpSession session = request.getSession();
+            session.setAttribute("loginError", "Invalid email or password.");
+            response.sendRedirect(request.getContextPath() + "/LoginServlet");
         }
     }
 }
