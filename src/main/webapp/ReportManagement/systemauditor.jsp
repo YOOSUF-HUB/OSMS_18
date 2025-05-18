@@ -5,17 +5,7 @@
 <%@ page import="StockOrderManagement.*" %>
 <%@ page import="UserPackage.UserModel" %>
 
-<%
-    if (session.getAttribute("user") == null) {
-        response.sendRedirect(request.getContextPath() + "/user/login.jsp");
-        return;
-    }
-    UserModel loggedInUser = (UserModel) session.getAttribute("user");
-    if (!"system auditor".equalsIgnoreCase(loggedInUser.getRole())) {
-        response.sendRedirect(request.getContextPath() + "/Homepage.jsp");
-        return;
-    }
-%>
+<%@ include file="../user/loginAuthentication.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
