@@ -88,10 +88,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarScroll">
             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                <li class="nav-item"><a class="nav-link " href="SalesRepDashboardServlet">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="GetAllOrdersServlet">Order</a></li>
-                <li class="nav-item"><a class="nav-link" href="GetAllCustomersServlet">Customer</a></li>
-                <li class="nav-item"><a class="nav-link" href="GetAllStockServlet?view=sales">Product</a></li>
+                <li class="nav-item"><a class="nav-link " href="../SalesRepDashboardServlet">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="../GetAllOrdersServlet">Order</a></li>
+                <li class="nav-item"><a class="nav-link" href="../GetAllCustomersServlet">Customer</a></li>
+                <li class="nav-item"><a class="nav-link" href="../GetAllStockServlet?view=sales">Product</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Link</a>
                     <ul class="dropdown-menu">
