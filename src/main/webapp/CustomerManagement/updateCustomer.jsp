@@ -99,7 +99,7 @@
 
             <div class="mb-3">
                 <label for="cname" class="form-label">Customer Name</label>
-                <input type="text" class="form-control" id="cname" name="cname" value="${customer.cname}" required>
+                <input type="text" class="form-control" id="cname" name="cname" value="${customer.cname}" >
             </div>
 
             <div class="mb-3">

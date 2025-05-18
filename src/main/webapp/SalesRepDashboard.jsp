@@ -27,7 +27,7 @@
 
     <style>
     
-        :root {
+    	:root {
             --primary: #2563eb;
             --primary-hover: #1d4ed8;
             --bg: linear-gradient(135deg, #374785, #04b5b5);
@@ -35,6 +35,7 @@
             --border: #e5e7eb;
             --danger: #f87171;
             
+        } 
         body {
             background-color: #f8f9fa;
         }
@@ -257,6 +258,20 @@
 	        </div>
 	    </div>
 	</div> -->
+    
+    
+    <c:if test="${param.addSuccess == 'true'}">
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+      <div id="successToast" class="toast align-items-center text-bg-success border-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body">
+            Order placed successfully!
+          </div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
+</c:if>
     
 </div>
 

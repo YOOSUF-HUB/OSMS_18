@@ -42,12 +42,13 @@ public class UpdateOrderServlet extends HttpServlet {
 	    int qty = Integer.parseInt(request.getParameter("qty"));
 	    float totalPrice = Float.parseFloat(request.getParameter("total_price"));
 
-	    boolean result = OrderController.updateOrder(orderId, qty, totalPrice);
+	    boolean isTrue;
+		isTrue = OrderController.updateOrder(orderId, qty, totalPrice);
 
-	    if (result) {
-	        response.sendRedirect("GetAllOrdersServlet"); // go back to order list
+	    if (isTrue == true) {
+	    	response.sendRedirect("GetAllOrdersServlet?updateSuccess=true");
 	    } else {
-	        response.sendRedirect("error.jsp?message=Failed to update order");
+	    	response.sendRedirect("GetAllOrdersServlet?updateSuccess=false");
 	    }
 	}
 

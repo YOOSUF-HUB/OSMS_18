@@ -32,11 +32,10 @@ public class AddCustomerServlet extends HttpServlet {
 	
 		if (isTrue == true) {
 			
-			String alertMessage = "Data inserted successful";
-			response.getWriter().println("<script> alert('"+alertMessage+"'); window.location.href='GetAllCustomersServlet' </script>");
+			response.sendRedirect("GetAllCustomersServlet?addCustomerSuccess=true");
 		}
 		else {
-			RequestDispatcher dis2 = request.getRequestDispatcher("error.jsp");
+			RequestDispatcher dis2 = request.getRequestDispatcher("addCustomer.jsp?addCustomerSuccess=false");
 			dis2.forward(request,response);
 		}
 		

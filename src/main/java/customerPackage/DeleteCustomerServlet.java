@@ -32,14 +32,13 @@ public class DeleteCustomerServlet extends HttpServlet {
 	
 		if (isTrue == true) {
 			
-			String alertMessage = "Data Deleted successful";
-			response.getWriter().println("<script> alert('"+alertMessage+"'); window.location.href='GetAllCustomersServlet' </script>");
+			response.sendRedirect("GetAllCustomersServlet?deleteSuccess=true");
 		}
 		else {
 			
 			List<CustomerModel> customerDetails = CustomerController.getCustomerById(id);
 			request.setAttribute("customerDetails", customerDetails);
-			RequestDispatcher dis2 = request.getRequestDispatcher("error.jsp");
+			RequestDispatcher dis2 = request.getRequestDispatcher("GetAllCustomersServlet?deleteSuccess=false");
 			dis2.forward(request,response);
 		}
 	}

@@ -30,15 +30,14 @@ public class DeleteOrderServlet extends HttpServlet {
 
 		if (isTrue == true) {
 
-			String alertMessage = "Order Deleted successful";
-			response.getWriter().println("<script> alert('"+alertMessage+"'); window.location.href='GetAllOrdersServlet' </script>");
+			response.sendRedirect("GetAllOrdersServlet?deleteSuccess=true");
 
 		}else{
 
 			List<OrderModel> customerDetails = OrderController.getOrderById(id);
 			request.setAttribute("customerDetails", customerDetails);
 			
-			RequestDispatcher dis2 = request.getRequestDispatcher("error.jsp");
+			RequestDispatcher dis2 = request.getRequestDispatcher("GetAllOrdersServlet?deleteSuccess=false");
 			dis2.forward(request,response);
 
 		}
