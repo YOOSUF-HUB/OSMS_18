@@ -19,6 +19,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
     <style>
+    
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg: linear-gradient(135deg, #374785, #04b5b5);
+            --text: #1f2937;
+            --border: #e5e7eb;
+            --danger: #f87171;
+            
         body {
             background-color: #f8f9fa;
         }

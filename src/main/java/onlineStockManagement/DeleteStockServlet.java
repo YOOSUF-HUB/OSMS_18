@@ -35,7 +35,7 @@ public class DeleteStockServlet extends HttpServlet {
 			List<stockModel> stockDetails = stockControl.getById(item_id);
 			request.setAttribute("stockDetails", stockDetails);
 			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("wrong.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/StockManagement/WrongStock.jsp");
 			dispatcher.forward(request, response);
 		}
 		

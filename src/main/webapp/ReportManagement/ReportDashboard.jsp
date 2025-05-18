@@ -4,334 +4,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Report Management Dashboard</title>
+    <title>Report Dashboard</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8f9fa;
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+            color: #212529;
+            padding: 2rem;
         }
         .dashboard-header {
-            background-color: #343a40;
-            color: white;
-            padding: 2rem;
+            padding: 2rem 0;
             text-align: center;
-            border-bottom: 1px solid #dee2e6;
-            margin-bottom: 2rem;
-            width: 100%; 
         }
-        .summary-card {
-            margin-top: 1rem;
-            border: 1px solid #ced4da;
-            border-radius: 0.5rem;
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        .dashboard-header h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin: 0;
         }
-        .summary-card-header {
-            background-color: #e9ecef;
-            padding: 1rem;
-            border-bottom: 1px solid #ced4da;
-            border-top-left-radius: 0.5rem;
-            border-top-right-radius: 0.5rem;
-        }
-        .summary-card-title {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: #495057;
-            margin-bottom: 0;
-        }
-        .summary-card-body {
-            padding: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .summary-icon {
-            font-size: 2.5rem;
-            color: #007bff;
+        .card {
+            border: none;
+            border-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
         .summary-value {
             font-size: 2rem;
-            font-weight: bold;
-            color: #343a40;
+            font-weight: 600;
         }
-        .report-list-card {
-            margin-top: 2rem;
-            border: 1px solid #ced4da;
-            border-radius: 0.5rem;
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        .summary-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
         }
-        .report-list-card-header {
-            background-color: #e9ecef;
-            padding: 1rem;
-            border-bottom: 1px solid #ced4da;
-            border-top-left-radius: 0.5rem;
-            border-top-right-radius: 0.5rem;
+        .report-table th, .report-table td {
+            vertical-align: middle;
         }
-        .report-list-card-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #495057;
-            margin-bottom: 0;
-        }
-        .report-list-card-body {
-            padding: 1.5rem;
-        }
-        .table-responsive {
-            margin-top: 1rem;
-        }
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-            border-radius: 0.25rem;
-        }
-        .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
-        }
-        .btn-info {
-            background-color: #17a2b8;
-            border-color: #17a2b8;
-            color: white;
-            border-radius: 0.25rem;
-        }
-        .btn-info:hover {
-            background-color: #138496;
-            border-color: #138496;
-        }
-        .btn-success {
-            background-color: #28a745;
-            border-color: #28a745;
-            color: white;
-            border-radius: 0.25rem;
-        }
-        .btn-success:hover {
-            background-color: #218838;
-            border-color: #218838;
-        }
-        .btn-danger {
-            background-color: #dc3545;
-            border-color: #dc3545;
-            color: white;
-            border-radius: 0.25rem;
-        }
-        .btn-danger:hover {
-            background-color: #c82333;
-            border-color: #c82333;
-        }
-        .actions-container {
-            display: flex;
-            gap: 0.5rem;
-            justify-content: center;
-        }
-        .create-report-button {
-            margin-top: 2rem;
-            text-align: center;
-        }
-        .alert {
-            margin-top: 1rem;
+        .actions-container .btn {
+            padding: 0.375rem 0.75rem;
+            font-size: 0.875rem;
         }
         .search-container {
-            margin-bottom: 1rem;
             display: flex;
             justify-content: flex-end;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
         }
         .search-input {
-            width: 200px;
-            border-radius: 0.25rem;
-            border: 1px solid #ced4da;
             padding: 0.5rem;
-            font-size: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #ced4da;
         }
-        .search-button {
-            background-color: #007bff;
-            border-color: #007bff;
-            color: white;
-            border-radius: 0.25rem;
-            padding: 0.5rem 1rem;
-            font-size: 1rem;
-            margin-left: 0.5rem;
-            cursor: pointer;
+        .btn-custom {
+            border-radius: 0.5rem;
+            font-weight: 500;
         }
-        .search-button:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
+        .alert {
+            border-radius: 0.5rem;
         }
     </style>
+</head>
+<body>
+    <div class="dashboard-header">
+        <h1>Report Dashboard</h1>
+    </div>
+    <div class="container">
+        <div class="row g-4 mb-4">
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <div class="d-flex align-items-center">
+                        <span class="summary-icon text-primary">📄</span>
+                        <div>
+                            <div class="text-muted">Total Reports</div>
+                            <div class="summary-value">
+                                <%
+                                    List<ReportModel> reportList = (List<ReportModel>) request.getAttribute("reportList");
+                                    out.print(reportList != null ? reportList.size() : 0);
+                                %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-3">
+                    <div class="d-flex align-items-center">
+                        <span class="summary-icon text-success">✅</span>
+                        <div>
+                            <div class="text-muted">Published Reports</div>
+                            <div class="summary-value">
+                                <%
+                                    if (reportList != null) {
+                                        long publishedCount = reportList.stream().filter(r -> "Published".equals(r.getrStatus())).count();
+                                        out.print(publishedCount);
+                                    } else {
+                                        out.print("0");
+                                    }
+                                %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="h5 m-0">Report List</h2>
+                <div class="search-container">
+                    <input type="text" id="searchBox" class="search-input" placeholder="Search...">
+                    <button class="btn btn-primary btn-custom" onclick="searchReports()">Search</button>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover report-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>Author</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reportTableBody">
+                        <%
+                            if (reportList != null && !reportList.isEmpty()) {
+                                for (ReportModel report : reportList) {
+                        %>
+                        <tr>
+                            <td><%= report.getrId() %></td>
+                            <td><%= report.getrName() %></td>
+                            <td><%= report.getrCategory() %></td>
+                            <td><%= report.getrStatus() %></td>
+                            <td><%= report.getrDate() %></td>
+                            <td><%= report.getrAuthor() %></td>
+                            <td>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-outline-primary btn-sm" onclick="viewReport(<%= report.getrId() %>)">View</button>
+                                    <a href="UpdateReportServlet?rId=<%= report.getrId() %>" class="btn btn-outline-success btn-sm">Update</a>
+                                    <button class="btn btn-outline-danger btn-sm" onclick="handleDelete(event, <%= report.getrId() %>)">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <%
+                                }
+                            } else {
+                        %>
+                        <tr>
+                            <td colspan="7" class="text-center">No reports available.</td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+            <div id="noReportsMessage" class="alert alert-info mt-3 d-none">
+                No reports found matching your search.
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="ReportManagement/create_report.jsp" class="btn btn-primary btn-custom me-2">+ New Report</a>
+            <a href="ReportManagement/systemauditor.jsp" class="btn btn-secondary btn-custom">Back</a>
+        </div>
+    </div>
     <script>
         function viewReport(reportId) {
             window.location.href = 'ViewReportServlet?rId=' + reportId;
         }
-    </script>
-</head>
-<body>
-    <div class="container-fluid">
-        <div class="dashboard-header">
-            <h1>Report Management Dashboard</h1>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="summary-card">
-                    <div class="summary-card-header">
-                        <h3 class="summary-card-title">Total Reports</h3>
-                    </div>
-                    <div class="summary-card-body">
-                        <i class="fas fa-file-alt summary-icon"></i>
-                        <span class="summary-value">
-                            <%
-                                List<ReportModel> reportList = (List<ReportModel>) request.getAttribute("reportList");
-                                if (reportList != null) {
-                                    out.print(reportList.size());
-                                } else {
-                                    out.print("0");
-                                }
-                            %>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="summary-card">
-                    <div class="summary-card-header">
-                        <h3 class="summary-card-title">Published Reports</h3>
-                    </div>
-                    <div class="summary-card-body">
-                        <i class="fas fa-check-circle summary-icon" style="color: #28a745;"></i>
-                        <span class="summary-value">
-                            <%
-                                if (reportList != null) {
-                                    long publishedCount = reportList.stream().filter(r -> "Published".equals(r.getrStatus())).count();
-                                    out.print(publishedCount);
-                                } else {
-                                    out.print("0");
-                                }
-                            %>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="report-list-card">
-            <div class="report-list-card-header">
-                <h2 class="report-list-card-title">Report List</h2>
-            </div>
-            <div class="report-list-card-body">
-                <div class="search-container">
-                    <input type="text" id="searchBox" class="search-input" placeholder="Search by Report Name" oninput="searchReports()">
-                    <button class="search-button" onclick="searchReports()">Search</button>
-                </div>
-                <%
-                    if (reportList != null && !reportList.isEmpty()) {
-                %>
-                <div class="table-responsive" id="reportTableContainer">
-                    <table class="table table-striped table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Report ID</th>
-                                <th>Report Name</th>
-                                <th>Category</th>
-                                <th>Status</th>
-                                <th>Date</th>
-                                <th>Author</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="reportTableBody">
-                            <%
-                                for (ReportModel report : reportList) {
-                            %>
-                            <tr>
-                                <td><%= report.getrId() %></td>
-                                <td><%= report.getrName() %></td>
-                                <td><%= report.getrCategory() %></td>
-                                <td><%= report.getrStatus() %></td>
-                                <td><%= report.getrDate() %></td>
-                                <td><%= report.getrAuthor() %></td>
-                                <td>
-                                    <div class="actions-container">
-                                        <button class="btn btn-info btn-sm" onclick="viewReport(<%= report.getrId() %>)">View</button>
-                                        <button class="btn btn-success btn-sm" onclick="window.location.href='UpdateReportServlet?rId=<%= report.getrId() %>'">Update</button>
-                                       <button class="btn btn-danger btn-sm" onclick="handleDelete(event, <%= report.getrId() %>)">Delete</button>
 
-
-
-                                    </div>
-                                </td>
-                            </tr>
-                            <%
-                                }
-                            %>
-                        </tbody>
-                    </table>
-                </div>
-                <div id="noReportsMessage" class="alert alert-info" style="display:none;" role="alert">
-                    No reports found matching your search criteria.
-                </div>
-                <%
-                    } else {
-                %>
-                <div class="alert alert-info" role="alert">
-                    No reports available.
-                </div>
-                <%
-                    }
-                %>
-            </div>
-        </div>
-        <div class="create-report-button">
-           <a href="ReportManagement/create_report.jsp" class="btn btn-primary m-2">Generate New Report</a>
-           <a href="ReportManagement/systemauditor.jsp" class="btn btn-secondary m-2">Back to Dashboard</a>
-        </div>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-    
-    
-    function handleDelete(event, reportId) {
-      if (confirm('Are you sure you want to delete this report?')) {
-        window.location.href = 'DeleteReportServlet?rId=' + reportId;
-      } else {
-        event.preventDefault(); 
-      }
-    }
-   
-    
-    
-        function viewReport(reportId) {
-            window.location.href = 'ViewReportServlet?rId=' + reportId;
+        function handleDelete(event, reportId) {
+            if (confirm('Delete this report?')) {
+                window.location.href = 'DeleteReportServlet?rId=' + reportId;
+            } else {
+                event.preventDefault();
+            }
         }
 
         function searchReports() {
-            var input, filter, table, tr, td, i, txtValue, found;
-            input = document.getElementById("searchBox");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("reportTableBody");
-            tr = table.getElementsByTagName("tr");
-            found = false;
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[1]; 
-                if (td) {
-                    txtValue = td.textContent || td.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
+            const input = document.getElementById("searchBox");
+            const filter = input.value.toUpperCase();
+            const rows = document.getElementById("reportTableBody").getElementsByTagName("tr");
+            let found = false;
+
+            for (let row of rows) {
+                const cell = row.getElementsByTagName("td")[1];
+                if (cell) {
+                    const text = cell.textContent || cell.innerText;
+                    if (text.toUpperCase().includes(filter)) {
+                        row.style.display = "";
                         found = true;
                     } else {
-                        tr[i].style.display = "none";
+                        row.style.display = "none";
                     }
                 }
             }
-            if (!found) {
-                document.getElementById("noReportsMessage").style.display = "block";
-            } else {
-                document.getElementById("noReportsMessage").style.display = "none";
-            }
+
+            document.getElementById("noReportsMessage").classList.toggle("d-none", found);
         }
 
-        
         document.getElementById("searchBox").addEventListener("input", searchReports);
     </script>
 </body>

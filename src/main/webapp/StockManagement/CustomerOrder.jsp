@@ -113,14 +113,15 @@
 </head>
 <body>
 
-<!-- Simple top‑bar (can be replaced with your own navbar) -->
-<nav class="navbar navbar-light bg-light shadow-sm mb-4">
+
+<!-- <nav class="navbar navbar-light bg-light shadow-sm mb-4">
     <div class="container-fluid">
-        <a class="navbar-brand" href="SalesRepDashboard.jsp"><i class="fas fa-home"></i> TechNest</a>
+        <a class="navbar-brand" href="StockManagerDashboard.jsp"><img src="image/Tech-Color.png" alt="Company Logo" style="height: 40px; margin-right: 0.75rem;" />TechNest</a>
     </div>
-</nav>
+</nav> -->
 
 <div class="container mt-4">
+	
     <h2>Customer Orders</h2>
 
     <!-- total orders count -->

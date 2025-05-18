@@ -13,12 +13,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <!-- FontAwesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    
 
     <style>
         :root {
             --dark: #343a40;
             --accent: #ffcc00;
             --light-bg: #f4f6f9;
+			--bg: linear-gradient(135deg, #374785, #04b5b5);
         }
 
         body {
@@ -28,7 +31,7 @@
 
         
         header {
-            background: var(--dark);
+            background: var(--bg);
             color: #fff;
             padding: 1.2rem 0;
             box-shadow: 0 3px 10px rgba(0,0,0,.05);
@@ -93,16 +96,34 @@
         }
         .text-warning { color: #ffc107!important; font-weight: 700; }
         .text-danger  { color: #dc3545!important; font-weight: 700; }
+        
+		.btn-white {
+		    background-color: white;
+		    color: black;
+		}
+		.btn-white:hover {
+		    background-color: #ff7575;
+		    color: black;
+		}
     </style>
 </head>
 <body>
     
-    <header>
-        <div class="container d-flex align-items-center justify-content-between">
-            <h1><i class="fas fa-warehouse mr-2"></i>TechNest · Stock Manager</h1>
-                <a href="LogoutServlet" class="btn btn-danger logout-button">Logout</a>
-        </div>
-    </header>
+	<header>
+	    <div class="container d-flex align-items-center justify-content-between">
+	        <h1 class="d-flex align-items-center">
+	            <img src="image/Tech-White.png" alt="Company Logo" style="height: 40px; margin-right: 0.75rem;" />
+	            <span>TechNest : Stock Manager</span>
+	        </h1>
+			<div class="mt-auto">
+			    <a href="./LogoutServlet" class="btn btn-white w-100 text-dark border">
+			        <i class="bi bi-box-arrow-right me-1"></i> Logout
+			    </a>
+			</div>
+
+
+	    </div>
+	</header>
 
     <main class="container py-5">
         <!-- Action buttons as cards -->

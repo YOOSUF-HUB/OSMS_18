@@ -69,9 +69,9 @@
 }
 
 	.table tbody tr:hover {
-	    background-color: #fcefc5;
+	    background-color: #e8e8e8;
 	    border-radius:5px;
-		transform: scale(1.03); /* slightly enlarge the row */
+		/* transform: scale(1.03); */
 
 	}
 	
@@ -236,6 +236,15 @@
 	    color: #fff;
 	    border: none;
 	    background-color: #000000;
+	}
+	.alert-success{
+		margin-top:10px;
+		
+	}
+	
+	.alert-danger{
+		margin-top:10px;
+		
 	}
 		
 

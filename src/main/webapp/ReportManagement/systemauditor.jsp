@@ -48,6 +48,8 @@
             height: 100vh;
             background: var(--sidebar-bg);
             box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
         }
         .sidebar .nav-link {
             padding: .75rem 1rem;
@@ -77,12 +79,6 @@
             font-weight: 600;
             font-size: 2rem;
         }
-        .logout-btn {
-            position: absolute;
-            bottom: 2rem;
-            left: 1rem;
-            right: 1rem;
-        }
         @media(max-width: 992px){
             .sidebar{position:fixed;z-index:1000;transform:translateX(-100%);transition:transform .3s}
             .sidebar.show{transform:translateX(0)}
@@ -92,12 +88,20 @@
 <body>
 <div class="d-flex">
     <!-- Sidebar -->
-    <nav class="sidebar d-flex flex-column p-3" id="sidebarMenu">
+    <nav class="sidebar p-3" id="sidebarMenu">
         <h4 class="fw-semibold mb-4">Auditor</h4>
         <ul class="nav nav-pills flex-column mb-auto">
-            <li class="nav-item"><a href="../ViewReportsServlet" class="nav-link"><i class="bi bi-file-earmark-text me-2"></i>Reports</a></li>
+            <li class="nav-item">
+                <a href="../ViewReportsServlet" class="nav-link">
+                    <i class="bi bi-file-earmark-text me-2"></i>Reports
+                </a>
+            </li>
         </ul>
-        <a href="../LogoutServlet" class="btn btn-outline-danger logout-btn">Logout</a>
+        <div class="mt-auto">
+            <a href="../LogoutServlet" class="btn btn-outline-danger w-100">
+                <i class="bi bi-box-arrow-right me-1"></i>Logout
+            </a>
+        </div>
     </nav>
 
     <!-- Content -->
@@ -144,6 +148,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- Stock Released -->
             <div class="col-md-6">
                 <div class="card p-4">
@@ -183,6 +188,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- Profit -->
             <div class="col-12">
                 <div class="card profit-card text-center p-5">
