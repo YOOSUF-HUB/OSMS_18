@@ -200,18 +200,6 @@ public class stockControl {
 	
 
 	
-	   public int getTotalStockCount() throws SQLException {
-			isSuccess = false;
-			Connection con = null;
-	        String sql = "SELECT COUNT(*) FROM Stock_items";
-	        try (PreparedStatement pstmt = con.prepareStatement(sql);
-	             ResultSet rs = pstmt.executeQuery()) {
-	            if (rs.next()) {
-	                return rs.getInt(1);
-	            }
-	        }
-	        return 0;
-	    }
 
 
 }

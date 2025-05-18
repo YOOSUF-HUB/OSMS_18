@@ -171,8 +171,8 @@
                         <td>
                             <c:choose>
                                 <c:when test="${order.ostatus eq 'Pending'}"><span class="badge badge-warning">Pending</span></c:when>
-                                <c:when test="${order.ostatus eq 'Completed'}"><span class="badge badge-success">Completed</span></c:when>
-                                <c:otherwise><span class="badge badge-info">${order.ostatus}</span></c:otherwise>
+                                <c:when test="${order.ostatus eq 'Shipped'}"><span class="badge badge-success">Shipped</span></c:when>
+                                <c:otherwise><span class="badge badge-danger">${order.ostatus}</span></c:otherwise>
                             </c:choose>
                         </td>
                         <td>${order.bname}</td>

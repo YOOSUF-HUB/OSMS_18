@@ -2,7 +2,9 @@ package orderPackage;
 
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -176,28 +178,21 @@ public class OrderController {
 	}
 
 
-	public static boolean updateCusOrder(int orderId, String itemname, int qty, float totalPrice, String odate, String ostatus, String bname, String city) {
+	// order_id, item_id, quantity, orderDate, customer_id, total_price, order_status
+
+	public static boolean updateOrderStatus(int orderid, String ostatus, int qty) throws SQLException {
 	    boolean isSuccess = false;
 
-	    try {
-	        con = DBconnection.getConnection();
-	        stmt = con.createStatement();
+	    String sql = "UPDATE Orders SET order_status = ? WHERE order_id = ?";
+	    
+	    
+	    try (Connection con = DBconnection.getConnection();
+	         PreparedStatement ps = con.prepareStatement(sql)) {
 
-	        String sql = "UPDATE Orders SET " +
-	                     "itemname = '" + itemname + "', " +
-	                     "quantity = " + qty + ", " +
-	                     "total_price = " + totalPrice + ", " +
-	                     "odate = '" + odate + "', " +
-	                     "ostatus = '" + ostatus + "', " +
-	                     "bname = '" + bname + "', " +
-	                     "city = '" + city + "' " +
-	                     "WHERE order_id = " + orderId;
+	        ps.setString(1, ostatus);
+	        ps.setInt(2, orderid);
 
-	        int rs = stmt.executeUpdate(sql);
-
-	        if (rs > 0) {
-	            isSuccess = true;
-	        }
+	        isSuccess = ps.executeUpdate() > 0;
 
 	    } catch (Exception e) {
 	        e.printStackTrace();
@@ -205,6 +200,8 @@ public class OrderController {
 
 	    return isSuccess;
 	}
+
+
 
 
 

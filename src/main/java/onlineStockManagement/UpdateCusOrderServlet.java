@@ -1,6 +1,7 @@
 package onlineStockManagement;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -38,23 +39,36 @@ public class UpdateCusOrderServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    int orderId = Integer.parseInt(request.getParameter("orderId"));
-	    String itemname = request.getParameter("itemname");
-	    int qty = Integer.parseInt(request.getParameter("qty"));
-	    float totalPrice = Float.parseFloat(request.getParameter("total_price"));
-	    String odate = request.getParameter("odate");
-	    String ostatus = request.getParameter("ostatus");
-	    String bname = request.getParameter("bname");
-	    String city = request.getParameter("city");
+	    try {
+	        String orderIdParam = request.getParameter("order_id");
+	        String orderStatus = request.getParameter("order_status");
+	        String qtyParam = request.getParameter("qty");
 
 
-	    boolean result = OrderController.updateCusOrder(orderId, itemname, qty, totalPrice, odate, ostatus, bname, city);
+	        if (orderIdParam == null || orderIdParam.isEmpty() || orderStatus == null || orderStatus.isEmpty() ||qtyParam == null || qtyParam.isEmpty()) {
+	            response.sendRedirect("error.jsp?message=Missing required form fields");
+	            return;
+	        }
 
-	    if (result) {
-	        response.sendRedirect("StockCusOrderViewServlet");
-	    } else {
-	        response.sendRedirect("error.jsp?message=Failed to update order");
+	        int orderId = Integer.parseInt(orderIdParam);
+	        int qty = Integer.parseInt(qtyParam);
+
+	        boolean result = OrderController.updateOrderStatus(orderId, orderStatus, qty);
+
+	        if (result) {
+	            response.sendRedirect("StockCusOrderViewServlet");
+	        } else {
+	            response.sendRedirect("error.jsp?message=Failed to update order status");
+	        }
+	    } catch (NumberFormatException e) {
+	        response.sendRedirect("error.jsp?message=Invalid number format in form fields");
+	    } catch (Exception e) {
+	        response.sendRedirect("error.jsp?message=Unexpected error occurred");
 	    }
 	}
+
+
+
+
 
 }
