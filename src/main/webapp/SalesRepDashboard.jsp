@@ -3,38 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<%@ page import="java.util.List" %>
-<%@ page import="ReportPackage.ReportModel" %>
-<%@ page import="java.time.LocalDate" %>
-<%@ page import="java.time.format.DateTimeFormatter" %>
-<%@ page import="StockOrderManagement.StockOrderModel" %>
-<%@ page import="StockOrderManagement.StockOrderControl" %>
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.PreparedStatement" %>
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.sql.SQLException" %>
-<%@ page import="StockOrderManagement.DBconnection" %>
-<%@ page import = "UserPackage.UserModel" %>
+<%@ include file="../user/loginAuthentication.jsp" %>
 
-<%
-    
-    if (session.getAttribute("user") == null) {
-        response.sendRedirect(request.getContextPath() + "/user/login.jsp");
-        return; 
-    }
-
-    
-    UserModel loggedInUser = (UserModel) session.getAttribute("user");
-    if (!"sales representative".equals(loggedInUser.getRole())) {
-        response.sendRedirect(request.getContextPath() + "/Homepage.jsp");
-        return; 
-    }
-%>
-<%
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
-    response.setHeader("Pragma", "no-cache"); // HTTP 1.0
-    response.setDateHeader("Expires", 0); // Proxies
-%>
 
 <!DOCTYPE html>
 <html>
@@ -118,21 +88,12 @@
         <a class="navbar-brand" href="SalesRepDashboardServlet">
             <img src="image/Tech-Color.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
             <i class="logotext">TechNest</i>
-                <%
-                   
-                    if (session.getAttribute("user") != null) {
-                %>
+                <% 	if (session.getAttribute("user") != null) {	%>
                     <a href="LogoutServlet" class="btn btn-danger logout-button">Logout</a>
-                <%
-                    } else {
-                    	
-                %>
-                
-                     <a href="user/login.jsp" class="btn btn-primary">Login</a>
-                <%
-                    }
-                %>
-        </a>
+                <% 	} else { 	%>
+                	<a href="user/login.jsp" class="btn btn-primary">Login</a>
+                <%	}	%>
+        			</a>
         <button class="navbar-toggler order-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                 aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
