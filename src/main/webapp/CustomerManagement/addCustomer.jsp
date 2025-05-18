@@ -1,37 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@ page import="java.util.List" %>
-<%@ page import="ReportPackage.ReportModel" %>
-<%@ page import="java.time.LocalDate" %>
-<%@ page import="java.time.format.DateTimeFormatter" %>
-<%@ page import="StockOrderManagement.StockOrderModel" %>
-<%@ page import="StockOrderManagement.StockOrderControl" %>
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.PreparedStatement" %>
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.sql.SQLException" %>
-<%@ page import="StockOrderManagement.DBconnection" %>
-<%@ page import = "UserPackage.UserModel" %>
 
-<%
-    
-    if (session.getAttribute("user") == null) {
-        response.sendRedirect(request.getContextPath() + "/user/login.jsp");
-        return; 
-    }
+<%@ include file="../user/loginAuthentication.jsp" %>
 
-    
-    UserModel loggedInUser = (UserModel) session.getAttribute("user");
-    if (!"sales representative".equals(loggedInUser.getRole())) {
-        response.sendRedirect(request.getContextPath() + "/Homepage.jsp");
-        return; 
-    }
-%>
+
+   
 <%
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
-    response.setHeader("Pragma", "no-cache"); // HTTP 1.0
-    response.setDateHeader("Expires", 0); // Proxies
+        String name = loggedInUser.getName(); 
 %>
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -101,23 +78,24 @@
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
                 </li>
-                <li class="nav-item d-lg-none"><a class="nav-link" href="#"><strong>John Doe</strong></a></li>
+                <li class="nav-item d-lg-none"><a class="nav-link" href="#"><strong><em><%= name %></em></strong></a></li>
                 <li class="nav-item d-lg-none"><a class="nav-link" href="#">Profile</a></li>
-                <li class="nav-item d-lg-none"><a class="nav-link" href="#">Logout</a></li>
+                <li class="nav-item d-lg-none"><a class="nav-link" href="LogoutServlet">Logout</a></li>
             </ul>
 
             <div class="dropdown d-none d-lg-block">
                 <a class="nav-link dropdown-toggle fs-5 fw-bold" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
-                    John Doe
+                    <em><%= name %></em>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                     <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                    <li><a class="dropdown-item" href="LogoutServlet">Logout</a></li>
                 </ul>
             </div>
         </div>
     </div>
 </nav>
+
 
 <!-- Form Container -->
 <!-- Form Container -->
@@ -153,15 +131,27 @@
                 <input type="text" class="form-control" id="city" name="city" required>
             </div>
             <div class="col-md-4">
-                <label for="province" class="form-label">Province</label>
-                <select id="province" class="form-select" name="province" required>
-                    <option value="" disabled selected>Choose...</option>
-                    <option>Central</option>
-                    <option>Western</option>
-                    <option>Southern</option>
-                    <option>Northern</option>
-                </select>
+                <label for="country" class="form-label">Country</label>
+                <select class="form-control" id="country" name="country" required>
+                	<option value="" disabled selected>Select a country</option>
+				</select>
+				<script>
+				    fetch("https://restcountries.com/v3.1/all")
+				        .then(res => res.json())
+				        .then(data => {
+				            const select = document.getElementById("country");
+				            const countries = data.map(c => c.name.common).sort();
+				
+				            countries.forEach(name => {
+				                const option = document.createElement("option");
+				                option.value = name;
+				                option.textContent = name;
+				                select.appendChild(option);
+				            });
+				        });
+				</script>
             </div>
+          
             <div class="col-md-2">
                 <label for="zip" class="form-label">Zip</label>
                 <input type="text" class="form-control" id="zip" name="zip" required>
@@ -174,7 +164,7 @@
         </form>
     </div>
 </div>
-
+    
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 

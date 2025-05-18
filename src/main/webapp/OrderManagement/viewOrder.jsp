@@ -2,38 +2,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<%@ page import="java.util.List" %>
-<%@ page import="ReportPackage.ReportModel" %>
-<%@ page import="java.time.LocalDate" %>
-<%@ page import="java.time.format.DateTimeFormatter" %>
-<%@ page import="StockOrderManagement.StockOrderModel" %>
-<%@ page import="StockOrderManagement.StockOrderControl" %>
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.PreparedStatement" %>
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.sql.SQLException" %>
-<%@ page import="StockOrderManagement.DBconnection" %>
-<%@ page import = "UserPackage.UserModel" %>
 
-<%
-    
-    if (session.getAttribute("user") == null) {
-        response.sendRedirect(request.getContextPath() + "/user/login.jsp");
-        return; 
-    }
+<%@ include file="../user/loginAuthentication.jsp" %>
 
-    
-    UserModel loggedInUser = (UserModel) session.getAttribute("user");
-    if (!"sales representative".equals(loggedInUser.getRole())) {
-        response.sendRedirect(request.getContextPath() + "/Homepage.jsp");
-        return; 
-    }
-%>
+
+   
 <%
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
-    response.setHeader("Pragma", "no-cache"); // HTTP 1.0
-    response.setDateHeader("Expires", 0); // Proxies
+        String name = loggedInUser.getName(); 
 %>
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -106,18 +83,18 @@
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
                 </li>
-                <li class="nav-item d-lg-none"><a class="nav-link" href="#"><strong>John Doe</strong></a></li>
+                <li class="nav-item d-lg-none"><a class="nav-link" href="#"><strong><em><%= name %></em></strong></a></li>
                 <li class="nav-item d-lg-none"><a class="nav-link" href="#">Profile</a></li>
-                <li class="nav-item d-lg-none"><a class="nav-link" href="#">Logout</a></li>
+                <li class="nav-item d-lg-none"><a class="nav-link" href="LogoutServlet">Logout</a></li>
             </ul>
 
             <div class="dropdown d-none d-lg-block">
                 <a class="nav-link dropdown-toggle fs-5 fw-bold" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
-                    John Doe
+                    <em><%= name %></em>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                     <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                    <li><a class="dropdown-item" href="LogoutServlet">Logout</a></li>
                 </ul>
             </div>
         </div>

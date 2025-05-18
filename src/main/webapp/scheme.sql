@@ -105,6 +105,9 @@ CREATE TABLE Customer (
     province VARCHAR(100),
     zip_code VARCHAR(20)
 );
+ALTER TABLE `OnlineStockManagementSystem`.`Customer` 
+CHANGE COLUMN `province` `country` VARCHAR(100) NULL DEFAULT NULL ;
+
 
 CREATE TABLE `Stock_Items` (
   `item_id` int NOT NULL AUTO_INCREMENT,

@@ -4,6 +4,12 @@
 
 <%@ include file="../user/loginAuthentication.jsp" %>
 
+
+   
+<%
+        String name = loggedInUser.getName(); 
+%>
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,23 +101,24 @@
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
                 </li>
-                <li class="nav-item d-lg-none"><a class="nav-link" href="#"><strong>John Doe</strong></a></li>
+                <li class="nav-item d-lg-none"><a class="nav-link" href="#"><strong><em><%= name %></em></strong></a></li>
                 <li class="nav-item d-lg-none"><a class="nav-link" href="#">Profile</a></li>
-                <li class="nav-item d-lg-none"><a class="nav-link" href="#">Logout</a></li>
+                <li class="nav-item d-lg-none"><a class="nav-link" href="LogoutServlet">Logout</a></li>
             </ul>
 
             <div class="dropdown d-none d-lg-block">
                 <a class="nav-link dropdown-toggle fs-5 fw-bold" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
-                    John Doe
+                    <em><%= name %></em>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                     <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                    <li><a class="dropdown-item" href="LogoutServlet">Logout</a></li>
                 </ul>
             </div>
         </div>
     </div>
 </nav>
+
 
 <!-- Content -->
 <div class="container">
