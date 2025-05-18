@@ -85,5 +85,17 @@
      </servlet-mapping>
      
      
+     
+      <servlet>
+     	<servlet-name>SalesRepDashboardServlet</servlet-name>
+     	<servlet-class>SalesRepPackage.SalesRepDashboardServlet</servlet-class>
+     </servlet>
+     
+     <servlet-mapping>
+     	<servlet-name>SalesRepDashboardServlet</servlet-name>
+     	<url-pattern>/SalesRepDashboardServlet</url-pattern>
+     </servlet-mapping>
+     
+     
 
 </web-app>

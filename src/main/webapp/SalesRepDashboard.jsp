@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
     
 <%-- <%
     String username = (String) session.getAttribute("loggedInUsername");
@@ -59,13 +62,39 @@
         .divider {
             margin: 2rem 0;
         }
+        
+        .SalesRepBtn{
+        	height: 10rem;
+        }
+        
+        .SalesRepBtn i{
+        	font-size:3rem;
+        }
+        
+        .btn-primary{
+        	background-color: #3674B5;
+        }
+        .btn-primary:hover{
+        	background-color: #578FCA;
+        	transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(0,0,0,.1);
+        }
+        .custom-title {
+        	color: #3674B5;
+        }
+        .custom-title2{
+        	color: #3674B5;
+        	font-size: 2rem;
+        	font-weight: 600;
+        }
+        
     </style>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg bg-dark-subtle shadow-sm">
     <div class="container-fluid">
-        <a class="navbar-brand" href="SalesRepDashboard.jsp">
+        <a class="navbar-brand" href="SalesRepDashboardServlet">
             <img src="image/Tech-Color.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
             <i class="logotext">TechNest</i>
         </a>
@@ -75,7 +104,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarScroll">
             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                <li class="nav-item"><a class="nav-link active" href="SalesRepDashboard.jsp">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="SalesRepDashboardServlet">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="GetAllOrdersServlet">Order</a></li>
                 <li class="nav-item"><a class="nav-link" href="GetAllCustomersServlet">Customer</a></li>
                 <li class="nav-item"><a class="nav-link" href="GetAllStockServlet?view=sales">Product</a></li>
@@ -107,18 +136,22 @@
 </nav>
 
 <div class="container-fluid px-4">
-    <div class="d-flex justify-content-between align-items-center my-4">
-        <h2 class="mb-0"><strong>Dashboard</strong></h2>
-        <div>
-            <button type="button" class="btn btn-secondary me-2" onclick="window.location.href ='CustomerManagement/addCustomer.jsp'">
-                <i class="bi bi-person-plus"></i> Add Customer
-            </button>
-            <button type="button" class="btn btn-primary" onclick="window.location.href ='OrderManagement/addOrder.jsp'">
-                <i class="bi bi-cart-plus"></i> Place Order
-            </button>
-        </div>
+    <div class="d-flex justify-content-center align-items-center my-4">
+        <h2 class="mb-0 custom-title2"><em>Sales Representative Dashboard</em></h2>
     </div>
+    <div class="row justify-content-center my-4">
+		<button type="button" class="btn btn-primary me-md-3 col-md-4 SalesRepBtn" onclick="window.location.href ='AddOrderServlet'">
+                <i class="bi bi-cart-plus"></i>
+                <h3>Place Order</h3>
+        </button>
+        <button type="button" class="btn btn-secondary mt-md-0 mt-2  col-md-4 SalesRepBtn" onclick="window.location.href ='CustomerManagement/addCustomer.jsp'">
+                <i class="bi bi-person-plus"></i>
+                <h3>Add Customer</h3>
+        </button>
+	</div>
 
+	
+	<!-- 
     <div class="row justify-content-center my-4">
         <div class="col-md-5 mx-2">
             <div class="widget">
@@ -135,34 +168,18 @@
                 <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Customer" width="50" class="mt-2">
             </div>
         </div>
-    </div>
+    </div> -->
 
     <hr class="divider">
 
-    <div class="mb-5">
-        <h4>Today’s Orders</h4>
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped align-middle text-center">
-                <thead>
-                <tr>
-                    <th>Order ID</th>
-                    <th>Business Name</th>
-                    <th>Product</th>
-                    <th>Business Location</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>#001</td>
-                    <td>ABC Traders</td>
-                    <td>Laptop</td>
-                    <td>Colombo</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+  
+    
+    <div class="container card p-4">
+    <div class="d-flex justify-content-between align-items-center mb-2 custom-title">
+    	<h4><strong><em>Today's Orders</em></strong></h4>
+    	<h4><strong><em>${currentDate2}</em></strong></h4>
     </div>
-    <div class="table-responsive">
+    <div class="table-responsive" style="max-height: 250px; overflow-y: auto;">
             <table class="table table-bordered table-striped align-middle">
                 <thead class="table-dark">
                     <tr>
@@ -175,7 +192,8 @@
                 </thead>
                 <tbody>
                     <c:forEach var="order" items="${allOrders}">
-                    <c:if test="${order.odate == 'currentDate'}">
+                    <c:set var="odate2" value="${fn:substring(order.odate, 0, 10)}"/>
+					<c:if test="${odate2 == currentDate2}">
                         <tr>
                             <td>${order.orderid}</td>
                             <td>${order.itemname}</td>
@@ -183,39 +201,52 @@
                             <td>${order.bname}</td>
                             <td>${order.city}</td>
                         </tr>
-                    </c:if>
+                    </c:if> 
                     </c:forEach>
                 </tbody>
             </table>
-        </div>
+   		</div>
+   		</div>
 
-    <div>
-        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
-                    type="button" role="tab" aria-controls="nav-home" aria-selected="true">Motherboard</button>
-            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
-                    type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</button>
-            <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
-                    type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</button>
-            <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab" data-bs-target="#nav-disabled"
-                    type="button" role="tab" aria-controls="nav-disabled" aria-selected="false" disabled>Disabled</button>
-        </div>
-
-        <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                <p>Motherboard product details go here.</p>
-            </div>
-            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                <p>User profile information here.</p>
-            </div>
-            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                <p>Contact information here.</p>
-            </div>
-            <div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab">
-                <p>This tab is disabled.</p>
-            </div>
-        </div>
-    </div>
+ 
+    <!-- <div class="container">
+	    <div class="nav nav-tabs" id="product-tabs">
+	        <button class="nav-link active" id="core-tab" data-bs-toggle="tab" data-bs-target="#core">
+	            Core Components
+	        </button>
+	        <button class="nav-link" id="peripherals-tab" data-bs-toggle="tab" data-bs-target="#peripherals">
+	            Peripherals
+	        </button>
+	        <button class="nav-link" id="cooling-tab" data-bs-toggle="tab" data-bs-target="#cooling">
+	            Casing & Cooling
+	        </button>
+	        <button class="nav-link" id="networking-tab" data-bs-toggle="tab" data-bs-target="#networking" >
+	            Networking
+	        </button>
+	        <button class="nav-link" id="power-tab" data-bs-toggle="tab" data-bs-target="#power" >
+	            Power & Connectivity
+	        </button>
+	    </div>
+	
+	    <div class="tab-content mt-3" id="product-tab-content">
+	        <div class="tab-pane fade show active" id="core">
+	            <p>Core components product details go here.</p>
+	        </div>
+	        <div class="tab-pane fade" id="peripherals">
+	            <p>Peripheral product details go here.</p>
+	        </div>
+	        <div class="tab-pane fade" id="cooling">
+	            <p>Casing and cooling products go here.</p>
+	        </div>
+	        <div class="tab-pane fade" id="networking">
+	            <p>Networking products go here.</p>
+	        </div>
+	        <div class="tab-pane fade" id="power">
+	            <p>Power and connectivity products go here.</p>
+	        </div>
+	    </div>
+	</div> -->
+    
 </div>
 
 <!-- Bootstrap JS Bundle -->

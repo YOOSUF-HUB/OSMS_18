@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html>
@@ -31,6 +32,16 @@
         .btn {
             min-width: 100px;
         }
+        .btn-primary{
+        	background-color: #3674B5;
+        }
+        .btn-primary:hover{
+        	background-color: #578FCA;
+        }
+        .custom-title {
+        	color: #3674B5;
+        }
+        
     </style>
     
 
@@ -42,7 +53,7 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg bg-dark-subtle shadow-sm mb-5">
     <div class="container-fluid">
-        <a class="navbar-brand" href="SalesRepDashboard.jsp">
+        <a class="navbar-brand" href="SalesRepDashboardServlet">
             <img src="../image/Tech-Color.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
             <i class="logotext">TechNest</i>
         </a>
@@ -52,10 +63,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarScroll">
             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                <li class="nav-item"><a class="nav-link " href="../SalesRepDashboard.jsp">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="../GetAllOrdersServlet">Order</a></li>
-                <li class="nav-item"><a class="nav-link" href="../GetAllCustomersServlet">Customer</a></li>
-                <li class="nav-item"><a class="nav-link" href="../GetAllStockServlet?view=sales">Product</a></li>
+                <li class="nav-item"><a class="nav-link " href="SalesRepDashboardServlet">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="GetAllOrdersServlet">Order</a></li>
+                <li class="nav-item"><a class="nav-link" href="GetAllCustomersServlet">Customer</a></li>
+                <li class="nav-item"><a class="nav-link" href="GetAllStockServlet?view=sales">Product</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Link</a>
                     <ul class="dropdown-menu">
@@ -86,21 +97,34 @@
 
 <div class="container">
     <div class="card p-4">
-        <h4 class="mb-4 text-primary">Place Order</h4>
+        <h4 class="mb-4 custom-title">Place Order</h4>
         <form action="AddOrderServlet" class="row g-3" method="post">
-
+<%
+    String selectedCustomerId = request.getParameter("customerId");
+	String selectedCustomerName = request.getParameter("customerName");
+%>
              <div class="col-md-12">
                 <label for="bname" class="form-label">Business Name (Customer)</label>
                 <select id="bname" class="form-select" name="cusID" required>
-                    <option value="" selected disabled>Choose...</option>
+                    
+                    <% if (selectedCustomerId != null && selectedCustomerName != null) { %>
+                    	<option disabled>Choose...</option>
+			            <option value="<%= selectedCustomerId %>" selected><%= selectedCustomerName %></option>
+			        <% }else{ %>
+			        	<option disabled selected>Choose...</option>
+			        <% }%>
+                  
+		                
                     <c:forEach var="customer" items="${allCustomers}">
+                    	
                         <option value="${customer.id}">${customer.bname}</option>
                     </c:forEach>
                 </select>
             </div>
+        
             
  
-            <div class="col-md-12">
+  <%--          <div class="col-md-12">
                 <label for="product" class="form-label">Product</label>
                 <select id="product" class="form-select" name="itemID" required>
                     <option value="" selected disabled>Choose...</option>
@@ -114,7 +138,7 @@
             </div>
             
 <!-- Individual Product Name filtering -->
-<%-- 		<div class="col-md-12">
+ 		<div class="col-md-12">
 		    <label for="product" class="form-label">Product</label>
 		    <select id="product" class="form-select" name="itemID" required>
 		        <option value="" selected disabled>Choose...</option>
@@ -128,6 +152,162 @@
 		    </select>
 		</div> --%>
 
+<!-- Product Cards -->
+           
+
+			<div class="container">
+				<label class="form-label mt-4">Select a Product</label>
+			    <div class="nav nav-tabs" id="product-tabs">
+			        <button type="button" class="nav-link active" id="core-tab" data-bs-toggle="tab" data-bs-target="#core">
+			            Core Components
+			        </button>
+			        <button type="button" class="nav-link" id="cooling-tab" data-bs-toggle="tab" data-bs-target="#cooling">
+			            Casing & Cooling
+			        </button>
+			        <button type="button" class="nav-link" id="networking-tab" data-bs-toggle="tab" data-bs-target="#networking" >
+			            Networking
+			        </button>
+			        <button type="button" class="nav-link" id="power-tab" data-bs-toggle="tab" data-bs-target="#power" >
+			            Power & Connectivity
+			        </button>
+			        <button type="button" class="nav-link" id="other-tab" data-bs-toggle="tab" data-bs-target="#other">
+			            Other
+			        </button>
+			    </div>
+			
+			    <div class="tab-content mt-3" id="product-tab-content">
+			        <div class="tab-pane fade show active" id="core">
+			            <div class="row" id="product-list">
+			                <c:forEach var="stock" items="${allStock}">
+			                	<c:if test="${fn:contains('CPU,Motherboard,RAM,SSD,HDD,Graphics Card', stock.item_name)}">
+				                    <div class="col-md-4 mb-3">
+				                        <label class="card h-100 p-3 product-card" style="cursor: pointer;">
+				                            <input type="radio"
+				                                   name="itemID"
+				                                   value="${stock.item_id}"
+				                                   class="d-none product-radio"
+				                                   data-price="${stock.selling_price}"
+				                                   required>
+				                            <div class="card-body">
+				                                <h5 class="card-title">${stock.item_name}</h5>
+				                                <p class="card-text">
+				                                    Model: ${stock.item_model} <br>
+				                                    Manufacturer: ${stock.item_manufacturer} <br>
+				                                    Price: $${stock.selling_price}
+				                                </p>
+				                            </div>
+				                        </label>
+				                    </div>
+			                    </c:if>
+			                </c:forEach>
+			            </div>
+			        </div>
+			        <div class="tab-pane fade" id="cooling">
+			            <div class="row" id="product-list">
+			                <c:forEach var="stock" items="${allStock}">
+			                	<c:if test="${fn:contains('Casing,Cooling Fan,Thermal Paste', stock.item_name)}">
+				                    <div class="col-md-4 mb-3">
+				                        <label class="card h-100 p-3 product-card" style="cursor: pointer;">
+				                            <input type="radio"
+				                                   name="itemID"
+				                                   value="${stock.item_id}"
+				                                   class="d-none product-radio"
+				                                   data-price="${stock.selling_price}"
+				                                   required>
+				                            <div class="card-body">
+				                                <h5 class="card-title">${stock.item_name}</h5>
+				                                <p class="card-text">
+				                                    Model: ${stock.item_model} <br>
+				                                    Manufacturer: ${stock.item_manufacturer} <br>
+				                                    Price: $${stock.selling_price}
+				                                </p>
+				                            </div>
+				                        </label>
+				                    </div>
+			                    </c:if>
+			                </c:forEach>
+			            </div>
+			        </div>
+			        <div class="tab-pane fade" id="networking">
+			            <div class="row" id="product-list">
+			                <c:forEach var="stock" items="${allStock}">
+			                	<c:if test="${fn:contains('Network Card', stock.item_name)}">
+				                    <div class="col-md-4 mb-3">
+				                        <label class="card h-100 p-3 product-card" style="cursor: pointer;">
+				                            <input type="radio"
+				                                   name="itemID"
+				                                   value="${stock.item_id}"
+				                                   class="d-none product-radio"
+				                                   data-price="${stock.selling_price}"
+				                                   required>
+				                            <div class="card-body">
+				                                <h5 class="card-title">${stock.item_name}</h5>
+				                                <p class="card-text">
+				                                    Model: ${stock.item_model} <br>
+				                                    Manufacturer: ${stock.item_manufacturer} <br>
+				                                    Price: $${stock.selling_price}
+				                                </p>
+				                            </div>
+				                        </label>
+				                    </div>
+			                    </c:if>
+			                </c:forEach>
+			            </div>
+			        </div>
+			        <div class="tab-pane fade" id="power">
+			            <div class="row" id="product-list">
+			                <c:forEach var="stock" items="${allStock}">
+			                	<c:if test="${fn:contains('Power Supply,Laptop Charger,HDMI Cable,VGA Cable,USB Hub,Extension Cord', stock.item_name)}">
+				                    <div class="col-md-4 mb-3">
+				                        <label class="card h-100 p-3 product-card" style="cursor: pointer;">
+				                            <input type="radio"
+				                                   name="itemID"
+				                                   value="${stock.item_id}"
+				                                   class="d-none product-radio"
+				                                   data-price="${stock.selling_price}"
+				                                   required>
+				                            <div class="card-body">
+				                                <h5 class="card-title">${stock.item_name}</h5>
+				                                <p class="card-text">
+				                                    Model: ${stock.item_model} <br>
+				                                    Manufacturer: ${stock.item_manufacturer} <br>
+				                                    Price: $${stock.selling_price}
+				                                </p>
+				                            </div>
+				                        </label>
+				                    </div>
+			                    </c:if>
+			                </c:forEach>
+			            </div>
+			        </div>
+			        <div class="tab-pane fade" id="other">
+			            <div class="row" id="product-list">
+			                <c:forEach var="stock" items="${allStock}">
+			                	<c:if test="${fn:contains('Keyboard,Mouse,Monitor', stock.item_name)}">
+				                    <div class="col-md-4 mb-3">
+				                        <label class="card h-100 p-3 product-card" style="cursor: pointer;">
+				                            <input type="radio"
+				                                   name="itemID"
+				                                   value="${stock.item_id}"
+				                                   class="d-none product-radio"
+				                                   data-price="${stock.selling_price}"
+				                                   required>
+				                            <div class="card-body">
+				                                <h5 class="card-title">${stock.item_name}</h5>
+				                                <p class="card-text">
+				                                    Model: ${stock.item_model} <br>
+				                                    Manufacturer: ${stock.item_manufacturer} <br>
+				                                    Price: $${stock.selling_price}
+				                                </p>
+				                            </div>
+				                        </label>
+				                    </div>
+			                    </c:if>
+			                </c:forEach>
+			            </div>
+			        </div>
+			    </div>
+			</div>
             
 
             <div class="col-md-4">
@@ -151,7 +331,7 @@
 <!-- JS Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 
-<script>
+<!-- <script>
 
 
     function calculateTotal() {
@@ -169,6 +349,32 @@
     });
 
 
+</script> -->
+
+<!-- Product Selection & Total Calculation -->
+<script>
+    const radios = document.querySelectorAll('.product-radio');
+    const qtyInput = document.getElementById("qty");
+    const totalPriceInput = document.getElementById("total_price");
+
+    function calculateTotal() {
+        const qty = parseFloat(qtyInput.value) || 0;
+        const selectedRadio = document.querySelector('input[name="itemID"]:checked');
+        const price = selectedRadio ? parseFloat(selectedRadio.dataset.price) : 0;
+        const total = qty * price;
+        totalPriceInput.value = total.toFixed(2);
+    }
+
+    // Add listeners
+    radios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            document.querySelectorAll('.product-card').forEach(card => card.classList.remove('border-primary'));
+            radio.closest('.product-card').classList.add('border-primary');
+            calculateTotal();
+        });
+    });
+
+    qtyInput.addEventListener('input', calculateTotal);
 </script>
 </body>
 </html>

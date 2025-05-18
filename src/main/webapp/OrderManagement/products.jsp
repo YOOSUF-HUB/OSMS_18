@@ -35,7 +35,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-dark-subtle shadow-sm mb-4">
     <div class="container-fluid">
-        <a class="navbar-brand" href="SalesRepDashboard.jsp">
+        <a class="navbar-brand" href="SalesRepDashboardServlet">
             <img src="image/Tech-Color.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
             <i class="logotext">TechNest</i>
         </a>
@@ -45,7 +45,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarScroll">
             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                <li class="nav-item"><a class="nav-link" href="SalesRepDashboard.jsp">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="SalesRepDashboardServlet">Home</a></li>
                 <li class="nav-item"><a class="nav-link " href="GetAllOrdersServlet">Order</a></li>
                 <li class="nav-item"><a class="nav-link" href="GetAllCustomersServlet">Customer</a></li>
                 <li class="nav-item"><a class="nav-link active" href="GetAllStockServlet?view=sales">Product</a></li>

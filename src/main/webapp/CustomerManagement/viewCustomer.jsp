@@ -52,6 +52,16 @@
 		    color: #888;
 		    
 		}
+		.btn-primary{
+        	background-color: #3674B5;
+        }
+        .btn-primary:hover{
+        	background-color: #578FCA;
+        }
+        .custom-title {
+        	color: #3674B5;
+        }
+        
     </style>
 </head>
 <body>
@@ -59,7 +69,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-dark-subtle shadow-sm mb-4">
     <div class="container-fluid">
-        <a class="navbar-brand" href="SalesRepDashboard.jsp">
+        <a class="navbar-brand" href="SalesRepDashboardServlet">
             <img src="image/Tech-Color.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
             <i class="logotext">TechNest</i>
         </a>
@@ -69,7 +79,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarScroll">
             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                <li class="nav-item"><a class="nav-link" href="SalesRepDashboard.jsp">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="SalesRepDashboardServlet">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="GetAllOrdersServlet">Order</a></li>
                 <li class="nav-item"><a class="nav-link active" href="GetAllCustomersServlet">Customer</a></li>
                 <li class="nav-item"><a class="nav-link" href="GetAllStockServlet?view=sales">Product</a></li>
@@ -102,13 +112,13 @@
 
 <!-- Content -->
 <div class="container">
-	<div class="stock-count-box">
-		        <i class="fas fa-boxes"></i>
+	<div class="stock-count-box mb-3">
+		        <i class="bi bi-people"></i>
 		        TOTAL CUSTOMERS: ${fn:length(allCustomers)}
     </div>
     <div class="card p-4">
 		<div class="d-flex justify-content-between align-items-center mb-4">
-			<div class="d-flex align-items-center">
+			<div class="d-flex align-items-center custom-title">
 				<i class="bi bi-people-fill me-2" style="font-size: 2em;"></i>
 	        	<h3 class="mb-0"><strong>Customers</strong></h3>
 	        </div>
@@ -124,7 +134,7 @@
 	            </button>
 	        </div>
 	    </div>
-        <div class="table-responsive">
+        <div class="table-responsive overflow-y-auto">
             <table id="table" class="table table-bordered table-striped align-middle">
                 <thead class="table-dark">
                     <tr>
@@ -147,15 +157,16 @@
                             <td>${customer.address}</td>
                             <td>${customer.city}</td>
                             <td>
-                                <div class="d-flex gap-2">
-                                    <!-- Update Button -->
-                                    <button onclick="window.location.href='UpdateCustomerServlet?customerId=${customer.id}'" class="btn btn-sm btn-outline-primary">Update</button>
-
+                                <div class="d-flex gap-2 justify-content-center">                               
+									<form action="AddOrderServlet" method="get">
+									    <input type="hidden" name="customerId" value="${customer.id}">
+									    <input type="hidden" name="customerName" value="${customer.bname}">
+									    <button type="submit" class="btn btn-sm btn-outline-primary">Place Order</button>
+									</form>                                 
                                     <form action="UpdateCustomerServlet" method="get">
                                         <input type="hidden" name="customerId" value="${customer.id}">
                                         <button type="submit" class="btn btn-sm btn-outline-primary">Update</button>
                                     </form>
-                                    <!-- Delete Button -->
                                     <form action="DeleteCustomerServlet" method="post" onsubmit="return confirm('Are you sure you want to delete this customer?');">
                                         <input type="hidden" name="customerId" value="${customer.id}">
                                         <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>

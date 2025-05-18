@@ -29,6 +29,15 @@
         .btn {
             min-width: 100px;
         }
+        .btn-primary{
+        	background-color: #3674B5;
+        }
+        .btn-primary:hover{
+        	background-color: #578FCA;
+        }
+        .custom-title {
+        	color: #3674B5;
+        }
     </style>
 </head>
 <body>
@@ -36,7 +45,7 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg bg-dark-subtle shadow-sm mb-5">
     <div class="container-fluid">
-        <a class="navbar-brand" href="SalesRepDashboard.jsp">
+        <a class="navbar-brand" href="SalesRepDashboardServlet">
             <img src="../image/Tech-Color.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
             <i class="logotext">TechNest</i>
         </a>
@@ -46,10 +55,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarScroll">
             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                <li class="nav-item"><a class="nav-link " href="../SalesRepDashboard.jsp">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="../GetAllOrdersServlet">Order</a></li>
-                <li class="nav-item"><a class="nav-link" href="../GetAllCustomersServlet">Customer</a></li>
-                <li class="nav-item"><a class="nav-link" href="../GetAllStockServlet?view=sales">Product</a></li>
+                <li class="nav-item"><a class="nav-link " href="SalesRepDashboardServlet">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="GetAllOrdersServlet">Order</a></li>
+                <li class="nav-item"><a class="nav-link" href="GetAllCustomersServlet">Customer</a></li>
+                <li class="nav-item"><a class="nav-link" href="GetAllStockServlet?view=sales">Product</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Link</a>
                     <ul class="dropdown-menu">
@@ -82,7 +91,7 @@
 <!-- Form Container -->
 <div class="container">
     <div class="card">
-        <h4 class="mb-4 text-primary">Add New Customer</h4>
+        <h4 class="mb-4 custom-title">Add New Customer</h4>
         <form action="../AddCustomerServlet" class="row g-3" method="post">
             <div class="col-sm-6">
                 <label for="cname" class="form-label">Customer Name</label>

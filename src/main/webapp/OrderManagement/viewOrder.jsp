@@ -33,6 +33,16 @@
         .form-label {
             font-weight: 500;
         }
+		.btn-primary{
+        	background-color: #3674B5;
+        }
+        .btn-primary:hover{
+        	background-color: #578FCA;
+        }
+        .custom-title {
+        	color: #3674B5;
+        }
+        
     </style>
 </head>
 <body>
@@ -40,7 +50,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-dark-subtle shadow-sm mb-4">
     <div class="container-fluid">
-        <a class="navbar-brand" href="SalesRepDashboard.jsp">
+        <a class="navbar-brand" href="SalesRepDashboardServlet">
             <img src="image/Tech-Color.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
             <i class="logotext">TechNest</i>
         </a>
@@ -50,7 +60,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarScroll">
             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                <li class="nav-item"><a class="nav-link" href="SalesRepDashboard.jsp">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="SalesRepDashboardServlet">Home</a></li>
                 <li class="nav-item"><a class="nav-link active" href="GetAllOrdersServlet">Order</a></li>
                 <li class="nav-item"><a class="nav-link" href="GetAllCustomersServlet">Customer</a></li>
                 <li class="nav-item"><a class="nav-link" href="GetAllStockServlet?view=sales">Product</a></li>
@@ -83,19 +93,20 @@
 
 <!-- Page Content -->
 <div class="container">
+	<div class="stock-count-box mb-3">
+		        <i class="bi bi-boxes"></i>
+		        TOTAL ORDERS: ${fn:length(allOrders)}
+    </div>
     <div class="card p-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
-        	<div class="d-flex align-items-center">
+        	<div class="d-flex align-items-center custom-title">
         		<i class="bi bi-box-seam-fill me-2" style="font-size: 2em;"></i>
 	        	<h3 class="mb-0"><strong>Orders</strong></h3>
 	        </div>
-	        <div class="stock-count-box">
-		        <i class="fas fa-boxes"></i>
-		        TOTAL ORDERS: ${fn:length(allOrders)}
-		    </div>
+	        
 	        
 	        <div>
-				<button type="button" class="btn btn-primary" onclick="window.location.href ='OrderManagement/addOrder.jsp'">
+				<button type="button" class="btn btn-primary" onclick="window.location.href ='AddOrderServlet'">
 	                <i class="bi bi-cart-plus"></i> Place Order
 	            </button>
 	        </div>
@@ -127,7 +138,7 @@
                             <td>${order.bname}</td>
                             <td>${order.city}</td>
                             <td>
-                                <div class="d-flex gap-2">
+                                <div class="d-flex gap-2 justify-content-center">
                                     <form action="UpdateOrderServlet" method="get">
                                         <input type="hidden" name="orderId" value="${order.orderid}">
                                         <button type="submit" class="btn btn-sm btn-outline-primary">Update</button>
