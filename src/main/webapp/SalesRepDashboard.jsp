@@ -72,7 +72,13 @@
         }
         
         .SalesRepBtn{
-        	height: 10rem;
+        	height: 12rem;
+        	transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .SalesRepBtn:hover{
+        	transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,.1);
         }
         
         .SalesRepBtn i{
@@ -82,14 +88,15 @@
         .btn-primary{
         	background-color: #3674B5;
         }
+        
         .btn-primary:hover{
         	background-color: #578FCA;
-        	transform: translateY(-4px);
-            box-shadow: 0 6px 20px rgba(0,0,0,.1);
         }
+        
         .custom-title {
         	color: #3674B5;
         }
+        
         .custom-title2{
         	color: #3674B5;
         	font-size: 2rem;
