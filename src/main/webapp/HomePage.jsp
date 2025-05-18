@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,112 +7,114 @@
     <title>Wholesale Shoe Management System</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-   
     <style>
         body {
-background-color: #f4f6f9; 
-}
+            background-color: #f4f6f9;
+        }
 
+        .sidebar {
+            height: 100vh;
+            width: 240px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #343a40;
+            padding-top: 20px;
+            color: white;
+            z-index: 1;
+            overflow-y: auto;
+        }
 
-.sidebar {
-height: 100vh; 
-width: 240px; 
-position: fixed; 
-top: 0; 
-left: 0; 
-background-color: #343a40; 
-padding-top: 20px; 
-color: white; 
-z-index: 1; 
-overflow-y: auto; 
-}
+        .sidebar .nav-link {
+            padding: 12px 20px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
 
+        .sidebar .nav-link i {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
 
-.sidebar .nav-link {
-padding: 12px 20px; 
-color: white; 
-text-decoration: none; 
-display: flex; 
-align-items: center; 
-}
+        .sidebar .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
 
+        .sidebar .dropdown-btn {
+            padding: 12px 20px;
+            color: white;
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+        }
 
-.sidebar .nav-link i {
-margin-right: 10px; 
-font-size: 1.2em; 
-}
+        .sidebar .dropdown-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
 
+        .sidebar .dropdown-container {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.1);
+            padding-left: 30px;
+        }
 
-.sidebar .nav-link:hover {
-background-color: rgba(255, 255, 255, 0.1); 
-}
+        .sidebar .dropdown-container a {
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+            color: #ccc;
+            font-size: 0.9em;
+        }
 
+        .sidebar .dropdown-container a:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
 
-.sidebar .dropdown-btn {
-padding: 12px 20px; 
-color: white;
-background: none; 
-border: none; 
-width: 100%; 
-text-align: left; 
-cursor: pointer; 
-}
+        .content {
+            margin-left: 240px;
+            padding: 20px;
+        }
 
+        .dashboard-widgets {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 20px;
+            margin-bottom: 20px;
+        }
 
-.sidebar .dropdown-btn:hover {
-background-color: rgba(255, 255, 255, 0.1); 
-}
+        .widget {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-
-.sidebar .dropdown-container {
-display: none; 
-background-color: rgba(0, 0, 0, 0.1); 
-padding-left: 30px; 
-}
-
-
-.sidebar .dropdown-container a {
-padding: 10px 15px; 
-text-decoration: none; 
-display: block; 
-color: #ccc; 
-font-size: 0.9em; 
-}
-
-
-.sidebar .dropdown-container a:hover {
-background-color: rgba(255, 255, 255, 0.05); 
-}
-
-
-.content {
-margin-left: 240px; 
-padding: 20px; 
-}
-
-
-.dashboard-widgets {
-display: grid; 
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-grid-gap: 20px; 
-margin-bottom: 20px; 
-}
-
-
-.widget {
-background-color: white; 
-padding: 20px; 
-border-radius: 5px; 
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-}
-
-
-.widget-title {
-font-size: 1.1em; 
-color: #555; 
-margin-bottom: 10px; 
-}
+        .widget-title {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 10px;
+        }
     </style>
+    <script>
+        var dropdown = document.querySelectorAll(".dropdown-btn");
+        var i;
+
+        for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
+    </script>
 </head>
 <body>
     <div class="container-fluid">
@@ -127,26 +128,13 @@ margin-bottom: 10px;
                             </a>
                         </li>
                         <li class="nav-item">
-                            <button class="dropdown-btn">
-                                <i class="fas fa-box-open"></i> Stock Management
-                            </button>
-                            <div class="dropdown-container">
-                                <a href="StockManagement/create_stock.jsp"><i class="fas fa-plus"></i> Add New Stock</a>
-                                <a href="StockManagement/view_stock.jsp"><i class="fas fa-list"></i> View Stock</a>
-                                <a href="StockManagement/update_stock.jsp"><i class="fas fa-edit"></i> Update Stock</a>
-                                <a href="StockManagement/delete_stock.jsp"><i class="fas fa-trash"></i> Delete Stock</a>
-                            </div>
+                            <a class="nav-link" href="user/login.jsp">
+                                <i class="fas fa-chart-bar"></i> Stock Manager Portal
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <button class="dropdown-btn">
-                                <i class="fas fa-users"></i> User Management
-                            </button>
-                            <div class="dropdown-container">
-                                <a href="create_user.jsp"><i class="fas fa-user-plus"></i> Add New User</a>
-                                <a href="view_users.jsp"><i class="fas fa-list"></i> View Users</a>
-                                <a href="update_user.jsp"><i class="fas fa-edit"></i> Update User</a>
-                                <a href="delete_user.jsp"><i class="fas fa-user-minus"></i> Delete User</a>
-                            </div>
+                            <a class="nav-link" href="user/login.jsp">  <i class="fas fa-chart-bar"></i> System Admin Portal
+                            </a>
                         </li>
                         <li class="nav-item">
                             <button class="dropdown-btn">
@@ -159,9 +147,9 @@ margin-bottom: 10px;
                                 <a href="delete_order.jsp"><i class="fas fa-ban"></i> Cancel Order</a>
                             </div>
                         </li>
-                         <li class="nav-item">
-                            <a class="nav-link" href="ViewReportsServlet">
-                                <i class="fas fa-chart-bar"></i> Report Management
+                        <li class="nav-item">
+                            <a class="nav-link" href="user/login.jsp">
+                                <i class="fas fa-chart-bar"></i> System Auditor Portal
                             </a>
                         </li>
                         <li class="nav-item">
@@ -244,21 +232,6 @@ margin-bottom: 10px;
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        var dropdown = document.querySelectorAll(".dropdown-btn");
-        var i;
-
-        for (i = 0; i < dropdown.length; i++) {
-            dropdown[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var dropdownContent = this.nextElementSibling;
-                if (dropdownContent.style.display === "block") {
-                    dropdownContent.style.display = "none";
-                } else {
-                    dropdownContent.style.display = "block";
-                }
-            });
-        }
-    </script>
+    
 </body>
 </html>
