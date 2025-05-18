@@ -99,10 +99,22 @@
                                 <label for="reportFile">Upload Report File</label>
                                 <input type="file" class="form-control-file" id="reportFile" name="reportFile" required>
                             </div>
-                            <div class="form-group">
-                                <label for="rContentSummary">Report Summary</label>
-                                <textarea class="form-control" id="rContentSummary" name="rContentSummary" rows="3"></textarea>
-                            </div>
+                            
+						<%
+						  Double profit = (Double) session.getAttribute("profit");
+						  String profitSummary = "";
+						  if (profit != null) {
+						    profitSummary = "Profit: $" + String.format("%.2f", profit);
+						  }
+						  
+						%>
+                            
+                            
+						<div class="form-group">
+						    <label for="rContentSummary">Report Summary</label>
+						    <textarea class="form-control" id="rContentSummary" name="rContentSummary" rows="3"><%= profitSummary %></textarea>
+						</div>
+						
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Generate Report</button>
                             </div>

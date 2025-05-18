@@ -34,18 +34,7 @@ public class ReportModel {
         this.userId = userId;
     }
 
-    public ReportModel(int rId, String rName, String rDate, String rCategory, String rAuthor, String rStatus, String rFilePath, String rContentType, String rContentSummary, String rContent) {
-        this.rId = rId;
-        this.rName = rName;
-        this.rDate = rDate;
-        this.rCategory = rCategory;
-        this.rAuthor = rAuthor;
-        this.rStatus = rStatus;
-        this.rFilePath = rFilePath;
-        this.rContentType = rContentType;
-        this.rContentSummary = rContentSummary;
-        this.rContent = rContent;
-    }
+
 
    
     public int getUserId() {

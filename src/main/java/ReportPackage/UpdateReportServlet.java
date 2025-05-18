@@ -38,7 +38,7 @@ public class UpdateReportServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int rId = Integer.parseInt(request.getParameter("rId"));
         String rName = request.getParameter("rName");
-        String rDate = request.getParameter("rDate"); // Changed to String
+        String rDate = request.getParameter("rDate"); 
         String rCategory = request.getParameter("rCategory");
         String rStatus = request.getParameter("rStatus");
         String rContentSummary = request.getParameter("rContentSummary");
@@ -51,8 +51,8 @@ public class UpdateReportServlet extends HttpServlet {
 
         IReportController reportController = new ReportServices();
         ReportModel existingReport = reportController.getReportById(rId);
-        String rFilePath = existingReport.getrFilePath(); // Keep existing file path
-        String rContentType = existingReport.getrContentType(); // Keep existing content type
+        String rFilePath = existingReport.getrFilePath(); 
+        String rContentType = existingReport.getrContentType(); 
 
         boolean isUpdated = reportController.updateReport(rId, rName, rDate, rCategory, rAuthor, rStatus, rFilePath, rContentType, rContentSummary, rContent, userId);
 

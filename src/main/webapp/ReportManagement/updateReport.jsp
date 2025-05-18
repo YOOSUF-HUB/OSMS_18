@@ -22,7 +22,7 @@
             box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
         }
         .card-header {
-            background-color: #ffc107; /* Yellow for update */
+            background-color: #ffc107; 
             color: #343a40;
             padding: 1rem 1.5rem;
             border-bottom: 1px solid rgba(0, 0, 0, 0.125);
@@ -118,7 +118,7 @@
                         <textarea class="form-control" id="rContentSummary" name="rContentSummary" rows="3"><%= report.getrContentSummary() != null ? report.getrContentSummary() : "" %></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="rContent">Report Content:</label>
+                        <label for="rContent">Report Updated Content:</label>
                         <textarea class="form-control" id="rContent" name="rContent" rows="5"><%= report.getrContent() != null ? report.getrContent() : "" %></textarea>
                     </div>
 

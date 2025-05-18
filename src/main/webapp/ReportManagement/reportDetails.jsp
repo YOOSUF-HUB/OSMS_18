@@ -57,7 +57,7 @@
             background-color: #e9ecef;
             border-radius: 0.25rem;
             margin-top: 1rem;
-            white-space: pre-wrap; /* Preserve formatting for text content */
+            white-space: pre-wrap; 
         }
         .btn-primary {
             border-radius: 0.25rem;

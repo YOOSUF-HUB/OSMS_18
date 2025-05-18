@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession; // Import HttpSession
 public class CreateReportServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static final String UPLOAD_DIRECTORY = "reports"; // Directory to store uploaded files
+    private static final String UPLOAD_DIRECTORY = "reports"; 
     
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,7 +31,7 @@ public class CreateReportServlet extends HttpServlet {
         ServletFileUpload upload = new ServletFileUpload(factory);
 
         String rName = null;
-        String rDate = null; // Changed to String
+        String rDate = null; 
         String rCategory = null;
         String rAuthor = null;
         String rStatus = null;
@@ -52,7 +52,7 @@ public class CreateReportServlet extends HttpServlet {
                             rName = fieldValue;
                             break;
                         case "rDate":
-                            rDate = fieldValue; // Store as String
+                            rDate = fieldValue; 
                             break;
                         case "rCategory":
                             rCategory = fieldValue;
@@ -73,18 +73,18 @@ public class CreateReportServlet extends HttpServlet {
                         rFilePath = UPLOAD_DIRECTORY + File.separator + fileName;
                         rContentType = item.getContentType();
                         File uploadedFile = new File(request.getServletContext().getRealPath("/") + UPLOAD_DIRECTORY, fileName);
-                        uploadedFile.mkdirs(); // Create directory if it doesn't exist
+                        uploadedFile.mkdirs(); 
                         item.write(uploadedFile);
                     }
                 }
             }
 
-            // Assuming you have user authentication, you'd get the author here
+            
             HttpSession session = request.getSession();
-            rAuthor = (String) session.getAttribute("loggedInUsername"); // Adjust attribute name as needed
-            Integer loggedInUserId = (Integer) session.getAttribute("loggedInUserId"); //get user ID
+            rAuthor = (String) session.getAttribute("loggedInUsername"); 
+            Integer loggedInUserId = (Integer) session.getAttribute("loggedInUserId"); 
             if (rAuthor == null || rAuthor.isEmpty() || loggedInUserId == null) {
-                rAuthor = "unknown"; // Or handle the case where the user is not logged in
+                rAuthor = "Anonymous"; 
                 userId = -1;
             }
             else{
@@ -92,7 +92,7 @@ public class CreateReportServlet extends HttpServlet {
             }
 
             IReportController obj = new ReportServices();
-            boolean isTrue = obj.createReport(rName, rDate, rCategory, rAuthor, rStatus, rFilePath, rContentType, rContentSummary, rContent, userId); // Added userId
+            boolean isTrue = obj.createReport(rName, rDate, rCategory, rAuthor, rStatus, rFilePath, rContentType, rContentSummary, rContent, userId); 
 
             if (isTrue) {
                 String alertmsg = "Report Generated Successfully";

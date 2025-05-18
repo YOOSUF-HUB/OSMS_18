@@ -24,12 +24,12 @@ public class ReportServices implements IReportController {
             e.printStackTrace();
         }
     }
-    
+
     @Override
     public boolean createReport(String rName, String rDate, String rCategory, String rAuthor, String rStatus, String rFilePath, String rContentType, String rContentSummary, String rContent, int userId) {
         isSuccess = false;
         try {
-            con = DBconnection.getConnection();
+            con = DataBaseReport.getConnection();
             String sql = "INSERT INTO financialreport (rName, rDate, rCategory, rAuthor, rStatus, rFilePath, rContentType, rContentSummary, rContent, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, rName);
@@ -58,7 +58,7 @@ public class ReportServices implements IReportController {
     public List<ReportModel> viewReports() {
         List<ReportModel> reports = new ArrayList<>();
         try {
-            con = DBconnection.getConnection();
+            con = DataBaseReport.getConnection();
             String sql = "SELECT r.*, u.name AS author_name FROM financialreport r JOIN user u ON r.user_id = u.id";
             pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
@@ -89,7 +89,7 @@ public class ReportServices implements IReportController {
     public ReportModel getReportById(int rId) {
         ReportModel report = null;
         try {
-            con = DBconnection.getConnection();
+            con = DataBaseReport.getConnection();
             String sql = "SELECT r.*, u.name AS author_name FROM financialreport r JOIN user u ON r.user_id = u.id WHERE r.rId = ?";
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, rId);
@@ -120,7 +120,7 @@ public class ReportServices implements IReportController {
     public boolean updateReport(int rId, String rName, String rDate, String rCategory, String rAuthor, String rStatus, String rFilePath, String rContentType, String rContentSummary, String rContent, int userId) {
         isSuccess = false;
         try {
-            con = DBconnection.getConnection();
+            con = DataBaseReport.getConnection();
             String sql = "UPDATE financialreport SET rName = ?, rDate = ?, rCategory = ?, rAuthor = ?, rStatus = ?, rFilePath = ?, rContentType = ?, rContentSummary = ?, rContent = ?, user_id = ? WHERE rId = ?";
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, rName);
@@ -146,42 +146,54 @@ public class ReportServices implements IReportController {
         return isSuccess;
     }
 
-    @Override
     public boolean deleteReport(int rId) {
         boolean isSuccess = false;
         Statement sta = null;
         ResultSet countRs = null;
         try {
-            con = DBconnection.getConnection();
+            con = DataBaseReport.getConnection();
+            sta = con.createStatement();
+
+            
+            String countSql = "SELECT COUNT(*) FROM financialreport";
+            countRs = sta.executeQuery(countSql);
+            int initialCount = 0;
+            if (countRs.next()) {
+                initialCount = countRs.getInt(1);
+            }
+
             String sql = "DELETE FROM financialreport WHERE rId = ?";
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, rId);
             int rowsAffected = pstmt.executeUpdate();
+
             if (rowsAffected > 0) {
                 isSuccess = true;
-                sta = con.createStatement();
-                String countSql = "SELECT COUNT(*) FROM financialreport";
-                countRs = sta.executeQuery(countSql);
-                if (countRs.next()) {
-                    int count = countRs.getInt(1);
-                    if (count == 0) {
-                        String resetSql = "ALTER TABLE financialreport AUTO_INCREMENT = 1";
-                        sta.executeUpdate(resetSql);
-                    }
-                }
             }
+
+          
+            if (initialCount == 1) {
+                 String resetSql = "ALTER TABLE financialreport AUTO_INCREMENT = 1";
+                 sta.executeUpdate(resetSql);
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             try {
-                if (countRs != null) countRs.close();
-                if (sta != null) sta.close();
-                if (pstmt != null) pstmt.close();
-                if (con != null) con.close();
+                if (countRs != null)
+                    countRs.close();
+                if (sta != null)
+                    sta.close();
+                if (pstmt != null)
+                    pstmt.close();
+                if (con != null)
+                    con.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
         return isSuccess;
     }
+
 }

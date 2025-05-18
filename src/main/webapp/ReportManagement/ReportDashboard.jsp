@@ -22,7 +22,7 @@
             text-align: center;
             border-bottom: 1px solid #dee2e6;
             margin-bottom: 2rem;
-            width: 100%; /* Make sure the header spans the entire width */
+            width: 100%; 
         }
         .summary-card {
             margin-top: 1rem;
@@ -254,7 +254,10 @@
                                     <div class="actions-container">
                                         <button class="btn btn-info btn-sm" onclick="viewReport(<%= report.getrId() %>)">View</button>
                                         <button class="btn btn-success btn-sm" onclick="window.location.href='UpdateReportServlet?rId=<%= report.getrId() %>'">Update</button>
-                                        <button class="btn btn-danger btn-sm" onclick="window.location.href='DeleteReportServlet?rId=<%= report.getrId() %>'">Delete</button>
+                                       <button class="btn btn-danger btn-sm" onclick="handleDelete(event, <%= report.getrId() %>)">Delete</button>
+
+
+
                                     </div>
                                 </td>
                             </tr>
@@ -280,12 +283,24 @@
         </div>
         <div class="create-report-button">
            <a href="ReportManagement/create_report.jsp" class="btn btn-primary m-2">Generate New Report</a>
-           <a href="HomePage.jsp" class="btn btn-secondary m-2">Back to HomePage</a>
+           <a href="ReportManagement/systemauditor.jsp" class="btn btn-secondary m-2">Back to Dashboard</a>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
+    
+    
+    function handleDelete(event, reportId) {
+      if (confirm('Are you sure you want to delete this report?')) {
+        window.location.href = 'DeleteReportServlet?rId=' + reportId;
+      } else {
+        event.preventDefault(); 
+      }
+    }
+   
+    
+    
         function viewReport(reportId) {
             window.location.href = 'ViewReportServlet?rId=' + reportId;
         }
@@ -316,7 +331,7 @@
             }
         }
 
-        //call searchReports() function on input change
+        
         document.getElementById("searchBox").addEventListener("input", searchReports);
     </script>
 </body>

@@ -15,12 +15,12 @@ public class UserController implements IUser {
     public boolean registerUser(String name, String email, String password, String phone, String role) {
         boolean isSuccess = false;
         try {
-            con = DBconnection.getConnection();
+            con = DBConnection.getConnection();
             String sql = "INSERT INTO user (name, email, password, phone, role) VALUES (?, ?, ?, ?, ?)";
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, name);
             pstmt.setString(2, email);
-            pstmt.setString(3, password); // TODO: Hash the password before storing!
+            pstmt.setString(3, password); 
             pstmt.setString(4, phone);
             pstmt.setString(5, role);
             int rowsAffected = pstmt.executeUpdate();
@@ -30,37 +30,53 @@ public class UserController implements IUser {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            closeResources(); // Using a helper method for closing resources
+            closeResources(); 
         }
         return isSuccess;
     }
 
     @Override
     public UserModel authenticateUser(String email, String password) {
+        System.out.println("authenticateUser() called for email: " + email);
         UserModel user = null;
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
         try {
-            con = DBconnection.getConnection();
+            con = DBConnection.getConnection();
+            System.out.println("authenticateUser(): Connection obtained");
             String sql = "SELECT id, name, email, password, role FROM user WHERE email = ?";
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, email);
+            System.out.println("authenticateUser(): Executing query: " + sql + " with email: " + email);
             rs = pstmt.executeQuery();
+            System.out.println("authenticateUser(): Query executed");
 
             if (rs.next()) {
-               
-                if (password.equals(rs.getString("password"))) { 
+                String storedPassword = rs.getString("password");
+                System.out.println("authenticateUser(): Retrieved password from DB: " + storedPassword);
+                System.out.println("authenticateUser(): Entered password: " + password);
+
+                if (password.equals(storedPassword)) {
                     user = new UserModel();
                     user.setId(rs.getInt("id"));
                     user.setName(rs.getString("name"));
                     user.setEmail(rs.getString("email"));
                     user.setRole(rs.getString("role"));
-                   
+                    System.out.println("authenticateUser(): Password matched!");
+                } else {
+                    System.out.println("authenticateUser(): Password did NOT match!");
                 }
+            } else {
+                System.out.println("authenticateUser(): User with email " + email + " not found.");
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            closeResources();
+            closeResources(rs, pstmt, con);
+            System.out.println("authenticateUser(): closeResources() finished");
         }
+        System.out.println("authenticateUser() returning user: " + user);
         return user;
     }
 
@@ -68,7 +84,7 @@ public class UserController implements IUser {
     public List<UserModel> getAllUsers() {
         List<UserModel> users = new ArrayList<>();
         try {
-            con = DBconnection.getConnection();
+            con = DBConnection.getConnection();
             String sql = "SELECT id, name, email, phone, role FROM user";
             pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
@@ -93,7 +109,7 @@ public class UserController implements IUser {
     public UserModel getUserById(int id) { 
         UserModel user = null;
         try {
-            con = DBconnection.getConnection();
+            con = DBConnection.getConnection();
             String sql = "SELECT id, name, email, password, phone, role FROM user WHERE id = ?";
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, id);
@@ -120,7 +136,7 @@ public class UserController implements IUser {
     public boolean deleteUser(int id) {
         boolean isSuccess = false;
         try {
-            con = DBconnection.getConnection();
+            con = DBConnection.getConnection();
             String sql = "DELETE FROM user WHERE id = ?";
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, id);
@@ -151,7 +167,7 @@ public class UserController implements IUser {
     public int getTotalUserCount() {
         int count = 0;
         try {
-            con = DBconnection.getConnection();
+            con = DBConnection.getConnection();
             String sql = "SELECT COUNT(*) FROM user";
             pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
@@ -170,11 +186,11 @@ public class UserController implements IUser {
     public boolean updateUser(int id, String name, String email, String password, String phone, String role) {
         boolean isSuccess = false;
         try {
-            con = DBconnection.getConnection();
+            con = DBConnection.getConnection();
             String sql;
 
             if (password != null && !password.isEmpty()) {
-                sql = "UPDATE user SET name = ?, email = ?, password = ?, phone = ?, role = ? WHERE id = ?"; // TODO: Hash updated password
+                sql = "UPDATE user SET name = ?, email = ?, password = ?, phone = ?, role = ? WHERE id = ?"; 
                 pstmt = con.prepareStatement(sql);
                 pstmt.setString(1, name);
                 pstmt.setString(2, email);

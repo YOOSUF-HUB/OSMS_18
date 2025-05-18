@@ -13,10 +13,10 @@ public class LogoutServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession(false); // Get the session if it exists
+        HttpSession session = request.getSession(false); 
         if (session != null) {
-            session.invalidate(); // Invalidate the session, effectively logging the user out
+            session.invalidate();
         }
-        response.sendRedirect("HomePage.jsp"); // Redirect to the homepage
+        response.sendRedirect("HomePage.jsp"); 
     }
 }
