@@ -3,9 +3,9 @@ package UserPackage;
 import java.sql.*;
 
 
-public class DBConnection {
+public class DBconnection {
 
-    private static String url = "jdbc:mysql://localhost:3306/onlineStockManagement";
+    private static String url = "jdbc:mysql://localhost:3306/OnlineStockManagementSystem";
     private static String user = "root";
     private static String pass = "yoosuf123@";
     private static Connection con = null;

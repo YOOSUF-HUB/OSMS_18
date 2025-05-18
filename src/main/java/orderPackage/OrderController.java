@@ -71,7 +71,7 @@ public class OrderController {
             rs = stmt.executeQuery(sql); // Execute the correct SQL query
 
             while (rs.next()) {
-                int orderid = rs.getInt("orderid");  
+                int orderid = rs.getInt("orderid");
                 String itemname = rs.getString("itemname");
                 String qty = rs.getString("qty");
                 String odate = rs.getString("odate");
@@ -111,7 +111,7 @@ public class OrderController {
             rs = stmt.executeQuery(sql); // Execute the correct SQL query
 
             while (rs.next()) {
-                int orderid = rs.getInt("orderid");  
+                int orderid = rs.getInt("orderid"); 
                 String itemname = rs.getString("itemname");
                 String qty = rs.getString("qty");
                 String odate = rs.getString("odate");
@@ -178,21 +178,22 @@ public class OrderController {
 	}
 
 
-	// order_id, item_id, quantity, orderDate, customer_id, total_price, order_status
+
 
 	public static boolean updateOrderStatus(int orderid, String ostatus, int qty) throws SQLException {
 	    boolean isSuccess = false;
 
 	    String sql = "UPDATE Orders SET order_status = ? WHERE order_id = ?";
-	    
+	    String sql2 = "UPDATE Orders SET order_status = ? WHERE order_id = ?";
 	    
 	    try (Connection con = DBconnection.getConnection();
-	         PreparedStatement ps = con.prepareStatement(sql)) {
+	         PreparedStatement ps = con.prepareStatement(sql); PreparedStatement ps2 = con.prepareStatement(sql2)) {
 
 	        ps.setString(1, ostatus);
 	        ps.setInt(2, orderid);
 
 	        isSuccess = ps.executeUpdate() > 0;
+	        isSuccess = ps2.executeUpdate() > 0;
 
 	    } catch (Exception e) {
 	        e.printStackTrace();

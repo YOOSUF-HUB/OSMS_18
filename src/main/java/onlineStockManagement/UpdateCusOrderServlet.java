@@ -24,6 +24,8 @@ public class UpdateCusOrderServlet extends HttpServlet {
 		int id =Integer.parseInt(request.getParameter("orderId"));
 		List<OrderModel> orderList = OrderController.getOrderById(id);
 		
+		List<OrderModel> allOrders = OrderController.getAllOrders();
+		request.setAttribute("allOrders", allOrders);
 		
 		List<stockModel> allStock = stockControl.getAllStock();
 		request.setAttribute("allStock", allStock);

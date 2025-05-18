@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet {
 
             switch (userRole) {
                 case "Stock manager":
-                    response.sendRedirect(request.getContextPath() + "/StockOrderManagement/CreateStockOrder.jsp"); 
+                    response.sendRedirect(request.getContextPath() + "/StockOrderManagement/StockManagerDashboard.jsp"); 
                     break;
                 case "system admin":
                     response.sendRedirect(request.getContextPath() + "/user/adminDashboard.jsp"); 
