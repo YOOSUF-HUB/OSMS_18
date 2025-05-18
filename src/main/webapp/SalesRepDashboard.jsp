@@ -118,6 +118,20 @@
         <a class="navbar-brand" href="SalesRepDashboardServlet">
             <img src="image/Tech-Color.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
             <i class="logotext">TechNest</i>
+                <%
+                   
+                    if (session.getAttribute("user") != null) {
+                %>
+                    <a href="LogoutServlet" class="btn btn-danger logout-button">Logout</a>
+                <%
+                    } else {
+                    	
+                %>
+                
+                     <a href="user/login.jsp" class="btn btn-primary">Login</a>
+                <%
+                    }
+                %>
         </a>
         <button class="navbar-toggler order-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                 aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">

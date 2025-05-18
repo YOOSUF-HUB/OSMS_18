@@ -54,7 +54,7 @@ public class LoginServlet extends HttpServlet {
                     response.sendRedirect(request.getContextPath() + "/ReportManagement/systemauditor.jsp");  
                     break;
                 case "sales representative":
-                    response.sendRedirect(request.getContextPath() + "/SalesRepDashboard.jsp");    
+                    response.sendRedirect(request.getContextPath() + "/SalesRepDashboardServlet");    
                     break;
                 default:
                     response.sendRedirect(request.getContextPath() + "/Homepage.jsp"); 
