@@ -1,31 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
-<%@ page import="ReportPackage.ReportModel" %>
-<%@ page import="java.time.LocalDate" %>
-<%@ page import="java.time.format.DateTimeFormatter" %>
-<%@ page import="StockOrderManagement.StockOrderModel" %>
-<%@ page import="StockOrderManagement.StockOrderControl" %>
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.PreparedStatement" %>
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.sql.SQLException" %>
-<%@ page import="StockOrderManagement.DBconnection" %>
-<%@ page import = "UserPackage.UserModel" %>
-
-<%
-    
-    if (session.getAttribute("user") == null) {
-        response.sendRedirect(request.getContextPath() + "/user/login.jsp");
-        return; 
-    }
-
-    
-    UserModel loggedInUser = (UserModel) session.getAttribute("user");
-    if (!"stock manager".equals(loggedInUser.getRole())) {
-        response.sendRedirect(request.getContextPath() + "/Homepage.jsp");
-        return; 
-    }
-%>
+<%@ include file="../user/loginAuthentication.jsp" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -125,20 +100,7 @@
     <header>
         <div class="container d-flex align-items-center justify-content-between">
             <h1><i class="fas fa-warehouse mr-2"></i>TechNest · Stock Manager</h1>
-                <%
-                   
-                    if (session.getAttribute("user") != null) {
-                %>
-                    <a href="LogoutServlet" class="btn btn-danger logout-button">Logout</a>
-                <%
-                    } else {
-                    	
-                %>
-                
-                     <a href="user/login.jsp" class="btn btn-primary">Login</a>
-                <%
-                    }
-                %>
+                <a href="LogoutServlet" class="btn btn-danger logout-button">Logout</a>
         </div>
     </header>
 

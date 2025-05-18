@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+<%@ include file="../user/loginAuthentication.jsp" %>
 
 <%@ page import = "SupplierPackage.SupplierModel" %>
 <%@ page import="java.util.List" %>
