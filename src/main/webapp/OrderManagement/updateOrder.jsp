@@ -1,38 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%@ page import="java.util.List" %>
-<%@ page import="ReportPackage.ReportModel" %>
-<%@ page import="java.time.LocalDate" %>
-<%@ page import="java.time.format.DateTimeFormatter" %>
-<%@ page import="StockOrderManagement.StockOrderModel" %>
-<%@ page import="StockOrderManagement.StockOrderControl" %>
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.PreparedStatement" %>
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.sql.SQLException" %>
-<%@ page import="StockOrderManagement.DBconnection" %>
-<%@ page import = "UserPackage.UserModel" %>
 
-<%
-    
-    if (session.getAttribute("user") == null) {
-        response.sendRedirect(request.getContextPath() + "/user/login.jsp");
-        return; 
-    }
+<%@ include file="../user/loginAuthentication.jsp" %>
 
-    
-    UserModel loggedInUser = (UserModel) session.getAttribute("user");
-    if (!"sales representative".equals(loggedInUser.getRole())) {
-        response.sendRedirect(request.getContextPath() + "/Homepage.jsp");
-        return; 
-    }
-%>
+   
 <%
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
-    response.setHeader("Pragma", "no-cache"); // HTTP 1.0
-    response.setDateHeader("Expires", 0); // Proxies
+        String name = loggedInUser.getName(); 
 %>
+ 
 
 <!DOCTYPE html>
 <html>
@@ -72,10 +48,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarScroll">
             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-                <li class="nav-item"><a class="nav-link " href="../SalesRepDashboard.jsp">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="../GetAllOrdersServlet">Order</a></li>
-                <li class="nav-item"><a class="nav-link" href="../GetAllCustomersServlet">Customer</a></li>
-                <li class="nav-item"><a class="nav-link" href="../GetAllStockServlet?view=sales">Product</a></li>
+                <li class="nav-item"><a class="nav-link " href="SalesRepDashboardServlet">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="GetAllOrdersServlet">Order</a></li>
+                <li class="nav-item"><a class="nav-link" href="GetAllCustomersServlet">Customer</a></li>
+                <li class="nav-item"><a class="nav-link" href="GetAllStockServlet?view=sales">Product</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Link</a>
                     <ul class="dropdown-menu">
@@ -85,9 +61,9 @@
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
                 </li>
-                <li class="nav-item d-lg-none"><a class="nav-link" href="#"><strong>John Doe</strong></a></li>
+                <li class="nav-item d-lg-none"><a class="nav-link" href="#"><strong><em><%= name %></em></strong></a></li>
                 <li class="nav-item d-lg-none"><a class="nav-link" href="#">Profile</a></li>
-                <li class="nav-item d-lg-none"><a class="nav-link" href="#">Logout</a></li>
+                <li class="nav-item d-lg-none"><a class="nav-link" href="LogoutServlet">Logout</a></li>
             </ul>
 
             <div class="dropdown d-none d-lg-block">
@@ -96,7 +72,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                     <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                    <li><a class="dropdown-item" href="LogoutServlet">Logout</a></li>
                 </ul>
             </div>
         </div>

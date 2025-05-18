@@ -40,12 +40,12 @@ public class UpdateCustomerServlet extends HttpServlet {
 		String number = request.getParameter("number");
 		String address = request.getParameter("address");
 		String city = request.getParameter("city");
-		String province = request.getParameter("province");
+		String country = request.getParameter("country");
 		String zip = request.getParameter("zip");
 		
 		boolean isTrue;
 		
-		isTrue = CustomerController.updateCustomer(id,cname, bname, email, number, address, city, province, zip);
+		isTrue = CustomerController.updateCustomer(id,cname, bname, email, number, address, city, country, zip);
 	
 		if (isTrue == true) {
 			

@@ -3,14 +3,12 @@ package customerPackage;
 
 
 import java.sql.Connection;
-
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import onlineStockManagement.DBconnection;
-import onlineStockManagement.stockModel;
 
 public class CustomerController {
 
@@ -24,7 +22,7 @@ public class CustomerController {
 	
 	//insert data function
 	public static boolean insertdata(String cname, String bname, String email, String number, String address, String city,
-	        String province, String zip) {
+	        String country, String zip) {
 
 	    boolean isSuccess = false;
 
@@ -32,8 +30,8 @@ public class CustomerController {
 	        con = DBconnection.getConnection();
 	        stmt = con.createStatement();
 
-	        String sql = "INSERT INTO Customer (customer_name, business_name, email, phone_number, address, city, province, zip_code) " +
-	                     "VALUES ('" + cname + "','" + bname + "','" + email + "','" + number + "','" + address + "','" + city + "','" + province + "','" + zip + "')";
+	        String sql = "INSERT INTO Customer (customer_name, business_name, email, phone_number, address, city, country, zip_code) " +
+	                     "VALUES ('" + cname + "','" + bname + "','" + email + "','" + number + "','" + address + "','" + city + "','" + country + "','" + zip + "')";
 
 	       
 	        int rs = stmt.executeUpdate(sql);
@@ -71,10 +69,10 @@ public class CustomerController {
 	            String number = rs.getString("phone_number");
 	            String address = rs.getString("address");
 	            String city = rs.getString("city");
-	            String province = rs.getString("province");
+	            String country = rs.getString("country");
 	            String zip = rs.getString("zip_code");
 
-	            CustomerModel customer = new CustomerModel(id, cname, bname, email, number, address, city, province, zip);
+	            CustomerModel customer = new CustomerModel(id, cname, bname, email, number, address, city, country, zip);
 	            customers.add(customer);
 	        }
 	    } catch (Exception e) {
@@ -101,10 +99,10 @@ public class CustomerController {
 	            String number = rs.getString(5);
 	            String address = rs.getString(6);
 	            String city = rs.getString(7);
-	            String province = rs.getString(8);
+	            String country = rs.getString(8);
 	            String zip = rs.getString(9);
 
-	            CustomerModel customer = new CustomerModel(id, cname, bname, email, number, address, city, province, zip);
+	            CustomerModel customer = new CustomerModel(id, cname, bname, email, number, address, city, country, zip);
 	            customers.add(customer);
 	        }
 	    } catch (Exception e) {
@@ -118,7 +116,7 @@ public class CustomerController {
 	
 	//update  function
 		public static boolean updateCustomer(int id, String cname, String bname, String email, String number, String address, String city,
-		        String province, String zip) {
+		        String country, String zip) {
 
 
 		    try {
@@ -132,7 +130,7 @@ public class CustomerController {
 		                + "phone_number = '" + number + "', "
 		                + "address = '" + address + "', "
 		                + "city = '" + city + "', "
-		                + "province = '" + province + "', "
+		                + "country = '" + country + "', "
 		                + "zip_code = '" + zip + "' "
 		                + "WHERE customer_id = " + id;
 		                    
@@ -188,6 +186,7 @@ public class CustomerController {
 
 
 }
+
 
 
 

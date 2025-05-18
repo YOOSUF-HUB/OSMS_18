@@ -9,12 +9,12 @@ public class CustomerModel {
 	private String number;
 	private String address;
 	private String city;
-	private String province;
+	private String country;
 	private String zip;
 	
 	
 	public CustomerModel(int id, String cname, String bname, String email, String number, String address, String city,
-			String province, String zip) {
+			String country, String zip) {
 		super();
 		this.id = id;
 		this.cname = cname;
@@ -23,7 +23,7 @@ public class CustomerModel {
 		this.number = number;
 		this.address = address;
 		this.city = city;
-		this.province = province;
+		this.country = country;
 		this.zip = zip;
 	}
 
@@ -63,8 +63,8 @@ public class CustomerModel {
 	}
 
 
-	public String getProvince() {
-		return province;
+	public String getCountry() {
+		return country;
 	}
 
 
@@ -108,8 +108,8 @@ public class CustomerModel {
 	}
 
 
-	public void setProvince(String province) {
-		this.province = province;
+	public void setCountry(String country) {
+		this.country = country;
 	}
 
 

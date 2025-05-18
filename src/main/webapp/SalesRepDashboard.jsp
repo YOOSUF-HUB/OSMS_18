@@ -6,6 +6,13 @@
 <%@ include file="../user/loginAuthentication.jsp" %>
 
 
+   
+<%
+        String name = loggedInUser.getName(); 
+%>
+      
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,17 +94,13 @@
     <div class="container-fluid">
         <a class="navbar-brand" href="SalesRepDashboardServlet">
             <img src="image/Tech-Color.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
-            <i class="logotext">TechNest</i>
-                <% 	if (session.getAttribute("user") != null) {	%>
-                    <a href="LogoutServlet" class="btn btn-danger logout-button">Logout</a>
-                <% 	} else { 	%>
-                	<a href="user/login.jsp" class="btn btn-primary">Login</a>
-                <%	}	%>
-        			</a>
+            <i class="logotext">TechNest</i>  
+        </a>
         <button class="navbar-toggler order-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                 aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarScroll">
             <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                 <li class="nav-item"><a class="nav-link active" href="SalesRepDashboardServlet">Home</a></li>
@@ -113,23 +116,26 @@
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
                 </li>
-                <li class="nav-item d-lg-none"><a class="nav-link" href="#"><strong>John Doe</strong></a></li>
+                <li class="nav-item d-lg-none"><a class="nav-link" href="#"><em><strong><%= name %></strong></em></a></li>
                 <li class="nav-item d-lg-none"><a class="nav-link" href="#">Profile</a></li>
-                <li class="nav-item d-lg-none"><a class="nav-link" href="#">Logout</a></li>
+                <li class="nav-item d-lg-none"><a class="nav-link" href="LogoutServlet">Logout</a></li>
             </ul>
 
             <div class="dropdown d-none d-lg-block">
+            	
                 <a class="nav-link dropdown-toggle fs-5 fw-bold" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
-                    John Doe
+                    <em><%= name %></em>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                     <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                    <li><a class="dropdown-item" href="LogoutServlet">Logout</a></li>
                 </ul>
             </div>
         </div>
     </div>
 </nav>
+
+
 
 <div class="container-fluid px-4">
     <div class="d-flex justify-content-center align-items-center my-4">
