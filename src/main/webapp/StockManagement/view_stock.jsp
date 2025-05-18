@@ -21,6 +21,12 @@
     
     
     <style>
+        :root {
+            --dark: #343a40;
+            --accent: #ffcc00;
+            --light-bg: #f4f6f9;
+			--bg: linear-gradient(135deg, #374785, #04b5b5);
+        }
 
         
 	body {

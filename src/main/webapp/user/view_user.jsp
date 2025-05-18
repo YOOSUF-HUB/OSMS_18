@@ -9,58 +9,89 @@
     <title>User Management</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 3rem;
+        }
+        .card-total {
+            border: none;
+            border-radius: 0.5rem;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+        .table-container {
+            margin-top: 2rem;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+        .table th, .table td {
+            padding: 0.75rem;
+            vertical-align: middle;
+            border-color: #dee2e6;
+        }
+        .btn-action {
+            margin-right: 0.5rem;
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">User Management</h1>
+    <div class="container">
+        <h2 class="text-center mb-4">User Administration</h2>
 
-        <div class="row mb-4">
-            <div class="col-md-4 offset-md-4">
-                <div class="card shadow-sm">
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-6">
+                <div class="card card-total">
                     <div class="card-body text-center">
-                        <h5 class="card-title">Total Users</h5>
-                        <p class="card-text display-4"><c:out value="${totalUsers}" default="0"/></p>
+                        <h6 class="card-subtitle mb-2 text-muted">Total Users</h6>
+                        <p class="card-text display-5"><c:out value="${totalUsers}" default="0"/></p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <h2 class="text-center mb-3">User List</h2>
-        <c:if test="${not empty users}">
-            <table class="table table-bordered table-striped shadow-sm">
-                <thead class="table-dark">
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Role</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach var="user" items="${users}">
+        <div class="table-container">
+            <c:if test="${not empty users}">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
                         <tr>
-                            <td>${user.id}</td>
-                            <td>${user.name}</td>
-                            <td>${user.email}</td>
-                            <td>${user.phone}</td>
-                            <td>${user.role}</td>
-                            <td>
-                                <a href="UpdateUserServlet?id=${user.id}" class="btn btn-sm btn-primary">Edit</a>
-                                <a href="DeleteUserServlet?id=${user.id}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
-                            </td>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Role</th>
+                            <th class="text-end">Actions</th>
                         </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
-        </c:if>
-        <c:if test="${empty users}">
-            <p class="text-center">No users found.</p>
-        </c:if>
-        <div class="text-center mt-3">
+                    </thead>
+                    <tbody>
+                        <c:forEach var="user" items="${users}">
+                            <tr>
+                                <td>${user.id}</td>
+                                <td>${user.name}</td>
+                                <td>${user.email}</td>
+                                <td>${user.phone}</td>
+                                <td>
+                                    <span class="badge bg-secondary">${user.role}</span>
+                                </td>
+                                <td class="text-end">
+                                    <a href="UpdateUserServlet?id=${user.id}" class="btn btn-sm btn-outline-primary btn-action">Edit</a>
+                                    <a href="DeleteUserServlet?id=${user.id}" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </c:if>
+            <c:if test="${empty users}">
+                <p class="text-center py-3">No users found.</p>
+            </c:if>
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
             <a href="user/RegisterUser.jsp" class="btn btn-success">Add New User</a>
-            <a href="user/adminDashboard.jsp" class="btn btn-secondary">Back to Dashboard</a>  </div>
+            <a href="user/adminDashboard.jsp" class="btn btn-secondary">Back to Dashboard</a>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
