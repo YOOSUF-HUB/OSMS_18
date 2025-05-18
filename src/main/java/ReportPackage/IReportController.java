@@ -2,6 +2,7 @@ package ReportPackage;
 
 
 import java.util.List;
+import onlineStockManagement.DBconnection;
 
 public interface IReportController {
     boolean createReport(String rName, String rDate, String rCategory, String rAuthor, String rStatus, String rFilePath, String rContentType, String rContentSummary, String rContent, int userId);

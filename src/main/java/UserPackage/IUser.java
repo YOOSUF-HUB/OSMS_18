@@ -1,6 +1,7 @@
 package UserPackage;
 
 import java.util.List;
+import onlineStockManagement.DBconnection;
 
 public interface IUser {
 

@@ -2,8 +2,10 @@ package UserPackage;
 
 import java.sql.*;
 
+
 import java.util.ArrayList;
 import java.util.List;
+import onlineStockManagement.DBconnection;
 
 public class UserController implements IUser { 
 
