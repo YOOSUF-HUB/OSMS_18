@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 
 @WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
@@ -21,12 +23,13 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String phone = request.getParameter("phone");
         String role = request.getParameter("role");
-
+        
+        String hashedPassword = DigestUtils.sha256Hex(password);
         IUser obj = new UserController();
         
         boolean isTrue;
 		   
-		   isTrue = obj.registerUser(name, email, password, phone , role);
+		   isTrue = obj.registerUser(name, email, hashedPassword, phone , role);
 		   
 		   if(isTrue == true) {
 			   String alertmsg = "Data Inserted Successfully";

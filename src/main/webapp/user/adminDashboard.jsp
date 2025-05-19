@@ -4,7 +4,16 @@
 <%@ page import="UserPackage.UserModel" %>
 <%@ page import="UserPackage.UserController" %>
 <%@ page import="UserPackage.IUser" %>
-<%@ include file="../user/loginAuthentication.jsp" %>
+<%
+    request.setAttribute("requiredRole", "system admin");
+%>
+<%@ include file="loginAuthentication.jsp"%>
+
+
+   
+<%
+        String name = loggedInUser.getName(); 
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>

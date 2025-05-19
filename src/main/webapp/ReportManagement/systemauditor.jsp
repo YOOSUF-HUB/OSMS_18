@@ -5,7 +5,16 @@
 <%@ page import="StockOrderManagement.*" %>
 <%@ page import="UserPackage.UserModel" %>
 
+<%
+    request.setAttribute("requiredRole", "system auditor");
+%>
 <%@ include file="../user/loginAuthentication.jsp" %>
+
+
+   
+<%
+        String name = loggedInUser.getName(); 
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
