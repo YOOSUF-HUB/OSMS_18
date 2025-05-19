@@ -3,6 +3,7 @@ package customerPackage;
 
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -30,18 +31,21 @@ public class CustomerController {
 	        con = DBconnection.getConnection();
 	        stmt = con.createStatement();
 
-	        String sql = "INSERT INTO Customer (customer_name, business_name, email, phone_number, address, city, country, zip_code) " +
-	                     "VALUES ('" + cname + "','" + bname + "','" + email + "','" + number + "','" + address + "','" + city + "','" + country + "','" + zip + "')";
+	        String sql = "INSERT INTO Customer (customer_name, business_name, email, phone_number, address, city, country, zip_code) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+	        PreparedStatement pstmt = con.prepareStatement(sql);
 
-	       
-	        int rs = stmt.executeUpdate(sql);
+	        pstmt.setString(1, cname);
+	        pstmt.setString(2, bname);
+	        pstmt.setString(3, email);
+	        pstmt.setString(4, number);
+	        pstmt.setString(5, address);
+	        pstmt.setString(6, city);
+	        pstmt.setString(7, country);
+	        pstmt.setString(8, zip);
 
-	        if(rs>0) {
-				isSuccess = true;
-			}
-			else {
-				isSuccess = false;
-			}
+	        int rs = pstmt.executeUpdate();
+	        isSuccess = rs > 0;
+	        
 	    } catch (Exception e) {
 	        System.out.println("ERROR INSERTING CUSTOMER: " + e.getMessage());
 	        e.printStackTrace();

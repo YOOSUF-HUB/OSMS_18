@@ -215,7 +215,7 @@
                         <th>Product Name</th>
                         <th>Product Model</th>
                         <th>Product Manufacturer</th>
-                        <th>Quantity</th>
+                        <th>Quantity<br>Availa</th>
                         <th>Selling Price</th>
                         <th>Description</th>
                     </tr>

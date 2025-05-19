@@ -3,6 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
+<%
+    request.setAttribute("requiredRole", "sales representative");
+%>
 <%@ include file="../user/loginAuthentication.jsp" %>
 
 
@@ -27,7 +30,7 @@
 
     <style>
     
-        :root {
+    	:root {
             --primary: #2563eb;
             --primary-hover: #1d4ed8;
             --bg: linear-gradient(135deg, #374785, #04b5b5);
@@ -35,23 +38,14 @@
             --border: #e5e7eb;
             --danger: #f87171;
             
+        } 
         body {
-            background-color: #f8f9fa;
+            /* background-color: #f8f9fa; */
+            background: linear-gradient(to right, #e3f2fd, #f2fdff, #f1f0ff);
         }
         
 
-        .widget {
-            padding: 1rem;
-            background-color: #ffffff;
-            border-radius: 0.5rem;
-            box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
-        }
-
-        .widget-title {
-            font-weight: 600;
-            color: #495057;
-            margin-bottom: 1rem;
-        }
+       
 
         .navbar-brand i {
             font-weight: bold;
@@ -71,7 +65,13 @@
         }
         
         .SalesRepBtn{
-        	height: 10rem;
+        	height: 12rem;
+        	transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .SalesRepBtn:hover{
+        	transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,.1);
         }
         
         .SalesRepBtn i{
@@ -81,14 +81,15 @@
         .btn-primary{
         	background-color: #3674B5;
         }
+        
         .btn-primary:hover{
         	background-color: #578FCA;
-        	transform: translateY(-4px);
-            box-shadow: 0 6px 20px rgba(0,0,0,.1);
         }
+        
         .custom-title {
         	color: #3674B5;
         }
+        
         .custom-title2{
         	color: #3674B5;
         	font-size: 2rem;
@@ -257,6 +258,20 @@
 	        </div>
 	    </div>
 	</div> -->
+    
+    
+    <c:if test="${param.addSuccess == 'true'}">
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+      <div id="successToast" class="toast align-items-center text-bg-success border-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body">
+            Order placed successfully!
+          </div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
+</c:if>
     
 </div>
 

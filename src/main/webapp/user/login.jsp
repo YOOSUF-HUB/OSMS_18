@@ -16,7 +16,7 @@
         :root {
             --primary: #2563eb;
             --primary-hover: #1d4ed8;
-            --bg: linear-gradient(135deg, #374785, #04b5b5);
+            --bg: linear-gradient(135deg, #04b5b5, #374785);
             --text: #1f2937;
             --border: #e5e7eb;
             --danger: #f87171;

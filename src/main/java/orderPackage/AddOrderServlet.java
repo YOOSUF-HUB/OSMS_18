@@ -64,11 +64,11 @@ public class AddOrderServlet extends HttpServlet {
         
 		if (isTrue == true) {
 			
-			// Redirect to GetAllOrdersServlet after successful insertion
-            response.sendRedirect("GetAllOrdersServlet");
+			response.sendRedirect("SalesRepDashboardServlet?addSuccess=true");
+
 		}
 		else {
-			RequestDispatcher dis2 = request.getRequestDispatcher("error.jsp");
+			RequestDispatcher dis2 = request.getRequestDispatcher("AddOrderServlet?addSuccess=false");
 			dis2.forward(request,response);
 		}
 		

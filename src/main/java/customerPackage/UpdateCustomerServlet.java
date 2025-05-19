@@ -52,11 +52,11 @@ public class UpdateCustomerServlet extends HttpServlet {
 			
 			List<CustomerModel> customerDetails = CustomerController.getCustomerById(id);
 			request.setAttribute("customerDetails", customerDetails);
-			String alertMessage = "Data Updated successful";
-			response.getWriter().println("<script> alert('"+alertMessage+"'); window.location.href='GetAllCustomersServlet' </script>");
+			response.sendRedirect("GetAllCustomersServlet?updateSuccess=true");
+
 		}
 		else {
-			RequestDispatcher dis2 = request.getRequestDispatcher("error.jsp");
+			RequestDispatcher dis2 = request.getRequestDispatcher("GetAllCustomersServlet?updateSuccess=false&customerId="+id);
 			dis2.forward(request,response);
 		}
 		
