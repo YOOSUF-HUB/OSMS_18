@@ -1,6 +1,6 @@
 package UserPackage;
 
-
+import org.apache.commons.codec.digest.DigestUtils;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.apache.commons.codec.digest.DigestUtils;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
@@ -29,10 +31,11 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("gmail");
         String password = request.getParameter("password");
+        
+        String hashedPassword = DigestUtils.sha256Hex(password);
 
         IUser userController = new UserController();
-        UserModel user = userController.authenticateUser(email, password);
-
+        UserModel user = userController.authenticateUser(email, hashedPassword);
         if (user != null) {
            
             HttpSession session = request.getSession();
