@@ -1,5 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    request.setAttribute("requiredRole", "stock manager");
+%>
 <%@ include file="../user/loginAuthentication.jsp" %>
+
+
+   
+<%
+        String name = loggedInUser.getName(); 
+%>
 
 <!DOCTYPE html>
 
