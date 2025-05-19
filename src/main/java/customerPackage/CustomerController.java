@@ -32,22 +32,12 @@ public class CustomerController implements ICustomerController {
 	        stmt = con.createStatement();
 	        
 	        
-//	        String lastIdQuery = "SELECT customer_id FROM Customer ORDER BY customer_id DESC LIMIT 1";
-//	        stmt = con.createStatement();
-//	        rs = stmt.executeQuery(lastIdQuery);
-//	        
-//	        String newCustomerId = "CUS1000"; 
-	        
-//	        if (rs.next()) {
-//	            String lastId = rs.getString("customer_id"); 
-//	            int num = Integer.parseInt(lastId.substring(3)); 
-//	            newCustomerId = "CUS" + (num + 1); 
-//	        }
+
 
 	        String sql = "INSERT INTO Customer ( customer_name, business_name, email, phone_number, address, city, country, zip_code) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
 	        PreparedStatement pstmt = con.prepareStatement(sql);
 	        
-//	        pstmt.setString(1, newCustomerId);
+
 	        pstmt.setString(1, cname);
 	        pstmt.setString(2, bname);
 	        pstmt.setString(3, email);
@@ -176,7 +166,7 @@ public class CustomerController implements ICustomerController {
 		
 		//delete function
 		public boolean deleteCustomer(int id) {
-			
+			isSuccess = false;
 			try {
 				con = DBconnection.getInstance().getConnection();
 		        stmt = con.createStatement();
