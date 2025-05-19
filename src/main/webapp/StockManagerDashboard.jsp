@@ -23,6 +23,8 @@
     <!-- FontAwesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> <!-- Bootstrap 4 -->
+    
     
 
     <style>
@@ -118,21 +120,33 @@
 </head>
 <body>
     
-	<header>
-	    <div class="container d-flex align-items-center justify-content-between">
-	        <h1 class="d-flex align-items-center">
-	            <img src="image/Tech-White.png" alt="Company Logo" style="height: 40px; margin-right: 0.75rem;" />
-	            <span>TechNest : Stock Manager</span>
-	        </h1>
-			<div class="mt-auto">
-			    <a href="./LogoutServlet" class="btn btn-white w-100 text-dark border">
-			        <i class="bi bi-box-arrow-right me-1"></i> Logout
-			    </a>
+<header>
+    <div class="container py-3 d-flex align-items-center justify-content-between">
+        
+        <!-- Left: Logo and Title -->
+        <div class="d-flex align-items-center">
+            <img src="image/Tech-White.png" alt="Company Logo" style="height: 40px; margin-right: 0.75rem;" />
+            <h1 class="h5 mb-0 text-white fw-semibold">TechNest: Stock Manager</h1>
+        </div>
+
+        <!-- Right: User Dropdown and Logout -->
+        <div class="d-flex align-items-center gap-3">
+
+			<div class="d-none d-lg-block me-3">
+			    <span class="text-white fw-semibold">
+			        <i class="bi bi-person-circle me-1"></i>
+			        <em><%= name %></em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			    </span>
 			</div>
 
+            <!-- Logout Button -->
+            <a href="LogoutServlet" class="btn btn-outline-light">
+                <i class="bi bi-box-arrow-right me-1"></i>&nbsp;&nbsp;&nbsp; Logout
+            </a>
+        </div>
+    </div>
+</header>
 
-	    </div>
-	</header>
 
     <main class="container py-5">
         <!-- Action buttons as cards -->

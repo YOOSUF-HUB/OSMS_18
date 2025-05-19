@@ -38,7 +38,7 @@ public class DBconnection {
 
     private String url = "jdbc:mysql://localhost:3306/OnlineStockManagementSystem";
     private String username = "root";
-    private String password = "pass";
+    private String password = "yoosuf123@";
 
     private DBconnection() throws SQLException {
         try {

@@ -75,7 +75,7 @@
 	.table tbody td {
     vertical-align: middle;
     text-align: center;
-    font-size: 0.95rem; /* or use 12px if you prefer px */
+    font-size: 0.8rem;
 	}
 
 .table tbody tr {
@@ -90,6 +90,18 @@
 
 	}
 	
+	.table td {
+	    padding: 0.5rem;
+	    vertical-align: top;
+	    border-top: 1px solid #dee2e6;
+	}
+	
+	
+	.table th {
+	    padding: 1rem;
+	    vertical-align: top;
+	    border-top: 1px solid #dee2e6;
+	}
 
 	.btn {
 	    padding: 6px 14px;
@@ -212,8 +224,8 @@
 
 
 	.table tbody td .badge {
-	  font-size: 1rem; /* Increase font size to 16px (default 0.8rem or less) */
-	  padding: 0.4em 0.7em; /* optional: adjust padding for better look */
+	  font-size: 0.9rem;
+	  padding: 0.4em 0.7em;
 	}
 	
 	
