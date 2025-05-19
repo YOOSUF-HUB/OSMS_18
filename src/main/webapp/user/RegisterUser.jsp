@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="UserPackage.UserModel" %>
-<%@ page import="org.apache.commons.codec.digest.DigestUtils" %>
 <%@ page import="UserPackage.IUser" %>
-<%
+<%-- <%
     request.setAttribute("requiredRole", "system admin");
 %>
 <%@ include file="loginAuthentication.jsp" %>
@@ -11,7 +10,7 @@
    
 <%
         String name = loggedInUser.getName(); 
-%>
+%> --%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
