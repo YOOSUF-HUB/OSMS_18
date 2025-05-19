@@ -3,6 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
+<%
+    request.setAttribute("requiredRole", "sales representative");
+%>
 <%@ include file="../user/loginAuthentication.jsp" %>
 
 
@@ -37,22 +40,12 @@
             
         } 
         body {
-            background-color: #f8f9fa;
+            /* background-color: #f8f9fa; */
+            background: linear-gradient(to right, #e3f2fd, #f2fdff, #f1f0ff);
         }
         
 
-        .widget {
-            padding: 1rem;
-            background-color: #ffffff;
-            border-radius: 0.5rem;
-            box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
-        }
-
-        .widget-title {
-            font-weight: 600;
-            color: #495057;
-            margin-bottom: 1rem;
-        }
+       
 
         .navbar-brand i {
             font-weight: bold;

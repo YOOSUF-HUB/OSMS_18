@@ -35,8 +35,7 @@ public class AddCustomerServlet extends HttpServlet {
 			response.sendRedirect("GetAllCustomersServlet?addCustomerSuccess=true");
 		}
 		else {
-			RequestDispatcher dis2 = request.getRequestDispatcher("addCustomer.jsp?addCustomerSuccess=false");
-			dis2.forward(request,response);
+			response.sendRedirect("addCustomer.jsp?addCustomerSuccess=false");
 		}
 		
 		

@@ -1,4 +1,4 @@
-<%@ page import="java.util.List" %>
+<%-- <%@ page import="java.util.List" %>
 <%@ page import="ReportPackage.ReportModel" %>
 <%@ page import="java.time.LocalDate" %>
 <%@ page import="java.time.format.DateTimeFormatter" %>
@@ -29,4 +29,26 @@
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
     response.setHeader("Pragma", "no-cache"); // HTTP 1.0
     response.setDateHeader("Expires", 0); // Proxies
+%> --%>
+
+<%@ page import="UserPackage.UserModel" %>
+
+<%
+    String requiredRole = (String) request.getAttribute("requiredRole");
+
+    UserModel loggedInUser = (UserModel) session.getAttribute("user");
+
+    if (loggedInUser == null) {
+        response.sendRedirect(request.getContextPath() + "/user/login.jsp");
+        return;
+    }
+
+    if (requiredRole != null && !requiredRole.equals(loggedInUser.getRole())) {
+        response.sendRedirect(request.getContextPath() + "/user/login.jsp");
+        return;
+    }
+
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    response.setHeader("Pragma", "no-cache");
+    response.setDateHeader("Expires", 0);
 %>

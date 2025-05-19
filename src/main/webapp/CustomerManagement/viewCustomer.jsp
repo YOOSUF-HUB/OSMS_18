@@ -260,31 +260,7 @@
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
-<script>
-	function searchCustomer(){
-		var input, filter, table, tr, td, i,j, txtvalue;
-		input = document.getElementById("searchInput");
-		filter = input.value.toUpperCase();
-		table = document.querySelector("table");
-	    tr = table.getElementsByTagName("tr");
-	    
-	    for(i=1; i<tr.length; i++){
-	    	td = tr[i].getElementsByTagName("td")
-	    	
-	    	for(j=0; j<2; j++){
-	    		if(td[j]){
-	    			textvalue = td[j].textContent || td[j].innerText;
-	    			tr[i].style.display = "";
-	                break;
-	    		}else{
-	    			tr[i].style.display = "none";
-	    		}
-	    	}
-	    }
-	    
-	    document.getElementById("searchInput").addEventListener("input", searchCustomer);
-	}
-</script> 
+
 
 <script>
 function searchCustomer() {
