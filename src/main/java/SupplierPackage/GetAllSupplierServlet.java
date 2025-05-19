@@ -21,8 +21,8 @@ public class GetAllSupplierServlet extends HttpServlet {
        
 	protected void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
-		
-		List<SupplierModel> allSupplier = SupplierControl.getAllSupplier();
+		ISupplierControl obj = new SupplierControl();
+		List<SupplierModel> allSupplier = obj.getAllSupplier();
 		request.setAttribute("allSupplier", allSupplier);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/SupplierManagement/view_supplier.jsp");

@@ -12,10 +12,10 @@ import java.util.List;
 
 import onlineStockManagement.DBconnection;
 
-public class StockOrderControl {
+public class StockOrderControl implements IStockOrderControl{
 
     // insertStockOrder
-    public static boolean insertStockOrder(
+    public boolean insertStockOrder(
         String order_date,
         int quantity_ordered,
         float unit_price,
@@ -66,7 +66,7 @@ public class StockOrderControl {
     }
 
     // getOrderById
-    public static List<StockOrderModel> getOrderById(int orderId) {
+    public List<StockOrderModel> getOrderById(int orderId) {
         List<StockOrderModel> orders = new ArrayList<>();
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -111,7 +111,7 @@ public class StockOrderControl {
     }
 
     // getAllOrders
-    public static List<StockOrderModel> getAllStockOrders() {
+    public List<StockOrderModel> getAllStockOrders() {
         List<StockOrderModel> orders = new ArrayList<>();
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -159,7 +159,7 @@ public class StockOrderControl {
     
     
  // Update stock order
-    public static boolean UpdateStockOrder(int order_id, String order_date, int quantity_ordered, float unit_price, float total_price,
+    public boolean UpdateStockOrder(int order_id, String order_date, int quantity_ordered, float unit_price, float total_price,
                                            String order_status, String expected_delivery_date, String payment_status, String notes,
                                            String received_date, String invoice_number, int supplier_id) {
         
@@ -205,7 +205,7 @@ public class StockOrderControl {
     
     
     //Delete Stock Order
-    public static boolean DeleteStockOrder(int order_id) {
+    public boolean DeleteStockOrder(int order_id) {
     	boolean isSuccess = false;
     	Connection con = null;
     	PreparedStatement pstmt = null;
@@ -229,15 +229,7 @@ public class StockOrderControl {
 		}
 		return isSuccess;
     	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
-    	
+
     	
     }
 

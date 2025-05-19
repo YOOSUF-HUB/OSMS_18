@@ -9,10 +9,10 @@ import java.util.List;
 
 import onlineStockManagement.DBconnection;
 
-public class SupplierControl {
+public class SupplierControl implements ISupplierControl {
 
     // Insert Data function
-    public static boolean insertSupplierData(int supplier_id, String supplier_name, String phone_number, String email,
+    public boolean insertSupplierData(int supplier_id, String supplier_name, String phone_number, String email,
                                              String supplier_address, String supplier_city, String supplier_country,
                                              String supplier_website, String s_date_added) {
 
@@ -50,7 +50,7 @@ public class SupplierControl {
     }
 
     // Get by ID
-    public static List<SupplierModel> getById(int ID) {
+    public List<SupplierModel> getById(int ID) {
         List<SupplierModel> supplierList = new ArrayList<>();
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -93,7 +93,7 @@ public class SupplierControl {
     }
 
     // Get All Suppliers
-    public static List<SupplierModel> getAllSupplier() {
+    public List<SupplierModel> getAllSupplier() {
         List<SupplierModel> supplierList = new ArrayList<>();
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -138,7 +138,7 @@ public class SupplierControl {
 
 
     // Update Supplier
-    public static boolean UpdateSupplier(int supplier_id, String supplier_name, String phone_number, String email,
+    public boolean UpdateSupplier(int supplier_id, String supplier_name, String phone_number, String email,
                                          String supplier_address, String supplier_city, String supplier_country,
                                          String supplier_website, String s_date_added) {
 
@@ -181,7 +181,7 @@ public class SupplierControl {
     
     
 	// DeleteStock
-	public static boolean DeleteSupplier(int supplier_id) {
+	public boolean DeleteSupplier(int supplier_id) {
 		boolean isSuccess = false;
 		Connection con = null;
 		PreparedStatement pstmt = null;

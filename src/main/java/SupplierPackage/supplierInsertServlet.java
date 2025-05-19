@@ -29,7 +29,8 @@ public class supplierInsertServlet extends HttpServlet {
 		
 		boolean isTrue;
 		
-		isTrue = SupplierControl.insertSupplierData(0, supplier_name, phone_number, email , supplier_address, supplier_city, supplier_country, supplier_website, s_date_added);
+		ISupplierControl obj = new SupplierControl();
+		isTrue = obj.insertSupplierData(0, supplier_name, phone_number, email , supplier_address, supplier_city, supplier_country, supplier_website, s_date_added);
 		
 		if(isTrue == true) {
 			String alertMessage = "Data Insert Successfull";

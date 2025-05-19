@@ -26,13 +26,15 @@ public class DeleteStockOrderServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int order_id = Integer.parseInt(request.getParameter("order_id"));
 		boolean isTrue;
-		isTrue = StockOrderControl.DeleteStockOrder(order_id);
+		
+		IStockOrderControl obj = new StockOrderControl();
+		isTrue = obj.DeleteStockOrder(order_id);
 		if(isTrue == true) {
 			String alertMessage = "Data Deleted Successfully";
 			response.getWriter().println("<script>('"+alertMessage+"');" + " window.location.href='StockOrdersServlet'</script>");
 			
 		}else {
-			List<StockOrderModel> StockOrderDetails = StockOrderControl.getOrderById(order_id);
+			List<StockOrderModel> StockOrderDetails = obj.getOrderById(order_id);
 			request.setAttribute("StockOrderDetails", StockOrderDetails);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("wrong.jsp");

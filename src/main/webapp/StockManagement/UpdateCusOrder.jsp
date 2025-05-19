@@ -43,17 +43,17 @@
     <div class="form-title">Update Order Status</div>
 
     <form action="UpdateCusOrderServlet" method="post">
-        <!-- Hidden fields for form submission -->
+
         <input type="hidden" name="order_id" value="${order.orderid}">
         <input type="hidden" name="qty" value="${order.qty}">
 
-        <!-- Display Order ID -->
+
         <div class="mb-3">
             <label class="form-label">Order ID</label>
             <input type="text" class="form-control" value="${order.orderid}" readonly>
         </div>
 
-        <!-- Display Quantity -->
+
         <div class="mb-3">
             <label class="form-label">Quantity</label>
             <input type="text" class="form-control" value="${order.qty}" readonly>
@@ -64,7 +64,7 @@
             <input type="text" class="form-control" value="${order.itemname}" readonly>
         </div>
 
-        <!-- Select Order Status -->
+
         <div class="mb-3">
             <label for="order_status" class="form-label">Order Status</label>
             <select id="order_status" name="order_status" class="form-select" required>
@@ -74,7 +74,7 @@
             </select>
         </div>
 
-        <!-- Submit & Cancel buttons -->
+
         <div class="d-flex justify-content-between mt-4">
             <a href="StockCusOrderViewServlet" class="btn btn-outline-secondary">Cancel</a>
             <button type="submit" class="btn btn-primary">Update</button>

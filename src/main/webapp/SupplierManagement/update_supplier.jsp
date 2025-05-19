@@ -76,7 +76,7 @@
             <script>
                 const selectedCountry = "<%= supplier_country %>"; // server-side variable
 
-                // Fetch and populate countries dynamically from an API
+                // Fetching country list form api
                 fetch("https://restcountries.com/v3.1/all")
                     .then(res => res.json())
                     .then(data => {
@@ -88,7 +88,6 @@
                             option.value = name;
                             option.textContent = name;
 
-                            // Pre-select the country based on the request parameter
                             if (name === selectedCountry) {
                                 option.selected = true;
                             }
@@ -97,7 +96,7 @@
                         });
                     });
 
-                // Clear country selection
+
                 document.getElementById("clear-btn").addEventListener("click", () => {
                     document.getElementById("supplier_country").selectedIndex = 0;
                 });

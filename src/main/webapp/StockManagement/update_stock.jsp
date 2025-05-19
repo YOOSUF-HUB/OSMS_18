@@ -111,13 +111,13 @@
                     <div class="card-header">Stock Details</div>
                     <div class="card-body">
                         <form action="../updateStockServlet" method="post">
-                            <!-- Stock ID (readonly) -->
+  
                             <div class="form-group">
                                 <label for="item_id">Stock ID</label>
                                 <input type="text" class="form-control" id="item_id" name="item_id" value="<%= item_id %>" readonly>
                             </div>
 
-                            <!-- Row 1 -->
+
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="item_name">Product Name</label>
@@ -129,7 +129,7 @@
                                 </div>
                             </div>
 
-                            <!-- Row 2 -->
+
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="item_manufacturer">Manufacturer</label>
@@ -145,7 +145,7 @@
                                 </div>
                             </div>
 
-                            <!-- Row 3-->
+
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label for="quantity">Quantity</label>
@@ -157,13 +157,13 @@
                                 </div>
                             </div>
 
-                            <!-- Description -->
+
                             <div class="form-group">
                                 <label for="description">Description</label>
                                 <textarea class="form-control" id="description" name="description" rows="4"><%= description %></textarea>
                             </div>
 
-                            <!-- Buttons -->
+
                             <div class="text-right">
                                 <button type="submit" class="btn btn-primary">Update</button>
                                 <a href="../GetAllStockServlet" class="btn btn-secondary">Cancel</a>

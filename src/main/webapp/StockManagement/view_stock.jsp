@@ -146,49 +146,49 @@
 	}
 	
 	
-	/* Description Popup CSS*/
+	/* Description Pop*/
 	
 	.description-container {
-	  position: relative; /* Sets the context for absolutely positioned children (like .description-hover) */
-	  display: inline-block; /* Keeps the container as small as its contents (prevents stretching across the cell) */
+	  position: relative;
+	  display: inline-block; 
 	}
 	
 	.description-scroll {
-	  max-height: 50px; /* Limits the visible height of the description */
-	  overflow-y: auto; /* Adds vertical scrollbar when content exceeds max-height */
-	  text-align: left; /* Aligns text to the left */
-	  padding: 5px; /* Adds inner space around the text */
-	  white-space: pre-wrap; /* Preserves line breaks and wraps long lines */
-	  word-break: break-word; /* Breaks long words to fit within box */
-	  border: 1px solid #ddd; /* Light gray border around the box */
-	  border-radius: 4px; /* Slightly rounded corners */
-	  background-color: #fefefe; /* Very light background color */
-	  width: 200px; /* Fixed width of the small box */
-	  cursor: pointer; /* Shows a pointer cursor to indicate interactivity */
+	  max-height: 50px; 
+	  overflow-y: auto; 
+	  text-align: left; 
+	  padding: 5px; 
+	  white-space: pre-wrap; 
+	  word-break: break-word;
+	  border: 1px solid #ddd; 
+	  border-radius: 4px;
+	  background-color: #fefefe; 
+	  width: 200px;
+	  cursor: pointer;
 	}
 	
-	/* Hidden full view by default */
+
 	.description-hover {
-	  display: none; /* Initially hidden */
-	  position: absolute; /* Positioned relative to .description-container */
-	  top: 100%; /* Places it just below the small box */
-	  left: 0; /* Aligns it with the left edge of the container */
-	  z-index: 999; /* Ensures it appears above other elements */
-	  width: 300px; /* Wider box for full description */
-	  max-height: 300px; /* Limits height, with scroll if content is longer */
-	  overflow-y: auto; /* Enables scrolling if content overflows */
-	  background-color: #fff; /* White background */
-	  border: 1px solid #ccc; /* Slightly darker border for contrast */
-	  border-radius: 6px; /* More rounded corners for popup */
-	  padding: 10px; /* Inner spacing for readability */
-	  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft drop shadow for floating effect */
-	  white-space: pre-wrap; /* Preserves line breaks */
-	  word-break: break-word; /* Prevents overflow by breaking long words */
+	  display: none; 
+	  position: absolute; 
+	  top: 100%;
+	  left: 0; 
+	  z-index: 999; 
+	  width: 300px; 
+	  max-height: 300px; 
+	  overflow-y: auto; 
+	  background-color: #fff; 
+	  border: 1px solid #ccc; 
+	  border-radius: 6px; 
+	  padding: 10px; 
+	  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+	  white-space: pre-wrap; 
+	  word-break: break-word;
 	}
 	
-	/* Show the full description on hover */
+	
 	.description-container:hover .description-hover {
-	  display: block; /* Makes the hidden full description appear when hovering over the container */
+	  display: block; 
 	}
 	
 	#add-stock-action-btn{
@@ -289,6 +289,7 @@
     </div>
     <a href="StockManagement/create_stock.jsp" class="btn btn-primary" id="view-stock-btn-other">Add Stock</a>
     
+    <!-- getting session from servelt for success and delete message -->
 		<c:if test="${not empty sessionScope.successMessage}">
 		  <div class="alert alert-success alert-dismissible fade show" role="alert">
 		    ${sessionScope.successMessage}
@@ -320,7 +321,7 @@
         <table class="table table-striped">
 			<thead>
 			    <tr>
-			        <th>#</th> <!-- Row number header -->
+			        <th>#</th>
 			        <th>Stock ID</th>
 			        <th>Product</th>
 			        <th>Product Model</th>
@@ -395,7 +396,7 @@
 
 
 
-
+/* search function */
 function searchReports() {
     var input, filter, table, tr, td1, td2, td3, i, txtValue1, txtValue2, txtValue3, found;
     input = document.getElementById("searchInput");

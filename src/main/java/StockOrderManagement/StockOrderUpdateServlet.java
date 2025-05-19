@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import SupplierPackage.ISupplierControl;
 import SupplierPackage.SupplierControl;
 import SupplierPackage.SupplierModel;
 
@@ -20,12 +21,13 @@ public class StockOrderUpdateServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         int order_id = Integer.parseInt(request.getParameter("order_id"));
-        StockOrderControl stockOrderController = new StockOrderControl();
-        List<StockOrderModel> stockOrder = stockOrderController.getOrderById(order_id);
+        IStockOrderControl objs = new StockOrderControl();
+        List<StockOrderModel> stockOrder = objs.getOrderById(order_id);
         request.setAttribute("stockOrder", stockOrder);
         
+        ISupplierControl obj = new SupplierControl();
         //fetching supplier for dynamic update in update_stockorder jsp page
-        List<SupplierModel> allSupplier = SupplierControl.getAllSupplier();
+        List<SupplierModel> allSupplier = obj.getAllSupplier();
         request.setAttribute("allSupplier", allSupplier);
 
         RequestDispatcher dis = request.getRequestDispatcher("/StockOrderManagement/update_stockorder.jsp");
@@ -47,13 +49,13 @@ public class StockOrderUpdateServlet extends HttpServlet {
         String invoice_number = request.getParameter("invoice_number");
         int supplier_id = Integer.parseInt(request.getParameter("supplier_id"));
 
-        StockOrderControl stockOrderController = new StockOrderControl(); // You might not need this instance if UpdateStockOrder is static
+        IStockOrderControl objs = new StockOrderControl();
 
-        boolean isTrue = StockOrderControl.UpdateStockOrder(order_id, order_date, quantity_ordered, unit_price, total_price, order_status, expected_delivery_date, payment_status, notes, received_date, invoice_number, supplier_id);
+        boolean isTrue = objs.UpdateStockOrder(order_id, order_date, quantity_ordered, unit_price, total_price, order_status, expected_delivery_date, payment_status, notes, received_date, invoice_number, supplier_id);
 
         if (isTrue == true) {
         	
-        	List<StockOrderModel> StockOrderDetails = StockOrderControl.getOrderById(order_id);
+        	List<StockOrderModel> StockOrderDetails = objs.getOrderById(order_id);
         	request.setAttribute("StockOrderDetails", StockOrderDetails);
         	
             String alertMessage = "Report Updated Successfully";

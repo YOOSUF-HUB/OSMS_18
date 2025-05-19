@@ -21,7 +21,8 @@ public class StockOrdersServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		List<StockOrderModel> orders = StockOrderControl.getAllStockOrders();
+		IStockOrderControl obj = new StockOrderControl();
+		List<StockOrderModel> orders = obj.getAllStockOrders();
 		request.setAttribute("orders", orders);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("StockOrderManagement/View_StockOrders.jsp");

@@ -27,14 +27,15 @@ public class DeleteSupplierServlet extends HttpServlet {
 		
 		int supplier_id = Integer.parseInt(request.getParameter("supplier_id"));
 		boolean isTrue;
-		isTrue = SupplierControl.DeleteSupplier(supplier_id);
+		ISupplierControl obj = new SupplierControl();
+		isTrue = obj.DeleteSupplier(supplier_id);
 		if(isTrue == true) {
 			String alertMessage = "Data Deleted Successfully";
 			response.getWriter().println("<script>('"+alertMessage+"');" + " window.location.href='GetAllSupplierServlet'</script>");
 		}
 		else {
 			
-			List<SupplierModel> supplierDetails = SupplierControl.getById(supplier_id);
+			List<SupplierModel> supplierDetails = obj.getById(supplier_id);
 			request.setAttribute("supplierDetails", supplierDetails);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("SupplierManagement/wrongsupplier.jsp");

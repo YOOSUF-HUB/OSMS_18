@@ -23,8 +23,8 @@ public class updateSupplierServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		 int supplier_id = Integer.parseInt(request.getParameter("supplier_id"));
-		 SupplierControl supplierConller = new SupplierControl();
-		 List<SupplierModel> supplier = supplierConller.getById(supplier_id);
+		 ISupplierControl obj = new SupplierControl();
+		 List<SupplierModel> supplier = obj.getById(supplier_id);
 
 	        if (supplier != null) {
 	            request.setAttribute("supplier", supplier);
@@ -52,13 +52,13 @@ public class updateSupplierServlet extends HttpServlet {
 		String s_date_added = request.getParameter("s_date_added");
 		
 		
-		 
+		ISupplierControl obj = new SupplierControl();
 		boolean isTrue;
-		isTrue = SupplierControl.UpdateSupplier(supplier_id, supplier_name, phone_number, email, supplier_address, supplier_city, supplier_country, supplier_website, s_date_added);
+		isTrue = obj.UpdateSupplier(supplier_id, supplier_name, phone_number, email, supplier_address, supplier_city, supplier_country, supplier_website, s_date_added);
 		
 		
 		if(isTrue == true) {
-			List<SupplierModel> supplierDetails = SupplierControl.getById(supplier_id);
+			List<SupplierModel> supplierDetails = obj.getById(supplier_id);
 			request.setAttribute("supplierDetails", supplierDetails);
 			
 			

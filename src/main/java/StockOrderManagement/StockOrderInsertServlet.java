@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import SupplierPackage.ISupplierControl;
 import SupplierPackage.SupplierControl;
 import SupplierPackage.SupplierModel;
 
@@ -21,8 +22,9 @@ public class StockOrderInsertServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		List<SupplierModel> allSupplier = SupplierControl.getAllSupplier();
+		
+		ISupplierControl obj = new SupplierControl();
+		List<SupplierModel> allSupplier = obj.getAllSupplier();
 		request.setAttribute("allSupplier", allSupplier);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/StockOrderManagement/CreateStockOrder.jsp");
@@ -49,7 +51,10 @@ public class StockOrderInsertServlet extends HttpServlet {
 		
 		boolean isTrue;
 		
-		isTrue = StockOrderControl.insertStockOrder(order_date,quantity_ordered,unit_price,total_price,order_status,expected_delivery_date,payment_status,notes,received_date,invoice_number,supplier_id);
+		IStockOrderControl obj = new StockOrderControl();
+		
+		
+		isTrue = obj.insertStockOrder(order_date,quantity_ordered,unit_price,total_price,order_status,expected_delivery_date,payment_status,notes,received_date,invoice_number,supplier_id);
 		
 		if(isTrue == true) {
 			String alertMessage = "Data Insert Successfull";
