@@ -70,7 +70,7 @@ public class LoginServlet extends HttpServlet {
             
             HttpSession session = request.getSession();
             session.setAttribute("loginError", "Invalid email or password.");
-            response.sendRedirect(request.getContextPath() + "/LoginServlet");
+            response.sendRedirect(request.getContextPath() + "/user/login.jsp?loginfailed=true");
         }
     }
 }

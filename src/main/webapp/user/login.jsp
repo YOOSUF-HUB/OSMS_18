@@ -146,7 +146,7 @@
             </div>
 
             <form action="<c:url value='/LoginServlet'/>" method="post" novalidate>
-                <c:if test="${not empty loginError}">
+                <c:if test="${param.loginfailed == 'true'}">
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         ${loginError}
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
