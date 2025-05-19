@@ -28,34 +28,34 @@ public class CustomerController implements ICustomerController {
 	    boolean isSuccess = false;
 
 	    try {
-	        con = DBconnection.getConnection();
+	    	con = DBconnection.getInstance().getConnection();
 	        stmt = con.createStatement();
 	        
 	        
-	        String lastIdQuery = "SELECT customer_id FROM Customer ORDER BY customer_id DESC LIMIT 1";
-	        stmt = con.createStatement();
-	        rs = stmt.executeQuery(lastIdQuery);
+//	        String lastIdQuery = "SELECT customer_id FROM Customer ORDER BY customer_id DESC LIMIT 1";
+//	        stmt = con.createStatement();
+//	        rs = stmt.executeQuery(lastIdQuery);
+//	        
+//	        String newCustomerId = "CUS1000"; 
 	        
-	        String newCustomerId = "CUS1000"; 
-	        
-	        if (rs.next()) {
-	            String lastId = rs.getString("customer_id"); 
-	            int num = Integer.parseInt(lastId.substring(3)); 
-	            newCustomerId = "CUS" + (num + 1); 
-	        }
+//	        if (rs.next()) {
+//	            String lastId = rs.getString("customer_id"); 
+//	            int num = Integer.parseInt(lastId.substring(3)); 
+//	            newCustomerId = "CUS" + (num + 1); 
+//	        }
 
-	        String sql = "INSERT INTO Customer (customer_id, customer_name, business_name, email, phone_number, address, city, country, zip_code) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	        String sql = "INSERT INTO Customer ( customer_name, business_name, email, phone_number, address, city, country, zip_code) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
 	        PreparedStatement pstmt = con.prepareStatement(sql);
 	        
-	        pstmt.setString(1, newCustomerId);
-	        pstmt.setString(2, cname);
-	        pstmt.setString(3, bname);
-	        pstmt.setString(4, email);
-	        pstmt.setString(5, number);
-	        pstmt.setString(6, address);
-	        pstmt.setString(7, city);
-	        pstmt.setString(8, country);
-	        pstmt.setString(9, zip);
+//	        pstmt.setString(1, newCustomerId);
+	        pstmt.setString(1, cname);
+	        pstmt.setString(2, bname);
+	        pstmt.setString(3, email);
+	        pstmt.setString(4, number);
+	        pstmt.setString(5, address);
+	        pstmt.setString(6, city);
+	        pstmt.setString(7, country);
+	        pstmt.setString(8, zip);
 
 	        int rs = pstmt.executeUpdate();
 	        isSuccess = rs > 0;
@@ -74,8 +74,8 @@ public class CustomerController implements ICustomerController {
 
 		ArrayList<CustomerModel> customers = new ArrayList<>();
 	    try {
-	        con = DBconnection.getConnection();
-	        stmt = con.createStatement();
+	    	con = DBconnection.getInstance().getConnection();
+	    	stmt = con.createStatement();
 	        String sql = "SELECT * FROM Customer WHERE customer_id = " + customerId;
 	        rs = stmt.executeQuery(sql);
 
@@ -105,8 +105,8 @@ public class CustomerController implements ICustomerController {
 		ArrayList<CustomerModel> customers = new ArrayList<>();
 
 	    try {
-	        con = DBconnection.getConnection();
-	        stmt = con.createStatement();
+	    	con = DBconnection.getInstance().getConnection();
+	    	stmt = con.createStatement();
 	        rs = stmt.executeQuery("SELECT * FROM Customer");
 
 	        while (rs.next()) {
@@ -138,8 +138,8 @@ public class CustomerController implements ICustomerController {
 
 
 		    try {
-		        con = DBconnection.getConnection();
-		        stmt = con.createStatement();
+		    	con = DBconnection.getInstance().getConnection();
+		    	stmt = con.createStatement();
 
 		        String sql = "UPDATE Customer SET "
 		                + "customer_name = '" + cname + "', "
@@ -178,7 +178,7 @@ public class CustomerController implements ICustomerController {
 		public boolean deleteCustomer(int id) {
 			
 			try {
-		        con = DBconnection.getConnection();
+				con = DBconnection.getInstance().getConnection();
 		        stmt = con.createStatement();
 
 		        String sql = "DELETE FROM Customer WHERE customer_id = " + id;

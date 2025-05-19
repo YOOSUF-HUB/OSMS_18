@@ -33,7 +33,7 @@ public class StockOrderControl {
         PreparedStatement pstmt = null;
 
         try {
-            con = DBconnection.getConnection();
+        	con = DBconnection.getInstance().getConnection();
             String sql = "INSERT INTO stock_orders (order_date, quantity_ordered, unit_price, total_price, "
                        + "order_status, expected_delivery_date, payment_status, notes, received_date, "
                        + "invoice_number, supplier_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -73,7 +73,7 @@ public class StockOrderControl {
         ResultSet rs = null;
 
         try {
-            con = DBconnection.getConnection();
+        	con = DBconnection.getInstance().getConnection();
             String sql = "SELECT * FROM stock_orders WHERE order_id = ?";
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, orderId);
@@ -118,7 +118,7 @@ public class StockOrderControl {
         ResultSet rs = null;
 
         try {
-            con = DBconnection.getConnection();
+        	con = DBconnection.getInstance().getConnection();
             String sql = "SELECT * FROM stock_orders";
             pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
@@ -168,7 +168,7 @@ public class StockOrderControl {
         PreparedStatement pstmt = null;
 
         try {
-            con = DBconnection.getConnection();
+        	con = DBconnection.getInstance().getConnection();
             String sql = "UPDATE stock_orders SET order_date=?, quantity_ordered=?, unit_price=?, total_price=?, " +
                          "order_status=?, expected_delivery_date=?, payment_status=?, notes=?, received_date=?, " +
                          "invoice_number=?, supplier_id=? WHERE order_id=?";
@@ -211,7 +211,7 @@ public class StockOrderControl {
     	PreparedStatement pstmt = null;
     	
 		try {
-			con = DBconnection.getConnection();
+			con = DBconnection.getInstance().getConnection();
 			String sql = "DELETE FROM stock_orders WHERE order_id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, order_id);

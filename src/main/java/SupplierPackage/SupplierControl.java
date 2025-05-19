@@ -21,7 +21,7 @@ public class SupplierControl {
         PreparedStatement pstmt = null;
 
         try {
-            con = DBconnection.getConnection();
+        	con = DBconnection.getInstance().getConnection();
             String sql = "INSERT INTO supplier VALUES (0, ?, ?, ?, ?, ?, ?, ?, ?)";
             pstmt = con.prepareStatement(sql);
 
@@ -57,7 +57,7 @@ public class SupplierControl {
         ResultSet rs = null;
 
         try {
-            con = DBconnection.getConnection();
+        	con = DBconnection.getInstance().getConnection();
             String sql = "SELECT * FROM supplier WHERE supplier_id = ?";
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, ID);
@@ -100,7 +100,7 @@ public class SupplierControl {
         ResultSet rs = null;
 
         try {
-            con = DBconnection.getConnection();
+        	con = DBconnection.getInstance().getConnection();
             String sql = "SELECT * FROM supplier";
             pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
@@ -147,7 +147,7 @@ public class SupplierControl {
         PreparedStatement pstmt = null;
 
         try {
-            con = DBconnection.getConnection();
+        	con = DBconnection.getInstance().getConnection();
             String sql = "UPDATE supplier SET supplier_name = ?, phone_number = ?, email = ?, supplier_address = ?, supplier_city = ?, supplier_country = ?, supplier_website = ?, s_date_added = ? WHERE supplier_id = ?";
             pstmt = con.prepareStatement(sql);
 
@@ -187,7 +187,7 @@ public class SupplierControl {
 		PreparedStatement pstmt = null;
 
 		try {
-			con = DBconnection.getConnection();
+			con = DBconnection.getInstance().getConnection();
 			String sql = "DELETE FROM supplier WHERE supplier_id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, supplier_id);

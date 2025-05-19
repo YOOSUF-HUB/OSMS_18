@@ -18,7 +18,7 @@ public class stockControl implements IStockControl{
 		PreparedStatement pstmt = null;
 
 		try {
-			con = DBconnection.getConnection();
+			con = DBconnection.getInstance().getConnection();
 			String sql = "INSERT INTO Stock_Items VALUES(0,?,?,?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, item_name);
@@ -53,7 +53,7 @@ public class stockControl implements IStockControl{
 		ResultSet rs = null;
 
 		try {
-			con = DBconnection.getConnection();
+			con = DBconnection.getInstance().getConnection();
 			String sql = "SELECT * FROM Stock_Items WHERE item_id = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, ID);
@@ -96,7 +96,7 @@ public class stockControl implements IStockControl{
 		ResultSet rs = null;
 
 		try {
-			con = DBconnection.getConnection();
+			con = DBconnection.getInstance().getConnection();
 			String sql = "SELECT * FROM Stock_Items";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -138,7 +138,7 @@ public class stockControl implements IStockControl{
 		PreparedStatement pstmt = null;
 
 		try {
-			con = DBconnection.getConnection();
+			con = DBconnection.getInstance().getConnection();
 			String sql = "UPDATE Stock_Items SET item_name=?, item_model=?, item_manufacturer=?, quantity=?, unit_cost=?, selling_price=?, date_added=?, description=? WHERE item_id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, item_name);
@@ -173,7 +173,7 @@ public class stockControl implements IStockControl{
 		PreparedStatement pstmt = null;
 
 		try {
-			con = DBconnection.getConnection();
+			con = DBconnection.getInstance().getConnection();
 			String sql = "DELETE FROM Stock_Items WHERE item_id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, item_id);
