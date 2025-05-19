@@ -43,8 +43,7 @@
             /* background-color: #f8f9fa; */
             background: linear-gradient(to right, #e3f2fd, #f2fdff, #f1f0ff);
         }
-        
-
+      
        
 
         .navbar-brand i {
@@ -163,29 +162,9 @@
 	</div>
 
 	
-	<!-- 
-    <div class="row justify-content-center my-4">
-        <div class="col-md-5 mx-2">
-            <div class="widget">
-                <h5 class="widget-title">Stock Overview</h5>
-                <p>Total Items: <strong>150</strong></p>
-                <p>Low Stock: <strong class="text-warning">15</strong></p>
-                <p>Out of Stock: <strong class="text-danger">5</strong></p>
-            </div>
-        </div>
-        <div class="col-md-5 mx-2">
-            <div class="widget text-center">
-                <h5 class="widget-title">Customer Info</h5>
-                <p>Total Customers: <strong>15</strong></p>
-                <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Customer" width="50" class="mt-2">
-            </div>
-        </div>
-    </div> -->
-
     <hr class="divider">
-
   
-    
+      
     <div class="container card p-4">
     <div class="d-flex justify-content-between align-items-center mb-2 custom-title">
     	<h4><strong><em>Today's Orders</em></strong></h4>
@@ -221,44 +200,7 @@
    		</div>
 
  
-    <!-- <div class="container">
-	    <div class="nav nav-tabs" id="product-tabs">
-	        <button class="nav-link active" id="core-tab" data-bs-toggle="tab" data-bs-target="#core">
-	            Core Components
-	        </button>
-	        <button class="nav-link" id="peripherals-tab" data-bs-toggle="tab" data-bs-target="#peripherals">
-	            Peripherals
-	        </button>
-	        <button class="nav-link" id="cooling-tab" data-bs-toggle="tab" data-bs-target="#cooling">
-	            Casing & Cooling
-	        </button>
-	        <button class="nav-link" id="networking-tab" data-bs-toggle="tab" data-bs-target="#networking" >
-	            Networking
-	        </button>
-	        <button class="nav-link" id="power-tab" data-bs-toggle="tab" data-bs-target="#power" >
-	            Power & Connectivity
-	        </button>
-	    </div>
-	
-	    <div class="tab-content mt-3" id="product-tab-content">
-	        <div class="tab-pane fade show active" id="core">
-	            <p>Core components product details go here.</p>
-	        </div>
-	        <div class="tab-pane fade" id="peripherals">
-	            <p>Peripheral product details go here.</p>
-	        </div>
-	        <div class="tab-pane fade" id="cooling">
-	            <p>Casing and cooling products go here.</p>
-	        </div>
-	        <div class="tab-pane fade" id="networking">
-	            <p>Networking products go here.</p>
-	        </div>
-	        <div class="tab-pane fade" id="power">
-	            <p>Power and connectivity products go here.</p>
-	        </div>
-	    </div>
-	</div> -->
-    
+
     
     <c:if test="${param.addSuccess == 'true'}">
     <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">

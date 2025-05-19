@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import orderPackage.IOrderController;
 import orderPackage.OrderController;
 import orderPackage.OrderModel;
 
@@ -22,6 +23,8 @@ public class UpdateCusOrderServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		int id =Integer.parseInt(request.getParameter("orderId"));
+		IOrderController OrderController = new OrderController();
+		
 		List<OrderModel> orderList = OrderController.getOrderById(id);
 		
 		List<OrderModel> allOrders = OrderController.getAllOrders();
@@ -56,6 +59,7 @@ public class UpdateCusOrderServlet extends HttpServlet {
 	        int orderId = Integer.parseInt(orderIdParam);
 	        int qty = Integer.parseInt(qtyParam);
 
+	        IOrderController OrderController = new OrderController();
 	        boolean result = OrderController.updateOrderStatus(orderId, orderStatus, qty);
 
 	        if (result) {

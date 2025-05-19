@@ -11,7 +11,7 @@ import java.util.List;
 
 import onlineStockManagement.DBconnection;
 
-public class OrderController {
+public class OrderController implements IOrderController {
 	
 	
 	private static boolean isSuccess;
@@ -21,8 +21,8 @@ public class OrderController {
 		
 		
 		
-	//insert data function
-	public static boolean insertdata (int item_id, int quantity, Date orderDate, int cusId, float total_price) {
+	//ADD ORDER
+	public boolean addOrder (int item_id, int quantity, Date orderDate, int cusId, float total_price) {
 		
 		isSuccess = false;
 		
@@ -54,7 +54,7 @@ public class OrderController {
 	}
 	
 	
-	public static List<OrderModel> getOrderById(int orderId){
+	public List<OrderModel> getOrderById(int orderId){
 		ArrayList<OrderModel> orders = new ArrayList<>();
 		
 		try {
@@ -92,8 +92,8 @@ public class OrderController {
 	}
 	
 	
-	// getting all order details
-	public static List<OrderModel> getAllOrders(){
+	//GET ALL ORDERS DETAILS
+	public List<OrderModel> getAllOrders(){
 		
 		ArrayList<OrderModel> orders = new ArrayList<> ();
 		
@@ -131,8 +131,8 @@ public class OrderController {
 	}
 	
 	
-	
-	public static boolean updateOrder(int orderId, int qty, float totalPrice) {
+	//UPDATE ORDER DEATILS
+	public boolean updateOrder(int orderId, int qty, float totalPrice) {
 	    boolean isSuccess = false;
 	    try {
 	        con = DBconnection.getConnection();
@@ -149,8 +149,8 @@ public class OrderController {
 	}
 	
 	
-	//delete function
-	public static boolean deleteOrder(int id) {
+	//DELETE ORDER
+	public boolean deleteOrder(int id) {
 		
 		try {
 	        con = DBconnection.getConnection();
@@ -179,8 +179,8 @@ public class OrderController {
 
 
 
-
-	public static boolean updateOrderStatus(int orderid, String ostatus, int qty) throws SQLException {
+	//UPDATE ORDER STATUS
+	public boolean updateOrderStatus(int orderid, String ostatus, int qty) throws SQLException {
 	    boolean isSuccess = false;
 
 	    String sql = "UPDATE Orders SET order_status = ? WHERE order_id = ?";

@@ -27,6 +27,7 @@ public class DeleteCustomerServlet extends HttpServlet {
 	
 		
 		boolean isTrue;
+		ICustomerController CustomerController = new CustomerController();
 		
 		isTrue = CustomerController.deleteCustomer(id);
 	

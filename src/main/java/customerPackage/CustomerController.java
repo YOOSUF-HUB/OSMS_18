@@ -11,7 +11,7 @@ import java.util.List;
 
 import onlineStockManagement.DBconnection;
 
-public class CustomerController {
+public class CustomerController implements ICustomerController {
 
 	
 	//connect DB
@@ -21,8 +21,8 @@ public class CustomerController {
 	private static ResultSet rs = null;
 	
 	
-	//insert data function
-	public static boolean insertdata(String cname, String bname, String email, String number, String address, String city,
+	//insert customer function
+	public boolean addCustomer(String cname, String bname, String email, String number, String address, String city,
 	        String country, String zip) {
 
 	    boolean isSuccess = false;
@@ -30,18 +30,32 @@ public class CustomerController {
 	    try {
 	        con = DBconnection.getConnection();
 	        stmt = con.createStatement();
+	        
+	        
+	        String lastIdQuery = "SELECT customer_id FROM Customer ORDER BY customer_id DESC LIMIT 1";
+	        stmt = con.createStatement();
+	        rs = stmt.executeQuery(lastIdQuery);
+	        
+	        String newCustomerId = "CUS1000"; 
+	        
+	        if (rs.next()) {
+	            String lastId = rs.getString("customer_id"); 
+	            int num = Integer.parseInt(lastId.substring(3)); 
+	            newCustomerId = "CUS" + (num + 1); 
+	        }
 
-	        String sql = "INSERT INTO Customer (customer_name, business_name, email, phone_number, address, city, country, zip_code) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+	        String sql = "INSERT INTO Customer (customer_id, customer_name, business_name, email, phone_number, address, city, country, zip_code) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	        PreparedStatement pstmt = con.prepareStatement(sql);
-
-	        pstmt.setString(1, cname);
-	        pstmt.setString(2, bname);
-	        pstmt.setString(3, email);
-	        pstmt.setString(4, number);
-	        pstmt.setString(5, address);
-	        pstmt.setString(6, city);
-	        pstmt.setString(7, country);
-	        pstmt.setString(8, zip);
+	        
+	        pstmt.setString(1, newCustomerId);
+	        pstmt.setString(2, cname);
+	        pstmt.setString(3, bname);
+	        pstmt.setString(4, email);
+	        pstmt.setString(5, number);
+	        pstmt.setString(6, address);
+	        pstmt.setString(7, city);
+	        pstmt.setString(8, country);
+	        pstmt.setString(9, zip);
 
 	        int rs = pstmt.executeUpdate();
 	        isSuccess = rs > 0;
@@ -56,7 +70,7 @@ public class CustomerController {
 
 	
 	
-	public static List<CustomerModel> getCustomerById(int customerId) {
+	public List<CustomerModel> getCustomerById(int customerId) {
 
 		ArrayList<CustomerModel> customers = new ArrayList<>();
 	    try {
@@ -86,7 +100,7 @@ public class CustomerController {
 	}
 	
 	//getting all customer details
-	public static List<CustomerModel> getAllCustomers() {
+	public List<CustomerModel> getAllCustomers() {
 		
 		ArrayList<CustomerModel> customers = new ArrayList<>();
 
@@ -118,8 +132,8 @@ public class CustomerController {
 	
 	
 	
-	//update  function
-		public static boolean updateCustomer(int id, String cname, String bname, String email, String number, String address, String city,
+	//update customer
+		public boolean updateCustomer(int id, String cname, String bname, String email, String number, String address, String city,
 		        String country, String zip) {
 
 
@@ -161,7 +175,7 @@ public class CustomerController {
 		
 		
 		//delete function
-		public static boolean deleteCustomer(int id) {
+		public boolean deleteCustomer(int id) {
 			
 			try {
 		        con = DBconnection.getConnection();

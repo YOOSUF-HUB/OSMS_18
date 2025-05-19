@@ -20,6 +20,10 @@ public class UpdateCustomerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int id = Integer.parseInt(request.getParameter("customerId"));
+		
+		
+		ICustomerController CustomerController = new CustomerController();
+		
 		List<CustomerModel> customerList = CustomerController.getCustomerById(id);
 
 		if (customerList != null && !customerList.isEmpty()) {
@@ -44,6 +48,7 @@ public class UpdateCustomerServlet extends HttpServlet {
 		String zip = request.getParameter("zip");
 		
 		boolean isTrue;
+		ICustomerController CustomerController = new CustomerController();
 		
 		isTrue = CustomerController.updateCustomer(id,cname, bname, email, number, address, city, country, zip);
 	

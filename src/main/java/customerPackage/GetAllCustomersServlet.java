@@ -18,6 +18,8 @@ public class GetAllCustomersServlet extends HttpServlet {
        
 	protected void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		
+		ICustomerController CustomerController = new CustomerController();
+		
 		List<CustomerModel> allCustomers = CustomerController.getAllCustomers();
 		request.setAttribute("allCustomers", allCustomers);
 		

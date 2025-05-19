@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import customerPackage.CustomerController;
 import customerPackage.CustomerModel;
+import customerPackage.ICustomerController;
 import onlineStockManagement.IStockControl;
 import onlineStockManagement.stockControl;
 import onlineStockManagement.stockModel;
@@ -25,6 +26,9 @@ public class AddOrderServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//fetch customer list
+		
+		
+		ICustomerController CustomerController = new CustomerController();
 		List<CustomerModel> allCustomers = CustomerController.getAllCustomers();
 		request.setAttribute ("allCustomers", allCustomers);
 		
@@ -56,10 +60,12 @@ public class AddOrderServlet extends HttpServlet {
 		int itemId = Integer.parseInt(itemIDstr);
 		int quantity = Integer.parseInt(qtystr);
         Date orderDate = new Date(System.currentTimeMillis()); // Get current date as java.sql.Date
-
+        
+        boolean isTrue;
+        IOrderController OrderController = new OrderController();
 		
 		// Insert the order into the database
-        boolean isTrue = OrderController.insertdata(itemId, quantity, orderDate, cusId, total_price);
+        isTrue = OrderController.addOrder(itemId, quantity, orderDate, cusId, total_price);
         
         
 		if (isTrue == true) {

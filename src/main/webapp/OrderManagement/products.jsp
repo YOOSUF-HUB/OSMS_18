@@ -38,6 +38,10 @@
         .form-label {
             font-weight: 500;
         }
+        .custom-title {
+        	color: #3674B5;
+        }
+        
     </style>
 </head>
 <body>
@@ -90,7 +94,7 @@
 <div class="container">
     <div class="card p-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
-        <div class="d-flex align-items-center">
+        <div class="d-flex align-items-center custom-title">
         	<i class="bi bi-motherboard me-2" style="font-size: 2em;"></i>
         	<h3 class="mb-0"><strong>Products</strong></h3>
         </div>

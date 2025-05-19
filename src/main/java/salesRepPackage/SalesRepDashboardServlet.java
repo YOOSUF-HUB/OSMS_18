@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import orderPackage.IOrderController;
 import orderPackage.OrderController;
 import orderPackage.OrderModel;
 
@@ -27,6 +28,8 @@ public class SalesRepDashboardServlet extends HttpServlet {
 		Date currentDate = new Date();
 		String currentDate2 = new SimpleDateFormat("yyyy-MM-dd").format(currentDate);
 		request.setAttribute("currentDate2", currentDate2);
+		
+		IOrderController OrderController = new OrderController();
 		
 		List<OrderModel> allOrders = OrderController.getAllOrders();
 		request.setAttribute("allOrders", allOrders);

@@ -63,7 +63,7 @@
 <nav class="navbar navbar-expand-lg bg-dark-subtle shadow-sm mb-5">
     <div class="container-fluid">
         <a class="navbar-brand" href="SalesRepDashboardServlet">
-            <img src="../image/Tech-Color.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+            <img src="image/Tech-Color.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
             <i class="logotext">TechNest</i>
         </a>
         <button class="navbar-toggler order-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"

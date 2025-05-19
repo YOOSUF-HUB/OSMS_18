@@ -24,6 +24,8 @@ public class DeleteOrderServlet extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("orderId"));
 
 		boolean isTrue;
+		IOrderController OrderController = new OrderController();
+		
 		isTrue = OrderController.deleteOrder(id);
 
 	

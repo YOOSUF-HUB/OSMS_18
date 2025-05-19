@@ -22,6 +22,8 @@ public class UpdateOrderServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		int id =Integer.parseInt(request.getParameter("orderId"));
+		
+		IOrderController OrderController = new OrderController();
 		List<OrderModel> orderList = OrderController.getOrderById(id);
 		
 		//fetch stock list
@@ -45,6 +47,8 @@ public class UpdateOrderServlet extends HttpServlet {
 	    float totalPrice = Float.parseFloat(request.getParameter("total_price"));
 
 	    boolean isTrue;
+	    IOrderController OrderController = new OrderController();
+	    
 		isTrue = OrderController.updateOrder(orderId, qty, totalPrice);
 
 	    if (isTrue == true) {

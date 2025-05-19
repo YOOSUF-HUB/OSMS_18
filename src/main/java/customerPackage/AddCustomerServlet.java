@@ -2,7 +2,7 @@ package customerPackage;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,8 +27,9 @@ public class AddCustomerServlet extends HttpServlet {
 		
 
 		boolean isTrue;
+		ICustomerController CustomerController = new CustomerController();
 		
-		isTrue = CustomerController.insertdata(cname, bname, email, number, address, city, country, zip);
+		isTrue = CustomerController.addCustomer(cname, bname, email, number, address, city, country, zip);
 	
 		if (isTrue == true) {
 			
