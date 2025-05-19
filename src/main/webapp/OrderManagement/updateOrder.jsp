@@ -52,17 +52,8 @@
                 <li class="nav-item"><a class="nav-link" href="GetAllOrdersServlet">Order</a></li>
                 <li class="nav-item"><a class="nav-link" href="GetAllCustomersServlet">Customer</a></li>
                 <li class="nav-item"><a class="nav-link" href="GetAllStockServlet?view=sales">Product</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Link</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </li>
+              
                 <li class="nav-item d-lg-none"><a class="nav-link" href="#"><strong><em><%= name %></em></strong></a></li>
-                <li class="nav-item d-lg-none"><a class="nav-link" href="#">Profile</a></li>
                 <li class="nav-item d-lg-none"><a class="nav-link" href="LogoutServlet">Logout</a></li>
             </ul>
 
@@ -71,7 +62,6 @@
                     John Doe
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
                     <li><a class="dropdown-item" href="LogoutServlet">Logout</a></li>
                 </ul>
             </div>
@@ -107,15 +97,6 @@
 				        <input type="text" id="priceInput" class="form-control-plaintext" value="$ ${stock.selling_price}" readonly />
 				    </c:if>
 				</c:forEach>
-                <%-- 
-                <select id="product" class="form-select" name="itemID" >
-                    <c:forEach var="stock" items="${allStock}">
-                        <option value="${stock.item_id}" data-price="${stock.selling_price}" 
-                            ${stock.item_name == order.itemname ? 'selected' : ''}>
-                            ${stock.item_name} | ${stock.item_model} | ${stock.item_manufacturer} | $ ${stock.selling_price}
-                        </option>
-                    </c:forEach>
-                </select> --%>
             </div>
 
             <div class="col-md-4">

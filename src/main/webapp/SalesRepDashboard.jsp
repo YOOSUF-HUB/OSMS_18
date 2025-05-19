@@ -30,15 +30,7 @@
 
     <style>
     
-    	:root {
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
-            --bg: linear-gradient(135deg, #374785, #04b5b5);
-            --text: #1f2937;
-            --border: #e5e7eb;
-            --danger: #f87171;
-            
-        } 
+
         body {
             /* background-color: #f8f9fa; */
             background: linear-gradient(to right, #e3f2fd, #f2fdff, #f1f0ff);
@@ -116,17 +108,7 @@
                 <li class="nav-item"><a class="nav-link" href="GetAllOrdersServlet">Order</a></li>
                 <li class="nav-item"><a class="nav-link" href="GetAllCustomersServlet">Customer</a></li>
                 <li class="nav-item"><a class="nav-link" href="GetAllStockServlet?view=sales">Product</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Link</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </li>
                 <li class="nav-item d-lg-none"><a class="nav-link" href="#"><em><strong><%= name %></strong></em></a></li>
-                <li class="nav-item d-lg-none"><a class="nav-link" href="#">Profile</a></li>
                 <li class="nav-item d-lg-none"><a class="nav-link" href="LogoutServlet">Logout</a></li>
             </ul>
 
@@ -136,7 +118,6 @@
                     <em><%= name %></em>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
                     <li><a class="dropdown-item" href="LogoutServlet">Logout</a></li>
                 </ul>
             </div>

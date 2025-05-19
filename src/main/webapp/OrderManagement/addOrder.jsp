@@ -76,17 +76,8 @@
                 <li class="nav-item"><a class="nav-link" href="GetAllOrdersServlet">Order</a></li>
                 <li class="nav-item"><a class="nav-link" href="GetAllCustomersServlet">Customer</a></li>
                 <li class="nav-item"><a class="nav-link" href="GetAllStockServlet?view=sales">Product</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Link</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </li>
+                
                 <li class="nav-item d-lg-none"><a class="nav-link" href="#"><strong><em><%= name %></em></strong></a></li>
-                <li class="nav-item d-lg-none"><a class="nav-link" href="#">Profile</a></li>
                 <li class="nav-item d-lg-none"><a class="nav-link" href="LogoutServlet">Logout</a></li>
             </ul>
 
@@ -95,7 +86,6 @@
                     <em><%= name %></em>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
                     <li><a class="dropdown-item" href="LogoutServlet">Logout</a></li>
                 </ul>
             </div>
@@ -131,35 +121,7 @@
                 </select>
             </div>
         
-            
- 
-  <%--          <div class="col-md-12">
-                <label for="product" class="form-label">Product</label>
-                <select id="product" class="form-select" name="itemID" required>
-                    <option value="" selected disabled>Choose...</option>
-                    <c:forEach var="stock" items="${allStock}">                   
-                        <option value="${stock.item_id}" data-price="${stock.selling_price}">
-                            ${stock.item_name} | ${stock.item_model} | ${stock.item_manufacturer} | $ ${stock.selling_price} | ${stock.quantity}
-                        </option>
-
-                    </c:forEach>
-                </select>
-            </div>
-            
-<!-- Individual Product Name filtering -->
- 		<div class="col-md-12">
-		    <label for="product" class="form-label">Product</label>
-		    <select id="product" class="form-select" name="itemID" required>
-		        <option value="" selected disabled>Choose...</option>
-		        <c:forEach var="stock" items="${allStock}">
-		            <c:if test="${stock.item_name == 'CPU'}">
-		                <option value="${stock.item_id}" data-price="${stock.selling_price}">
-		                    ${stock.item_name} | ${stock.item_model} | ${stock.item_manufacturer} | $ ${stock.selling_price}
-		                </option>
-		            </c:if>
-		        </c:forEach>
-		    </select>
-		</div> --%>
+           
 
 <!-- Product Cards -->
            
@@ -173,8 +135,8 @@
 			        <button type="button" class="nav-link" id="cooling-tab" data-bs-toggle="tab" data-bs-target="#cooling">
 			            Casing & Cooling
 			        </button>
-			        <button type="button" class="nav-link" id="networking-tab" data-bs-toggle="tab" data-bs-target="#networking" >
-			            Networking
+			        <button type="button" class="nav-link" id="networking-tab" data-bs-toggle="tab" data-bs-target="#devices" >
+			            I/O devices
 			        </button>
 			        <button type="button" class="nav-link" id="power-tab" data-bs-toggle="tab" data-bs-target="#power" >
 			            Power & Connectivity
@@ -183,12 +145,17 @@
 			            Other
 			        </button>
 			    </div>
+			    
+			    <c:set var="core" value="CPU,Motherboard,RAM,SSD,HDD,Graphics Card" />
+			    <c:set var="cooling" value="Casing,Cooling Fan,Thermal Paste" />
+			    <c:set var="power" value="Power Supply,Laptop Charger,HDMI Cable,VGA Cable,USB Hub,Extension Cord" />
+			    <c:set var="devices" value="Keyboard,Mouse,Monitor" />
 			
 			    <div class="tab-content mt-3" id="product-tab-content">
 			        <div class="tab-pane fade show active" id="core">
 			            <div class="row" id="product-list">
 			                <c:forEach var="stock" items="${allStock}">
-			                	<c:if test="${fn:contains('CPU,Motherboard,RAM,SSD,HDD,Graphics Card', stock.item_name)}">
+			                	<c:if test="${fn:contains(core, stock.item_name)}">
 				                    <div class="col-md-4 mb-3">
 				                        <label class="card h-100 p-3 product-card" style="cursor: pointer;">
 				                            <input type="radio"
@@ -214,7 +181,7 @@
 			        <div class="tab-pane fade" id="cooling">
 			            <div class="row" id="product-list">
 			                <c:forEach var="stock" items="${allStock}">
-			                	<c:if test="${fn:contains('Casing,Cooling Fan,Thermal Paste', stock.item_name)}">
+			                	<c:if test="${fn:contains( cooling, stock.item_name)}">
 				                    <div class="col-md-4 mb-3">
 				                        <label class="card h-100 p-3 product-card" style="cursor: pointer;">
 				                            <input type="radio"
@@ -237,10 +204,10 @@
 			                </c:forEach>
 			            </div>
 			        </div>
-			        <div class="tab-pane fade" id="networking">
+			        <div class="tab-pane fade" id="devices">
 			            <div class="row" id="product-list">
 			                <c:forEach var="stock" items="${allStock}">
-			                	<c:if test="${fn:contains('Network Card', stock.item_name)}">
+			                	<c:if test="${fn:contains(devices, stock.item_name)}">
 				                    <div class="col-md-4 mb-3">
 				                        <label class="card h-100 p-3 product-card" style="cursor: pointer;">
 				                            <input type="radio"
@@ -266,7 +233,7 @@
 			        <div class="tab-pane fade" id="power">
 			            <div class="row" id="product-list">
 			                <c:forEach var="stock" items="${allStock}">
-			                	<c:if test="${fn:contains('Power Supply,Laptop Charger,HDMI Cable,VGA Cable,USB Hub,Extension Cord', stock.item_name)}">
+			                	<c:if test="${fn:contains(power, stock.item_name)}">
 				                    <div class="col-md-4 mb-3">
 				                        <label class="card h-100 p-3 product-card" style="cursor: pointer;">
 				                            <input type="radio"
@@ -292,7 +259,10 @@
 			        <div class="tab-pane fade" id="other">
 			            <div class="row" id="product-list">
 			                <c:forEach var="stock" items="${allStock}">
-			                	<c:if test="${fn:contains('Keyboard,Mouse,Monitor', stock.item_name)}">
+			                	<c:if test="${!fn:contains(core, stock.item_name) 
+					                         and !fn:contains(cooling, stock.item_name)
+					                         and !fn:contains(power, stock.item_name)
+					                         and !fn:contains(devices, stock.item_name)}">
 				                    <div class="col-md-4 mb-3">
 				                        <label class="card h-100 p-3 product-card" style="cursor: pointer;">
 				                            <input type="radio"
@@ -354,27 +324,7 @@
 <!-- JS Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 
-<!-- <script>
 
-
-    function calculateTotal() {
-        const productSelect = document.getElementById("product");
-        const qty = parseFloat(document.getElementById("qty").value) || 0;
-        const selectedOption = productSelect.options[productSelect.selectedIndex];
-        const price = parseFloat(selectedOption.getAttribute("data-price")) || 0;
-        document.getElementById("total_price").value = (qty * price).toFixed(2);
-    }
-
-    /* document.getElementById("product").addEventListener("change", calculateTotal); */
-    document.addEventListener("DOMContentLoaded", function () {
-        document.getElementById("product").addEventListener("change", calculateTotal);
-        calculateTotal(); // initialize on load
-    });
-
-
-</script> -->
-
-<!-- Product Selection & Total Calculation -->
 <script>
     const radios = document.querySelectorAll('.product-radio');
     const qtyInput = document.getElementById("qty");
