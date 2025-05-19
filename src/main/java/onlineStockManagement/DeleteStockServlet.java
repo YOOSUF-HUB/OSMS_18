@@ -23,7 +23,8 @@ public class DeleteStockServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int item_id = Integer.parseInt(request.getParameter("item_id"));
 		boolean isTrue;
-		isTrue = stockControl.DeleteStock(item_id);
+		IStockControl obj = new stockControl();
+		isTrue = obj.DeleteStock(item_id);
 		if(isTrue == true) {
 			
 			request.getSession().setAttribute("deleteMessage","Stock Deleted successfully");
@@ -32,7 +33,7 @@ public class DeleteStockServlet extends HttpServlet {
 		}
 		else {
 			
-			List<stockModel> stockDetails = stockControl.getById(item_id);
+			List<stockModel> stockDetails = obj.getById(item_id);
 			request.setAttribute("stockDetails", stockDetails);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/StockManagement/WrongStock.jsp");

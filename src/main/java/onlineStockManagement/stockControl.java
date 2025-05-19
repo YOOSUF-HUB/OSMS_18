@@ -3,15 +3,15 @@ package onlineStockManagement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class stockControl {
+public class stockControl implements IStockControl{
 	private static boolean isSuccess;
 
 	// insertData
-	public static boolean insertData(String item_name, String item_model, String item_manufacturer, int quantity,
+	@Override
+	public boolean insertData(String item_name, String item_model, String item_manufacturer, int quantity,
 	                                 float unit_cost, float selling_price, String date_added, String description) {
 		isSuccess = false;
 		Connection con = null;
@@ -45,7 +45,8 @@ public class stockControl {
 	}
 
 	// getById
-	public static List<stockModel> getById(int ID) {
+	@Override
+	public List<stockModel> getById(int ID) {
 		ArrayList<stockModel> stock = new ArrayList<>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -87,7 +88,8 @@ public class stockControl {
 	}
 
 	// getAllStock
-	public static List<stockModel> getAllStock() {
+	@Override
+	public List<stockModel> getAllStock() {
 		ArrayList<stockModel> stock = new ArrayList<>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -113,16 +115,6 @@ public class stockControl {
 				);
 				stock.add(stck);
 			}
-//			while (rs.next()) {
-//				stockModel stck = new stockModel(
-//						rs.getInt("item_id"),
-//						rs.getString("item_name"),
-//						rs.getInt("quantity"),
-//						rs.getFloat("unit_cost"),
-//						rs.getFloat("selling_price")
-//				);
-//				stock.add(stck);
-//			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -138,7 +130,8 @@ public class stockControl {
 	}
 
 	// UpdateStock
-	public static boolean UpdateStock(int item_id, String item_name, String item_model, String item_manufacturer,
+	@Override
+	public boolean UpdateStock(int item_id, String item_name, String item_model, String item_manufacturer,
 	                                  int quantity, float unit_cost, float selling_price, String date_added, String description) {
 		isSuccess = false;
 		Connection con = null;
@@ -173,7 +166,8 @@ public class stockControl {
 	}
 
 	// DeleteStock
-	public static boolean DeleteStock(int item_id) {
+	@Override
+	public boolean DeleteStock(int item_id) {
 		isSuccess = false;
 		Connection con = null;
 		PreparedStatement pstmt = null;

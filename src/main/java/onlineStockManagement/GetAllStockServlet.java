@@ -18,7 +18,9 @@ public class GetAllStockServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    List<stockModel> allStocks = stockControl.getAllStock();
+		
+		IStockControl obj = new stockControl();
+	    List<stockModel> allStocks = obj.getAllStock();
 	    request.setAttribute("allStocks", allStocks);
 	    
 	    

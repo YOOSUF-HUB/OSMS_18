@@ -23,8 +23,9 @@ public class updateStockServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		 int item_id = Integer.parseInt(request.getParameter("item_id"));
-		 stockControl stockController = new stockControl();
-		 List<stockModel> stock = stockController.getById(item_id);
+		 
+		 IStockControl obj = new stockControl();
+		 List<stockModel> stock = obj.getById(item_id);
 
 	        if (stock != null) {
 	            request.setAttribute("stock", stock);
@@ -49,13 +50,13 @@ public class updateStockServlet extends HttpServlet {
 		String date_added  = request.getParameter("date_added");
 		String description = request.getParameter("description");
 		
-		stockControl stockController = new stockControl();
+		IStockControl obj = new stockControl();
 		
-		boolean isTrue = stockControl.UpdateStock(item_id, item_name, item_model, item_manufacturer, quantity, unit_cost, selling_price, date_added, description);
+		boolean isTrue = obj.UpdateStock(item_id, item_name, item_model, item_manufacturer, quantity, unit_cost, selling_price, date_added, description);
 		
 		
 		if(isTrue == true) {
-			List<stockModel> stockDetails = stockControl.getById(item_id);
+			List<stockModel> stockDetails = obj.getById(item_id);
 			request.setAttribute("stockDetails", stockDetails);
 			
 	        request.getSession().setAttribute("successMessage","Stock updated successfully");

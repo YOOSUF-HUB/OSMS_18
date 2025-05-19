@@ -27,10 +27,12 @@ public class stockInsertServlet extends HttpServlet {
 		String description = request.getParameter("description");
 		
 		
+		IStockControl obj = new stockControl();
+		
 		
 		boolean isTrue;
 		
-		isTrue = stockControl.insertData(item_name, item_model, item_manufacturer , quantity, unit_cost, selling_price, date_added, description);
+		isTrue = obj.insertData(item_name, item_model, item_manufacturer , quantity, unit_cost, selling_price, date_added, description);
 		
 		if(isTrue == true) {
 			String alertMessage = "Data Insert Successfull";

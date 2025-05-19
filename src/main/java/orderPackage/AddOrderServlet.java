@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import customerPackage.CustomerController;
 import customerPackage.CustomerModel;
+import onlineStockManagement.IStockControl;
 import onlineStockManagement.stockControl;
 import onlineStockManagement.stockModel;
 
@@ -28,7 +29,8 @@ public class AddOrderServlet extends HttpServlet {
 		request.setAttribute ("allCustomers", allCustomers);
 		
 		//fetch stock list
-		List<stockModel> allStock = stockControl.getAllStock();
+		IStockControl obj = new stockControl();
+		List<stockModel> allStock = obj.getAllStock();
 		request.setAttribute("allStock", allStock);
 
 		

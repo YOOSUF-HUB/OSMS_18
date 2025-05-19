@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import onlineStockManagement.IStockControl;
 import onlineStockManagement.stockControl;
 import onlineStockManagement.stockModel;
 
@@ -24,7 +25,8 @@ public class UpdateOrderServlet extends HttpServlet {
 		List<OrderModel> orderList = OrderController.getOrderById(id);
 		
 		//fetch stock list
-		List<stockModel> allStock = stockControl.getAllStock();
+		IStockControl obj = new stockControl();
+		List<stockModel> allStock = obj.getAllStock();
 		request.setAttribute("allStock", allStock);
 		
 		if (orderList != null && !orderList.isEmpty()) {

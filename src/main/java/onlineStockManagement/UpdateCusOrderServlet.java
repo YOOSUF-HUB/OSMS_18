@@ -26,8 +26,9 @@ public class UpdateCusOrderServlet extends HttpServlet {
 		
 		List<OrderModel> allOrders = OrderController.getAllOrders();
 		request.setAttribute("allOrders", allOrders);
-		
-		List<stockModel> allStock = stockControl.getAllStock();
+
+		IStockControl obj = new stockControl();
+		List<stockModel> allStock = obj.getAllStock();
 		request.setAttribute("allStock", allStock);
 		
 		if (orderList != null && !orderList.isEmpty()) {
