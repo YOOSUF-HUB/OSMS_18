@@ -184,12 +184,7 @@
 			                	<c:if test="${fn:contains( cooling, stock.item_name)}">
 				                    <div class="col-md-4 mb-3">
 				                        <label class="card h-100 p-3 product-card" style="cursor: pointer;">
-				                            <input type="radio"
-				                                   name="itemID"
-				                                   value="${stock.item_id}"
-				                                   class="d-none product-radio"
-				                                   data-price="${stock.selling_price}"
-				                                   required>
+				                            <input type="radio" name="itemID" value="${stock.item_id}" class="d-none product-radio" data-price="${stock.selling_price}" required>
 				                            <div class="card-body">
 				                                <h5 class="card-title">${stock.item_name}</h5>
 				                                <p class="card-text">
@@ -210,12 +205,7 @@
 			                	<c:if test="${fn:contains(devices, stock.item_name)}">
 				                    <div class="col-md-4 mb-3">
 				                        <label class="card h-100 p-3 product-card" style="cursor: pointer;">
-				                            <input type="radio"
-				                                   name="itemID"
-				                                   value="${stock.item_id}"
-				                                   class="d-none product-radio"
-				                                   data-price="${stock.selling_price}"
-				                                   required>
+				                            <input type="radio" name="itemID" value="${stock.item_id}" class="d-none product-radio" data-price="${stock.selling_price}" required>
 				                            <div class="card-body">
 				                                <h5 class="card-title">${stock.item_name}</h5>
 				                                <p class="card-text">
@@ -236,12 +226,7 @@
 			                	<c:if test="${fn:contains(power, stock.item_name)}">
 				                    <div class="col-md-4 mb-3">
 				                        <label class="card h-100 p-3 product-card" style="cursor: pointer;">
-				                            <input type="radio"
-				                                   name="itemID"
-				                                   value="${stock.item_id}"
-				                                   class="d-none product-radio"
-				                                   data-price="${stock.selling_price}"
-				                                   required>
+				                            <input type="radio" name="itemID" value="${stock.item_id}" class="d-none product-radio" data-price="${stock.selling_price}" required>
 				                            <div class="card-body">
 				                                <h5 class="card-title">${stock.item_name}</h5>
 				                                <p class="card-text">
@@ -259,10 +244,8 @@
 			        <div class="tab-pane fade" id="other">
 			            <div class="row" id="product-list">
 			                <c:forEach var="stock" items="${allStock}">
-			                	<c:if test="${!fn:contains(core, stock.item_name) 
-					                         and !fn:contains(cooling, stock.item_name)
-					                         and !fn:contains(power, stock.item_name)
-					                         and !fn:contains(devices, stock.item_name)}">
+			                	<c:if test="${!fn:contains(core, stock.item_name) and !fn:contains(cooling, stock.item_name)
+					                         and !fn:contains(power, stock.item_name) and !fn:contains(devices, stock.item_name)}">
 				                    <div class="col-md-4 mb-3">
 				                        <label class="card h-100 p-3 product-card" style="cursor: pointer;">
 				                            <input type="radio"
@@ -338,7 +321,6 @@
         totalPriceInput.value = total.toFixed(2);
     }
 
-    // Add listeners
     radios.forEach(radio => {
         radio.addEventListener('change', () => {
             document.querySelectorAll('.product-card').forEach(card => card.classList.remove('border-primary'));
