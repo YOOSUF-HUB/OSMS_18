@@ -21,7 +21,8 @@
     
     <style>
         body {
-            background-color: #f8f9fa;
+             /* background-color: #f8f9fa; */
+            background: linear-gradient(to right, #e3f2fd, #f2fdff, #f1f0ff);          
         }
 		.navbar-brand i {
             font-weight: bold;

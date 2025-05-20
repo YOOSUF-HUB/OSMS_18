@@ -23,7 +23,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <style>
         body {
-            background-color: #f8f9fa;
+               /* background-color: #f8f9fa; */
+            background: linear-gradient(to right, #e3f2fd, #f2fdff, #f1f0ff);
         }
        
         .navbar-brand i {
