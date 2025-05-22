@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/ViewReportsServlet")
 public class ViewReportsServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
+// view all the list for the report generated
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         IReportController reportController = new ReportServices();
         List<ReportModel> reportList = reportController.viewReports();

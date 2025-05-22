@@ -15,10 +15,10 @@ public class DeleteReportServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int rId = Integer.parseInt(request.getParameter("rId"));
+		int rId = Integer.parseInt(request.getParameter("rId")); // get the reportId which is to be deleted
         IReportController reportController = new ReportServices();
         boolean isDeleted = reportController.deleteReport(rId);
-
+        // check whether report is deleted or not and the respective popup messages
         if (isDeleted) {
         	String alertmsg = "Report Deleted Successfully";
 			response.getWriter().println("<script> alert('"+alertmsg+"'); window.location.href = 'ViewReportsServlet' </script>");

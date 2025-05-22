@@ -14,7 +14,9 @@ public class UpdateReportServlet extends HttpServlet {
     
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String rIdParam = request.getParameter("rId");
+    	 // Retrieve the report ID from the request parameter
+    	String rIdParam = request.getParameter("rId");
+    	// Validate if the report ID parameter is provided and not empty
         if (rIdParam != null && !rIdParam.isEmpty()) {
             try {
                 int rId = Integer.parseInt(rIdParam);
@@ -36,14 +38,15 @@ public class UpdateReportServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int rId = Integer.parseInt(request.getParameter("rId"));
+    	// Retrieve updated report details from request parameters
+    	int rId = Integer.parseInt(request.getParameter("rId"));
         String rName = request.getParameter("rName");
         String rDate = request.getParameter("rDate"); 
         String rCategory = request.getParameter("rCategory");
         String rStatus = request.getParameter("rStatus");
         String rContentSummary = request.getParameter("rContentSummary");
         String rContent = request.getParameter("rContent");
-
+        // Get session to retrieve logged-in user information
         HttpSession session = request.getSession();
         String rAuthor = (String) session.getAttribute("loggedInUsername");
         Integer loggedInUserId = (Integer) session.getAttribute("loggedInUserId");
@@ -55,7 +58,7 @@ public class UpdateReportServlet extends HttpServlet {
         String rContentType = existingReport.getrContentType(); 
 
         boolean isUpdated = reportController.updateReport(rId, rName, rDate, rCategory, rAuthor, rStatus, rFilePath, rContentType, rContentSummary, rContent, userId);
-
+        // Check if the update operation was successful
         if (isUpdated) {
             String alertmsg = "Report Updated Successfully";
             response.getWriter().println("<script> alert('" + alertmsg + "'); window.location.href = 'ViewReportsServlet' </script>");

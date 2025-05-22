@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/ViewReportServlet")
 public class ViewReportServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
+// logic to view one report if the view button is clicked in the jsp page
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String rIdParam = request.getParameter("rId");

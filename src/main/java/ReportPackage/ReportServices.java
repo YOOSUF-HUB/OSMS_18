@@ -10,14 +10,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import onlineStockManagement.DBconnection;
-
+// implementing interface class to ReportServices class 
 public class ReportServices implements IReportController {
-
+	// defining resources
     private Connection con;
     private PreparedStatement pstmt;
     private ResultSet rs;
     private boolean isSuccess;
-
+    // function for closing resources(avoiding code repetition)
     private void closeResources() {
         try {
             if (rs != null) rs.close();
@@ -27,7 +27,7 @@ public class ReportServices implements IReportController {
             e.printStackTrace();
         }
     }
-
+    
     @Override
     public boolean createReport(String rName, String rDate, String rCategory, String rAuthor, String rStatus, String rFilePath, String rContentType, String rContentSummary, String rContent, int userId) {
         isSuccess = false;
@@ -56,7 +56,7 @@ public class ReportServices implements IReportController {
         }
         return isSuccess;
     }
-
+// implementing the concrete class with all the logics 
     @Override
     public List<ReportModel> viewReports() {
         List<ReportModel> reports = new ArrayList<>();

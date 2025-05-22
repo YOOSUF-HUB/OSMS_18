@@ -3,6 +3,7 @@ package ReportPackage;
 
 
 public class ReportModel {
+	// Reort Attributes
     private int rId;
     private String rName;
     private String rDate;
@@ -16,10 +17,11 @@ public class ReportModel {
     private int userId; 
 
    
-
+    // default contructor
     public ReportModel() {
     }
 
+    // overloaded constructor
     public ReportModel(int rId, String rName, String rDate, String rCategory, String rAuthor, String rStatus, String rFilePath, String rContentType, String rContentSummary, String rContent, int userId) {
         this.rId = rId;
         this.rName = rName;
@@ -36,7 +38,7 @@ public class ReportModel {
 
 
 
-   
+   // getters and setters
     public int getUserId() {
         return userId;
     }

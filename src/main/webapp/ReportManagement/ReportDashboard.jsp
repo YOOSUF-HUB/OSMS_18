@@ -2,9 +2,9 @@
 <%@ page import="java.util.List" %>
 <%@ page import="ReportPackage.ReportModel" %>
 <%
-    request.setAttribute("requiredRole", "system auditor");
+    request.setAttribute("requiredRole", "system auditor"); 
 %>
-<%@ include file="../user/loginAuthentication.jsp" %>
+<%@ include file="../user/loginAuthentication.jsp" %><!-- helper class used to establish security so that this page can not be accessed without logging in  -->
 
 
    
@@ -88,6 +88,7 @@
                         <div>
                             <div class="text-muted">Total Reports</div>
                             <div class="summary-value">
+                            <!-- creating an ArrayList and calculating its size to display the No of Total Reports -->
                                 <%
                                     List<ReportModel> reportList = (List<ReportModel>) request.getAttribute("reportList");
                                     out.print(reportList != null ? reportList.size() : 0);
@@ -104,6 +105,7 @@
                         <div>
                             <div class="text-muted">Published Reports</div>
                             <div class="summary-value">
+                            <!-- calculating the No of published reports to be displayed -->
                                 <%
                                     if (reportList != null) {
                                         long publishedCount = reportList.stream().filter(r -> "Published".equals(r.getrStatus())).count();

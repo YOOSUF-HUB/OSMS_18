@@ -2,7 +2,7 @@
 <%
     request.setAttribute("requiredRole", "system auditor");
 %>
-<%@ include file="../user/loginAuthentication.jsp" %>
+<%@ include file="../user/loginAuthentication.jsp" %> <!-- helper class used to establish security so that this page can not be accessed without logging in  -->
 
 
    
@@ -15,8 +15,10 @@
     <title>Generate New Report</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap used to style the page(CDN) -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- CSS internal styling -->
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -79,6 +81,7 @@
                         <h2 class="card-title text-center">Generate New Report</h2>
                     </div>
                     <div class="card-body">
+                    <!-- form is used to get the values for the input fields from the user -->
                         <form action="../CreateReportServlet" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="rName">Report Name</label>
@@ -109,7 +112,7 @@
                                 <label for="reportFile">Upload Report File</label>
                                 <input type="file" class="form-control-file" id="reportFile" name="reportFile" required>
                             </div>
-                            
+                        <!-- getting the profit value set in the systemauditor.jsp and connecting to report summary input field -->    
 						<%
 						  Double profit = (Double) session.getAttribute("profit");
 						  String profitSummary = "";
