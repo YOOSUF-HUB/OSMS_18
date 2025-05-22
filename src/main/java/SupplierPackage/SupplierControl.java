@@ -12,9 +12,7 @@ import onlineStockManagement.DBconnection;
 public class SupplierControl implements ISupplierControl {
 
     // Insert Data function
-    public boolean insertSupplierData(int supplier_id, String supplier_name, String phone_number, String email,
-                                             String supplier_address, String supplier_city, String supplier_country,
-                                             String supplier_website, String s_date_added) {
+    public boolean insertSupplierData(int supplier_id, String supplier_name, String phone_number, String email, String supplier_address, String supplier_city, String supplier_country, String supplier_website, String s_date_added) {
 
         boolean isSuccess = false;
         Connection con = null;
@@ -138,9 +136,7 @@ public class SupplierControl implements ISupplierControl {
 
 
     // Update Supplier
-    public boolean UpdateSupplier(int supplier_id, String supplier_name, String phone_number, String email,
-                                         String supplier_address, String supplier_city, String supplier_country,
-                                         String supplier_website, String s_date_added) {
+    public boolean UpdateSupplier(int supplier_id, String supplier_name, String phone_number, String email, String supplier_address, String supplier_city, String supplier_country, String supplier_website, String s_date_added) {
 
         boolean isSuccess = false;
         Connection con = null;

@@ -26,7 +26,7 @@ public class StockOrderUpdateServlet extends HttpServlet {
         request.setAttribute("stockOrder", stockOrder);
         
         ISupplierControl obj = new SupplierControl();
-        //fetching supplier for dynamic update in update_stockorder jsp page
+ 
         List<SupplierModel> allSupplier = obj.getAllSupplier();
         request.setAttribute("allSupplier", allSupplier);
 
