@@ -14,7 +14,7 @@ import orderPackage.IOrderController;
 import orderPackage.OrderController;
 import orderPackage.OrderModel;
 
-
+// servlet to handle customer order viewing in stock management
 @WebServlet("/StockCusOrderViewServlet")
 public class StockCusOrderViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -22,20 +22,20 @@ public class StockCusOrderViewServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-
+		// Get all orders using the controller
 		IOrderController OrderController = new OrderController();
 		List<OrderModel> allOrders = OrderController.getAllOrders();
+
+
 		request.setAttribute("allOrders", allOrders);
 		
+		// Forward the request to the JSP page
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/StockManagement/CustomerOrder.jsp");
-		
 		dispatcher.forward(request, response);
-
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
-
 }

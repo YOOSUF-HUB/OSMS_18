@@ -20,13 +20,13 @@ public class GetAllStockServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		IStockControl obj = new stockControl();
-	    List<stockModel> allStocks = obj.getAllStock();
+	    List<stockModel> allStocks = obj.getAllStock(); //calling method to fetching all data from the table
 	    request.setAttribute("allStocks", allStocks);
 	    
 	    
 
 
-	    String view = request.getParameter("view");
+	    String view = request.getParameter("view"); //creating a view so that salesrep actor can view the available stock in the system dynamically
 	    String page;
 
 	    if ("sales".equalsIgnoreCase(view)) {

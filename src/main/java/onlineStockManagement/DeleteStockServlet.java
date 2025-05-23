@@ -21,13 +21,13 @@ public class DeleteStockServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int item_id = Integer.parseInt(request.getParameter("item_id"));
+		int item_id = Integer.parseInt(request.getParameter("item_id")); //fetch item_id which is to be deleted
 		boolean isTrue;
-		IStockControl obj = new stockControl();
-		isTrue = obj.DeleteStock(item_id);
+		IStockControl obj = new stockControl(); //creating obj object
+		isTrue = obj.DeleteStock(item_id); //call the delete method and execute the delete
 		if(isTrue == true) {
 			
-			request.getSession().setAttribute("deleteMessage","Stock Deleted successfully");
+			request.getSession().setAttribute("deleteMessage","Stock Deleted successfully"); //sending session for delete notification
 
 			response.getWriter().println("<script>window.location.href='GetAllStockServlet'</script>");
 		}

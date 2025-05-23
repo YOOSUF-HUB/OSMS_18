@@ -22,7 +22,10 @@ public class CreateReportServlet extends HttpServlet {
     
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	  // Check if the request is a multipart request
+    	// Check if the request is a multipart request
+    	
+    	
+    	
     	if (!ServletFileUpload.isMultipartContent(request)) {
             response.getWriter().println("Error: Form must have enctype=multipart/form-data");
             return;
@@ -45,7 +48,7 @@ public class CreateReportServlet extends HttpServlet {
         int userId = -1; //  userId to a default invalid value when user is not found
 
         try {
-        	  // Parse the request to get file items and form fields
+        	// Parse the request to get file items and form fields
             List<FileItem> items = upload.parseRequest(request);
             for (FileItem item : items) {
                 if (item.isFormField()) {

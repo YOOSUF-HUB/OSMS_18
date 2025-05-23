@@ -27,6 +27,7 @@ public class updateStockServlet extends HttpServlet {
 		 IStockControl obj = new stockControl();
 		 List<stockModel> stock = obj.getById(item_id);
 
+		// If stock is found, forward it to update_stock.jsp
 	        if (stock != null) {
 	            request.setAttribute("stock", stock);
 	            request.getRequestDispatcher("StockManagement/update_stock.jsp").forward(request, response);
@@ -57,8 +58,11 @@ public class updateStockServlet extends HttpServlet {
 		
 		if(isTrue == true) {
 			List<stockModel> stockDetails = obj.getById(item_id);
+			
+			
 			request.setAttribute("stockDetails", stockDetails);
 			
+			// Set a success message in the session to send notification to the page
 	        request.getSession().setAttribute("successMessage","Stock updated successfully");
 			
 			

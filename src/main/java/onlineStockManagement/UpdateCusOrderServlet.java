@@ -34,7 +34,10 @@ public class UpdateCusOrderServlet extends HttpServlet {
 		List<stockModel> allStock = obj.getAllStock();
 		request.setAttribute("allStock", allStock);
 		
+		// Check if the order list is not null and has at least one order
 		if (orderList != null && !orderList.isEmpty()) {
+			
+		    // Get the first order from the list
 		    OrderModel order = orderList.get(0);
 		    request.setAttribute("order", order);
 		    request.getRequestDispatcher("/StockManagement/UpdateCusOrder.jsp").forward(request, response);
@@ -50,7 +53,7 @@ public class UpdateCusOrderServlet extends HttpServlet {
 	        String orderStatus = request.getParameter("order_status");
 	        String qtyParam = request.getParameter("qty");
 
-
+	     // Check if any required form fields are missing or empty
 	        if (orderIdParam == null || orderIdParam.isEmpty() || orderStatus == null || orderStatus.isEmpty() ||qtyParam == null || qtyParam.isEmpty()) {
 	            response.sendRedirect("error.jsp?message=Missing required form fields");
 	            return;
